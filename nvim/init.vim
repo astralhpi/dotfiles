@@ -19,8 +19,12 @@ NeoBundleCheck
 filetype plugin indent on
 syntax on
 
-" 단축키 설정
+" 기본 키 설정
+
+" 플러그인 설정
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
 " NERDTree 단축키
 map <C-\> :NERDTreeToggle<CR>
-
 
