@@ -44,8 +44,10 @@ else " no gui
   endif
 endif
 
-nmap <C-]> :bnext<CR>
-nmap <C-[> :bprevious<CR>
+nmap ’ :bnext<CR>
+nmap ” :bprevious<CR>
+nmap † :enew<CR>
+nmap œ :bd<CR>
 
 " 플러그인 설정
 " deoplete
