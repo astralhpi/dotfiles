@@ -28,6 +28,7 @@ colorscheme base16-tomorrow
 set ts=4
 set sw=4
 set visualbell
+set number
 
 
 " 기본 키 설정
