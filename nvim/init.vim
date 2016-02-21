@@ -12,6 +12,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+NeoBundle 'ctrlpvim/ctrlp.vim'
 
 call neobundle#end()
 NeoBundleCheck
@@ -31,6 +32,11 @@ set visualbell
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
-" NERDTree 단축키
+" NERDTree
 map <C-\> :NERDTreeToggle<CR>
 
+" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
