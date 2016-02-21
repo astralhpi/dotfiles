@@ -14,6 +14,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'terryma/vim-multiple-cursors'
 
 call neobundle#end()
 NeoBundleCheck
