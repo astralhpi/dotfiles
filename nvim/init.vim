@@ -11,7 +11,7 @@ set runtimepath^=~/.config/nvim/bundle/neobundle.vim/
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 
@@ -21,7 +21,9 @@ NeoBundleCheck
 " 기본 설정
 filetype plugin indent on
 syntax on
-color dracula
+let base16colorspace=256
+set background=dark
+colorscheme base16-tomorrow
 set ts=4
 set sw=4
 set visualbell
