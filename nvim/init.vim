@@ -13,6 +13,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'kchmck/vim-coffee-script'
 
 call neobundle#end()
 NeoBundleCheck
