@@ -22,6 +22,7 @@ NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'scrooloose/syntastic'
 
 NeoBundleLazy 'astralhpi/CoffeeTags' 
+NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
 NeoBundleLazy 'OmniSharp/omnisharp-vim'
 NeoBundleLazy 'OrangeT/vim-csharp'
 NeoBundleLazy 'zchee/deoplete-jedi'
@@ -67,10 +68,6 @@ nnoremap <C-l> <C-w>l
 
 " 플러그인 설정
 " deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni = {}
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.cs = 'OmniSharp#Complete'
 
 " NERDTree
 map <C-\> :NERDTreeToggle<CR>
@@ -91,6 +88,7 @@ autocmd FileType coffee NeoBundleSource CoffeeTags
 
 " OmniSharp-vim 설정
 autocmd FileType cs NeoBundleSource omnisharp-vim
+autocmd FileType cs NeoBundleSource deoplete-omnisharp 
 
 let g:OmniSharp_selector_ui = 'ctrlp'
 let g:OmniSharp_server_type = 'v1'
