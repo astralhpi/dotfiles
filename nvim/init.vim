@@ -52,6 +52,7 @@ nmap ’ :bnext<CR>
 nmap ” :bprevious<CR>
 nmap † :enew<CR>
 nmap œ :bd<CR>
+nmap « :TagbarToggle<CR>
 
 " 플러그인 설정
 " deoplete
@@ -69,3 +70,6 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " airline 설정
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+" CoffeeTags 설정
+let g:CoffeeAutoTagIncludeVars = 1
