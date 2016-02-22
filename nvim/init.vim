@@ -16,6 +16,7 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 
 call neobundle#end()
 NeoBundleCheck
@@ -30,6 +31,7 @@ set ts=4
 set sw=4
 set visualbell
 set number
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 
 " 기본 키 설정
