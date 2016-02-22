@@ -7,8 +7,8 @@ endif
 
 " NeoBundle 초기화
 
-set runtimepath^=~/.config/nvim/bundle/neobundle.vim/
-call neobundle#begin(expand('~/.vim/bundle/'))
+set runtimepath^=$XDG_CONFIG_HOME/nvim/bundle/neobundle.vim/
+call neobundle#begin(expand('$XDG_CONFIG_HOME/nvim/neobundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'chriskempson/base16-vim'
