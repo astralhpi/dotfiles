@@ -18,8 +18,12 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'scrooloose/syntastic'
+
 NeoBundleLazy 'astralhpi/CoffeeTags' 
 NeoBundleLazy 'OmniSharp/omnisharp-vim'
+NeoBundleLazy 'OrangeT/vim-csharp'
 
 call neobundle#end()
 NeoBundleCheck
@@ -58,6 +62,9 @@ nmap « :TagbarToggle<CR>
 " 플러그인 설정
 " deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni = {}
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.cs = 'OmniSharp#Complete'
 
 " NERDTree
 map <C-\> :NERDTreeToggle<CR>
@@ -78,4 +85,9 @@ autocmd FileType coffee NeoBundleSource CoffeeTags
 
 " OmniSharp-vim 설정
 autocmd FileType cs NeoBundleSource omnisharp-vim
+
 let g:OmniSharp_selector_ui = 'ctrlp'
+let g:OmniSharp_server_type = 'v1'
+
+" vim-csharp 설정
+autocmd FileType cs NeoBundleSource vim-csharp
