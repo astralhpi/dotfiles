@@ -24,6 +24,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundleLazy 'astralhpi/CoffeeTags' 
 NeoBundleLazy 'OmniSharp/omnisharp-vim'
 NeoBundleLazy 'OrangeT/vim-csharp'
+NeoBundleLazy 'zchee/deoplete-jedi'
 
 call neobundle#end()
 NeoBundleCheck
@@ -96,3 +97,7 @@ let g:OmniSharp_server_type = 'v1'
 
 " vim-csharp 설정
 autocmd FileType cs NeoBundleSource vim-csharp
+
+" deoplete-jei
+
+autocmd FileType python NeoBundleSource deoplete-jedi
