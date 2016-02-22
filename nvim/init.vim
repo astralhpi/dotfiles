@@ -68,6 +68,7 @@ nnoremap <C-l> <C-w>l
 
 " 플러그인 설정
 " deoplete
+let g:deoplete#enable_at_startup = 1
 
 " NERDTree
 map <C-\> :NERDTreeToggle<CR>
