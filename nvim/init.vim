@@ -19,6 +19,7 @@ NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'majutsushi/tagbar'
 NeoBundleLazy 'astralhpi/CoffeeTags' 
+NeoBundleLazy 'OmniSharp/omnisharp-vim'
 
 call neobundle#end()
 NeoBundleCheck
@@ -74,3 +75,7 @@ let g:airline#extensions#tabline#enabled = 1
 " CoffeeTags 설정
 let g:CoffeeAutoTagIncludeVars = 1
 autocmd FileType coffee NeoBundleSource CoffeeTags
+
+" OmniSharp-vim 설정
+autocmd FileType cs NeoBundleSource omnisharp-vim
+let g:OmniSharp_selector_ui = 'ctrlp'
