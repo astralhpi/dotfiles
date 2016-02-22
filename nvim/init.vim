@@ -59,6 +59,11 @@ nmap † :enew<CR>
 nmap œ :bd<CR>
 nmap « :TagbarToggle<CR>
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " 플러그인 설정
 " deoplete
 let g:deoplete#enable_at_startup = 1
