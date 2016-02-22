@@ -17,6 +17,8 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'astralhpi/CoffeeTags'
 
 call neobundle#end()
 NeoBundleCheck
