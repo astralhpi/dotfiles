@@ -20,6 +20,7 @@ NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'dkprice/vim-easygrep'
 
 NeoBundleLazy 'astralhpi/CoffeeTags' 
 NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
