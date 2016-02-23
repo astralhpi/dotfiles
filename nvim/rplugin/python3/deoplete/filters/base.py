@@ -1,4 +1,4 @@
-#=============================================================================
+# ============================================================================
 # FILE: base.py
 # AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
 # License: MIT license  {{{
@@ -21,11 +21,14 @@
 #     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 #     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 # }}}
-#=============================================================================
+# ============================================================================
 
 from abc import abstractmethod
+import deoplete.util
+
 
 class Base(object):
+
     def __init__(self, vim):
         self.vim = vim
         self.name = 'base'
@@ -34,3 +37,6 @@ class Base(object):
     @abstractmethod
     def filter(self, context):
         pass
+
+    def debug(self, expr):
+        deoplete.util.debug(self.vim, expr)

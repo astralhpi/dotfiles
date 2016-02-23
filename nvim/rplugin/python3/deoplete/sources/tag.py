@@ -1,4 +1,4 @@
-#=============================================================================
+# ============================================================================
 # FILE: tag.py
 # AUTHOR: Felipe Morales <hel.sheep at gmail.com>
 #         Shougo Matsushita <Shougo.Matsu at gmail.com>
@@ -22,46 +22,46 @@
 #     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 #     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 # }}}
-#=============================================================================
+# ============================================================================
 
-import re
-from os.path import getmtime, exists
+from os.path import getmtime, exists, getsize
 from collections import namedtuple
+from deoplete.util import parse_file_pattern
 from .base import Base
 
 TagsCacheItem = namedtuple('TagsCacheItem', 'mtime candidates')
 
+
 class Source(Base):
+
     def __init__(self, vim):
         Base.__init__(self, vim)
 
         self.name = 'tag'
         self.mark = '[T]'
 
-        self.cache = {}
+        self.__cache = {}
 
     def gather_candidates(self, context):
         candidates = []
-        for filename in [x for x in self.vim.eval(
-                'map(tagfiles() + (get(g:, "loaded_neoinclude", 0) ? '
-                + ' neoinclude#include#get_tag_files() : []), '
-                + '"fnamemodify(v:val, \\":p\\")")') if exists(x)]:
+        limit = self.vim.vars['deoplete#tag#cache_limit_size']
+        include_files = self.vim.call(
+            'neoinclude#include#get_tag_files') if self.vim.call(
+                'exists', '*neoinclude#include#get_tag_files') else []
+        for filename in [x for x in self.vim.call(
+                'map', self.vim.call('tagfiles') + include_files,
+                'fnamemodify(v:val, ":p")')
+                         if exists(x) and getsize(x) < limit]:
             mtime = getmtime(filename)
-            if filename not in self.cache or self.cache[
+            if filename not in self.__cache or self.__cache[
                     filename].mtime != mtime:
                 with open(filename, 'r', errors='replace') as f:
-                    new_candidates = parse_tags(f)
+                    new_candidates = parse_file_pattern(
+                        f, '^[a-zA-Z_]\w*(?=\t)')
                     candidates += new_candidates
-                self.cache[filename] = TagsCacheItem(mtime, new_candidates)
+                    self.__cache[filename] = TagsCacheItem(
+                        mtime, new_candidates)
+                    limit -= getsize(filename)
             else:
-                candidates += self.cache[filename].candidates
-        return [{ 'word': x } for x in candidates]
-
-def parse_tags(f):
-    p = re.compile('^[a-zA-Z_]\w*(?=\t)')
-    candidates = []
-
-    for l in f.readlines():
-        candidates += p.findall(l)
-    return list(set(candidates))
-
+                candidates += self.__cache[filename].candidates
+        return [{'word': x} for x in candidates]

@@ -1,4 +1,4 @@
-#=============================================================================
+# ============================================================================
 # FILE: __init__.py
 # AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
 # License: MIT license  {{{
@@ -21,49 +21,24 @@
 #     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 #     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 # }}}
-#=============================================================================
+# ============================================================================
 
 import neovim
-import traceback
 
 from deoplete.deoplete import Deoplete
-from deoplete.util import error
+
 
 @neovim.plugin
 class DeopleteHandlers(object):
-    def __init__(self, vim):
-        self.vim = vim
 
-    @neovim.command('DeopleteInitializePython', sync=True, nargs=0)
-    def init_python(self):
-        self.deoplete = Deoplete(self.vim)
-        self.vim.vars['deoplete#_channel_id'] = self.vim.channel_id
+    def __init__(self, vim):
+        self.__vim = vim
+
+    @neovim.function('_deoplete', sync=True)
+    def init_python(self, args):
+        self.__deoplete = Deoplete(self.__vim)
+        self.__vim.vars['deoplete#_channel_id'] = self.__vim.channel_id
 
     @neovim.rpc_export('completion_begin')
     def completion_begin(self, context):
-        pos = self.vim.current.window.cursor
-        try:
-            complete_position, candidates = self.deoplete.gather_candidates(
-                context)
-        except Exception:
-            for line in traceback.format_exc().splitlines():
-                 error(self.vim, line)
-            error(self.vim,
-                  'An error has occurred. Please execute :messages command.')
-            candidates = []
-
-        if not candidates or self.vim.funcs.mode() != 'i' \
-                or pos != self.vim.current.window.cursor:
-            self.vim.vars['deoplete#_context'] = {}
-            return
-
-        var_context = {}
-        var_context['complete_position'] = complete_position
-        var_context['changedtick'] = context['changedtick']
-        var_context['candidates'] = candidates
-        self.vim.vars['deoplete#_context'] = var_context
-
-        # Note: cannot use vim.feedkeys()
-        self.vim.command(
-          'call feedkeys("\<Plug>(deoplete_start_complete)")')
-
+        self.__deoplete.completion_begin(context)

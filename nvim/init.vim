@@ -44,6 +44,7 @@ set autoread
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set hidden
 set previewheight=5
+set colorcolumn=80
 
 
 " 기본 키 설정

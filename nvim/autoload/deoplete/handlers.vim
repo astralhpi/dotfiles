@@ -27,24 +27,17 @@ function! deoplete#handlers#_init() abort "{{{
   augroup deoplete
     autocmd InsertLeave * call s:on_insert_leave()
     autocmd CompleteDone * call s:complete_done()
-  augroup END
+    autocmd InsertCharPre * call s:on_insert_char_pre()
 
-  for event in ['TextChangedI', 'InsertEnter']
-    execute 'autocmd deoplete' event '*'
-          \ 'call s:completion_begin("' . event . '")'
-  endfor
+    autocmd TextChangedI * call s:completion_begin("TextChangedI")
+    autocmd InsertEnter * call s:completion_begin("InsertEnter")
+  augroup END
 endfunction"}}}
 
 function! s:completion_begin(event) abort "{{{
   let context = deoplete#init#_context(a:event, [])
 
-  " Skip
-  if g:deoplete#_skip_next_complete
-    let deoplete#_skip_next_complete = 0
-    return
-  endif
-  if &paste || context.position ==#
-        \      get(g:deoplete#_context, 'position', [])
+  if s:is_skip(a:event, context)
     return
   endif
 
@@ -52,22 +45,54 @@ function! s:completion_begin(event) abort "{{{
   let g:deoplete#_context.position = context.position
 
   " Call omni completion
-  for pattern in deoplete#util#convert2list(
-        \ deoplete#util#get_buffer_config(
-        \ context.filetype,
-        \ 'b:deoplete_omni_patterns',
-        \ 'g:deoplete#omni_patterns',
-        \ 'g:deoplete#_omni_patterns'))
-    if deoplete#util#is_eskk_convertion()
-          \ || (pattern != '' && &l:omnifunc != ''
-          \ && context.input =~# '\%('.pattern.'\)$')
-      call deoplete#mappings#_set_completeopt()
-      call feedkeys("\<C-x>\<C-o>", 'n')
-      return
-    endif
+  for filetype in context.filetypes
+    for pattern in deoplete#util#convert2list(
+          \ deoplete#util#get_buffer_config(filetype,
+          \ 'b:deoplete_omni_patterns',
+          \ 'g:deoplete#omni_patterns',
+          \ 'g:deoplete#_omni_patterns'))
+      if deoplete#util#is_eskk_convertion()
+            \ || (pattern != '' && &l:omnifunc != ''
+            \ && context.input =~# '\%('.pattern.'\)$')
+        call deoplete#mappings#_set_completeopt()
+        call feedkeys("\<C-x>\<C-o>", 'n')
+        return
+      endif
+    endfor
   endfor
 
   call rpcnotify(g:deoplete#_channel_id, 'completion_begin', context)
+endfunction"}}}
+function! s:is_skip(event, context) abort "{{{
+  let disable_auto_complete =
+        \ deoplete#util#get_simple_buffer_config(
+        \   'b:deoplete_disable_auto_complete',
+        \   'g:deoplete#disable_auto_complete')
+
+  let displaywidth = strdisplaywidth(deoplete#util#get_input(a:event)) + 1
+  let is_virtual = virtcol('.') != displaywidth
+
+  if &paste
+        \ || (&l:formatoptions =~# '[tca]' && &l:textwidth > 0
+        \     && displaywidth >= &l:textwidth)
+        \ || (a:event !=# 'Manual' && disable_auto_complete)
+        \ || (&l:completefunc != '' && &l:buftype =~# 'nofile')
+        \ || is_virtual
+        \ || (a:event ==# 'InsertEnter'
+        \     && has_key(g:deoplete#_context, 'position'))
+    return 1
+  endif
+
+  if a:context.position ==# get(g:deoplete#_context, 'position', [])
+    let word = get(v:completed_item, 'word', '')
+    let delimiters = filter(copy(g:deoplete#delimiters),
+        \         'strridx(word, v:val) == (len(word) - len(v:val))')
+    if word == '' || empty(delimiters)
+      return 1
+    endif
+  endif
+
+  return 0
 endfunction"}}}
 
 function! s:on_insert_leave() abort "{{{
@@ -75,7 +100,31 @@ function! s:on_insert_leave() abort "{{{
 endfunction"}}}
 
 function! s:complete_done() abort "{{{
+  if get(v:completed_item, 'word', '') != ''
+    let word = v:completed_item.word
+    if !has_key(g:deoplete#_rank, word)
+      let g:deoplete#_rank[word] = 1
+    else
+      let g:deoplete#_rank[word] += 1
+    endif
+  endif
+
+  if get(g:deoplete#_context, 'refresh', 0)
+    " Don't skip completion
+    let g:deoplete#_context.refresh = 0
+    return
+  endif
+
   let g:deoplete#_context.position = getpos('.')
+endfunction"}}}
+
+function! s:on_insert_char_pre() abort "{{{
+  if !pumvisible() || !g:deoplete#enable_refresh_always
+    return
+  endif
+
+  " Auto refresh
+  call feedkeys("\<Plug>(deoplete_auto_refresh)")
 endfunction"}}}
 
 " vim: foldmethod=marker

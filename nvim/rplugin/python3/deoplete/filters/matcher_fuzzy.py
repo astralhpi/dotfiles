@@ -1,4 +1,4 @@
-#=============================================================================
+# ============================================================================
 # FILE: matcher_fuzzy.py
 # AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
 # License: MIT license  {{{
@@ -21,12 +21,15 @@
 #     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 #     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 # }}}
-#=============================================================================
+# ============================================================================
 
 import re
 from .base import Base
+from deoplete.util import fuzzy_escape
+
 
 class Filter(Base):
+
     def __init__(self, vim):
         Base.__init__(self, vim)
 
@@ -37,16 +40,10 @@ class Filter(Base):
         complete_str = context['complete_str']
         if context['ignorecase']:
             complete_str = complete_str.lower()
-        p = re.compile(fuzzy_escape(complete_str))
-        input_len = len(complete_str)
-        return [x for x in context['candidates']
-                if len(x['word']) > input_len and p.match(x['word'].lower())
-                ] if context['ignorecase'] \
-                  else [x for x in context['candidates']
-                        if len(x['word']) > input_len and p.match(x['word'])]
-
-def fuzzy_escape(string):
-    # Escape string for python regexp.
-    string = re.sub(r'([a-zA-Z0-9_])', r'\1.*', re.escape(string))
-    return string
-
+        p = re.compile(fuzzy_escape(complete_str, context['camelcase']))
+        if context['ignorecase']:
+            return [x for x in context['candidates']
+                    if p.match(x['word'].lower())]
+        else:
+            return [x for x in context['candidates']
+                    if p.match(x['word'])]

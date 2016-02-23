@@ -49,6 +49,7 @@ function! deoplete#init#enable() abort "{{{
   endif
 
   if &completeopt !~# 'noinsert\|noselect'
+    let save_completeopt = &completeopt
     try
       set completeopt+=noselect
     catch
@@ -57,18 +58,20 @@ function! deoplete#init#enable() abort "{{{
       call deoplete#util#print_error(
             \ 'Please update neovim to latest version.')
       return
+    finally
+      let &completeopt = save_completeopt
     endtry
   endif
 
-  if !exists(':DeopleteInitializePython')
+  try
+    call _deoplete()
+  catch
     call deoplete#util#print_error(
           \ 'deoplete.nvim is not registered as Neovim remote plugins.')
     call deoplete#util#print_error(
           \ 'Please execute :UpdateRemotePlugins command and restart Neovim.')
     return
-  endif
-
-  DeopleteInitializePython
+  endtry
 
   let s:is_enabled = 1
 
@@ -79,16 +82,30 @@ endfunction"}}}
 
 function! deoplete#init#_variables() abort "{{{
   let g:deoplete#_context = {}
+  let g:deoplete#_rank = {}
 
   " User vairables
   call deoplete#util#set_default(
         \ 'g:deoplete#enable_ignore_case', &ignorecase)
   call deoplete#util#set_default(
-        \ 'g:deoplete#enable_smart_case', &ignorecase)
+        \ 'g:deoplete#enable_smart_case', &smartcase)
+  call deoplete#util#set_default(
+        \ 'g:deoplete#enable_camel_case', 0)
+  call deoplete#util#set_default(
+        \ 'g:deoplete#enable_refresh_always', 0)
   call deoplete#util#set_default(
         \ 'g:deoplete#auto_completion_start_length', 2)
   call deoplete#util#set_default(
         \ 'g:deoplete#disable_auto_complete', 0)
+  call deoplete#util#set_default(
+        \ 'g:deoplete#delimiters', ['/', '.', '::', ':', '#'])
+  call deoplete#util#set_default(
+        \ 'g:deoplete#max_list', 100)
+  call deoplete#util#set_default(
+        \ 'g:deoplete#enable_debug', 0)
+  call deoplete#util#set_default(
+        \ 'g:deoplete#enable_profile', 0)
+
   call deoplete#util#set_default(
         \ 'g:deoplete#keyword_patterns', {})
   call deoplete#util#set_default(
@@ -102,61 +119,63 @@ function! deoplete#init#_variables() abort "{{{
   call deoplete#util#set_default(
         \ 'g:deoplete#ignore_sources', {})
 
-  " Internal vairables
-  call deoplete#util#set_default(
-        \ 'g:deoplete#_skip_next_complete', 0)
-
   " Source variables
   call deoplete#util#set_default(
         \ 'g:deoplete#omni#input_patterns', {})
   call deoplete#util#set_default(
         \ 'g:deoplete#omni#_input_patterns', {})
   call deoplete#util#set_default(
+        \ 'g:deoplete#omni#functions', {})
+  call deoplete#util#set_default(
+        \ 'g:deoplete#omni#_functions', { '_': '' })
+  call deoplete#util#set_default(
         \ 'g:deoplete#member#prefix_patterns', {})
   call deoplete#util#set_default(
         \ 'g:deoplete#member#_prefix_patterns', {})
+  call deoplete#util#set_default(
+        \ 'g:deoplete#tag#cache_limit_size', 500000)
 
   " Initialize default keyword pattern. "{{{
   call deoplete#util#set_pattern(
         \ g:deoplete#_keyword_patterns,
         \ '_',
-        \ '[a-zA-Z_]\w*')
+        \ '[a-zA-Z_]\k*')
   "}}}
 
   " Initialize omni completion pattern. "{{{
   " Note: HTML omni func use search().
   call deoplete#util#set_pattern(
-        \ g:deoplete#omni_patterns,
-        \ 'html,xhtml,xml,markdown,mkd', ['<[^>]*'])
-  " Note: vim-go and vim-javacomplete2 moves cursor.
+        \ g:deoplete#_omni_patterns,
+        \ 'html,xhtml,xml,markdown,mkd', ['<', '<[^>]*\s[[:alnum:]-]*'])
+
   call deoplete#util#set_pattern(
-        \ g:deoplete#omni_patterns,
-        \ 'go,java', ['[^. \t0-9]\.\w*'])
-  call deoplete#util#set_pattern(
-        \ g:deoplete#omni_patterns,
+        \ g:deoplete#omni#_input_patterns,
         \ 'c', ['[^. \t0-9]\.\w*', '[^. \t0-9]->\w*'])
   call deoplete#util#set_pattern(
-        \ g:deoplete#omni_patterns,
+        \ g:deoplete#omni#_input_patterns,
         \ 'cpp', ['[^. \t0-9]\.\w*', '[^. \t0-9]->\w*',
         \         '[a-zA-Z_]\w*::\w*'])
-
+  call deoplete#util#set_pattern(
+        \ g:deoplete#omni#_input_patterns,
+        \ 'java', ['[^. \t0-9]\.\w*'])
   call deoplete#util#set_pattern(
         \ g:deoplete#omni#_input_patterns,
         \ 'javascript', ['[^. \t0-9]\.([a-zA-Z_]\w*)?'])
   call deoplete#util#set_pattern(
         \ g:deoplete#omni#_input_patterns,
-        \ 'css,scss,sass', ['^\s+\w+', '\w+[):;]?\s+\w*', '[@!]'])
-  call deoplete#util#set_pattern(
-        \ g:deoplete#omni#_input_patterns,
-        \ 'python', ['[^. \t0-9]\.\w*', '^\s*@\w*',
-        \            '^\s*from\s.+import \w*', '^\s*from \w*',
-        \            '^\s*import \w*'])
+        \ 'css,scss,sass', ['\w+', '\w+[):;]?\s+\w*', '[@!]'])
   call deoplete#util#set_pattern(
         \ g:deoplete#omni#_input_patterns,
         \ 'ruby', ['[^. \t0-9]\.\w*', '[a-zA-Z_]\w*::\w*'])
+  call deoplete#util#set_pattern(
+        \ g:deoplete#omni#_input_patterns,
+        \ 'lua', ['\w+[.:]', 'require\s*\(?["'']\w*'])
   "}}}
 
   " Initialize member prefix pattern. "{{{
+  call deoplete#util#set_pattern(
+        \ g:deoplete#member#_prefix_patterns,
+        \ '_', '\.')
   call deoplete#util#set_pattern(
         \ g:deoplete#member#_prefix_patterns,
         \ 'c,objc', ['\.', '->'])
@@ -166,10 +185,6 @@ function! deoplete#init#_variables() abort "{{{
   call deoplete#util#set_pattern(
         \ g:deoplete#member#_prefix_patterns,
         \ 'perl,php', ['->'])
-  call deoplete#util#set_pattern(
-        \ g:deoplete#member#_prefix_patterns,
-        \ 'cs,java,javascript,d,vim,ruby,python,perl6,scala,vb',
-        \ '\.')
   call deoplete#util#set_pattern(
         \ g:deoplete#member#_prefix_patterns,
         \ 'ruby', ['\.', '::'])
@@ -183,50 +198,49 @@ function! deoplete#init#_context(event, sources) abort "{{{
   let filetype = (exists('*context_filetype#get_filetype') ?
         \   context_filetype#get_filetype() :
         \   (&filetype == '' ? 'nothing' : &filetype))
-  let filetypes = (exists('*context_filetype#get_filetypes') ?
+  let filetypes = exists('*context_filetype#get_filetypes') ?
         \   context_filetype#get_filetypes() :
-        \   (&filetype == '' ? ['nothing'] : [&filetype]))
+        \   &filetype == '' ? ['nothing'] :
+        \                     deoplete#util#uniq([&filetype]
+        \                          + split(&filetype, '\.'))
 
   let sources = a:sources
   if a:event !=# 'Manual' && empty(sources)
     " Use default sources
-    let sources = s:get_sources(filetype)
+    let sources = deoplete#util#get_buffer_config(
+          \ filetype,
+          \ 'b:deoplete_sources',
+          \ 'g:deoplete#sources',
+          \ '{}', [])
   endif
 
   let keyword_patterns = join(deoplete#util#convert2list(
-        \   deoplete#util#get_default_buffer_config(
+        \   deoplete#util#get_buffer_config(
         \   filetype, 'b:deoplete_keyword_patterns',
         \   'g:deoplete#keyword_patterns',
         \   'g:deoplete#_keyword_patterns')), '|')
 
+  " Convert keyword pattern.
+  let pattern = deoplete#util#vimoption2python(
+        \ &l:iskeyword . (&l:lisp ? ',-' : ''))
+  let keyword_patterns = substitute(keyword_patterns,
+        \ '\\k', '\=pattern', 'g')
+
   return {
         \ 'changedtick': b:changedtick,
         \ 'event': a:event,
-        \ 'input': deoplete#helpers#get_input(a:event),
+        \ 'input': deoplete#util#get_input(a:event),
+        \ 'next_input': deoplete#util#get_next_input(a:event),
         \ 'complete_str': '',
         \ 'position': getpos('.'),
         \ 'filetype': filetype,
         \ 'filetypes': filetypes,
         \ 'ignorecase': g:deoplete#enable_ignore_case,
         \ 'smartcase': g:deoplete#enable_smart_case,
+        \ 'camelcase': g:deoplete#enable_camel_case,
         \ 'sources': sources,
         \ 'keyword_patterns': keyword_patterns,
         \ }
-endfunction"}}}
-
-function! s:get_sources(filetype) abort "{{{
-  let sources = deoplete#util#get_default_buffer_config(
-        \ a:filetype,
-        \ 'b:deoplete_sources',
-        \ 'g:deoplete#sources',
-        \ '{}', [])
-  let ignore_sources = deoplete#util#get_default_buffer_config(
-        \ a:filetype,
-        \ 'b:deoplete_ignore_sources', 'g:deoplete#ignore_sources',
-        \ '{}', [])
-
-  " Ignore sources
-  return filter(sources, "index(ignore_sources, v:val) < 0")
 endfunction"}}}
 
 " vim: foldmethod=marker

@@ -34,10 +34,9 @@ command! -nargs=0 -bar DeopleteEnable
 " Global options definition. "{{{
 if get(g:, 'deoplete#enable_at_startup', 0)
   augroup deoplete
-    " Enable startup.
-    autocmd CursorHold,InsertEnter
-          \ * call deoplete#init#enable()
+    autocmd CursorHold,InsertEnter * call deoplete#init#enable()
   augroup END
-endif"}}}
+endif
+"}}}
 
 " vim: foldmethod=marker
