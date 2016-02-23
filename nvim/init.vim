@@ -41,6 +41,7 @@ set ts=4
 set sw=4
 set visualbell
 set number
+set autoread
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 
