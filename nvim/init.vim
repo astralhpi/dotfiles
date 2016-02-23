@@ -21,6 +21,7 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'dkprice/vim-easygrep'
+NeoBundle 'Shougo/echodoc.vim'
 
 NeoBundleLazy 'astralhpi/CoffeeTags' 
 NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
