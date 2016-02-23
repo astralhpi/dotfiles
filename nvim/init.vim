@@ -27,7 +27,6 @@ NeoBundleLazy 'astralhpi/CoffeeTags'
 NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
 NeoBundleLazy 'OmniSharp/omnisharp-vim'
 NeoBundleLazy 'OrangeT/vim-csharp'
-NeoBundleLazy 'zchee/deoplete-jedi'
 
 call neobundle#end()
 NeoBundleCheck
@@ -45,6 +44,7 @@ set number
 set autoread
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set hidden
+set previewheight=5
 
 
 " 기본 키 설정
@@ -101,9 +101,7 @@ let g:OmniSharp_server_type = 'v1'
 " vim-csharp 설정
 autocmd FileType cs NeoBundleSource vim-csharp
 
-" deoplete-jei
-
-autocmd FileType python NeoBundleSource deoplete-jedi
+"autocmd FileType python NeoBundleSource deoplete-jedi
 
 " echodoc
 let g:echodoc_enable_at_startup = 1
