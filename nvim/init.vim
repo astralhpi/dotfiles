@@ -44,6 +44,7 @@ set visualbell
 set number
 set autoread
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set hidden
 
 
 " 기본 키 설정
@@ -103,3 +104,6 @@ autocmd FileType cs NeoBundleSource vim-csharp
 " deoplete-jei
 
 autocmd FileType python NeoBundleSource deoplete-jedi
+
+" echodoc
+let g:echodoc_enable_at_startup = 1
