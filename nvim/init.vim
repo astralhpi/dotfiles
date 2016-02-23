@@ -21,7 +21,6 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'dkprice/vim-easygrep'
-NeoBundle 'Shougo/echodoc.vim'
 
 NeoBundleLazy 'astralhpi/CoffeeTags' 
 NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
@@ -103,5 +102,3 @@ autocmd FileType cs NeoBundleSource vim-csharp
 
 "autocmd FileType python NeoBundleSource deoplete-jedi
 
-" echodoc
-let g:echodoc_enable_at_startup = 1
