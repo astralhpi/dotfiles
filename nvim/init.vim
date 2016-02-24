@@ -21,11 +21,13 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'dkprice/vim-easygrep'
+NeoBundle 'jiangmiao/auto-pairs'
 
 NeoBundleLazy 'astralhpi/CoffeeTags' 
 NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
 NeoBundleLazy 'OmniSharp/omnisharp-vim'
 NeoBundleLazy 'OrangeT/vim-csharp'
+NeoBundleLazy 'zchee/deoplete-jedi'
 
 call neobundle#end()
 NeoBundleCheck
@@ -36,6 +38,7 @@ syntax on
 let base16colorspace=256
 set background=dark
 colorscheme base16-tomorrow
+set expandtab
 set ts=4
 set sw=4
 set visualbell
@@ -101,5 +104,6 @@ let g:OmniSharp_server_type = 'v1'
 " vim-csharp 설정
 autocmd FileType cs NeoBundleSource vim-csharp
 
-"autocmd FileType python NeoBundleSource deoplete-jedi
+" jedi
+autocmd FileType python NeoBundleSource deoplete-jedi
 
