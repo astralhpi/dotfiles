@@ -84,7 +84,7 @@ nmap ’ :bnext<CR>
 nmap ” :bprevious<CR>
 nmap † :enew<CR>
 nmap œ :bd<CR>
-nmap « :TagbarToggle<CR>
+nmap » :TagbarToggle<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -102,12 +102,8 @@ map <C-\> :NERDTreeToggle<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-let g:ctrlp_custom_ignore = {
-  \ 'dir' : '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(meta|bin)$'
-\}
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+"let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " airline 설정
 let g:airline_powerline_fonts = 1
