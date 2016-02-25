@@ -111,6 +111,8 @@ let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 " airline 설정
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " CoffeeTags 설정
 let g:CoffeeAutoTagIncludeVars = 1
