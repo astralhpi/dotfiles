@@ -9,11 +9,11 @@ endif
 
 set runtimepath^=$XDG_CONFIG_HOME/nvim/bundle/neobundle.vim/
 call neobundle#begin(expand('$XDG_CONFIG_HOME/nvim/neobundle/'))
+
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
@@ -23,10 +23,17 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'jiangmiao/auto-pairs'
 
+" Language 서포트
+" coffeescript
+NeoBundle 'kchmck/vim-coffee-script'
 NeoBundleLazy 'astralhpi/CoffeeTags' 
-NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
+
+" csharp
 NeoBundleLazy 'OmniSharp/omnisharp-vim'
+NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
 NeoBundleLazy 'OrangeT/vim-csharp'
+
+" python
 NeoBundleLazy 'zchee/deoplete-jedi'
 
 call neobundle#end()
