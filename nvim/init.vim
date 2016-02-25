@@ -50,7 +50,7 @@ NeoBundleCheck
 " 기본 설정
 filetype plugin indent on
 syntax on
-let base16colorspace=256
+"let base16colorspace=256
 set background=dark
 colorscheme base16-tomorrow
 set expandtab
@@ -59,7 +59,7 @@ set sw=4
 set visualbell
 set number
 set autoread
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set hidden
 set previewheight=5
 set colorcolumn=80
