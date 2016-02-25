@@ -30,6 +30,7 @@ NeoBundle 'mhinz/vim-grepper'
 NeoBundle 'janko-m/vim-test'
 NeoBundle 'jalvesaq/vimcmdline'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
 " Language 서포트
 " coffeescript
@@ -41,8 +42,6 @@ NeoBundleLazy 'OmniSharp/omnisharp-vim'
 NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
 NeoBundleLazy 'OrangeT/vim-csharp'
 
-" python
-NeoBundleLazy 'zchee/deoplete-jedi'
 
 call neobundle#end()
 NeoBundleCheck
@@ -96,9 +95,11 @@ nnoremap <C-l> <C-w>l
 let g:deoplete#enable_at_startup = 1
 
 " NERDTree
-map <C-\> :NERDTreeToggle<CR>
+nmap <C-\> :NERDTreeToggle<CR>
 
 " ctrlp
+
+nmap <C-b> :CtrlPBufTag<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
@@ -124,7 +125,4 @@ let g:OmniSharp_server_type = 'v1'
 
 " vim-csharp 설정
 autocmd FileType cs NeoBundleSource vim-csharp
-
-" jedi
-autocmd FileType python NeoBundleSource deoplete-jedi
 
