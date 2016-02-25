@@ -49,7 +49,7 @@ NeoBundleCheck
 " 기본 설정
 filetype plugin indent on
 syntax on
-"let base16colorspace=256
+let base16colorspace=256
 set background=dark
 colorscheme base16-tomorrow
 set expandtab
@@ -58,7 +58,7 @@ set sw=4
 set visualbell
 set number
 set autoread
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set hidden
 set previewheight=5
 set colorcolumn=80
@@ -98,7 +98,6 @@ let g:deoplete#enable_at_startup = 1
 nmap <C-\> :NERDTreeToggle<CR>
 
 " ctrlp
-
 nmap <C-b> :CtrlPBufTag<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -126,3 +125,5 @@ let g:OmniSharp_server_type = 'v1'
 " vim-csharp 설정
 autocmd FileType cs NeoBundleSource vim-csharp
 
+"NERDTree
+map <leader>f :NERDTreeFind<cr>
