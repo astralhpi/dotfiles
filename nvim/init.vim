@@ -14,6 +14,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'JazzCore/ctrlp-cmatcher', {
+            \ 'build' : {
+                \ 'mac' : './install.sh'
+                \ }
+            \ }
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
@@ -58,6 +63,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set hidden
 set previewheight=5
 set colorcolumn=80
+let g:ackprg = 'ag --vimgrep'
 
 
 " 기본 키 설정
@@ -94,7 +100,12 @@ map <C-\> :NERDTreeToggle<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_custom_ignore = {
+  \ 'dir' : '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(meta|bin)$'
+\}
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " airline 설정
 let g:airline_powerline_fonts = 1
