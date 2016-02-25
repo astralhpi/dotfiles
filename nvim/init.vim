@@ -20,8 +20,11 @@ NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'mhinz/vim-grepper'
+NeoBundle 'janko-m/vim-test'
+NeoBundle 'jalvesaq/vimcmdline'
+NeoBundle 'airblade/vim-gitgutter'
 
 " Language 서포트
 " coffeescript
