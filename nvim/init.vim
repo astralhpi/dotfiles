@@ -64,6 +64,7 @@ set hidden
 set previewheight=5
 set colorcolumn=80
 let g:ackprg = 'ag --vimgrep'
+set clipboard=unnamed
 
 
 " 기본 키 설정
