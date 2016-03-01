@@ -93,6 +93,8 @@ nnoremap <C-l> <C-w>l
 " 플러그인 설정
 " deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = []
 
 " NERDTree
 nmap <C-\> :NERDTreeToggle<CR>
