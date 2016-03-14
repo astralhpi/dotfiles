@@ -114,6 +114,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " CoffeeTags 설정
+let g:CoffeeAutoTagDisabled=1
 let g:CoffeeAutoTagIncludeVars = 1
 autocmd FileType coffee NeoBundleSource CoffeeTags
 
