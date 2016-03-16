@@ -31,6 +31,8 @@ NeoBundle 'jalvesaq/vimcmdline'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'dkprice/vim-easygrep'
+NeoBundle 'wesleyche/SrcExpl'
+NeoBundle 'tacahiroy/ctrlp-funky'
 
 " Language 서포트
 " coffeescript
@@ -97,6 +99,7 @@ let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['omni', 'dictionary', 'buffer', 'member', 'tag', 'file']
 let g:deoplete#tag#cache_limit_size = 3000000
 let g:deoplete#max_list = 40
+let g:deoplete#file#enable_buffer_path = 1
 
 " NERDTree
 nmap <C-\> :NERDTreeToggle<CR>
@@ -135,3 +138,7 @@ map <leader>f :NERDTreeFind<cr>
 
 "EasyGrep
 autocmd VimEnter * GrepProgram ag
+
+" SrcExpl
+let g:SrcExpl_isUpdateTags = 0
+
