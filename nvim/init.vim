@@ -95,6 +95,7 @@ nnoremap <C-l> <C-w>l
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources = {}
 let g:deoplete#sources._ = []
+let g:deoplete#tag#cache_limit_size = 3000000
 
 " NERDTree
 nmap <C-\> :NERDTreeToggle<CR>
