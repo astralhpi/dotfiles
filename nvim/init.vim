@@ -105,12 +105,23 @@ let g:deoplete#file#enable_buffer_path = 1
 nmap <C-\> :NERDTreeToggle<CR>
 
 " ctrlp
+nmap <C-t> :CtrlPTag<CR>
 nmap <C-b> :CtrlPBufTag<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+let g:ctrlp_buftag_types = {
+    \ 'coffee' : {
+      \ 'bin': 'coffeetags',
+      \ 'args': '-f -',
+      \ },
+    \ 'javascript' : {
+      \ 'bin': 'ctags',
+      \ 'args': '-f -',
+      \ },
+    \ }
 
 " airline 설정
 let g:airline_powerline_fonts = 1
