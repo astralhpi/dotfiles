@@ -95,7 +95,6 @@ nnoremap <C-l> <C-w>l
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources = {}
 let g:deoplete#sources._ = []
-let g:deoplete#sources.coffee = ['tag', 'file', 'member', 'omni', 'dictionary']
 
 " NERDTree
 nmap <C-\> :NERDTreeToggle<CR>
