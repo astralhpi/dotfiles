@@ -33,6 +33,7 @@ NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'wesleyche/SrcExpl'
 NeoBundle 'tacahiroy/ctrlp-funky'
+NeoBundle 'qpkorr/vim-bufkill'
 
 " Language 서포트
 " coffeescript
@@ -84,7 +85,7 @@ endif
 nmap ’ :bnext<CR>
 nmap ” :bprevious<CR>
 nmap † :enew<CR>
-nmap œ :bd<CR>
+nmap œ :BD<CR>
 nmap » :TagbarToggle<CR>
 
 nnoremap <C-h> <C-w>h
