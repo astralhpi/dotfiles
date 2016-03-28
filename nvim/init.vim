@@ -33,6 +33,7 @@ NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'wesleyche/SrcExpl'
 NeoBundle 'tacahiroy/ctrlp-funky'
+NeoBundle 'Yggdroot/indentLine'
 
 " Language 서포트
 " coffeescript
@@ -152,4 +153,7 @@ autocmd VimEnter * GrepProgram ag
 
 " SrcExpl
 let g:SrcExpl_isUpdateTags = 0
+
+"indentLine
+let g:indentLine_char = '│'
 
