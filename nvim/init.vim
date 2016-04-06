@@ -16,8 +16,8 @@ NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'JazzCore/ctrlp-cmatcher', {
             \ 'build' : {
-                \ 'mac' : './install.sh'
-                \ }
+            \ 'mac' : './install.sh'
+            \ }
             \ }
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'vim-airline/vim-airline'
@@ -45,6 +45,9 @@ NeoBundleLazy 'astralhpi/CoffeeTags'
 NeoBundleLazy 'OmniSharp/omnisharp-vim'
 NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
 NeoBundleLazy 'OrangeT/vim-csharp'
+
+" python
+NeoBundleLazy 'zchee/deoplete-jedi'
 
 
 call neobundle#end()
@@ -96,12 +99,12 @@ nnoremap <C-l> <C-w>l
 
 " 플러그인 설정
 " deoplete
+let g:deoplete#auto_complete_start_length = 2
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources = {}
-let g:deoplete#sources._ = ['omni', 'dictionary', 'buffer', 'member', 'tag', 'file']
 let g:deoplete#tag#cache_limit_size = 3000000
 let g:deoplete#max_list = 40
 let g:deoplete#file#enable_buffer_path = 1
+set completeopt-=preview
 
 " NERDTree
 nmap <C-\> :NERDTreeToggle<CR>
@@ -158,3 +161,8 @@ let g:SrcExpl_isUpdateTags = 0
 "indentLine
 let g:indentLine_char = '│'
 
+" python
+let g:python_host_prog = '/Users/master/.virtualenvs/neovim2/bin/python'
+let g:python3_host_prog = '/Users/master/.virtualenvs/neovim3/bin/python'
+
+autocmd FileType python NeoBundleSource deoplete-jedi
