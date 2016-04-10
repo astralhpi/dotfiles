@@ -35,6 +35,8 @@ NeoBundle 'wesleyche/SrcExpl'
 NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'qpkorr/vim-bufkill'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
 
 " Language 서포트
 " coffeescript
@@ -166,3 +168,9 @@ let g:python_host_prog = '/Users/master/.virtualenvs/neovim2/bin/python'
 let g:python3_host_prog = '/Users/master/.virtualenvs/neovim3/bin/python'
 
 autocmd FileType python NeoBundleSource deoplete-jedi
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
