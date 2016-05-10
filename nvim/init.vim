@@ -166,10 +166,6 @@ let g:SrcExpl_isUpdateTags = 0
 "indentLine
 let g:indentLine_char = '│'
 
-" python
-let g:python_host_prog = '/Users/master/.virtualenvs/neovim2/bin/python'
-let g:python3_host_prog = '/Users/master/.virtualenvs/neovim3/bin/python'
-
 autocmd FileType python NeoBundleSource deoplete-jedi
 
 " ultisnips
