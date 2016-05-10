@@ -51,6 +51,9 @@ NeoBundleLazy 'OrangeT/vim-csharp'
 " python
 NeoBundleLazy 'zchee/deoplete-jedi'
 
+" javascript
+NeoBundleLazy 'pangloss/vim-javascript'
+
 
 call neobundle#end()
 NeoBundleCheck
@@ -174,3 +177,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
+
+" javascript
+autocmd FileType javascript NeoBundleSource vim-javascript
