@@ -141,9 +141,6 @@ let g:OmniSharp_server_type = 'v1'
 "NERDTree
 map <leader>f :NERDTreeFind<cr>
 
-"EasyGrep
-autocmd VimEnter * GrepProgram ag
-
 " SrcExpl
 let g:SrcExpl_isUpdateTags = 0
 
