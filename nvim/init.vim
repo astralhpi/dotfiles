@@ -5,65 +5,57 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" NeoBundle 초기화
+" plugin
 
-set runtimepath^=$XDG_CONFIG_HOME/nvim/bundle/neobundle.vim/
-call neobundle#begin(expand('$XDG_CONFIG_HOME/nvim/neobundle/'))
+call plug#begin('~/.vim/plugged')
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'JazzCore/ctrlp-cmatcher', {
-            \ 'build' : {
-            \ 'mac' : './install.sh'
-            \ }
-            \ }
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'janko-m/vim-test'
-NeoBundle 'jalvesaq/vimcmdline'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-NeoBundle 'dkprice/vim-easygrep'
-NeoBundle 'wesleyche/SrcExpl'
-NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'qpkorr/vim-bufkill'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'JazzCore/ctrlp-cmatcher'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-dispatch'
+Plug 'scrooloose/syntastic'
+Plug 'jiangmiao/auto-pairs'
+Plug 'janko-m/vim-test'
+Plug 'jalvesaq/vimcmdline'
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'dkprice/vim-easygrep'
+Plug 'wesleyche/SrcExpl'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'Yggdroot/indentLine'
+Plug 'qpkorr/vim-bufkill'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'dracula/vim'
 
 " Language 서포트
 " coffeescript
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundleLazy 'astralhpi/CoffeeTags' 
+Plug 'kchmck/vim-coffee-script'
+Plug 'astralhpi/CoffeeTags', { 'for': 'coffee'}
 
 " csharp
-NeoBundleLazy 'OmniSharp/omnisharp-vim'
-NeoBundleLazy 'astralhpi/deoplete-omnisharp' 
-NeoBundleLazy 'OrangeT/vim-csharp'
+Plug 'OmniSharp/omnisharp-vim', { 'for': 'csharp'}
+Plug 'astralhpi/deoplete-omnisharp', { 'for': 'csharp'}
+Plug 'OrangeT/vim-csharp', { 'for': 'csharp'}
 
 " python
-NeoBundleLazy 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi', { 'for': 'python'}
 
 " javascript
-NeoBundleLazy 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
 
-
-call neobundle#end()
-NeoBundleCheck
+call plug#end()
 
 " 기본 설정
 filetype plugin indent on
 syntax on
-let base16colorspace=256
+"let base16colorspace=256
 set background=dark
-colorscheme base16-tomorrow
+colorscheme dracula
 set expandtab
 set ts=4
 set sw=4
@@ -142,17 +134,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " CoffeeTags 설정
 let g:CoffeeAutoTagDisabled=1
 let g:CoffeeAutoTagIncludeVars = 1
-autocmd FileType coffee NeoBundleSource CoffeeTags
-
-" OmniSharp-vim 설정
-autocmd FileType cs NeoBundleSource omnisharp-vim
-autocmd FileType cs NeoBundleSource deoplete-omnisharp 
 
 let g:OmniSharp_selector_ui = 'ctrlp'
 let g:OmniSharp_server_type = 'v1'
-
-" vim-csharp 설정
-autocmd FileType cs NeoBundleSource vim-csharp
 
 "NERDTree
 map <leader>f :NERDTreeFind<cr>
@@ -166,13 +150,8 @@ let g:SrcExpl_isUpdateTags = 0
 "indentLine
 let g:indentLine_char = '│'
 
-autocmd FileType python NeoBundleSource deoplete-jedi
-
 " ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
-
-" javascript
-autocmd FileType javascript NeoBundleSource vim-javascript
