@@ -2,14 +2,13 @@
 if 0 | endif
 
 set ttyfast
-set nolazyredraw
+set lazyredraw
 
 if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" plugin
-
+" plugins
 call plug#begin('~/.vim/plugged')
 
 function! DoRemote(arg)
@@ -76,7 +75,7 @@ set hidden
 set previewheight=5
 set colorcolumn=80
 let g:ackprg = 'ag --vimgrep'
-set clipboard=unnamed
+set clipboard+=unnamed
 autocmd BufEnter * if &previewwindow | setlocal nobuflisted | endif
 
 
