@@ -1,2 +1,4 @@
 /nvim/neobundle
 /nvim/rplugin
+.init.vim-rplugin~
+nvim/.netrwhist

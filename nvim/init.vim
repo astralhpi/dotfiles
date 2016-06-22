@@ -1,6 +1,9 @@
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
+set ttyfast
+set nolazyredraw
+
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -8,6 +11,12 @@ endif
 " plugin
 
 call plug#begin('~/.vim/plugged')
+
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
@@ -101,7 +110,10 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#tag#cache_limit_size = 3000000
 let g:deoplete#max_list = 40
 let g:deoplete#file#enable_buffer_path = 1
+
 set completeopt-=preview
+set completeopt+=noinsert
+set completeopt+=noselect
 
 " NERDTree
 nmap <C-\> :NERDTreeToggle<CR>
@@ -152,3 +164,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
+
+" deoplete-go
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#use_cache = 1
+let g:deoplete#sources#go#json_directory = $HOME.'/.cache/deoplete/go'
