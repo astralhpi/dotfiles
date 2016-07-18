@@ -56,6 +56,9 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python'}
 " javascript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
 
+" html
+Plug 'mattn/emmet-vim', { 'for': 'html' }
+
 call plug#end()
 
 " 기본 설정
