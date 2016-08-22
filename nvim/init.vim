@@ -59,9 +59,6 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
 " html
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 
-" For development
-Plug 'astralhpi/algotest', { 'do': function('DoRemote') }
-
 call plug#end()
 
 " 기본 설정
