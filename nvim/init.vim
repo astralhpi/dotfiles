@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
+
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 
@@ -39,6 +40,9 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'dracula/vim'
+
+" auto-pairs
+let g:AutoPairsMultilineClose = 0
 
 " Language 서포트
 " coffeescript
