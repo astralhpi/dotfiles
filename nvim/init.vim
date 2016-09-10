@@ -58,6 +58,9 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python'}
 " javascript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
 
+" json
+Plug 'elzr/vim-json'
+
 " html
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 
