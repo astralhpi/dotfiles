@@ -41,8 +41,6 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'dracula/vim'
 
-" auto-pairs
-let g:AutoPairsMultilineClose = 0
 
 " Language 서포트
 " coffeescript
@@ -173,3 +171,10 @@ let g:UltiSnipsEditSplit="vertical"
 
 " deoplete-go
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+
+" auto-pairs
+let g:AutoPairsMultilineClose = 0
+
+
+" json
+let g:vim_json_syntax_conceal = 0
