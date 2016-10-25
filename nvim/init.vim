@@ -40,6 +40,11 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'dracula/vim'
+Plug 'lambdatoast/elm.vim'
+Plug 'floobits/floobits-neovim'
+
+" javascript
+Plug 'carlitux/deoplete-ternjs'
 
 
 " Language 서포트
