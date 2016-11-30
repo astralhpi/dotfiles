@@ -19,8 +19,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'JazzCore/ctrlp-cmatcher'
+"Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'JazzCore/ctrlp-cmatcher'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -34,7 +34,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dkprice/vim-easygrep'
 Plug 'wesleyche/SrcExpl'
-Plug 'tacahiroy/ctrlp-funky'
+"Plug 'tacahiroy/ctrlp-funky'
 Plug 'Yggdroot/indentLine'
 Plug 'qpkorr/vim-bufkill'
 Plug 'SirVer/ultisnips'
@@ -118,6 +118,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " 플러그인 설정
+" fzf
+nmap <C-p> :FZF<CR>
+
 " deoplete
 let g:deoplete#auto_complete_start_length = 2
 let g:deoplete#enable_at_startup = 1
@@ -133,23 +136,23 @@ set completeopt+=noselect
 nmap <C-\> :NERDTreeToggle<CR>
 
 " ctrlp
-nmap <C-t> :CtrlPTag<CR>
-nmap <C-b> :CtrlPBufTag<CR>
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+"nmap <C-t> :CtrlPTag<CR>
+"nmap <C-b> :CtrlPBufTag<CR>
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP'
 
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-let g:ctrlp_buftag_types = {
-    \ 'coffee' : {
-      \ 'bin': 'coffeetags',
-      \ 'args': '-f -',
-      \ },
-    \ 'javascript' : {
-      \ 'bin': 'ctags',
-      \ 'args': '-f -',
-      \ },
-    \ }
+"let g:ctrlp_buftag_types = {
+"    \ 'coffee' : {
+"      \ 'bin': 'coffeetags',
+"      \ 'args': '-f -',
+"      \ },
+"    \ 'javascript' : {
+"      \ 'bin': 'ctags',
+"      \ 'args': '-f -',
+"      \ },
+"    \ }
 
 " airline 설정
 let g:airline_powerline_fonts = 1
