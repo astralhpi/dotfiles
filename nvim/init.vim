@@ -42,6 +42,7 @@ Plug 'honza/vim-snippets'
 Plug 'dracula/vim'
 Plug 'lambdatoast/elm.vim'
 Plug 'floobits/floobits-neovim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " javascript
 Plug 'carlitux/deoplete-ternjs'
