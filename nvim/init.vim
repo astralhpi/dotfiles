@@ -41,9 +41,10 @@ Plug 'dracula/vim'
 Plug 'lambdatoast/elm.vim'
 Plug 'floobits/floobits-neovim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'vimwiki/vimwiki'
 
 " javascript
-Plug 'carlitux/deoplete-ternjs'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 
 " Language 서포트
