@@ -1,7 +1,14 @@
 cask_args appdir: '/Applications'
 tap 'neovim/neovim'
+brew 'm-cli'
 brew 'mas'
 brew 'neovim'
 brew 'tmux'
 cask 'google-chrome'
 cask '1password'
+cask 'iterm2'
+cask 'dash'
+cask 'alfred'
+mas 'Xcode', id: 497799835
+mas 'Spark - Love your email again', id: 1176895641
+mas 'Soulver', id: 413965349
