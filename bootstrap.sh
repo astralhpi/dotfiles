@@ -6,8 +6,10 @@ then
 fi
 
 if ! type "brew" > /dev/null; then
-    echo "Install Homebrew"
+    echo "Installing Homebrew"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    echo "Installed Homebrew"
 fi
 
-brew tap Homebrew/bundle
+cd packages
+brew bundle -v
