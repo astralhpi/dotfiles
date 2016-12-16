@@ -1,4 +1,4 @@
-# dotfiles
+# Dotfiles
 Personal dotfiles for macOS
 
 # Installation
