@@ -2,3 +2,4 @@
 /nvim/rplugin
 .init.vim-rplugin~
 nvim/.netrwhist
+.DS_Store
