@@ -23,3 +23,8 @@ if [ ! -f /Library/Fonts/SFMono-Regular.otf ]; then
     cp /Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/Resources/Fonts/*.otf /Library/Fonts/
     echo "Installed SFMono Fonts"
 fi
+
+if [ ! -d $HOME/.zprezto ]; then
+    ./scripts/install_prezto.zsh
+fi
+
