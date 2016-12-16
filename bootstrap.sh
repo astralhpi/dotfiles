@@ -42,7 +42,8 @@ link zsh/zlogout .zlogout
 link zsh/zpreztorc .zpreztorc
 link zsh/zprofile .zprofile
 link zsh/zshenv .zshenv
-link zsh/zshrc .zshrc
+link zsh/zshrc_symlink .zshrc_symlink
+cp -n $BASEDIR/zsh/zshrc $HOME/.zshrc
 
 # tmux
 link tmux/tmux.conf .tmux.conf
