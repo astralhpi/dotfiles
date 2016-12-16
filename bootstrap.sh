@@ -28,7 +28,13 @@ if [ ! -f /Library/Fonts/SFMono-Regular.otf ]; then
 fi
 
 if [ ! -d $HOME/.zprezto ]; then
-    $BASEDIR/scripts/install_prezto.zsh
+    ln -s $BASEDIR/zsh/prezto/ $HOME/.zprezto
+    ln -s $BASEDIR/zsh/zlogin $HOME/.zlogin
+    ln -s $BASEDIR/zsh/zlogout $HOME/.zlogout
+    ln -s $BASEDIR/zsh/zpreztorc $HOME/.zpreztorc
+    ln -s $BASEDIR/zsh/zprofile $HOME/.zprofile
+    ln -s $BASEDIR/zsh/zshenv $HOME/.zshenv
+    ln -s $BASEDIR/zsh/zshrc $HOME/.zshrc
 fi
 
 if [ ! -f $HOME/.tmux.conf ]; then
