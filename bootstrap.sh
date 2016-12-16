@@ -18,3 +18,8 @@ fi
 cd packages
 brew bundle -v
 
+if [ ! -f /Library/Fonts/SFMono-Regular.otf ]; then
+    echo "Installing SFMono Fonts"
+    cp /Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/Resources/Fonts/*.otf /Library/Fonts/
+    echo "Installed SFMono Fonts"
+fi
