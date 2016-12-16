@@ -1,5 +1,7 @@
 #/bin/bash
 
+BASEDIR=$( cd "$(dirname $0)" && pwd )
+
 function cmd_exists() {
     local cmd=$1
     type "$cmd" > /dev/null ;
@@ -15,8 +17,9 @@ if ! cmd_exists brew; then
     echo "Installed Homebrew"
 fi
 
-cd packages
+cd $BASEDIR/packages
 brew bundle -v
+cd $BASEDIR
 
 if [ ! -f /Library/Fonts/SFMono-Regular.otf ]; then
     echo "Installing SFMono Fonts"
@@ -25,6 +28,6 @@ if [ ! -f /Library/Fonts/SFMono-Regular.otf ]; then
 fi
 
 if [ ! -d $HOME/.zprezto ]; then
-    ./scripts/install_prezto.zsh
+    $BASEDIR/scripts/install_prezto.zsh
 fi
 
