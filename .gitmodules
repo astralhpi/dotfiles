@@ -1,9 +1,0 @@
-[submodule "nvim/bundle/neobundle.vim"]
-	path = nvim/bundle/neobundle.vim
-	url = https://github.com/Shougo/neobundle.vim
-[submodule "themes/base16-iterm2"]
-	path = themes/base16-iterm2
-	url = git@github.com:chriskempson/base16-iterm2.git
-[submodule "themes/base16-shell"]
-	path = themes/base16-shell
-	url = git@github.com:chriskempson/base16-shell.git
