@@ -11,3 +11,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+if [[ ! -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]]; then
+  touch "${ZDOTDIR:-$HOME}/.zshrc_local"
+fi
+source "${ZDOTDIR:-$HOME}/.zshrc_local"
+
+# alias
+alias vim=nvim
