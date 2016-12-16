@@ -15,12 +15,6 @@ if ! cmd_exists brew; then
     echo "Installed Homebrew"
 fi
 
-if ! cmd_exists mac; then
-    echo "Installing mac-cli"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/guarinogabriel/mac-cli/master/mac-cli/tools/install)"
-    echo "Installed mac-cli"
-fi
-
 cd packages
 brew bundle -v
 
