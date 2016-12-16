@@ -31,3 +31,14 @@ if [ ! -d $HOME/.zprezto ]; then
     $BASEDIR/scripts/install_prezto.zsh
 fi
 
+if [ ! -f $HOME/.tmux.conf ]; then
+    ln -s $BASEDIR/tmux/tmux.conf $HOME/.tmux.conf
+fi
+
+if [ ! -d $HOME/.config/nvim ]; then
+    mkdir -p $HOME/.config
+    ln -s $BASEDIR/nvim $HOME/.config/nvim
+    pip install neovim
+    pip3 install neovim
+    nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
+fi
