@@ -60,3 +60,8 @@ if [ ! -d $HOME/.config/nvim ]; then
     nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
 fi
 
+# fzf
+
+if [ ! -f ~/.fzf.zsh ]; then
+    /usr/local/opt/fzf/install
+fi
