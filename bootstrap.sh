@@ -7,6 +7,14 @@ function cmd_exists() {
     type "$cmd" > /dev/null ;
 }
 
+function link() {
+    TARGET=$HOME/$2
+    if ! ([  -f $TARGET ] || [ -d $TARGET ]); then
+        echo "link $1 to $2"
+        ln -s "$BASEDIR/$1" "$HOME/$2"
+    fi
+}
+
 if [ ! -e $HOME/.ssh/id_rsa.pub ]; then
     ssh-keygen -t rsa -b 4096 -C "jaehak@hpi.cc"
 fi
@@ -27,24 +35,27 @@ if [ ! -f /Library/Fonts/SFMono-Regular.otf ]; then
     echo "Installed SFMono Fonts"
 fi
 
-if [ ! -d $HOME/.zprezto ]; then
-    ln -s $BASEDIR/zsh/prezto/ $HOME/.zprezto
-    ln -s $BASEDIR/zsh/zlogin $HOME/.zlogin
-    ln -s $BASEDIR/zsh/zlogout $HOME/.zlogout
-    ln -s $BASEDIR/zsh/zpreztorc $HOME/.zpreztorc
-    ln -s $BASEDIR/zsh/zprofile $HOME/.zprofile
-    ln -s $BASEDIR/zsh/zshenv $HOME/.zshenv
-    ln -s $BASEDIR/zsh/zshrc $HOME/.zshrc
-fi
+# zsh
+link zsh/prezto .zprezto
+link zsh/zlogin .zlogin
+link zsh/zlogout .zlogout
+link zsh/zpreztorc .zpreztorc
+link zsh/zprofile .zprofile
+link zsh/zshenv .zshenv
+link zsh/zshrc .zshrc
 
-if [ ! -f $HOME/.tmux.conf ]; then
-    ln -s $BASEDIR/tmux/tmux.conf $HOME/.tmux.conf
-fi
+# tmux
+link tmux/tmux.conf .tmux.conf
 
+# ctags
+link config/ctags .ctags
+
+# nvim
 if [ ! -d $HOME/.config/nvim ]; then
     mkdir -p $HOME/.config
-    ln -s $BASEDIR/nvim $HOME/.config/nvim
+    link nvim .config/nvim
     pip install neovim
     pip3 install neovim
     nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
 fi
+
