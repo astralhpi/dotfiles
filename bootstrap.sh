@@ -58,6 +58,10 @@ if [ ! -d $HOME/.config/nvim ]; then
     pip install neovim
     pip3 install neovim
     nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
+    git config --global user.name "Song Jaehak"
+    git config --global user.email master@hpi.cc
+    git config --global core.editor nvim
+    git config --global merge.tool "nvim -d"
 fi
 
 # fzf
