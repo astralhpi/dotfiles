@@ -61,7 +61,8 @@ if [ ! -d $HOME/.config/nvim ]; then
     git config --global user.name "Song Jaehak"
     git config --global user.email master@hpi.cc
     git config --global core.editor nvim
-    git config --global merge.tool "nvim -d"
+    git config --global merge.tool vimdiff
+    git config --global mergetool.path nvim
 fi
 
 # fzf
