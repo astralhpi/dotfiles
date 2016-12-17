@@ -1,4 +1,5 @@
 cask_args appdir: '/Applications'
+
 tap 'neovim/neovim'
 brew 'm-cli'
 brew 'mas'
@@ -12,12 +13,19 @@ brew 'ctags'
 brew 'node'
 brew 'fzf'
 brew 'the_silver_searcher'
+
 cask 'google-chrome'
 cask '1password'
 cask 'iterm2'
 cask 'dash'
 cask 'alfred'
 cask 'atom'
+
 mas 'Xcode', id: 497799835
 mas 'Spark - Love your email again', id: 1176895641
 mas 'Soulver', id: 413965349
+mas 'Slack', id: 803453959
+
+cask 'java'
+brew 'android-sdk'
+brew 'android-ndk'
