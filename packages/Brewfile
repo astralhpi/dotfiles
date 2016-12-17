@@ -29,3 +29,4 @@ mas 'Slack', id: 803453959
 cask 'java'
 brew 'android-sdk'
 brew 'android-ndk'
+brew 'ant'
