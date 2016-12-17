@@ -1,0 +1,18 @@
+[user]
+    name = Song Jaehak
+    email = jaehak@hpi.cc
+
+[core]
+    editor = nvim
+
+[merge]
+    tool = nvimdiff
+
+[diff]
+    tool = nvimdiff
+
+[difftool]
+    prompt = true
+
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
