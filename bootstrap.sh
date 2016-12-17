@@ -68,3 +68,7 @@ link config/gitconfig .gitconfig
 if [ ! -f ~/.fzf.zsh ]; then
     /usr/local/opt/fzf/install
 fi
+
+# karabiner-elements
+mkdir -p $HOME/.karabiner.d/
+link karabiner/configuration .karabiner.d/configuration

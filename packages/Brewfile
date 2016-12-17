@@ -23,6 +23,7 @@ cask 'atom'
 cask 'tripmode'
 cask 'rescuetime'
 cask 'bettertouchtool'
+cask 'karabiner-elements'
 
 mas 'Xcode', id: 497799835
 mas 'Spark', id: 1176895641
