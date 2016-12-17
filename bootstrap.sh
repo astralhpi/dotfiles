@@ -72,3 +72,6 @@ fi
 # karabiner-elements
 mkdir -p $HOME/.karabiner.d/
 link karabiner/configuration .karabiner.d/configuration
+
+# hammerspoon
+link hammerspoon .hammerspoon

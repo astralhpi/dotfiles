@@ -20,6 +20,8 @@
             "selected": true,
             "simple_modifications": {
                 "caps_lock": "right_control",
+                "right_command": "escape",
+                "right_option": "caps_lock",
                 "right_shift": "fn"
             }
         }
