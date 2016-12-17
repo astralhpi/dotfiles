@@ -21,6 +21,7 @@ cask 'dash'
 cask 'alfred'
 cask 'atom'
 cask 'tripmode'
+cask 'rescuetime'
 
 mas 'Xcode', id: 497799835
 mas 'Spark', id: 1176895641
@@ -35,7 +36,6 @@ mas 'Scapple', id: 568020055
 mas 'Pocket', id: 568494494
 mas 'GrabIt', id: 450166997
 mas 'FocusList', id: 1086877679
-mas 'Escape', id: 1090969894
 mas 'Bear', id: 1091189122
 
 cask 'java'
