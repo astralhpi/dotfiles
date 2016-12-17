@@ -51,6 +51,7 @@ link tmux/tmux.conf .tmux.conf
 # ctags
 link config/ctags .ctags
 
+
 # nvim
 if [ ! -d $HOME/.config/nvim ]; then
     mkdir -p $HOME/.config
@@ -58,15 +59,12 @@ if [ ! -d $HOME/.config/nvim ]; then
     pip install neovim
     pip3 install neovim
     nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
-    git config --global user.name "Song Jaehak"
-    git config --global user.email master@hpi.cc
-    git config --global core.editor nvim
-    git config --global merge.tool vimdiff
-    git config --global mergetool.path nvim
 fi
 
-# fzf
+# git
+link config/gitconfig .gitconfig
 
+# fzf
 if [ ! -f ~/.fzf.zsh ]; then
     /usr/local/opt/fzf/install
 fi
