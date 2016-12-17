@@ -22,6 +22,7 @@ cask 'alfred'
 cask 'atom'
 cask 'tripmode'
 cask 'rescuetime'
+cask 'bettertouchtool'
 
 mas 'Xcode', id: 497799835
 mas 'Spark', id: 1176895641
