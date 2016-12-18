@@ -13,6 +13,7 @@ brew 'ctags'
 brew 'node'
 brew 'fzf'
 brew 'the_silver_searcher'
+brew 'thefuck'
 
 cask 'google-chrome'
 cask '1password'
