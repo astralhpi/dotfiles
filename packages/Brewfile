@@ -23,7 +23,6 @@ cask 'alfred'
 cask 'atom'
 cask 'tripmode'
 cask 'rescuetime'
-cask 'bettertouchtool'
 cask 'karabiner-elements'
 cask 'hammerspoon'
 
