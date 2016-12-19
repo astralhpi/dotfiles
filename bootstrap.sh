@@ -25,6 +25,9 @@ if ! cmd_exists brew; then
     echo "Installed Homebrew"
 fi
 
+pip install -r $BASEDIR/packages/requirements_py2.txt
+pip install -r $BASEDIR/packages/requirements_py3.txt
+
 cd $BASEDIR/packages
 brew bundle -v
 cd $BASEDIR

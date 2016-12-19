@@ -1,0 +1,3 @@
+git+https://github.com/powerline/fontpatcher.git
+virtualenvwrapper
+neovim
