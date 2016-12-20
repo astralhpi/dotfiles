@@ -18,7 +18,6 @@ source "${ZDOTDIR:-$HOME}/.zshrc_local"
 
 # alias
 alias vim=nvim
-
+eval $(thefuck --alias)
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
