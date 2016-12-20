@@ -25,6 +25,7 @@ cask 'tripmode'
 cask 'rescuetime'
 cask 'karabiner-elements'
 cask 'hammerspoon'
+cask 'font-hack'
 
 mas 'Xcode', id: 497799835
 mas 'Spark', id: 1176895641
