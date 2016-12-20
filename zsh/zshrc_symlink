@@ -18,3 +18,7 @@ source "${ZDOTDIR:-$HOME}/.zshrc_local"
 
 # alias
 alias vim=nvim
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

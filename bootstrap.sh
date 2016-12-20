@@ -43,6 +43,7 @@ link zsh/zpreztorc .zpreztorc
 link zsh/zprofile .zprofile
 link zsh/zshenv .zshenv
 link zsh/zshrc_symlink .zshrc_symlink
+link zsh/fzf.zsh .fzf.zsh
 cp -n $BASEDIR/zsh/zshrc $HOME/.zshrc
 
 # tmux
