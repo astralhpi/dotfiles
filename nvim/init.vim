@@ -2,7 +2,7 @@
 if 0 | endif
 
 set ttyfast
-set lazyredraw
+set nolazyredraw
 
 if &compatible
   set nocompatible               " Be iMproved
