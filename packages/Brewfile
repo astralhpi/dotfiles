@@ -14,6 +14,7 @@ brew 'node'
 brew 'fzf'
 brew 'the_silver_searcher'
 brew 'thefuck'
+brew 'mosh'
 
 cask 'google-chrome'
 cask '1password'
@@ -25,6 +26,7 @@ cask 'tripmode'
 cask 'rescuetime'
 cask 'karabiner-elements'
 cask 'hammerspoon'
+cask 'docker'
 
 mas 'Xcode', id: 497799835
 mas 'Spark', id: 1176895641
