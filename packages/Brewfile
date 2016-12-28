@@ -15,6 +15,7 @@ brew 'fzf'
 brew 'the_silver_searcher'
 brew 'thefuck'
 brew 'mosh'
+brew "yarn"
 
 cask 'google-chrome'
 cask '1password'
