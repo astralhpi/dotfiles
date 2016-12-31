@@ -18,6 +18,7 @@ brew 'mosh'
 brew "yarn"
 brew "go"
 brew "elm"
+brew "ruby"
 
 cask 'google-chrome'
 cask '1password'

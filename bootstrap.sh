@@ -62,6 +62,7 @@ if [ ! -d $HOME/.config/nvim ]; then
     link nvim .config/nvim
     pip install neovim
     pip3 install neovim
+    gem install neovim
     nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
 fi
 
