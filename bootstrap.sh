@@ -26,7 +26,7 @@ if ! cmd_exists brew; then
 fi
 
 pip install -r $BASEDIR/packages/requirements_py2.txt
-pip install -r $BASEDIR/packages/requirements_py3.txt
+pip3 install -r $BASEDIR/packages/requirements_py3.txt
 
 cd $BASEDIR/packages
 brew bundle -v
