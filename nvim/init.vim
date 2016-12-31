@@ -15,7 +15,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 Plug 'scrooloose/nerdcommenter'
