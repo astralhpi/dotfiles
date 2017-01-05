@@ -21,7 +21,7 @@ local keyHandler = function(e)
                 table.insert(flags, k)
             end
         end
-        print(replacement, hs.inspect(flags), isDown)
+        -- print(replacement, hs.inspect(flags), isDown)
         local replacementEvent = hs.eventtap.event.newKeyEvent(flags, replacement, isDown)
         if isDown then
             -- allow for auto-repeat
@@ -42,11 +42,11 @@ local modifierHandler = function(e)
     end
     -- you must tap and hold fn by itself to turn this on
     if onlyControlPressed and not module.keyListener then
-        print("keyhandler on")
+        -- print("keyhandler on")
         module.keyListener = hs.eventtap.new({ hs.eventtap.event.types.keyDown, hs.eventtap.event.types.keyUp }, keyHandler):start()
     -- however, adding additional modifiers afterwards is ok... its only when we have no flags that we switch back off
     elseif not next(flags) and module.keyListener then
-        print("keyhandler off")
+        -- print("keyhandler off")
         module.keyListener:stop()
         module.keyListener = nil
     end
