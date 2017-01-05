@@ -19,6 +19,7 @@ brew "yarn"
 brew "go"
 brew "elm"
 brew "ruby"
+brew "elixir"
 
 cask 'google-chrome'
 cask '1password'
