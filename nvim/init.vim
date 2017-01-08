@@ -68,6 +68,11 @@ Plug 'elzr/vim-json'
 " html
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 
+" Elixir
+Plug 'elixir-lang/vim-elixir'
+Plug 'thinca/vim-ref'
+Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
+
 call plug#end()
 
 " 기본 설정
