@@ -32,6 +32,8 @@ cask 'rescuetime'
 cask 'karabiner-elements'
 cask 'hammerspoon'
 cask 'docker'
+cask 'kaleidoscope'
+cask 'firefox'
 
 mas 'Xcode', id: 497799835
 mas 'Spark', id: 1176895641
