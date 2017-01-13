@@ -21,3 +21,5 @@ alias vim=nvim
 eval $(thefuck --alias)
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function coalesce { print "${${(s: :)@}[1]}" }
