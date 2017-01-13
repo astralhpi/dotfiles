@@ -3,6 +3,7 @@ if 0 | endif
 
 set ttyfast
 set nolazyredraw
+set noswapfile
 
 if &compatible
   set nocompatible               " Be iMproved
