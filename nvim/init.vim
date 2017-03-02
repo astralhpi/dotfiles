@@ -42,6 +42,8 @@ Plug 'dracula/vim'
 Plug 'lambdatoast/elm.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vimwiki/vimwiki'
+Plug 'wlangstroth/vim-racket'
+Plug 'artur-shaik/vim-javacomplete2'
 
 " javascript
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
@@ -316,3 +318,7 @@ let g:AutoPairsMultilineClose = 0
 
 " json
 let g:vim_json_syntax_conceal = 0
+
+"syntastic
+let g:syntastic_enable_racket_racket_checker = 1
+
