@@ -76,6 +76,24 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
 Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
 
+" Latex
+Plug 'lervag/vimtex'
+
+let g:vimtex_latexmk_progname = 'nvr'
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = '\\(?:'
+    \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+    \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+    \ . '|hyperref\s*\[[^]]*'
+    \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+    \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+    \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+    \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+    \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+    \ .')'
+
 call plug#end()
 
 " 기본 설정
