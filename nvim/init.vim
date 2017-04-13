@@ -44,6 +44,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vimwiki/vimwiki'
 Plug 'wlangstroth/vim-racket'
 Plug 'artur-shaik/vim-javacomplete2'
+Plug 'aklt/plantuml-syntax'
 
 " javascript
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
@@ -340,3 +341,7 @@ let g:vim_json_syntax_conceal = 0
 "syntastic
 let g:syntastic_enable_racket_racket_checker = 1
 
+" conceal
+set conceallevel=0
+au FileType * setlocal conceallevel=0 
+let g:tex_conceal = ''
