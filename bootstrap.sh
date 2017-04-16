@@ -16,6 +16,9 @@ function link() {
 }
 
 function ubuntu() {
+    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo apt update
+    cat $BASEDIR/packages/apt_requirements.txt | sudo xargs apt install -y
     echo "ubuntu"
 }
 
@@ -85,6 +88,6 @@ function mac() {
 
 if [ `uname` == "Darwin" ]; then
     mac
-elif [`grep DISTRIB_ID /etc/*-release | awk -F '=' '{print $2}'` == "Ubuntu" ]; then
+elif [ `grep DISTRIB_ID /etc/*-release | awk -F '=' '{print $2}'` == "Ubuntu" ]; then
     ubuntu
 fi
