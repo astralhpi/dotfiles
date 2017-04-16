@@ -22,6 +22,7 @@ function ubuntu() {
 
     pip install -r $BASEDIR/packages/requirements_py2.txt
     pip3 install -r $BASEDIR/packages/requirements_py3.txt
+    pip install psutil thefuck
 
     # zsh
     link zsh/prezto .zprezto
