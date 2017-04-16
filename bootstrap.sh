@@ -19,7 +19,44 @@ function ubuntu() {
     sudo add-apt-repository ppa:neovim-ppa/stable
     sudo apt update
     cat $BASEDIR/packages/apt_requirements.txt | sudo xargs apt install -y
-    echo "ubuntu"
+
+    sudo pip install -r $BASEDIR/packages/requirements_py2.txt
+    sudo pip3 install -r $BASEDIR/packages/requirements_py3.txt
+
+    # zsh
+    link zsh/prezto .zprezto
+    link zsh/zlogin .zlogin
+    link zsh/zlogout .zlogout
+    link zsh/zpreztorc .zpreztorc
+    link zsh/zprofile .zprofile
+    link zsh/zshenv .zshenv
+    link zsh/zshrc_symlink .zshrc_symlink
+    link zsh/fzf.zsh .fzf.zsh
+    cp -n $BASEDIR/zsh/zshrc $HOME/.zshrc
+
+    # tmux
+    link tmux/tmux.conf .tmux.conf
+
+    # ctags
+    link config/ctags .ctags
+
+
+    # nvim
+    if [ ! -d $HOME/.config/nvim ]; then
+        mkdir -p $HOME/.config
+        link nvim .config/nvim
+        pip install neovim
+        pip3 install neovim
+        gem install neovim
+        nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
+    fi
+
+    # git
+    link config/gitconfig .gitconfig
+
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+
 }
 
 function mac() {
