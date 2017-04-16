@@ -15,14 +15,13 @@ function link() {
     fi
 }
 
-function ubuntu() {
-    sudo add-apt-repository ppa:neovim-ppa/stable
-    sudo apt update
-    cat $BASEDIR/packages/apt_requirements.txt | sudo xargs apt install -y
+function common_config() {
+    # tpm
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+    # pip
     pip install -r $BASEDIR/packages/requirements_py2.txt
     pip3 install -r $BASEDIR/packages/requirements_py3.txt
-    pip install psutil thefuck
 
     # zsh
     link zsh/prezto .zprezto
@@ -54,6 +53,17 @@ function ubuntu() {
 
     # git
     link config/gitconfig .gitconfig
+
+
+}
+function ubuntu() {
+    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo apt update
+    cat $BASEDIR/packages/apt_requirements.txt | sudo xargs apt install -y
+
+    pip install psutil thefuck
+
+    common_config
 
     if [ ! -f ~/.fzf.zsh ]; then
         git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -71,9 +81,6 @@ function mac() {
         echo "Installed Homebrew"
     fi
 
-    pip install -r $BASEDIR/packages/requirements_py2.txt
-    pip3 install -r $BASEDIR/packages/requirements_py3.txt
-
     cd $BASEDIR/packages
     brew bundle -v
     cd $BASEDIR
@@ -84,36 +91,7 @@ function mac() {
         echo "Installed SFMono Fonts"
     fi
 
-    # zsh
-    link zsh/prezto .zprezto
-    link zsh/zlogin .zlogin
-    link zsh/zlogout .zlogout
-    link zsh/zpreztorc .zpreztorc
-    link zsh/zprofile .zprofile
-    link zsh/zshenv .zshenv
-    link zsh/zshrc_symlink .zshrc_symlink
-    link zsh/fzf.zsh .fzf.zsh
-    cp -n $BASEDIR/zsh/zshrc $HOME/.zshrc
-
-    # tmux
-    link tmux/tmux.conf .tmux.conf
-
-    # ctags
-    link config/ctags .ctags
-
-
-    # nvim
-    if [ ! -d $HOME/.config/nvim ]; then
-        mkdir -p $HOME/.config
-        link nvim .config/nvim
-        pip install neovim
-        pip3 install neovim
-        gem install neovim
-        nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
-    fi
-
-    # git
-    link config/gitconfig .gitconfig
+    common_config
 
     # fzf
     if [ ! -f ~/.fzf.zsh ]; then
