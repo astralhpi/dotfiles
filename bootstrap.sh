@@ -20,8 +20,8 @@ function ubuntu() {
     sudo apt update
     cat $BASEDIR/packages/apt_requirements.txt | sudo xargs apt install -y
 
-    sudo pip install -r $BASEDIR/packages/requirements_py2.txt
-    sudo pip3 install -r $BASEDIR/packages/requirements_py3.txt
+    pip install -r $BASEDIR/packages/requirements_py2.txt
+    pip3 install -r $BASEDIR/packages/requirements_py3.txt
 
     # zsh
     link zsh/prezto .zprezto
@@ -54,8 +54,10 @@ function ubuntu() {
     # git
     link config/gitconfig .gitconfig
 
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
+    if [ ! -f ~/.fzf.zsh ]; then
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+        ~/.fzf/install
+    fi
 
     chsh -s $(which zsh)
 
