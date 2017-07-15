@@ -19,9 +19,7 @@ function common_config() {
     # tpm
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-    # pip
-    pip install -r $BASEDIR/packages/requirements_py2.txt
-    pip3 install -r $BASEDIR/packages/requirements_py3.txt
+    
 
     # zsh
     link zsh/prezto .zprezto
@@ -40,17 +38,6 @@ function common_config() {
     # ctags
     link config/ctags .ctags
 
-
-    # nvim
-    if [ ! -d $HOME/.config/nvim ]; then
-        mkdir -p $HOME/.config
-        link nvim .config/nvim
-        pip install neovim
-        pip3 install neovim
-        gem install neovim
-        nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
-    fi
-
     # git
     link config/gitconfig .gitconfig
 
@@ -63,12 +50,28 @@ function ubuntu() {
 
     pip install psutil thefuck
 
+    # pip
+    sudo pip install -r $BASEDIR/packages/requirements_py2.txt
+    sudo pip3 install -r $BASEDIR/packages/requirements_py3.txt
+    
     common_config
+    
 
     if [ ! -f ~/.fzf.zsh ]; then
         git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
         ~/.fzf/install
     fi
+
+    # nvim
+    if [ ! -d $HOME/.config/nvim ]; then
+        mkdir -p $HOME/.config
+        link nvim .config/nvim
+        sudo pip install neovim
+        sudo pip3 install neovim
+        gem install neovim
+        nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
+    fi
+
 
     chsh -s $(which zsh)
 
@@ -90,12 +93,27 @@ function mac() {
         cp /Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/Resources/Fonts/*.otf /Library/Fonts/
         echo "Installed SFMono Fonts"
     fi
-
+    
+    # pip
+    pip install -r $BASEDIR/packages/requirements_py2.txt
+    pip3 install -r $BASEDIR/packages/requirements_py3.txt
+    
     common_config
 
     # fzf
     if [ ! -f ~/.fzf.zsh ]; then
         /usr/local/opt/fzf/install
+    fi
+    
+    
+    # nvim
+    if [ ! -d $HOME/.config/nvim ]; then
+        mkdir -p $HOME/.config
+        link nvim .config/nvim
+        pip install neovim
+        pip3 install neovim
+        gem install neovim
+        nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
     fi
 
     # karabiner-elements
