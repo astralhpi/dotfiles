@@ -66,6 +66,10 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python'}
 " javascript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
 
+" typescript
+Plug 'mhartington/nvim-typescript'
+Plug 'HerringtonDarkholme/yats.vim'
+
 " json
 Plug 'elzr/vim-json'
 
