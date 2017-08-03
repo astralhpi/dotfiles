@@ -4,6 +4,7 @@ if 0 | endif
 set ttyfast
 set nolazyredraw
 set noswapfile
+set inccommand=split
 
 if &compatible
   set nocompatible               " Be iMproved
