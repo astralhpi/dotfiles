@@ -66,7 +66,6 @@ Plug 'honza/vim-snippets'
 Plug 'dracula/vim'
 Plug 'lambdatoast/elm.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'vimwiki/vimwiki'
 Plug 'wlangstroth/vim-racket'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'aklt/plantuml-syntax'
