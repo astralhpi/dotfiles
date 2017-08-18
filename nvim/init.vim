@@ -19,6 +19,7 @@ set inccommand=split
 set expandtab
 
 set number
+set ruler
 set nowrap
 set textwidth=0
 set visualbell
@@ -132,6 +133,9 @@ colorscheme dracula
 "set colorcolumn=80
 let g:ackprg = 'ag --vimgrep'
 autocmd BufEnter * if &previewwindow | setlocal nobuflisted | endif
+
+highlight OverLength ctermbg=red ctermfg=white guibg=#000000
+match OverLength /\%81v.\+/
 
 
 " 기본 키 설정
