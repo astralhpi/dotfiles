@@ -1,14 +1,37 @@
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
-set ttyfast
-set nolazyredraw
-set noswapfile
-set inccommand=split
-
+" General Settings 
+"
 if &compatible
   set nocompatible               " Be iMproved
 endif
+
+filetype plugin indent on
+syntax on
+
+set ttyfast
+set lazyredraw
+
+set noswapfile
+set inccommand=split
+
+set expandtab
+
+set number
+set nowrap
+set textwidth=0
+set visualbell
+
+set ts=4
+set sw=4
+
+set termguicolors
+set hidden
+set autoread
+set previewheight=5
+
+set clipboard+=unnamed
 
 " plugins
 call plug#begin('~/.vim/plugged')
@@ -102,27 +125,12 @@ let g:deoplete#omni#input_patterns.tex = '\\(?:'
 
 call plug#end()
 
-" 기본 설정
-filetype plugin indent on
-syntax on
-"let base16colorspace=256
+
+" Theme
 set background=dark
 colorscheme dracula
-set expandtab
-set ts=4
-set sw=4
-set visualbell
-set number
-set autoread
-set nowrap
-set textwidth=0
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set termguicolors
-set hidden
-set previewheight=5
 "set colorcolumn=80
 let g:ackprg = 'ag --vimgrep'
-set clipboard+=unnamed
 autocmd BufEnter * if &previewwindow | setlocal nobuflisted | endif
 
 
