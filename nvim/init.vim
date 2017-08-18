@@ -117,7 +117,7 @@ set autoread
 set nowrap
 set textwidth=0
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"set termguicolors
+set termguicolors
 set hidden
 set previewheight=5
 "set colorcolumn=80
