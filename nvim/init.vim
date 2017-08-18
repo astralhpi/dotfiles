@@ -22,12 +22,13 @@ set number
 set ruler
 set nowrap
 set textwidth=0
+set colorcolumn=80
 set visualbell
 
 set ts=4
 set sw=4
 
-set termguicolors
+"set termguicolors
 set hidden
 set autoread
 set previewheight=5
@@ -129,12 +130,9 @@ call plug#end()
 " Theme
 set background=dark
 colorscheme dracula
-"set colorcolumn=80
 let g:ackprg = 'ag --vimgrep'
 autocmd BufEnter * if &previewwindow | setlocal nobuflisted | endif
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#000000
-match OverLength /\%81v.\+/
 
 
 " 기본 키 설정
