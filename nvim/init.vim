@@ -28,12 +28,13 @@ set visualbell
 set ts=4
 set sw=4
 
-"set termguicolors
 set hidden
 set autoread
 set previewheight=5
 
 set clipboard+=unnamed
+
+set mouse=a
 
 " plugins
 call plug#begin('~/.vim/plugged')
