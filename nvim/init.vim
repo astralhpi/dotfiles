@@ -36,6 +36,9 @@ set clipboard+=unnamed
 
 set mouse=a
 
+set enc=utf-8
+set fillchars=""
+
 " plugins
 call plug#begin('~/.vim/plugged')
 
@@ -131,6 +134,7 @@ call plug#end()
 " Theme
 set background=dark
 colorscheme dracula
+hi ColorColumn ctermbg=60
 let g:ackprg = 'ag --vimgrep'
 autocmd BufEnter * if &previewwindow | setlocal nobuflisted | endif
 
