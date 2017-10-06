@@ -95,7 +95,7 @@ function mac() {
     fi
     
     # pip
-    pip install -r $BASEDIR/packages/requirements_py2.txt
+    pip2 install -r $BASEDIR/packages/requirements_py2.txt
     pip3 install -r $BASEDIR/packages/requirements_py3.txt
     
     common_config
@@ -110,7 +110,7 @@ function mac() {
     if [ ! -d $HOME/.config/nvim ]; then
         mkdir -p $HOME/.config
         link nvim .config/nvim
-        pip install neovim
+        pip2 install neovim
         pip3 install neovim
         gem install neovim
         nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
