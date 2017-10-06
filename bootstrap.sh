@@ -123,6 +123,8 @@ function mac() {
     # hammerspoon
     link hammerspoon .hammerspoon
 
+    link alacritty .config/alacritty
+
     chsh -s $(which zsh)
 }
 
