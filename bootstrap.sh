@@ -122,6 +122,8 @@ function mac() {
 
     # hammerspoon
     link hammerspoon .hammerspoon
+
+    chsh -s $(which zsh)
 }
 
 if [ `uname` == "Darwin" ]; then
