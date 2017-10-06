@@ -117,8 +117,8 @@ function mac() {
     fi
 
     # karabiner-elements
-    mkdir -p $HOME/.karabiner.d/
-    link karabiner/configuration .karabiner.d/configuration
+    mkdir -p $HOME/.config
+    link karabiner .config/karabiner
 
     # hammerspoon
     link hammerspoon .hammerspoon
