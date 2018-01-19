@@ -46,8 +46,13 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/echodoc.vim'
+Plug 'roxma/nvim-completion-manager'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -56,7 +61,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
 Plug 'janko-m/vim-test'
 Plug 'jalvesaq/vimcmdline'
@@ -153,10 +158,15 @@ else " no gui
 endif
 
 nmap ’ :bnext<CR>
+nmap <M-}> :bnext<CR>
 nmap ” :bprevious<CR>
+nmap <M-{> :bprevious<CR>
 nmap † :enew<CR>
+nmap <M-t> :enew<CR>
 nmap œ :BD<CR>
+nmap <M-q> :BD<CR>
 nmap » :TagbarToggle<CR>
+nmap <M-\> :TagbarToggle<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -359,10 +369,18 @@ let g:AutoPairsMultilineClose = 0
 " json
 let g:vim_json_syntax_conceal = 0
 
-"syntastic
-let g:syntastic_enable_racket_racket_checker = 1
 
 " conceal
 set conceallevel=0
 au FileType * setlocal conceallevel=0 
 let g:tex_conceal = ''
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+let g:LanguageClient_autoStart = 0
+
+
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+

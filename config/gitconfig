@@ -1,6 +1,6 @@
 [user]
-    name = Song Jaehak
-    email = jaehak@hpi.cc
+	name = Song Jaehak
+	email = master@hpi.cc
 
 [core]
     editor = nvim
