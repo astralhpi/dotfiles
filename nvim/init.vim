@@ -46,6 +46,13 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'tyru/caw.vim'
+Plug 'Shougo/context_filetype.vim'
+Plug 'posva/vim-vue'
+Plug 'digitaltoad/vim-pug'
+Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
+Plug 'tomlion/vim-solidity'
 Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
@@ -167,6 +174,7 @@ nmap œ :BD<CR>
 nmap <M-q> :BD<CR>
 nmap » :TagbarToggle<CR>
 nmap <M-\> :TagbarToggle<CR>
+
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -384,3 +392,6 @@ let g:LanguageClient_autoStart = 0
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
 autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
+autocmd FileType typescript map <C-]> :TSDef<CR>
+
+autocmd FileType vue syntax sync fromstart
