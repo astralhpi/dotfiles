@@ -45,6 +45,8 @@ function common_config() {
 }
 function ubuntu() {
     sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo add-apt-repository ppa:jonathonf/python-3.6
+
     sudo apt update
     cat $BASEDIR/packages/apt_requirements.txt | sudo xargs apt install -y
 
