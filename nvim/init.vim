@@ -360,6 +360,7 @@ let g:SrcExpl_isUpdateTags = 0
 
 "indentLine
 let g:indentLine_char = '│'
+let g:indentLine_color_term = 239
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
