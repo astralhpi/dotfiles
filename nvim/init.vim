@@ -89,6 +89,8 @@ Plug 'aklt/plantuml-syntax'
 
 " javascript
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
+Plug 'mxw/vim-jsx'
 
 
 " Language 서포트
@@ -103,9 +105,6 @@ Plug 'OrangeT/vim-csharp', { 'for': 'csharp'}
 
 " python
 Plug 'zchee/deoplete-jedi', { 'for': 'python'}
-
-" javascript
-Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
 
 " typescript
 Plug 'mhartington/nvim-typescript'
