@@ -46,6 +46,11 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'tyru/caw.vim'
 Plug 'Shougo/context_filetype.vim'
@@ -56,10 +61,8 @@ Plug 'tomlion/vim-solidity'
 Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
-Plug 'roxma/nvim-completion-manager'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -81,17 +84,11 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'dracula/vim'
-Plug 'lambdatoast/elm.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'wlangstroth/vim-racket'
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'aklt/plantuml-syntax'
 
 " javascript
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
+Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-
 
 " Language 서포트
 " coffeescript
@@ -99,15 +96,9 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'astralhpi/CoffeeTags', { 'for': 'coffee'}
 
 " csharp
-Plug 'OmniSharp/omnisharp-vim', { 'for': 'csharp'}
-Plug 'astralhpi/deoplete-omnisharp', { 'for': 'csharp'}
 Plug 'OrangeT/vim-csharp', { 'for': 'csharp'}
 
-" python
-Plug 'zchee/deoplete-jedi', { 'for': 'python'}
-
 " typescript
-Plug 'mhartington/nvim-typescript'
 Plug 'HerringtonDarkholme/yats.vim'
 
 " json
@@ -119,7 +110,6 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
-Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
 
 " Latex
 Plug 'lervag/vimtex'
@@ -382,16 +372,18 @@ let g:vim_json_syntax_conceal = 0
 set conceallevel=0
 au FileType * setlocal conceallevel=0 
 let g:tex_conceal = ''
-
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ }
-let g:LanguageClient_autoStart = 0
-
-
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
 autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
-autocmd FileType typescript map <C-]> :TSDef<CR>
 
 autocmd FileType vue syntax sync fromstart
+autocmd FileType python map <C-]> :call LanguageClient#textDocument_definition()<CR>
+
+command ContextMenu :call LanguageClient_contextMenu()
+
+let g:LanguageClient_serverCommands = {
+  \ 'python': ['pyls'],
+  \ }
+
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
