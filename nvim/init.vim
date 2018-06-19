@@ -378,11 +378,15 @@ autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expa
 
 autocmd FileType vue syntax sync fromstart
 autocmd FileType python map <C-]> :call LanguageClient#textDocument_definition()<CR>
+autocmd FileType javascript map <C-]> :call LanguageClient#textDocument_definition()<CR>
+autocmd FileType javascript.jsx map <C-]> :call LanguageClient#textDocument_definition()<CR>
 
 command ContextMenu :call LanguageClient_contextMenu()
 
 let g:LanguageClient_serverCommands = {
   \ 'python': ['pyls'],
+  \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'javascript.jsx': ['javascript-typescript-stdio'],
   \ }
 
 let g:python_host_prog = '/usr/local/bin/python'
