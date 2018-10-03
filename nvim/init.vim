@@ -46,11 +46,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'tyru/caw.vim'
 Plug 'Shougo/context_filetype.vim'
@@ -59,11 +55,11 @@ Plug 'digitaltoad/vim-pug'
 Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
 Plug 'tomlion/vim-solidity'
 Plug 'rust-lang/rust.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
+Plug 'Shougo/neco-vim'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -72,7 +68,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
-"Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
 Plug 'janko-m/vim-test'
 Plug 'jalvesaq/vimcmdline'
@@ -92,7 +87,6 @@ Plug 'mxw/vim-jsx'
 " Language 서포트
 " coffeescript
 Plug 'kchmck/vim-coffee-script'
-Plug 'astralhpi/CoffeeTags', { 'for': 'coffee'}
 
 " csharp
 Plug 'OrangeT/vim-csharp', { 'for': 'csharp'}
@@ -301,17 +295,12 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#tag#cache_limit_size = 3000000
 let g:deoplete#max_list = 40
 let g:deoplete#file#enable_buffer_path = 1
-call deoplete#custom#source('LanguageClient',
-            \ 'min_pattern_length',
-            \ 2)
 
 " NERDTree
 nmap <C-\> :NERDTreeToggle<CR>
 
 " ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<C-e>"
 set completeopt-=preview
 set completeopt+=noinsert
 set completeopt+=noselect
@@ -320,6 +309,8 @@ set completeopt+=noselect
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 " CoffeeTags 설정
 let g:CoffeeAutoTagDisabled=1
@@ -327,9 +318,6 @@ let g:CoffeeAutoTagIncludeVars = 1
 
 let g:OmniSharp_selector_ui = 'ctrlp'
 let g:OmniSharp_server_type = 'v1'
-
-"NERDTree
-map <leader>f :NERDTreeFind<cr>
 
 " SrcExpl
 let g:SrcExpl_isUpdateTags = 0
@@ -357,28 +345,6 @@ if has('conceal')
 endif
 
 autocmd FileType vue syntax sync fromstart
-autocmd FileType python map <C-]> :call LanguageClient#textDocument_definition()<CR>
-autocmd FileType javascript map <C-]> :call LanguageClient#textDocument_definition()<CR>
-autocmd FileType javascript.jsx map <C-]> :call LanguageClient#textDocument_definition()<CR>
-autocmd FileType vue map <C-]> :call LanguageClient#textDocument_definition()<CR>
-autocmd FileType cpp map <C-]> :call LanguageClient#textDocument_definition()<CR>
-autocmd FileType c map <C-]> :call LanguageClient#textDocument_definition()<CR>
-
-command ContextMenu :call LanguageClient_contextMenu()
-
-let g:LanguageClient_serverCommands = {
-  \ 'python': ['pyls'],
-  \ 'javascript': ['javascript-typescript-stdio'],
-  \ 'javascript.jsx': ['javascript-typescript-stdio'],
-  \ 'vue': ['vls'],
-  \ 'cpp': ['cquery',
-    \'--log-file=/tmp/cq.log', 
-    \ '--init={"cacheDirectory":"/tmp/cquery/"}'],
-  \ 'c': ['cquery',
-    \'--log-file=/tmp/cq.log', 
-    \ '--init={"cacheDirectory":"/tmp/cquery/"}']
-  \ }
-let g:LanguageClient_autoStart = 1
 
 function! ExpandLspSnippet()
     call UltiSnips#ExpandSnippetOrJump()
@@ -412,5 +378,17 @@ function! ExpandLspSnippet()
 endfunction
 imap <C-k> <C-R>=ExpandLspSnippet()<CR>
 
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" coc
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr> <C-n> pumvisible() ? "\<C-n>": coc#refresh()
+inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<s-tab>'
+
+map <C-]> <Plug>(coc-definition)
+map <leader>r <Plug>(coc-references) 
+map <leader>n <Plug>(coc-rename) 
+map <leader>f <Plug>(coc-format)
