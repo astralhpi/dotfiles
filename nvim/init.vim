@@ -60,7 +60,8 @@ Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
 Plug 'tomlion/vim-solidity'
 Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
 
@@ -81,8 +82,6 @@ Plug 'dkprice/vim-easygrep'
 Plug 'wesleyche/SrcExpl'
 Plug 'Yggdroot/indentLine'
 Plug 'qpkorr/vim-bufkill'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'dracula/vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
@@ -110,24 +109,6 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
-
-" Latex
-Plug 'lervag/vimtex'
-
-let g:vimtex_latexmk_progname = 'nvr'
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.tex = '\\(?:'
-    \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
-    \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
-    \ . '|hyperref\s*\[[^]]*'
-    \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-    \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
-    \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-    \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
-    \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
-    \ .')'
 
 call plug#end()
 
@@ -320,14 +301,20 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#tag#cache_limit_size = 3000000
 let g:deoplete#max_list = 40
 let g:deoplete#file#enable_buffer_path = 1
-
-set completeopt-=preview
-set completeopt+=noinsert
-set completeopt+=noselect
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
 
 " NERDTree
 nmap <C-\> :NERDTreeToggle<CR>
 
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+set completeopt-=preview
+set completeopt+=noinsert
+set completeopt+=noselect
 
 " airline 설정
 let g:airline#extensions#tabline#enabled = 1
@@ -351,15 +338,6 @@ let g:SrcExpl_isUpdateTags = 0
 let g:indentLine_char = '│'
 let g:indentLine_color_term = 239
 
-" ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-
-" deoplete-go
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-
 " auto-pairs
 let g:AutoPairsMultilineClose = 0
 
@@ -371,15 +349,20 @@ let g:vim_json_syntax_conceal = 0
 " conceal
 set conceallevel=0
 au FileType * setlocal conceallevel=0 
-let g:tex_conceal = ''
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
 autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 autocmd FileType vue syntax sync fromstart
 autocmd FileType python map <C-]> :call LanguageClient#textDocument_definition()<CR>
 autocmd FileType javascript map <C-]> :call LanguageClient#textDocument_definition()<CR>
 autocmd FileType javascript.jsx map <C-]> :call LanguageClient#textDocument_definition()<CR>
+autocmd FileType vue map <C-]> :call LanguageClient#textDocument_definition()<CR>
+autocmd FileType cpp map <C-]> :call LanguageClient#textDocument_definition()<CR>
+autocmd FileType c map <C-]> :call LanguageClient#textDocument_definition()<CR>
 
 command ContextMenu :call LanguageClient_contextMenu()
 
@@ -387,7 +370,47 @@ let g:LanguageClient_serverCommands = {
   \ 'python': ['pyls'],
   \ 'javascript': ['javascript-typescript-stdio'],
   \ 'javascript.jsx': ['javascript-typescript-stdio'],
+  \ 'vue': ['vls'],
+  \ 'cpp': ['cquery',
+    \'--log-file=/tmp/cq.log', 
+    \ '--init={"cacheDirectory":"/tmp/cquery/"}'],
+  \ 'c': ['cquery',
+    \'--log-file=/tmp/cq.log', 
+    \ '--init={"cacheDirectory":"/tmp/cquery/"}']
   \ }
+let g:LanguageClient_autoStart = 1
 
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+function! ExpandLspSnippet()
+    call UltiSnips#ExpandSnippetOrJump()
+    if !pumvisible() || empty(v:completed_item)
+        return ''
+    endif
+
+    " only expand Lsp if UltiSnips#ExpandSnippetOrJump not effect.
+    let l:value = v:completed_item['word']
+    let l:matched = len(l:value)
+    if l:matched <= 0
+        return ''
+    endif
+
+    " remove inserted chars before expand snippet
+    if col('.') == col('$')
+        let l:matched -= 1
+        exec 'normal! ' . l:matched . 'Xx'
+    else
+        exec 'normal! ' . l:matched . 'X'
+    endif
+
+    if col('.') == col('$') - 1
+        " move to $ if at the end of line.
+        call cursor(line('.'), col('$'))
+    endif
+
+    " expand snippet now.
+    call UltiSnips#Anon(l:value)
+    return ''
+endfunction
+imap <C-k> <C-R>=ExpandLspSnippet()<CR>
+
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
