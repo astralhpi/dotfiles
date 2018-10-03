@@ -307,10 +307,16 @@ set completeopt+=noselect
 
 " airline 설정
 let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+let airline#extensions#coc#error_symbol = 'Error:'
+let airline#extensions#coc#warning_symbol = 'Warning:'
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " CoffeeTags 설정
 let g:CoffeeAutoTagDisabled=1
@@ -380,7 +386,7 @@ imap <C-k> <C-R>=ExpandLspSnippet()<CR>
 
 
 " coc
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr> <cr> pumvisible() ? "\<C-g> \<cr>" : "\<cr>"
 inoremap <expr> <C-n> pumvisible() ? "\<C-n>": coc#refresh()
 inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -388,7 +394,8 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<s-tab>'
 
-map <C-]> <Plug>(coc-definition)
+au FileType c,cpp,python,javascript,typescript map <C-]> <Plug>(coc-definition)
 map <leader>r <Plug>(coc-references) 
 map <leader>n <Plug>(coc-rename) 
 map <leader>f <Plug>(coc-format)
+
