@@ -39,6 +39,12 @@ set mouse=a
 set enc=utf-8
 set fillchars=""
 
+" Better display for messages
+set cmdheight=2
+
+" always show signcolumns
+set signcolumn=yes
+
 " plugins
 call plug#begin('~/.vim/plugged')
 
@@ -394,7 +400,7 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<s-tab>'
 
-au FileType c,cpp,python,javascript,typescript map <C-]> <Plug>(coc-definition)
+au FileType c,cpp,python,javascript,typescript,go map <C-]> <Plug>(coc-definition)
 map <leader>r <Plug>(coc-references) 
 map <leader>n <Plug>(coc-rename) 
 map <leader>f <Plug>(coc-format)
