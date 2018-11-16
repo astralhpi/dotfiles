@@ -4,7 +4,8 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
-VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source virtualenvwrapper_lazy.sh
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -19,7 +20,7 @@ source "${ZDOTDIR:-$HOME}/.zshrc_local"
 
 # alias
 alias vim=nvim
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
