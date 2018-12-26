@@ -1,0 +1,8 @@
+{
+    "languageserver": {
+        "pyls": {
+            "command": "pyls",
+            "filetypes": ["python"]
+        }
+    }
+}
