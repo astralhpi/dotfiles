@@ -33,9 +33,8 @@ cask 'hammerspoon'
 cask 'docker'
 cask 'kaleidoscope'
 cask 'firefox'
-cask 'racket'
-cask 'mactex'
-cask 'skim'
+cask 'alacritty'
+cask 'kitty'
 
 mas 'Xcode', id: 497799835
 mas 'Spark', id: 1176895641
@@ -52,7 +51,3 @@ mas 'GrabIt', id: 450166997
 mas 'FocusList', id: 1086877679
 mas 'Bear', id: 1091189122
 
-cask 'java'
-cask 'android-sdk'
-brew 'android-ndk'
-brew 'ant'
