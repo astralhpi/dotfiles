@@ -27,3 +27,4 @@ alias vim=nvim
 function coalesce { print "${${(s: :)@}[1]}" }
 
 export TERM=screen-256color
+eval "$(pyenv init -)"
