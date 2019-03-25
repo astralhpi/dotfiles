@@ -52,6 +52,10 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'eugen0329/vim-esearch'
+Plug 'majutsushi/tagbar'
+Plug 'manicmaniac/coconut.vim'
+Plug 'guersam/vim-j'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'tyru/caw.vim'
