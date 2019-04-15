@@ -60,6 +60,7 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'tyru/caw.vim'
 Plug 'Shougo/context_filetype.vim'
+Plug 'iloginow/vim-stylus'
 Plug 'posva/vim-vue'
 Plug 'digitaltoad/vim-pug'
 Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
