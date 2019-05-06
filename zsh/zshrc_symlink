@@ -25,5 +25,3 @@ alias vim=nvim
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 function coalesce { print "${${(s: :)@}[1]}" }
-
-export TERM=screen-256color

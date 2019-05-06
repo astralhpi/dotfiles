@@ -12,6 +12,7 @@ syntax on
 
 set ttyfast
 set lazyredraw
+set termguicolors
 
 set noswapfile
 set inccommand=split
@@ -40,7 +41,10 @@ set enc=utf-8
 set fillchars=""
 
 " Better display for messages
-set cmdheight=2
+set cmdheight=1
+set laststatus=2
+set showtabline=2
+set noshowmode
 
 " always show signcolumns
 set signcolumn=yes
@@ -52,6 +56,16 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'plytophogy/vim-virtualenv'
+Plug 'edkolev/tmuxline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug '/usr/local/opt/fzf'
+Plug 'liuchengxu/vista.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'zenbro/mirror.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'eugen0329/vim-esearch'
 Plug 'majutsushi/tagbar'
 Plug 'manicmaniac/coconut.vim'
@@ -74,8 +88,6 @@ Plug 'Shougo/neco-vim'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
 Plug 'jiangmiao/auto-pairs'
@@ -115,10 +127,34 @@ call plug#end()
 " Theme
 set background=dark
 colorscheme dracula
-hi ColorColumn ctermbg=60
-let g:ackprg = 'ag --vimgrep'
 autocmd BufEnter * if &previewwindow | setlocal nobuflisted | endif
 
+let g:indentLine_color_term = 238
+let g:indentLine_color_gui='#424450'
+hi ColorColumn ctermbg=238 guibg=#424450
+
+function MyHighlights()
+hi semshiLocal           ctermfg=255 guifg=#f8f8f2
+hi semshiGlobal          ctermfg=255 guifg=#f8f8f2 cterm=bold gui=bold
+hi semshiImported        ctermfg=215 guifg=#FFB86C cterm=bold gui=bold
+hi semshiParameter       ctermfg=117 guifg=#8BE9FD
+hi semshiParameterUnused ctermfg=117 guifg=#8BE9FD cterm=underline gui=underline
+hi semshiFree            ctermfg=212 guifg=#FF79C6
+hi semshiBuiltin         ctermfg=141 guifg=#BD93F9
+hi semshiAttribute       ctermfg=255  guifg=#f8f8f2
+hi semshiSelf            ctermfg=141 guifg=#BD93F9 cterm=bold gui=bold
+hi semshiUnresolved      ctermfg=228 guifg=#F1FA8C cterm=underline gui=underline
+hi semshiSelected        ctermfg=255 guifg=#f8f8f2 ctermbg=239 guibg=#44475A
+
+hi semshiErrorSign       ctermfg=255 guifg=#f8f8f2 ctermbg=203 guibg=#FF5555
+hi semshiErrorChar       ctermfg=255 guifg=#f8f8f2 ctermbg=203 guibg=#FF5555
+sign define semshiError text=E> texthl=semshiErrorSign
+endfunction
+autocmd FileType python call MyHighlights()
+autocmd ColorScheme * call MyHighlights()
+
+" Semshi
+let g:semshi#error_sign = v:false
 
 
 " 기본 키 설정
@@ -164,32 +200,25 @@ let g:deoplete#file#enable_buffer_path = 1
 " NERDTree
 nmap <C-\> :NERDTreeToggle<CR>
 
+" Vista
+nmap « :Vista coc<CR>
+nmap <C-t> :Vista finder coc<CR>
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
 " ultisnips
 let g:UltiSnipsExpandTrigger="<C-e>"
 set completeopt-=preview
 set completeopt+=noinsert
 set completeopt+=noselect
 
-" airline 설정
-let g:airline#extensions#tabline#enabled = 1
-
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-let airline#extensions#coc#error_symbol = 'Error:'
-let airline#extensions#coc#warning_symbol = 'Warning:'
-let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
-
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
 " SrcExpl
 let g:SrcExpl_isUpdateTags = 0
 
 "indentLine
-let g:indentLine_char = '│'
-let g:indentLine_color_term = 239
-
+let g:indentLine_char= '▏'
 " auto-pairs
 let g:AutoPairsMultilineClose = 0
 
