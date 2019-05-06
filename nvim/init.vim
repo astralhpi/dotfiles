@@ -55,7 +55,7 @@ endfunction
 Plug 'eugen0329/vim-esearch'
 Plug 'majutsushi/tagbar'
 Plug 'manicmaniac/coconut.vim'
-Plug 'guersam/vim-j'
+Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'tyru/caw.vim'
@@ -72,7 +72,6 @@ Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/neco-vim'
 
-Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
@@ -96,11 +95,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 " Language 서포트
-" coffeescript
-Plug 'kchmck/vim-coffee-script'
-
-" csharp
-Plug 'OrangeT/vim-csharp', { 'for': 'csharp'}
 
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
@@ -349,7 +343,6 @@ let g:AutoPairsMultilineClose = 0
 
 " json
 let g:vim_json_syntax_conceal = 0
-
 
 " conceal
 set conceallevel=0
