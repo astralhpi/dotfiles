@@ -46,6 +46,8 @@ function common_config() {
 function ubuntu() {
     sudo add-apt-repository ppa:neovim-ppa/stable
     sudo add-apt-repository ppa:jonathonf/python-3.6
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
     sudo apt update
     cat $BASEDIR/packages/apt_requirements.txt | sudo xargs apt install -y
