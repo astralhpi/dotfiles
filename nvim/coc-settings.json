@@ -1,4 +1,4 @@
 {
-    "languageserver": {
-    }
+    "python.formatting.provider": "yapf",
+    "python.globalModuleInstallation": true
 }

@@ -134,22 +134,25 @@ let g:indentLine_color_term = 238
 let g:indentLine_color_gui='#424450'
 hi ColorColumn ctermbg=238 guibg=#424450
 
-function! MyHighlights()
-hi semshiLocal           ctermfg=255 guifg=#f8f8f2
-hi semshiGlobal          ctermfg=255 guifg=#f8f8f2 cterm=bold gui=bold
-hi semshiImported        ctermfg=215 guifg=#FFB86C cterm=bold gui=bold
-hi semshiParameter       ctermfg=117 guifg=#8BE9FD
-hi semshiParameterUnused ctermfg=117 guifg=#8BE9FD cterm=underline gui=underline
-hi semshiFree            ctermfg=212 guifg=#FF79C6
-hi semshiBuiltin         ctermfg=141 guifg=#BD93F9
-hi semshiAttribute       ctermfg=255  guifg=#f8f8f2
-hi semshiSelf            ctermfg=141 guifg=#BD93F9 cterm=bold gui=bold
-hi semshiUnresolved      ctermfg=228 guifg=#F1FA8C cterm=underline gui=underline
-hi semshiSelected        ctermfg=255 guifg=#f8f8f2 ctermbg=239 guibg=#44475A
 
-hi semshiErrorSign       ctermfg=255 guifg=#f8f8f2 ctermbg=203 guibg=#FF5555
-hi semshiErrorChar       ctermfg=255 guifg=#f8f8f2 ctermbg=203 guibg=#FF5555
-sign define semshiError text=E> texthl=semshiErrorSign
+hi Statement ctermfg=212 guifg=#FF79C6 cterm=bold gui=bold
+
+function! MyHighlights()
+    hi semshiLocal           ctermfg=255 guifg=#f8f8f2
+    hi semshiGlobal          ctermfg=255 guifg=#f8f8f2 cterm=bold gui=bold
+    hi semshiImported        ctermfg=215 guifg=#FFB86C cterm=bold gui=bold
+    hi semshiParameter       ctermfg=117 guifg=#8BE9FD
+    hi semshiParameterUnused ctermfg=117 guifg=#8BE9FD cterm=underline gui=underline
+    hi semshiFree            ctermfg=212 guifg=#FF79C6
+    hi semshiBuiltin         ctermfg=141 guifg=#BD93F9
+    hi semshiAttribute       ctermfg=255 guifg=#f8f8f2
+    hi semshiSelf            ctermfg=141 guifg=#BD93F9
+    hi semshiUnresolved      ctermfg=228 guifg=#F1FA8C cterm=underline gui=underline
+    hi semshiSelected        ctermfg=255 guifg=#f8f8f2 ctermbg=239 guibg=#44475A
+
+    hi semshiErrorSign       ctermfg=255 guifg=#f8f8f2 ctermbg=203 guibg=#FF5555
+    hi semshiErrorChar       ctermfg=255 guifg=#f8f8f2 ctermbg=203 guibg=#FF5555
+    sign define semshiError text=E> texthl=semshiErrorSign
 endfunction
 autocmd FileType python call MyHighlights()
 autocmd ColorScheme * call MyHighlights()
@@ -286,6 +289,7 @@ map <leader>r <Plug>(coc-references)
 map <leader>n <Plug>(coc-rename) 
 map <leader>f <Plug>(coc-format)
 
+" IPython
 function! PythonKeyMapping()
     map <buffer> ® <Plug>(IPy-Run)
     map <buffer> ‰ <Plug>(IPy-RunCell)
