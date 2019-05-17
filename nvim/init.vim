@@ -61,7 +61,6 @@ Plug 'plytophogy/vim-virtualenv'
 Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug '/usr/local/opt/fzf'
 Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
@@ -191,8 +190,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " 플러그인 설정
-" denite
-map <C-p> :Denite buffer file/rec<CR>
+" fzf
+map <C-p> :FZF<CR>
 
 " deoplete
 let g:deoplete#auto_complete_start_length = 2
