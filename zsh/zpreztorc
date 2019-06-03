@@ -37,7 +37,8 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'syntax-highlighting' \
   'git' \
-  'prompt'
+  'prompt' \
+  'tmux'
 
 #
 # Autosuggestions
