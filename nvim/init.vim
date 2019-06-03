@@ -201,6 +201,7 @@ let g:deoplete#max_list = 40
 let g:deoplete#file#enable_buffer_path = 1
 
 " NERDTree
+let g:NERDTreeNodeDelimiter = "\u00a0"
 nmap <C-\> :NERDTreeToggle<CR>
 
 " Vista
