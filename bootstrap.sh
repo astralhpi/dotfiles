@@ -88,6 +88,7 @@ function mac() {
         echo "Installed Homebrew"
     fi
 
+    brew tap homebrew/cask-fonts
     cd $BASEDIR/packages
     brew bundle -v
     cd $BASEDIR
@@ -99,7 +100,6 @@ function mac() {
     fi
     
     # pip
-    pip2 install -r $BASEDIR/packages/requirements_py2.txt
     pip3 install -r $BASEDIR/packages/requirements_py3.txt
     
     common_config
