@@ -16,10 +16,6 @@ brew 'the_silver_searcher'
 brew 'thefuck'
 brew 'mosh'
 brew "yarn"
-brew "go"
-brew "elm"
-brew "ruby"
-brew "elixir"
 brew "pyenv"
 
 cask 'google-chrome'
@@ -34,8 +30,6 @@ cask 'hammerspoon'
 cask 'docker'
 cask 'kaleidoscope'
 cask 'firefox'
-cask 'alacritty'
-cask 'kitty'
 
 mas 'Xcode', id: 497799835
 mas 'Soulver', id: 413965349
@@ -49,4 +43,3 @@ mas 'Pocket', id: 568494494
 mas 'GrabIt', id: 450166997
 mas 'FocusList', id: 1086877679
 mas 'Bear', id: 1091189122
-
