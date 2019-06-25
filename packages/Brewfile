@@ -17,6 +17,8 @@ brew 'thefuck'
 brew 'mosh'
 brew "yarn"
 brew "pyenv"
+brew 'direnv'
+brew 'nvm'
 
 cask 'google-chrome'
 cask '1password'
@@ -30,6 +32,9 @@ cask 'hammerspoon'
 cask 'docker'
 cask 'kaleidoscope'
 cask 'firefox'
+cask 'font-hack-nerd-font-mono'
+cask 'expressvpn'
+cask 'calibre'
 
 mas 'Xcode', id: 497799835
 mas 'Soulver', id: 413965349
@@ -43,3 +48,4 @@ mas 'Pocket', id: 568494494
 mas 'GrabIt', id: 450166997
 mas 'FocusList', id: 1086877679
 mas 'Bear', id: 1091189122
+mas 'Monit' id: 1014850245
