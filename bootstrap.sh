@@ -128,6 +128,7 @@ function mac() {
     link hammerspoon .hammerspoon
 
     link alacritty .config/alacritty
+    link config/direnvrc .direnvrc
 
     chsh -s $(which zsh)
 }
