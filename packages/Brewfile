@@ -19,6 +19,7 @@ brew "yarn"
 brew "pyenv"
 brew 'direnv'
 brew 'nvm'
+brew 'mysql-client'
 
 cask 'google-chrome'
 cask '1password'
