@@ -101,6 +101,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'qpkorr/vim-bufkill'
 Plug 'dracula/vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " javascript
 Plug 'pangloss/vim-javascript'
