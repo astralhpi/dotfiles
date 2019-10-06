@@ -56,6 +56,8 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'udalov/kotlin-vim'
+Plug 'keith/swift.vim'
 Plug 'bfredl/nvim-ipy'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'edkolev/tmuxline.vim'
