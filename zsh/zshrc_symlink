@@ -37,3 +37,5 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+alias tmux='direnv exec / tmux'
