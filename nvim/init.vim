@@ -56,9 +56,10 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'psf/black'
+Plug 'Vigemus/iron.nvim'
 Plug 'udalov/kotlin-vim'
 Plug 'keith/swift.vim'
-Plug 'bfredl/nvim-ipy'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
@@ -292,12 +293,10 @@ map <leader>r <Plug>(coc-references)
 map <leader>n <Plug>(coc-rename) 
 map <leader>f <Plug>(coc-format)
 
-" IPython
-function! PythonKeyMapping()
-    map <buffer> ® <Plug>(IPy-Run)
-    map <buffer> ‰ <Plug>(IPy-RunCell)
-endfunction
-autocmd FileType python call PythonKeyMapping()
-command IPyRunAll execute "normal <Plug>(IPy-RunAll)"
-command IPyInterrupt execute "normal <Plug>(IPy-Interrupt)"
-command IPyTerm execute "normal <Plug>(IPy-Terminate)"
+luafile $HOME/.config/nvim/plugins.lua
+
+let $IRONVIM_SETTING = fnamemodify($MYVIMRC, ':p:h') . "/iron.vim"
+source $IRONVIM_SETTING
+
+let g:black_linelength = 79
+autocmd BufWritePre *.py execute ':Black'
