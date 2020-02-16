@@ -56,6 +56,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'dart-lang/dart-vim-plugin'
 Plug 'psf/black'
 Plug 'Vigemus/iron.nvim'
 Plug 'udalov/kotlin-vim'
