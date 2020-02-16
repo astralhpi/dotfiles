@@ -22,6 +22,7 @@ brew 'nvm'
 brew 'mysql-client'
 
 cask 'google-chrome'
+cask 'firefox'
 cask '1password'
 cask 'iterm2'
 cask 'dash'
@@ -36,17 +37,16 @@ cask 'firefox'
 cask 'font-hack-nerd-font-mono'
 cask 'expressvpn'
 cask 'calibre'
+cask 'amethyst'
 
 mas 'Xcode', id: 497799835
 mas 'Soulver', id: 413965349
 mas 'Slack', id: 803453959
 mas 'Todoist', id: 585829637
-mas 'Evernote', id: 406056744
 mas 'Pixelmator', id: 407963104
 mas 'KakakoTalk', id: 869223134
 mas 'Scapple', id: 568020055
 mas 'Pocket', id: 568494494
 mas 'GrabIt', id: 450166997
 mas 'FocusList', id: 1086877679
-mas 'Bear', id: 1091189122
 mas 'Monit' id: 1014850245
