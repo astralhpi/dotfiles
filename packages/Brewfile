@@ -18,7 +18,6 @@ brew 'mosh'
 brew "yarn"
 brew "pyenv"
 brew 'direnv'
-brew 'nvm'
 brew 'mysql-client'
 
 cask 'google-chrome'
