@@ -56,8 +56,9 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'psf/black'
+Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'Vigemus/iron.nvim'
 Plug 'udalov/kotlin-vim'
 Plug 'keith/swift.vim'
@@ -289,7 +290,7 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<s-tab>'
 
-au FileType c,cpp,python,javascript,typescript,go map <C-]> <Plug>(coc-definition)
+au FileType c,cpp,python,javascript,typescript,go,rust map <C-]> <Plug>(coc-definition)
 map <leader>r <Plug>(coc-references) 
 map <leader>n <Plug>(coc-rename) 
 map <leader>f <Plug>(coc-format)
@@ -301,3 +302,4 @@ source $IRONVIM_SETTING
 
 let g:black_linelength = 79
 autocmd BufWritePre *.py execute ':Black'
+autocmd BufWritePre *.rs execute ':RustFmt'
