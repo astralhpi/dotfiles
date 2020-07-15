@@ -4,6 +4,10 @@
     "python.linting.flake8Enabled": true,
     "python.linting.mypyEnabled": true,
     "coc.preferences.formatOnSaveFiletypes": [
-      "dart"
-    ]
+      "dart",
+      "css",
+      "typescript",
+      "javascript"
+    ],
+    "tsserver.npm": "/usr/local/bin/npm"
 }

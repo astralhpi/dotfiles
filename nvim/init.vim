@@ -303,3 +303,9 @@ source $IRONVIM_SETTING
 let g:black_linelength = 79
 autocmd BufWritePre *.py execute ':Black'
 autocmd BufWritePre *.rs execute ':RustFmt'
+
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
