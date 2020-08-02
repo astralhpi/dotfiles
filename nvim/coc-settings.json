@@ -1,8 +1,6 @@
 {
-    "python.formatting.provider": "black",
-    "python.globalModuleInstallation": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.mypyEnabled": true,
+    "python.analysis.useLibraryCodeForTypes": true,
+    "coc.source.tabnine.priority": 50,
     "coc.preferences.formatOnSaveFiletypes": [
       "dart",
       "css",
