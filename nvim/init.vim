@@ -107,6 +107,13 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'dracula/vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'antoinemadec/coc-fzf'
+Plug 'brooth/far.vim'
+Plug 'luochen1990/rainbow'
+
+" rainbow
+let g:rainbow_active = 1
+
 
 " javascript
 Plug 'pangloss/vim-javascript'
@@ -186,8 +193,8 @@ nmap † :enew<CR>
 nmap <M-t> :enew<CR>
 nmap œ :BD<CR>
 nmap <M-q> :BD<CR>
-nmap » :TagbarToggle<CR>
-nmap <M-\> :TagbarToggle<CR>
+nmap » :Vista!!<CR>
+nmap <M-\> :Vista!!<CR>
 
 
 nnoremap <C-h> <C-w>h
@@ -197,8 +204,23 @@ nnoremap <C-l> <C-w>l
 
 " 플러그인 설정
 " fzf
-map <C-p> :FZF<CR>
+map <C-p> :Files<CR>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--preview', 'bat --style=numbers --color=always --line-range :200 {}']}, <bang>0)
+map <M-w> :Windows<CR>
+
+" coc-fzf
+let g:coc_fzf_preview = 'right:50%'
+map <M-t> :CocFzfList symbols<CR>
+map <M-p> :CocFzfList commands<CR>
+map <C-b> :Buffers<CR>
+
+
+"vista
+let g:vista_fzf_preview = ['right:50%']
+let g:vista_default_executive = 'coc'
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 
 " deoplete
 let g:deoplete#auto_complete_start_length = 2
