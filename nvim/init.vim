@@ -198,6 +198,7 @@ nnoremap <C-l> <C-w>l
 " 플러그인 설정
 " fzf
 map <C-p> :FZF<CR>
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " deoplete
 let g:deoplete#auto_complete_start_length = 2
@@ -290,7 +291,8 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<s-tab>'
 
-au FileType c,cpp,python,javascript,typescript,go,rust map <C-]> <Plug>(coc-definition)
+
+autocmd FileType c,cpp,python,javascript,typescript,go,rust map <C-]> <Plug>(coc-definition)
 map <leader>r <Plug>(coc-references) 
 map <leader>n <Plug>(coc-rename) 
 map <leader>f <Plug>(coc-format)
