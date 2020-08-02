@@ -39,3 +39,6 @@ export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 alias tmux='direnv exec / tmux'
+
+export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always --line-range :200 {}'"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
