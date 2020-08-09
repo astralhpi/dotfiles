@@ -1,11 +1,14 @@
 {
     "python.analysis.useLibraryCodeForTypes": true,
-    "coc.source.tabnine.priority": 50,
+    "coc.source.tabnine.priority": 30,
+    "suggest.enablePreview": true,
     "coc.preferences.formatOnSaveFiletypes": [
       "dart",
       "css",
       "typescript",
       "javascript"
     ],
-    "tsserver.npm": "/usr/local/bin/npm"
+    "tsserver.npm": "/usr/local/bin/npm",
+    "rust.unstable_features": true,
+    "rust.all_targets": false
 }

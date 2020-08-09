@@ -49,6 +49,9 @@ set noshowmode
 " always show signcolumns
 set signcolumn=yes
 
+set undofile
+set undodir=~/.vim/undo
+
 " plugins
 call plug#begin('~/.vim/plugged')
 
@@ -62,7 +65,6 @@ Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'Vigemus/iron.nvim'
 Plug 'udalov/kotlin-vim'
 Plug 'keith/swift.vim'
-Plug 'plytophogy/vim-virtualenv'
 Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -71,10 +73,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'zenbro/mirror.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'eugen0329/vim-esearch'
-Plug 'majutsushi/tagbar'
 Plug 'manicmaniac/coconut.vim'
-Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'tyru/caw.vim'
@@ -89,19 +88,14 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/neco-vim'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'terryma/vim-multiple-cursors'
-Plug 'majutsushi/tagbar'
+Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-dispatch'
 Plug 'jiangmiao/auto-pairs'
 Plug 'janko-m/vim-test'
-Plug 'jalvesaq/vimcmdline'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'dkprice/vim-easygrep'
-Plug 'wesleyche/SrcExpl'
 Plug 'Yggdroot/indentLine'
 Plug 'qpkorr/vim-bufkill'
 Plug 'dracula/vim'
@@ -109,11 +103,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
 Plug 'brooth/far.vim'
-Plug 'luochen1990/rainbow'
-
-" rainbow
-let g:rainbow_active = 1
-
 
 " javascript
 Plug 'pangloss/vim-javascript'
@@ -133,6 +122,10 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
+
+Plug 'simnalamburt/vim-mundo'
+
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -212,8 +205,9 @@ map <M-w> :Windows<CR>
 
 " coc-fzf
 let g:coc_fzf_preview = 'right:50%'
+let g:coc_fzf_opts = ['--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all']
 map <M-t> :CocFzfList symbols<CR>
-map <M-p> :CocFzfList commands<CR>
+map <leader>p :CocFzfList commands<CR>
 map <C-b> :Buffers<CR>
 
 
@@ -221,13 +215,7 @@ map <C-b> :Buffers<CR>
 let g:vista_fzf_preview = ['right:50%']
 let g:vista_default_executive = 'coc'
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-
-" deoplete
-let g:deoplete#auto_complete_start_length = 2
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#tag#cache_limit_size = 3000000
-let g:deoplete#max_list = 40
-let g:deoplete#file#enable_buffer_path = 1
+let g:vista_fzf_opt = ['--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all']
 
 " NERDTree
 let g:NERDTreeNodeDelimiter = "\u00a0"
@@ -247,8 +235,6 @@ set completeopt-=preview
 set completeopt+=noinsert
 set completeopt+=noselect
 
-" SrcExpl
-let g:SrcExpl_isUpdateTags = 0
 
 "indentLine
 let g:indentLine_char= '▏'
@@ -262,8 +248,9 @@ let g:vim_json_syntax_conceal = 0
 " conceal
 set conceallevel=0
 au FileType * setlocal conceallevel=0 
-autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 if has('conceal')
   set conceallevel=2 concealcursor=niv
@@ -319,6 +306,8 @@ map <leader>r <Plug>(coc-references)
 map <leader>n <Plug>(coc-rename) 
 map <leader>f <Plug>(coc-format)
 
+map <leader>/ <Plug>(caw:hatpos:toggle)
+
 luafile $HOME/.config/nvim/plugins.lua
 
 let $IRONVIM_SETTING = fnamemodify($MYVIMRC, ':p:h') . "/iron.vim"
@@ -333,3 +322,13 @@ command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
 
 " Run jest for current file
 command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'floating'
+
+highlight link EchoDocFloat Pmenu
+
+let g:VM_maps = {}
+let g:VM_maps['Add Cursor Up']  = '<M-Up>'
+let g:VM_maps['Add Cursor Down']  = '<M-Down>'
+
