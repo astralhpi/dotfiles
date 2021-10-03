@@ -4,20 +4,14 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-source virtualenvwrapper_lazy.sh
-
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
+#
 # Plugins
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug 'wfxr/forgit'
+zplug romkatv/powerlevel10k, as:theme, depth:1
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
     printf "Install? [y/N]: "
@@ -29,11 +23,7 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-# Customize to your needs...
-if [[ ! -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]]; then
-  touch "${ZDOTDIR:-$HOME}/.zshrc_local"
-fi
-source "${ZDOTDIR:-$HOME}/.zshrc_local"
+source ~/.p10k.zsh
 
 # alias
 alias vim=nvim
@@ -59,3 +49,4 @@ alias tmux='direnv exec / tmux'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :200 {}'"
 
+precmd () {print -Pn "\e]0;%~\a"}

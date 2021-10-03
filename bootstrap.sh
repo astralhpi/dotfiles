@@ -22,12 +22,7 @@ function common_config() {
     
 
     # zsh
-    link zsh/prezto .zprezto
-    link zsh/zlogin .zlogin
-    link zsh/zlogout .zlogout
-    link zsh/zpreztorc .zpreztorc
-    link zsh/zprofile .zprofile
-    link zsh/zshenv .zshenv
+    linklzsh/zshenv .zshenv
     link zsh/zshrc_symlink .zshrc_symlink
     link zsh/fzf.zsh .fzf.zsh
     cp -n $BASEDIR/zsh/zshrc $HOME/.zshrc
@@ -61,6 +56,20 @@ function ubuntu() {
     common_config
     
 
+://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
+
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
     if [ ! -f ~/.fzf.zsh ]; then
         git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
         ~/.fzf/install
