@@ -8,45 +8,39 @@ brew 'tmux'
 brew 'zsh'
 brew 'reattach-to-user-namespace'
 brew 'python'
-brew 'python3'
 brew 'ctags'
 brew 'node'
 brew 'fzf'
 brew 'the_silver_searcher'
 brew 'thefuck'
 brew 'mosh'
-brew "yarn"
 brew "pyenv"
 brew 'direnv'
 brew 'mysql-client'
 brew 'zplug'
+brew "pnpm"
+brew "rustup"
+brew "ripgrep"
 
 cask 'google-chrome'
-cask 'firefox'
 cask '1password'
 cask 'iterm2'
 cask 'dash'
 cask 'alfred'
-cask 'atom'
-cask 'tripmode'
 cask 'karabiner-elements'
 cask 'hammerspoon'
 cask 'docker'
-cask 'kaleidoscope'
 cask 'firefox'
-cask 'font-hack-nerd-font-mono'
-cask 'expressvpn'
 cask 'calibre'
 cask 'amethyst'
+cask "spotify"
+cask "devonthink"
+cask "adguard"
 
 mas 'Xcode', id: 497799835
-mas 'Soulver', id: 413965349
 mas 'Slack', id: 803453959
-mas 'Todoist', id: 585829637
 mas 'Pixelmator', id: 407963104
 mas 'KakakoTalk', id: 869223134
 mas 'Scapple', id: 568020055
 mas 'Pocket', id: 568494494
-mas 'GrabIt', id: 450166997
-mas 'FocusList', id: 1086877679
-mas 'Monit', id: 1014850245
+mas 'Flow', id: 1423210932
