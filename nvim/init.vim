@@ -98,7 +98,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
 Plug 'qpkorr/vim-bufkill'
-Plug 'dracula/vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
@@ -131,8 +130,12 @@ call plug#end()
 
 
 " Theme
+packadd! dracula_pro
+syntax enable
+let g:dracula_colorterm = 0
+colorscheme dracula_pro
+
 set background=dark
-colorscheme dracula
 autocmd BufEnter * if &previewwindow | setlocal nobuflisted | endif
 
 let g:indentLine_color_term = 238
