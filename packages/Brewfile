@@ -10,19 +10,22 @@ brew 'reattach-to-user-namespace'
 brew 'python'
 brew 'ctags'
 brew 'node'
-brew 'fzf'
 brew 'the_silver_searcher'
 brew 'thefuck'
 brew 'mosh'
 brew "pyenv"
-brew 'direnv'
 brew 'mysql-client'
-brew 'zplug'
 brew "pnpm"
 brew "rustup"
 brew "ripgrep"
-brew "nvm"
 brew "fd"
+brew "zinit"
+brew "bat"
+brew "nodenv"
+brew "svn"
+brew "go"
+brew "coreutils"
+brew fzf
 
 cask 'google-chrome'
 cask 'firefox'
