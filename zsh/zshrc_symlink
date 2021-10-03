@@ -5,50 +5,91 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 #
+#
 # Plugins
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
+source /usr/local/opt/zinit/zinit.zsh
 
-zplug 'wfxr/forgit'
-zplug romkatv/powerlevel10k, as:theme, depth:1
+# z-a-bin-gem-node
+zinit light zinit-zsh/z-a-bin-gem-node
+zinit light zinit-zsh/z-a-patch-dl
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+# prezto
+zstyle ':prezto:module:editor' key-bindings 'vi'
+zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:utility:ls' color 'yes'
+zstyle ':prezto:module:utility:ls' dirs-first 'yes'
+zstyle ':prezto:module:utility:grep' color 'yes'
+zstyle ':prezto:module:utility:diff' color 'yes'
+zstyle ':prezto:module:utility:make' color 'yes'
 
-# Then, source plugins and add commands to $PATH
-zplug load
 
+zinit snippet PZTM::environment
+zinit ice wait lucid
+zinit snippet PZTM::completion
+zinit ice wait lucid
+zinit snippet PZTM::directory
+zinit snippet PZTM::editor
+zinit ice wait lucid
+zinit snippet PZTM::terminal
+zinit ice wait lucid
+zinit snippet PZTM::gnu-utility
+zinit ice wait lucid
+zinit snippet PZTM::utility
+
+# oh-my-zsh
+zinit ice wait lucid
+zinit snippet OMZP::fzf
+
+# forgit
+zinit ice wait lucid
+zinit light wfxr/forgit
+
+# powerlevel10k
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 source ~/.p10k.zsh
+
+# zsh-completions & fast-syntax-highlighting
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" \
+      zdharma/fast-syntax-highlighting \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
+
+# direnv
+zinit light-mode from"gh-r" as"program" mv"direnv* -> direnv" \
+  atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+  pick"direnv" src="zhook.zsh" for \
+    direnv/direnv
+
+# pyenv
+zinit wait lucid pack"bgn" git for pyenv
+
+# nodenv
+zinit ice wait lucid
+zinit light C-uo/zsh-env
+
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :200 {}'"
+
+# thefuck
+zinit ice wait lucid
+zinit light laggardkernel/zsh-thefuck
+
+autoload compinit
+compinit
 
 # alias
 alias vim=nvim
-#eval $(thefuck --alias)
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval $(thefuck --alias)
+
+# color
+export CLICOLOR=1;
 
 function coalesce { print "${${(s: :)@}[1]}" }
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-
-eval "$(direnv hook zsh)"
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 alias tmux='direnv exec / tmux'
-
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :200 {}'"
-
-precmd () {print -Pn "\e]0;%~\a"}
-
-eval "$(pyenv init -)"
