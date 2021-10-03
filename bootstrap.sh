@@ -22,7 +22,8 @@ function common_config() {
     
 
     # zsh
-    linklzsh/zshenv .zshenv
+    link zsh/zprofile .zprofile
+    link zsh/zshenv .zshenv
     link zsh/zshrc_symlink .zshrc_symlink
     link zsh/fzf.zsh .fzf.zsh
     cp -n $BASEDIR/zsh/zshrc $HOME/.zshrc
@@ -136,7 +137,7 @@ function mac() {
     # hammerspoon
     link hammerspoon .hammerspoon
 
-    link alacritty .config/alacritty
+    link kitty .config/kitty
     link config/direnvrc .direnvrc
 
     chsh -s $(which zsh)
