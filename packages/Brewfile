@@ -21,8 +21,11 @@ brew 'zplug'
 brew "pnpm"
 brew "rustup"
 brew "ripgrep"
+brew "nvm"
+brew "fd"
 
 cask 'google-chrome'
+cask 'firefox'
 cask '1password'
 cask 'iterm2'
 cask 'dash'
@@ -30,7 +33,6 @@ cask 'alfred'
 cask 'karabiner-elements'
 cask 'hammerspoon'
 cask 'docker'
-cask 'firefox'
 cask 'calibre'
 cask 'amethyst'
 cask "spotify"
