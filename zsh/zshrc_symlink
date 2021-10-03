@@ -63,7 +63,11 @@ zinit light-mode from"gh-r" as"program" mv"direnv* -> direnv" \
     direnv/direnv
 
 # pyenv
-zinit wait lucid pack"bgn" git for pyenv
+zinit wait lucid as'command' pick'bin/pyenv' atinit'export PYENV_ROOT="$PWD"' \
+    atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
+    atpull"%atclone" src"zpyenv.zsh" nocompile'!' for \
+        pyenv/pyenv
+export PATH="$HOME/.zinit/plugins/pyenv---pyenv/shims:${PATH}"
 
 # nodenv
 zinit ice wait lucid
