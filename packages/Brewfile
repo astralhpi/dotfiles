@@ -25,7 +25,8 @@ brew "nodenv"
 brew "svn"
 brew "go"
 brew "coreutils"
-brew fzf
+brew "fzf"
+brew "mycli"
 
 cask 'google-chrome'
 cask 'firefox'
