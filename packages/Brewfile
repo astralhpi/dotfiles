@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 tap 'neovim/neovim'
+tap 'xo/xo'
 brew 'm-cli'
 brew 'mas'
 brew 'neovim'
@@ -13,20 +14,25 @@ brew 'node'
 brew 'the_silver_searcher'
 brew 'thefuck'
 brew 'mosh'
-brew "pyenv"
+brew 'pyenv'
 brew 'mysql-client'
-brew "pnpm"
-brew "rustup"
-brew "ripgrep"
-brew "fd"
-brew "zinit"
-brew "bat"
-brew "nodenv"
-brew "svn"
-brew "go"
-brew "coreutils"
-brew "fzf"
-brew "mycli"
+brew 'pnpm'
+brew 'rustup'
+brew 'ripgrep'
+brew 'fd'
+brew 'zinit'
+brew 'bat'
+brew 'nodenv'
+brew 'svn'
+brew 'go'
+brew 'coreutils'
+brew 'fzf'
+brew 'mycli'
+brew 'openssl'
+brew 'mysql'
+brew 'freetype'
+brew 'usql'
+brew 'icu4c'
 
 cask 'google-chrome'
 cask 'firefox'
@@ -39,9 +45,10 @@ cask 'hammerspoon'
 cask 'docker'
 cask 'calibre'
 cask 'amethyst'
-cask "spotify"
-cask "devonthink"
-cask "adguard"
+cask 'spotify'
+cask 'devonthink'
+cask 'adguard'
+cask 'anki'
 
 mas 'Xcode', id: 497799835
 mas 'Slack', id: 803453959
