@@ -46,92 +46,110 @@ set laststatus=2
 set showtabline=2
 set noshowmode
 
-" always show signcolumns
+" Always show signcolumns
 set signcolumn=yes
 
 set undofile
 set undodir=~/.vim/undo
 
-" plugins
+" Conceal
+set conceallevel=0
+au FileType * setlocal conceallevel=0 
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+
+
+" Plugins
 call plug#begin('~/.vim/plugged')
+" Plugins - Buffer
+Plug 'qpkorr/vim-bufkill'
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
+" Plugins - Navigation
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'martinda/Jenkinsfile-vim-syntax'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'psf/black', { 'tag': '19.10b0' }
-Plug 'Vigemus/iron.nvim'
-Plug 'udalov/kotlin-vim'
-Plug 'keith/swift.vim'
+" Plugins - UI
 Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'liuchengxu/vista.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'zenbro/mirror.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'manicmaniac/coconut.vim'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'tyru/caw.vim'
-Plug 'Shougo/context_filetype.vim'
-Plug 'iloginow/vim-stylus'
-Plug 'posva/vim-vue'
-Plug 'digitaltoad/vim-pug'
-Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
-Plug 'tomlion/vim-solidity'
-Plug 'rust-lang/rust.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
 
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plugins - Text
 Plug 'mg979/vim-visual-multi'
-Plug 'tpope/vim-dispatch'
-Plug 'jiangmiao/auto-pairs'
-Plug 'janko-m/vim-test'
-Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
-Plug 'qpkorr/vim-bufkill'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'antoinemadec/coc-fzf'
-Plug 'brooth/far.vim'
 
-" javascript
+Plug 'simnalamburt/vim-mundo' " Undo Tree
+
+" Plugins - IDE
+" IDE - Common 
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'antoinemadec/coc-fzf'
+Plug 'jiangmiao/auto-pairs'
+Plug 'elzr/vim-json'
+Plug 'sheerun/vim-polyglot'
+Plug 'liuchengxu/vista.vim' " For symbol tree
+Plug 'tpope/vim-fugitive' " Git commands
+Plug 'airblade/vim-gitgutter'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Semantic Highlighting
+Plug 'tyru/caw.vim' " Comment
+Plug 'Shougo/context_filetype.vim' " Change file type by context
+Plug 'janko-m/vim-test' " Test Commands
+
+" IDE - Snippet
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+
+" IDE - Jenkinsfile
+Plug 'martinda/Jenkinsfile-vim-syntax'
+
+" IDE - Dart
+Plug 'dart-lang/dart-vim-plugin'
+
+" IDE - Python
+Plug 'psf/black', { 'tag': '19.10b0' }
+Plug 'manicmaniac/coconut.vim'
+
+" IDE - Swift
+Plug 'keith/swift.vim'
+
+" IDE - Kotln
+Plug 'udalov/kotlin-vim'
+
+" IDE - Web
+Plug 'digitaltoad/vim-pug'
+Plug 'posva/vim-vue'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-
-" Language 서포트
-
-" typescript
 Plug 'HerringtonDarkholme/yats.vim'
-
-" json
-Plug 'elzr/vim-json'
-
-" html
 Plug 'mattn/emmet-vim', { 'for': 'html' }
+Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
 
-" Elixir
+" IDE - elixir
 Plug 'elixir-lang/vim-elixir'
-Plug 'thinca/vim-ref'
 
-Plug 'simnalamburt/vim-mundo'
+" IDE - Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
-Plug 'sheerun/vim-polyglot'
+" IDE - Solidity
+Plug 'tomlion/vim-solidity'
+
+" IDE - Rust
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
 
 " Theme
 packadd! dracula_pro
-syntax enable
 let g:dracula_colorterm = 0
 colorscheme dracula_pro
 
@@ -248,19 +266,10 @@ let g:AutoPairsMultilineClose = 0
 " json
 let g:vim_json_syntax_conceal = 0
 
-" conceal
-set conceallevel=0
-au FileType * setlocal conceallevel=0 
-
-autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
-autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
+" vue
 autocmd FileType vue syntax sync fromstart
 
+" coc
 function! ExpandLspSnippet()
     call UltiSnips#ExpandSnippetOrJump()
     if !pumvisible() || empty(v:completed_item)
@@ -294,7 +303,6 @@ endfunction
 imap <C-k> <C-R>=ExpandLspSnippet()<CR>
 
 
-" coc
 inoremap <expr> <cr> pumvisible() ? "\<C-g> \<cr>" : "\<cr>"
 inoremap <expr> <C-n> pumvisible() ? "\<C-n>": coc#refresh()
 inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
@@ -303,22 +311,13 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<s-tab>'
 
-
 autocmd FileType c,cpp,python,javascript,typescript,go,rust map <C-]> <Plug>(coc-definition)
 map <leader>r <Plug>(coc-references) 
 map <leader>n <Plug>(coc-rename) 
 map <leader>f <Plug>(coc-format)
 
+" caw
 map <leader>/ <Plug>(caw:hatpos:toggle)
-
-luafile $HOME/.config/nvim/plugins.lua
-
-let $IRONVIM_SETTING = fnamemodify($MYVIMRC, ':p:h') . "/iron.vim"
-source $IRONVIM_SETTING
-
-let g:black_linelength = 79
-autocmd BufWritePre *.py execute ':Black'
-autocmd BufWritePre *.rs execute ':RustFmt'
 
 " Run jest for current project
 command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
@@ -331,7 +330,7 @@ let g:echodoc#type = 'floating'
 
 highlight link EchoDocFloat Pmenu
 
+" visual-multi
 let g:VM_maps = {}
 let g:VM_maps['Add Cursor Up']  = '<M-Up>'
 let g:VM_maps['Add Cursor Down']  = '<M-Down>'
-
