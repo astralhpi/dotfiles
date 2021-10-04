@@ -78,6 +78,9 @@ export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-ran
 zinit ice wait lucid
 zinit light laggardkernel/zsh-thefuck
 
+# fzf
+zinit pack"bgn-binary" for fzf
+
 autoload compinit
 compinit
 
