@@ -113,7 +113,6 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'dart-lang/dart-vim-plugin'
 
 " IDE - Python
-Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'manicmaniac/coconut.vim'
 
 " IDE - Swift

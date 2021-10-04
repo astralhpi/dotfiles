@@ -1,13 +1,27 @@
 {
   "npm.binPath": "pnpm",
+  "diagnostic.errorSign": "✘",
+  "diagnostic.infoSign": "",
+  "diagnostic.warningSign": "⚠ ",
+  "diagnostic.hintSign": "",
+  "coc.source.file.shortcut": "",
+  "coc.source.buffer.shortcut": "",
+  "coc.source.around.shortcut": "",
   "python.analysis.useLibraryCodeForTypes": true,
-  "coc.source.tabnine.priority": 30,
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "tabnine.priority": 30,
+  "tabnine.shortcut":"",
   "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "rust",
+    "svelte",
     "dart",
     "css",
     "typescript",
     "javascript"
   ],
-  "eslint.packageManager": "pnpm",
   "tsserver.npm": "/usr/local/bin/pnpm"
 }
