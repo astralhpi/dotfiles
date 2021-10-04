@@ -30,8 +30,6 @@ zinit ice wait lucid
 zinit snippet PZTM::directory
 zinit snippet PZTM::editor
 zinit ice wait lucid
-zinit snippet PZTM::terminal
-zinit ice wait lucid
 zinit snippet PZTM::gnu-utility
 zinit ice wait lucid
 zinit snippet PZTM::utility
@@ -97,3 +95,5 @@ export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 alias tmux='direnv exec / tmux'
+
+precmd () {print -Pn "\e]0;%~\a"}
