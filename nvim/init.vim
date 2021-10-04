@@ -88,7 +88,7 @@ Plug 'simnalamburt/vim-mundo' " Undo Tree
 
 " Plugins - IDE
 " IDE - Common 
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
 Plug 'jiangmiao/auto-pairs'
 Plug 'elzr/vim-json'
