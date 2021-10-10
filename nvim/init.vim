@@ -96,7 +96,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'liuchengxu/vista.vim' " For symbol tree
 Plug 'tpope/vim-fugitive' " Git commands
 Plug 'airblade/vim-gitgutter'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Semantic Highlighting
 Plug 'tyru/caw.vim' " Comment
 Plug 'Shougo/context_filetype.vim' " Change file type by context
 Plug 'janko-m/vim-test' " Test Commands
