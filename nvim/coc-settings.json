@@ -4,14 +4,14 @@
   "diagnostic.infoSign": "",
   "diagnostic.warningSign": "⚠ ",
   "diagnostic.hintSign": "",
+  "diagnostic.checkCurrentLine": true,
   "coc.source.file.shortcut": "",
   "coc.source.buffer.shortcut": "",
   "coc.source.around.shortcut": "",
-  "python.analysis.useLibraryCodeForTypes": true,
+  "python.analysis.typeCheckingMode": "off",
   "python.formatting.provider": "black",
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
   "tabnine.priority": 30,
   "tabnine.shortcut":"",
   "coc.preferences.formatOnSaveFiletypes": [
@@ -23,5 +23,46 @@
     "typescript",
     "javascript"
   ],
-  "tsserver.npm": "/usr/local/bin/pnpm"
+  "tsserver.npm": "/usr/local/bin/pnpm",
+  "suggest.minTriggerInputLength": 2,
+  "suggest.maxCompleteItemCount": 30,
+  "suggest.floatEnable": false,
+  "diagnostic-languageserver.filetypes": {
+    "python": "mypy"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "python": ["black", "isort"]
+  },
+  "diagnostic-languageserver.linters": {
+    "mypy": {
+      "sourceName": "mypy",
+      "command": "mypy",
+      "args": [
+        "--no-color-output",
+        "--no-error-summary",
+        "--show-column-numbers",
+        "--follow-imports=silent",
+        "%file"
+      ],
+      "rootPatterns": [
+        "mypy.ini",
+        ".mypy.ini",
+        "setup.cfg",
+        "pyproject.toml"
+      ],
+      "formatPattern": [
+        "^.*:(\\d+?):(\\d+?): ([a-z]+?): (.*)$",
+        {
+          "line": 1,
+          "column": 2,
+          "security": 3,
+          "message": 4
+        }
+      ],
+      "securities": {
+        "error": "error"
+      }
+    } 
+  }
+
 }

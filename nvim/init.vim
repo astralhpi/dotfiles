@@ -23,7 +23,7 @@ set number
 set ruler
 set nowrap
 set textwidth=0
-set colorcolumn=80
+set colorcolumn=88
 set visualbell
 
 set ts=4
@@ -92,7 +92,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
 Plug 'jiangmiao/auto-pairs'
 Plug 'elzr/vim-json'
-Plug 'sheerun/vim-polyglot'
 Plug 'liuchengxu/vista.vim' " For symbol tree
 Plug 'tpope/vim-fugitive' " Git commands
 Plug 'airblade/vim-gitgutter'
@@ -142,6 +141,9 @@ Plug 'tomlion/vim-solidity'
 
 " IDE - Rust
 Plug 'rust-lang/rust.vim'
+
+" IDE - Python
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
