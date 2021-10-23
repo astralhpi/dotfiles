@@ -20,3 +20,5 @@
 	permission-reset = !git diff -p -R --no-ext-diff --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
