@@ -8,6 +8,7 @@
   "coc.source.file.shortcut": "",
   "coc.source.buffer.shortcut": "",
   "coc.source.around.shortcut": "",
+  "coc.preferences.willSaveHandlerTimeout": 1000,
   "python.analysis.typeCheckingMode": "off",
   "python.formatting.provider": "black",
   "python.linting.enabled": true,
@@ -24,8 +25,14 @@
     "javascript"
   ],
   "tsserver.npm": "/usr/local/bin/pnpm",
-  "suggest.minTriggerInputLength": 2,
-  "suggest.maxCompleteItemCount": 30,
+  "tsserver.formatOnType": false,
+  "svelte.plugin.typescript.hover.enable": false,
+  "svelte.plugin.html.hover.enable": false,
+  "svelte.plugin.css.hover.enable": false,
+  "suggest.autoTrigger": "trigger",
+  "suggest.triggerCompletionWait": 150,
+  "suggest.minTriggerInputLength": 4,
+  "suggest.maxCompleteItemCount": 50,
   "suggest.floatEnable": false,
   "diagnostic-languageserver.filetypes": {
     "python": "mypy"
@@ -63,6 +70,7 @@
         "error": "error"
       }
     } 
-  }
+  },
+  "svelte.enable-ts-plugin": true
 
 }

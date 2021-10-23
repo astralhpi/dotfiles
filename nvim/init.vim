@@ -60,8 +60,6 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-
-
 " Plugins
 call plug#begin('~/.vim/plugged')
 " Plugins - Buffer
@@ -122,13 +120,13 @@ Plug 'udalov/kotlin-vim'
 " IDE - Web
 Plug 'digitaltoad/vim-pug'
 Plug 'posva/vim-vue'
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
+Plug 'leafOfTree/vim-svelte-plugin'
 
 " IDE - elixir
 Plug 'elixir-lang/vim-elixir'
@@ -143,7 +141,10 @@ Plug 'tomlion/vim-solidity'
 Plug 'rust-lang/rust.vim'
 
 " IDE - Python
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+
+" IDE - helm
+Plug 'towolf/vim-helm'
 
 call plug#end()
 
@@ -334,3 +335,7 @@ highlight link EchoDocFloat Pmenu
 let g:VM_maps = {}
 let g:VM_maps['Add Cursor Up']  = '<M-Up>'
 let g:VM_maps['Add Cursor Down']  = '<M-Down>'
+
+" vim-svelte-plugin
+let g:vim_svelte_plugin_use_typescript = 1
+let g:vim_svelte_plugin_use_sass = 1
