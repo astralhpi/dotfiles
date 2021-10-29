@@ -86,16 +86,32 @@ Plug 'simnalamburt/vim-mundo' " Undo Tree
 
 " Plugins - IDE
 " IDE - Common 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'antoinemadec/coc-fzf'
 Plug 'jiangmiao/auto-pairs'
 Plug 'elzr/vim-json'
-Plug 'liuchengxu/vista.vim' " For symbol tree
+"Plug 'liuchengxu/vista.vim' " For symbol tree
 Plug 'tpope/vim-fugitive' " Git commands
 Plug 'airblade/vim-gitgutter'
 Plug 'tyru/caw.vim' " Comment
 Plug 'Shougo/context_filetype.vim' " Change file type by context
 Plug 'janko-m/vim-test' " Test Commands
+
+" IDE - LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+
+" IDE - Auto Complete
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'onsails/lspkind-nvim'
+
+
+" IDE - Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " IDE - Snippet
 Plug 'SirVer/ultisnips'
@@ -109,7 +125,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'dart-lang/dart-vim-plugin'
 
 " IDE - Python
-Plug 'manicmaniac/coconut.vim'
+"Plug 'manicmaniac/coconut.vim'
 
 " IDE - Swift
 Plug 'keith/swift.vim'
@@ -141,7 +157,7 @@ Plug 'tomlion/vim-solidity'
 Plug 'rust-lang/rust.vim'
 
 " IDE - Python
-"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " IDE - helm
 Plug 'towolf/vim-helm'
@@ -225,38 +241,13 @@ command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--preview', 'bat --style=numbers --color=always --line-range :200 {}']}, <bang>0)
 map <M-w> :Windows<CR>
 
-" coc-fzf
-let g:coc_fzf_preview = 'right:50%'
-let g:coc_fzf_opts = ['--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all']
-map <M-t> :CocFzfList symbols<CR>
-map <leader>p :CocFzfList commands<CR>
-map <C-b> :Buffers<CR>
-
-
-"vista
-let g:vista_fzf_preview = ['right:50%']
-let g:vista_default_executive = 'coc'
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_fzf_opt = ['--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all']
-
 " NERDTree
 let g:NERDTreeNodeDelimiter = "\u00a0"
 nmap <C-\> :NERDTreeToggle<CR>
 
-" Vista
-nmap « :Vista coc<CR>
-nmap <C-t> :Vista finder coc<CR>
-
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
-" ultisnips
-let g:UltiSnipsExpandTrigger="<C-e>"
-set completeopt-=preview
-set completeopt+=noinsert
-set completeopt+=noselect
-
 
 "indentLine
 let g:indentLine_char= '▏'
@@ -267,57 +258,7 @@ let g:AutoPairsMultilineClose = 0
 " json
 let g:vim_json_syntax_conceal = 0
 
-" vue
-autocmd FileType vue syntax sync fromstart
-
-" coc
-function! ExpandLspSnippet()
-    call UltiSnips#ExpandSnippetOrJump()
-    if !pumvisible() || empty(v:completed_item)
-        return ''
-    endif
-
-    " only expand Lsp if UltiSnips#ExpandSnippetOrJump not effect.
-    let l:value = v:completed_item['word']
-    let l:matched = len(l:value)
-    if l:matched <= 0
-        return ''
-    endif
-
-    " remove inserted chars before expand snippet
-    if col('.') == col('$')
-        let l:matched -= 1
-        exec 'normal! ' . l:matched . 'Xx'
-    else
-        exec 'normal! ' . l:matched . 'X'
-    endif
-
-    if col('.') == col('$') - 1
-        " move to $ if at the end of line.
-        call cursor(line('.'), col('$'))
-    endif
-
-    " expand snippet now.
-    call UltiSnips#Anon(l:value)
-    return ''
-endfunction
-imap <C-k> <C-R>=ExpandLspSnippet()<CR>
-
-
-inoremap <expr> <cr> pumvisible() ? "\<C-g> \<cr>" : "\<cr>"
-inoremap <expr> <C-n> pumvisible() ? "\<C-n>": coc#refresh()
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<s-tab>'
-
-autocmd FileType c,cpp,python,javascript,typescript,go,rust map <C-]> <Plug>(coc-definition)
-map <leader>r <Plug>(coc-references) 
-map <leader>n <Plug>(coc-rename) 
-map <leader>f <Plug>(coc-format)
-
-" caw
+" " caw
 map <leader>/ <Plug>(caw:hatpos:toggle)
 
 " Run jest for current project
@@ -339,3 +280,118 @@ let g:VM_maps['Add Cursor Down']  = '<M-Down>'
 " vim-svelte-plugin
 let g:vim_svelte_plugin_use_typescript = 1
 let g:vim_svelte_plugin_use_sass = 1
+
+au BufWritePre *.py,*.ts,*.js,*.svelte,*.rs lua vim.lsp.buf.formatting()
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    incremental_selection = {
+        enabled = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm",
+        },
+    },
+    indent = {
+        enable = true
+    },
+    additional_vim_regex_highlighting = true
+  },
+}
+EOF
+
+set completeopt=menu,menuone,noselect
+lua <<EOF
+    local tabnine = require('cmp_tabnine.config')
+    tabnine:setup({
+            max_lines = 1000;
+            max_num_results = 20;
+            sort = true;
+        run_on_every_keystroke = true;
+        snippet_placeholder = '..';
+    })
+
+    local lspkind = require('lspkind')
+
+    -- Setup nvim-cmp.
+    local cmp = require'cmp'
+
+    cmp.setup({
+        snippet = {
+          expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+            -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+          end,
+        },
+        mapping = {
+            ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+            ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+            ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+            ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+            ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.close(),
+            ['<CR>'] = cmp.mapping.confirm({
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = true,
+            })
+        },
+        sources = cmp.config.sources({
+            { name = 'nvim_lsp' },
+            { name = 'vsnip' }, -- For vsnip users.
+            { name = 'cmp_tabnine' },
+        },
+        { 
+            { name = 'buffer' },
+        }),
+        formatting = {
+            format = lspkind.cmp_format({with_text = false, maxwidth = 50})
+        }
+    })
+
+    local on_attach = function(client, bufnr)
+        local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+        local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+        -- Mappings.
+        local opts = { noremap=true, silent=true }
+
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        buf_set_keymap('n', '<C-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+        buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+        buf_set_keymap('n', '\\i', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+        buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+        buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+        buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+        buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+        buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+        buf_set_keymap('n', '\\n', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+        buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+        buf_set_keymap('n', '\\r', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+        buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+        buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+        buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+        buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+        buf_set_keymap('n', '\\f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    end
+
+    -- Setup lspconfig.
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local servers = { 'pylsp', 'rust_analyzer', 'svelte', 'tsserver', "cssls" }
+    for _, lsp in ipairs(servers) do
+        require('lspconfig')[lsp].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            flags = {
+                debounce_text_changes = 150
+            }
+        }
+    end
+EOF
