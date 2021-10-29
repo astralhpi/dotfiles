@@ -62,8 +62,10 @@ endif
 
 " Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'nvim-lua/plenary.nvim'
 " Plugins - Buffer
 Plug 'qpkorr/vim-bufkill'
+Plug 'phaazon/hop.nvim', { 'branch': 'pre-extmarks' }
 
 " Plugins - Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -77,6 +79,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Plugins - Text
 Plug 'mg979/vim-visual-multi'
@@ -90,10 +93,17 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'elzr/vim-json'
 "Plug 'liuchengxu/vista.vim' " For symbol tree
 Plug 'tpope/vim-fugitive' " Git commands
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
+"Plug 'airblade/vim-gitgutter'
 Plug 'tyru/caw.vim' " Comment
 Plug 'Shougo/context_filetype.vim' " Change file type by context
 Plug 'janko-m/vim-test' " Test Commands
+Plug 'TimUntersberger/neogit'
+
+" IDE - Debugger
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
+Plug 'rcarriga/nvim-dap-ui'
 
 " IDE - LSP
 Plug 'neovim/nvim-lspconfig'
@@ -111,7 +121,8 @@ Plug 'onsails/lspkind-nvim'
 
 
 " IDE - Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'branch' : '0.5-compat'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects', {'branch' : '0.5-compat'}
 
 " IDE - Snippet
 Plug 'SirVer/ultisnips'
@@ -236,6 +247,7 @@ nnoremap <C-l> <C-w>l
 " 플러그인 설정
 " fzf
 map <C-p> :Files<CR>
+map <C-t> :Buffers<CR>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--preview', 'bat --style=numbers --color=always --line-range :200 {}']}, <bang>0)
@@ -283,6 +295,18 @@ let g:vim_svelte_plugin_use_sass = 1
 
 au BufWritePre *.py,*.ts,*.js,*.svelte,*.rs lua vim.lsp.buf.formatting()
 
+" debugger
+nnoremap <silent> ® :lua require'dap'.continue()<CR>
+nnoremap <silent> ˜ :lua require'dap'.step_over()<CR>
+nnoremap <silent> ˆ :lua require'dap'.step_into()<CR>
+nnoremap <silent> ø :lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
+nnoremap <silent> <leader>dt :lua require("dapui").toggle()<CR>
+
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -302,6 +326,46 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = true
   },
 }
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+    },
+  },
+}
+
+local neogit = require('neogit')
+neogit.setup {}
+
+-- hop
+vim.api.nvim_set_keymap('n', '\\w', "<cmd>lua require'hop'.hint_words()<cr>", {})
+vim.api.nvim_set_keymap('n', '\\l', "<cmd>lua require'hop'.hint_lines()<cr>", {})
+vim.api.nvim_set_keymap('n', '\\/', "<cmd>lua require'hop'.hint_patterns()<cr>", {})
+
+-- gitsign
+require('gitsigns').setup()
+
+-- nvim-dap
+require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+require('dap-python').test_runner = 'pytest'
+require("dapui").setup()
 EOF
 
 set completeopt=menu,menuone,noselect
