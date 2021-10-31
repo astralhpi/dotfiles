@@ -153,7 +153,6 @@ Plug 'mxw/vim-jsx'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
-Plug 'leafOfTree/vim-svelte-plugin'
 
 " IDE - elixir
 Plug 'elixir-lang/vim-elixir'
@@ -289,11 +288,7 @@ let g:VM_maps = {}
 let g:VM_maps['Add Cursor Up']  = '<M-Up>'
 let g:VM_maps['Add Cursor Down']  = '<M-Down>'
 
-" vim-svelte-plugin
-let g:vim_svelte_plugin_use_typescript = 1
-let g:vim_svelte_plugin_use_sass = 1
-
-au BufWritePre *.py,*.ts,*.js,*.svelte,*.rs lua vim.lsp.buf.formatting()
+au BufWritePre *.py,*.ts,*.js,*.svelte,*.rs lua vim.lsp.buf.formatting_sync()
 
 " debugger
 nnoremap <silent> ® :lua require'dap'.continue()<CR>
@@ -401,11 +396,7 @@ lua <<EOF
             ['<C-d>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.close(),
-            ['<CR>'] = cmp.mapping.confirm({
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = true,
-            })
+            ['<C-e>'] = cmp.mapping.close()
         },
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
@@ -448,7 +439,7 @@ lua <<EOF
 
     -- Setup lspconfig.
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    local servers = { 'pylsp', 'rust_analyzer', 'svelte', 'tsserver', "cssls" }
+    local servers = { 'pylsp', 'rust_analyzer', 'svelte', 'tsserver', "cssls", "jsonls" }
     for _, lsp in ipairs(servers) do
         require('lspconfig')[lsp].setup {
             on_attach = on_attach,
