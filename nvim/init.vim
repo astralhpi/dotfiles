@@ -439,7 +439,7 @@ lua <<EOF
 
     -- Setup lspconfig.
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    local servers = { 'pylsp', 'rust_analyzer', 'svelte', 'tsserver', "cssls", "jsonls" }
+    local servers = { 'pylsp', 'rust_analyzer', 'svelte', 'tsserver', "cssls", "jsonls", "eslint" }
     for _, lsp in ipairs(servers) do
         require('lspconfig')[lsp].setup {
             on_attach = on_attach,
