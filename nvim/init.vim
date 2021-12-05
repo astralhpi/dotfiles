@@ -65,7 +65,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
 " Plugins - Buffer
 Plug 'qpkorr/vim-bufkill'
-Plug 'phaazon/hop.nvim', { 'branch': 'pre-extmarks' }
+Plug 'phaazon/hop.nvim'
 
 " Plugins - Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
