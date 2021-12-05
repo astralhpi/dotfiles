@@ -2,6 +2,7 @@ cask_args appdir: '/Applications'
 
 tap 'neovim/neovim'
 tap 'xo/xo'
+
 brew 'm-cli'
 brew 'mas'
 brew 'neovim'
@@ -49,6 +50,8 @@ cask 'spotify'
 cask 'devonthink'
 cask 'adguard'
 cask 'anki'
+cask 'font-jetbrains-mono-nerd-font'
+cask 'dropbox'
 
 mas 'Xcode', id: 497799835
 mas 'Slack', id: 803453959
@@ -57,3 +60,4 @@ mas 'KakakoTalk', id: 869223134
 mas 'Scapple', id: 568020055
 mas 'Pocket', id: 568494494
 mas 'Flow', id: 1423210932
+mas 'Things 3', id: 904280696
