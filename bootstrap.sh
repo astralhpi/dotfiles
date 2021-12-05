@@ -36,7 +36,7 @@ function common_config() {
     # git
     link config/gitconfig .gitconfig
 
-
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 }
 function ubuntu() {
     sudo add-apt-repository ppa:neovim-ppa/stable
