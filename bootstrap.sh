@@ -54,38 +54,6 @@ function ubuntu() {
     sudo pip3 install -r $BASEDIR/packages/requirements_py3.txt
     
     common_config
-    
-
-://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
-
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# Customize to your needs...
-    if [ ! -f ~/.fzf.zsh ]; then
-        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-        ~/.fzf/install
-    fi
-
-    # nvim
-    if [ ! -d $HOME/.config/nvim ]; then
-        mkdir -p $HOME/.config
-        link nvim .config/nvim
-        sudo pip install neovim
-        sudo pip3 install neovim
-        gem install neovim
-        nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
-    fi
-
-
     chsh -s $(which zsh)
 
 }
