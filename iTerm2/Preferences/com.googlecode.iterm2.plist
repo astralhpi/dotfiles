@@ -2053,6 +2053,8 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>FE6BF6B3-37AD-4A08-AB61-4962057D0619</string>
+	<key>EnableAPIServer</key>
+	<true/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
@@ -2711,7 +2713,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>JetBrainsMonoNerdFontComplete-Regular 14</string>
+			<string>JetBrainsMonoNerdFontComplete-Regular 13</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
