@@ -1,13 +1,4 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-#
-#
-# Plugins
-source /usr/local/opt/zinit/zinit.zsh
+source /opt/homebrew/opt/zinit/zinit.zsh
 
 # z-a-bin-gem-node
 zinit light zinit-zsh/z-a-bin-gem-node
