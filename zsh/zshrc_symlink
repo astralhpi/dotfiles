@@ -100,3 +100,10 @@ export CPPFLAGS="-I/usr/local/opt/openssl/include"
 alias tmux='direnv exec / tmux'
 
 precmd () {print -Pn "\e]0;%~\a"}
+
+HISTSIZE=999999999
+SAVEHIST=999999999
+setopt    appendhistory
+setopt    sharehistory
+setopt    incappendhistory
+
