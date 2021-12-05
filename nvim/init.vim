@@ -406,11 +406,14 @@ lua <<EOF
         },
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
+        },
+        { 
             { name = 'vsnip' }, -- For vsnip users.
             { name = 'cmp_tabnine' },
         },
-        { 
+        {
             { name = 'buffer' },
+
         }),
         formatting = {
             format = lspkind.cmp_format({with_text = false, maxwidth = 50})
