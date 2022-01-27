@@ -121,12 +121,8 @@ Plug 'onsails/lspkind-nvim'
 
 
 " IDE - Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'branch' : '0.5-compat'}
-Plug 'nvim-treesitter/nvim-treesitter-textobjects', {'branch' : '0.5-compat'}
-
-" IDE - Snippet
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 
 " IDE - Jenkinsfile
@@ -151,7 +147,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mattn/emmet-vim', { 'for': 'html' }
+Plug 'mattn/emmet-vim'
 Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
 
 " IDE - elixir
@@ -399,7 +395,7 @@ lua <<EOF
             ['<C-e>'] = cmp.mapping.close(),
             ['<CR>'] = cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Replace,
-                select = true,
+                select = false,
             })
 
 
@@ -448,7 +444,7 @@ lua <<EOF
 
     -- Setup lspconfig.
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    local servers = { 'pylsp', 'rust_analyzer', 'svelte', 'tsserver', "cssls", "jsonls", "eslint" }
+    local servers = { 'pylsp', 'rust_analyzer', 'svelte', 'tsserver', "cssls", "jsonls", "eslint", "html" }
     for _, lsp in ipairs(servers) do
         require('lspconfig')[lsp].setup {
             on_attach = on_attach,
