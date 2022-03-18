@@ -34,6 +34,7 @@ brew 'mysql'
 brew 'freetype'
 brew 'usql'
 brew 'icu4c'
+brew 'asdf'
 
 cask 'google-chrome'
 cask 'firefox'
