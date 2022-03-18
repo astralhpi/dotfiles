@@ -52,15 +52,14 @@ zinit light-mode as"program" make'!' mv"direnv* -> direnv" \
     direnv/direnv
 
 # pyenv
-zinit wait lucid as'command' pick'bin/pyenv' atinit'export PYENV_ROOT="$PWD"' \
+zinit wait lucid as'program' pick'bin/pyenv' atinit'export PYENV_ROOT="$PWD"' \
     atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
     atpull"%atclone" src"zpyenv.zsh" nocompile'!' for \
         pyenv/pyenv
 export PATH="$HOME/.zinit/plugins/pyenv---pyenv/shims:${PATH}"
 
-# nodenv
-zinit ice wait lucid
-zinit light C-uo/zsh-env
+# nvm
+zinit wait lucid as'program' src='zsh-nvm.plugin.zsh' nocompile'!' for lukechilds/zsh-nvm
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :200 {}'"
@@ -95,3 +94,4 @@ setopt    appendhistory
 setopt    sharehistory
 setopt    incappendhistory
 
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
