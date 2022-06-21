@@ -85,7 +85,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Plugins - Text
 Plug 'mg979/vim-visual-multi'
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'simnalamburt/vim-mundo' " Undo Tree
 
@@ -268,9 +268,6 @@ let g:indentLine_char= '▏'
 " auto-pairs
 let g:AutoPairsMultilineClose = 0
 
-
-" json
-let g:vim_json_syntax_conceal = 0
 
 " " caw
 map <leader>/ <Plug>(caw:hatpos:toggle)
