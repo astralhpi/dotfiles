@@ -54,15 +54,12 @@ set undodir=~/.vim/undo
 
 " Conceal
 set conceallevel=0
-au FileType * setlocal conceallevel=0 
-
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
 
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
+Plug 'will133/vim-dirdiff'
+
 " Plugins - Buffer
 Plug 'qpkorr/vim-bufkill'
 Plug 'phaazon/hop.nvim'
@@ -118,6 +115,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind-nvim'
+Plug 'github/copilot.vim'
 
 
 " IDE - Treesitter
@@ -171,6 +169,9 @@ Plug 'towolf/vim-helm'
 " IDE - Typescript
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
+" IDE - Terraform
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
@@ -302,7 +303,13 @@ nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
 nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
 nnoremap <silent> <leader>dt :lua require("dapui").toggle()<CR>
 
+" copilot
+let g:copilot_no_tab_map = v:true
+imap <expr> <Plug>(vimrc:copilot-dummy-map) copilot#Accept("\<Tab>")
+
 lua <<EOF
+vim.o.updatetime = 250
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -363,6 +370,7 @@ require('dap-python').test_runner = 'pytest'
 require("dapui").setup()
 EOF
 
+
 set completeopt=menu,menuone,noselect
 lua <<EOF
     local tabnine = require('cmp_tabnine.config')
@@ -400,7 +408,10 @@ lua <<EOF
             ['<CR>'] = cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Replace,
                 select = false,
-            })
+            }),
+            ['<C-g>'] = cmp.mapping(function(fallback)
+                vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)), 'n', true)
+            end)
 
 
         },
