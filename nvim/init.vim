@@ -40,6 +40,11 @@ set mouse=a
 set enc=utf-8
 set fillchars=""
 
+" fold
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldlevel=99
+
 " Better display for messages
 set cmdheight=1
 set laststatus=2
@@ -150,9 +155,6 @@ Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
 
 " IDE - elixir
 Plug 'elixir-lang/vim-elixir'
-
-" IDE - Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 " IDE - Solidity
 Plug 'tomlion/vim-solidity'
