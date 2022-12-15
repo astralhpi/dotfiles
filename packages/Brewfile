@@ -35,6 +35,8 @@ brew 'freetype'
 brew 'usql'
 brew 'icu4c'
 brew 'asdf'
+brew 'just'
+brew 'zoxide'
 
 cask 'google-chrome'
 cask 'firefox'
