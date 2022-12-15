@@ -96,3 +96,4 @@ setopt    incappendhistory
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+eval "$(zoxide init zsh)"

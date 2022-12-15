@@ -64,16 +64,18 @@ set conceallevel=0
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
 Plug 'will133/vim-dirdiff'
+Plug 'junegunn/goyo.vim'
 
 " Plugins - Buffer
 Plug 'qpkorr/vim-bufkill'
 Plug 'phaazon/hop.nvim'
 
 " Plugins - Navigation
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
+
+Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
+Plug 'nvim-tree/nvim-tree.lua'
 
 " Plugins - UI
 Plug 'edkolev/tmuxline.vim'
@@ -121,6 +123,9 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind-nvim'
 Plug 'github/copilot.vim'
+
+" IDE - Just
+Plug 'NoahTheDuke/vim-just'
 
 
 " IDE - Treesitter
@@ -257,7 +262,7 @@ map <M-w> :Windows<CR>
 
 " NERDTree
 let g:NERDTreeNodeDelimiter = "\u00a0"
-nmap <C-\> :NERDTreeToggle<CR>
+nmap <C-\> :NvimTreeToggle<CR>
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
@@ -309,6 +314,25 @@ imap <expr> <Plug>(vimrc:copilot-dummy-map) copilot#Accept("\<Tab>")
 lua <<EOF
 vim.o.updatetime = 250
 vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -447,6 +471,7 @@ lua <<EOF
         buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
         buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
         buf_set_keymap('n', '\\n', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+        buf_set_keymap('n', '\\N', '<cmd>lua vim.lsp.util.rename()<CR>', opts)
         buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
         buf_set_keymap('n', '\\r', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
         buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
@@ -458,8 +483,8 @@ lua <<EOF
     end
 
     -- Setup lspconfig.
-    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    local servers = { 'pylsp', 'rust_analyzer', 'svelte', "cssls", "jsonls", "eslint", "html"}
+    local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local servers = { 'pyright', 'rust_analyzer', 'svelte', "cssls", "jsonls", "eslint", "html"}
     for _, lsp in ipairs(servers) do
         require('lspconfig')[lsp].setup {
             on_attach = on_attach,
@@ -529,8 +554,8 @@ lua <<EOF
             -- required to fix code action ranges and filter diagnostics
             ts_utils.setup_client(client)
 
-            client.resolved_capabilities.document_formatting = false
-            client.resolved_capabilities.document_range_formatting = false
+            client.server_capabilities.document_formatting = false
+            client.server_capabilities.document_range_formatting = false
 
             on_attach(client, bufnr)
         end,
@@ -540,10 +565,4 @@ lua <<EOF
         }
 
     }
-
-    require("null-ls").setup({
-        sources = {
-            require("null-ls").builtins.formatting.prettier,
-        },
-    })
 EOF
