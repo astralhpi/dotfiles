@@ -18,8 +18,8 @@ $time
 """
 
 [character]
-error_symbol = "[λ](bold #ff9580)"
-success_symbol = "[λ](bold #8aff80)"
+error_symbol = "[✘](bold #ff9580)"
+success_symbol = "[❯](bold #8aff80)"
 
 [git_status]
 style = "bold #ffaa99"
