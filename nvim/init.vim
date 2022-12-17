@@ -94,10 +94,8 @@ Plug 'simnalamburt/vim-mundo' " Undo Tree
 " IDE - Common 
 Plug 'jiangmiao/auto-pairs'
 Plug 'elzr/vim-json'
-"Plug 'liuchengxu/vista.vim' " For symbol tree
 Plug 'tpope/vim-fugitive' " Git commands
 Plug 'lewis6991/gitsigns.nvim'
-"Plug 'airblade/vim-gitgutter'
 Plug 'tyru/caw.vim' " Comment
 Plug 'Shougo/context_filetype.vim' " Change file type by context
 Plug 'janko-m/vim-test' " Test Commands
