@@ -18,23 +18,25 @@ $time
 """
 
 [character]
-error_symbol = "[λ](bold #ff5555)"
-success_symbol = "[λ](bold #50fa7b)"
+error_symbol = "[λ](bold #ff9580)"
+success_symbol = "[λ](bold #8aff80)"
 
 [git_status]
-style = "bold #ff5555"
+style = "bold #ffaa99"
 
 [hostname]
-style = "bold #bd93f9"
+format = "[$ssh_symbol$hostname]($style)❯"
+style = "#ff80bf"
+ssh_symbol = "@"
 
 [username]
-format = "[$user]($style) on "
-style_user = "bold #8be9fd"
+format = "❮[$user]($style)"
+style_user = "#80ffea"
 
 [aws]
 format = '[$symbol($profile )(\($region\) )]($style)'
-style = "bold #ffb86c"
-symbol = "  "
+style = "bold #ff80bf"
+symbol = " "
 
 [aws.region_aliases]
 ap-northeast-2 = "seoul"
@@ -44,16 +46,19 @@ format = '[$symbol$context( \($namespace\))]($style)'
 disabled = false
 
 [time]
+time_format = "%M:%S"
 format = "[$time]($style)"
 disabled = false
+style = "bold #504c67"
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "bold #f1fa8c"
+style = "bold #ffff99"
 
 [python]
 format = '[${symbol}${pyenv_prefix}($virtualenv)]($style) '
 symbol = " "
+style = "#9580ff"
 
 [buf]
 symbol = " "
@@ -70,7 +75,7 @@ symbol = " "
 [directory]
 read_only = " "
 fish_style_pwd_dir_length = 1
-style = "bold #50fa7b"
+style = "bold #9580ff"
 
 [docker_context]
 symbol = " "
@@ -84,7 +89,7 @@ symbol = " "
 [git_branch]
 symbol = " "
 format = "[$symbol$branch(:$remote_branch)]($style) "
-style = "bold #ff79c6"
+style = "bold #80ffea"
 
 [golang]
 symbol = " "
@@ -119,6 +124,7 @@ symbol = " "
 [nodejs]
 symbol = " "
 format = "[$symbol($version )]($style)"
+style = "#a2ff99"
 
 [package]
 symbol = " "
