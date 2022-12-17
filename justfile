@@ -17,7 +17,11 @@ zsh: (
 
 tmux: (
     _link 'tmux/tmux.conf' home_dir / '.tmux.conf') (
-    _clone 'https://github.com/tmux-plugins/tpm' home_dir / '.tmux/plugins/tpm')
+    _clone 'https://github.com/tmux-plugins/tpm' home_dir / '.tmux/plugins/tpm') (
+    _clone 'https://github.com/erikw/tmux-powerline' home_dir / '.tmux/plugins/tmux-powerline') (
+    _link 'tmux/powerline/tmux-powerlinerc' home_dir / '.tmux-powerlinerc') (
+    _link 'tmux/powerline' home_dir / '.tmux/powerline'
+    )
 
 git: (_link 'config/gitconfig' home_dir / '.gitconfig')
 
