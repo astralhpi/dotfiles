@@ -4,10 +4,10 @@ home_dir := env_var('HOME')
 default:
     just {{os}}
 
-common: packages && font zsh tmux nvim git direnv chsh
+common: packages && font zsh tmux nvim git direnv starship chsh
 
 packages-python:
-    cd packages && pip install -r requirements.txt
+    cd packages && pip3 install -r requirements.txt
 
 zsh: (
     _link 'zsh/zprofile' home_dir / '.zprofile') (
@@ -25,6 +25,8 @@ nvim: _config-dir && (_link 'config/nvim' home_dir / '.config/nvim')
     nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
 
 direnv: _config-dir && (_link 'config/direnvrc' home_dir / '.direnvrc')
+
+starship: (_link 'config/starship.toml' home_dir / '.config/starship.toml')
 
 chsh: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
 
@@ -75,7 +77,7 @@ _config-dir: (_run-if
 
 _clone repo dst: (_run-if-not-exists "git clone" repo dst)
 _cp src dst: (_run-if-not-exists "cp -n" src dst)
-_link src dst: (_run-if-not-exists "ln -s" src dst)
+_link src dst: (_run-if-not-exists "ln -s" justfile_directory() / src dst)
 
 _run-if-not-exists cmd src dst: (_run-if
     "! ([ -f " + dst + " ] || [ -d " + dst + " ])"

@@ -31,6 +31,7 @@ brew 'usql'
 brew 'icu4c'
 brew 'asdf'
 brew 'zoxide'
+brew 'starship'
 
 cask 'google-chrome'
 cask 'firefox'

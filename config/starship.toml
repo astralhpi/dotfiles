@@ -1,0 +1,141 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = false
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$character"""
+
+right_format = """
+$nodejs\
+$python\
+$kubernetes \
+$time
+"""
+
+[character]
+error_symbol = "[λ](bold #ff5555)"
+success_symbol = "[λ](bold #50fa7b)"
+
+[git_status]
+style = "bold #ff5555"
+
+[hostname]
+style = "bold #bd93f9"
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold #8be9fd"
+
+[aws]
+format = '[$symbol($profile )(\($region\) )]($style)'
+style = "bold #ffb86c"
+symbol = "  "
+
+[aws.region_aliases]
+ap-northeast-2 = "seoul"
+
+[kubernetes]
+format = '[$symbol$context( \($namespace\))]($style)'
+disabled = false
+
+[time]
+format = "[$time]($style)"
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "bold #f1fa8c"
+
+[python]
+format = '[${symbol}${pyenv_prefix}($virtualenv)]($style) '
+symbol = " "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " "
+fish_style_pwd_dir_length = 1
+style = "bold #50fa7b"
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch(:$remote_branch)]($style) "
+style = "bold #ff79c6"
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[meson]
+symbol = "喝 "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[package]
+symbol = " "
+
+
+[rlang]
+symbol = "ﳒ "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
+
