@@ -1,7 +1,9 @@
 cask_args appdir: '/Applications'
 
+tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'xo/xo'
+tap 'pulumi/tap'
 
 brew 'm-cli'
 brew 'mas'
