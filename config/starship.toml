@@ -13,6 +13,7 @@ $character"""
 right_format = """
 $nodejs\
 $python\
+$aws\
 $time
 """
 
