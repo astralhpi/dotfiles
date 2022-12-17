@@ -34,7 +34,7 @@ chsh: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
 # macOS Only
 # ===============================================================================
 [macos]
-macos: common karabiner hammerspoon polyglot
+macos: common karabiner hammerspoon polyglot nushell
 
 [macos]
 packages: packages-brew packages-python
@@ -58,6 +58,13 @@ font:
 [macos]
 hammerspoon: (_link 'hammerspoon' home_dir / '.hammerspoon')
 
+[macos]
+nushell: (
+    _dir home_dir / "'/Library/Application Support/nushell'") (
+    _link 'nushell/env.nu' home_dir / "'/Library/Application Support/nushell/env.nu'") (
+    _link 'nushell/config.nu' home_dir / "'/Library/Application Support/nushell/config.nu'")
+
+
 # ===============================================================================
 # Polyglot Language Support
 # ===============================================================================
@@ -71,9 +78,11 @@ rust: (_install-if-not-installed
 # ===============================================================================
 # Common Private Recipes
 # ===============================================================================
-_config-dir: (_run-if
-    "[ ! -d "+ home_dir +"/.config ]"
-    "mkdir -p " + home_dir + "/.config")
+_config-dir: (_dir home_dir / '.config')
+
+_dir path: (_run-if
+    "[ ! -d "+ path + " ]"
+    "mkdir -p " + path)
 
 _clone repo dst: (_run-if-not-exists "git clone" repo dst)
 _cp src dst: (_run-if-not-exists "cp -n" src dst)

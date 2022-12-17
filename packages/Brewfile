@@ -32,6 +32,7 @@ brew 'icu4c'
 brew 'asdf'
 brew 'zoxide'
 brew 'starship'
+brew 'nushell'
 
 cask 'google-chrome'
 cask 'firefox'
