@@ -126,6 +126,7 @@ Plug 'github/copilot.vim'
 
 " IDE - Just
 Plug 'NoahTheDuke/vim-just'
+Plug 'IndianBoy42/tree-sitter-just'
 
 
 " IDE - Treesitter
