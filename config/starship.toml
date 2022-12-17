@@ -13,7 +13,6 @@ $character"""
 right_format = """
 $nodejs\
 $python\
-$kubernetes \
 $time
 """
 
