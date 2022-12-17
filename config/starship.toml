@@ -46,7 +46,7 @@ format = '[$symbol$context( \($namespace\))]($style)'
 disabled = false
 
 [time]
-time_format = "%M:%S"
+time_format = "%H:%M"
 format = "[$time]($style)"
 disabled = false
 style = "bold #504c67"
