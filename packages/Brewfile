@@ -41,6 +41,7 @@ brew 'kubernetes-cli'
 brew 'awscli'
 brew 'mitmproxy'
 brew 'pulumi'
+brew 'lua'
 
 cask 'google-chrome'
 cask 'firefox'
