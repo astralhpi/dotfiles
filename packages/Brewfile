@@ -1,6 +1,5 @@
 cask_args appdir: '/Applications'
 
-tap 'neovim/neovim'
 tap 'xo/xo'
 
 brew 'm-cli'
@@ -10,21 +9,16 @@ brew 'tmux'
 brew 'zsh'
 brew 'reattach-to-user-namespace'
 brew 'python'
-brew 'ctags'
 brew 'node'
-brew 'the_silver_searcher'
 brew 'thefuck'
-brew 'mosh'
 brew 'pyenv'
 brew 'mysql-client'
 brew 'pnpm'
-brew 'rustup'
 brew 'ripgrep'
 brew 'fd'
 brew 'zinit'
 brew 'bat'
 brew 'nodenv'
-brew 'svn'
 brew 'go'
 brew 'coreutils'
 brew 'fzf'
@@ -35,7 +29,6 @@ brew 'freetype'
 brew 'usql'
 brew 'icu4c'
 brew 'asdf'
-brew 'just'
 brew 'zoxide'
 
 cask 'google-chrome'
@@ -49,18 +42,15 @@ cask 'hammerspoon'
 cask 'docker'
 cask 'calibre'
 cask 'amethyst'
-cask 'spotify'
 cask 'devonthink'
 cask 'adguard'
 cask 'anki'
 cask 'font-jetbrains-mono-nerd-font'
-cask 'dropbox'
+cask 'gimp'
 
 mas 'Xcode', id: 497799835
 mas 'Slack', id: 803453959
-mas 'Pixelmator', id: 407963104
 mas 'KakakoTalk', id: 869223134
-mas 'Scapple', id: 568020055
 mas 'Pocket', id: 568494494
 mas 'Flow', id: 1423210932
 mas 'Things 3', id: 904280696
