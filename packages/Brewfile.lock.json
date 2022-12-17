@@ -1412,6 +1412,15 @@
             "appdir": "/Applications"
           }
         }
+      },
+      "gimp": {
+        "version": "2.10.32",
+        "options": {
+          "full_name": "gimp",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
       }
     },
     "mas": {
