@@ -38,7 +38,7 @@ chsh: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
 # macOS Only
 # ===============================================================================
 [macos]
-macos: common karabiner hammerspoon polyglot nushell
+macos: common karabiner hammerspoon polyglot nushell sudo-with-touchid
 
 [macos]
 packages: packages-brew packages-python
@@ -67,6 +67,12 @@ nushell: (
     _dir home_dir / "'/Library/Application Support/nushell'") (
     _link 'nushell/env.nu' home_dir / "'/Library/Application Support/nushell/env.nu'") (
     _link 'nushell/config.nu' home_dir / "'/Library/Application Support/nushell/config.nu'")
+
+[macos]
+sudo-with-touchid: (_run-if 
+        "! cat /etc/pam.d/sudo | grep pam_tid.so > /dev/null"
+        "sudo sed -i '' '2s/^/auth       sufficient     pam_tid.so\\n/' /etc/pam.d/sudo"
+    )
 
 
 # ===============================================================================
