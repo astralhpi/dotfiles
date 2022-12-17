@@ -10,5 +10,4 @@ Personal dotfiles for macOS
 
 ## Requirements
 
- * macOS 10.12.*
- * macOS 10.13.*
+ * macOS 13.* (Apple Silicon)
