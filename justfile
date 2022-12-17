@@ -32,7 +32,7 @@ chsh: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
 # macOS Only
 # ===============================================================================
 [macos]
-macos: common karabiner hammerspoon
+macos: common karabiner hammerspoon polyglot
 
 [macos]
 packages: packages-brew packages-python
