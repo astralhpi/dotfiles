@@ -25,8 +25,9 @@ tmux: (
 
 git: (_link 'config/gitconfig' home_dir / '.gitconfig')
 
-nvim: _config-dir && (_link 'config/nvim' home_dir / '.config/nvim')
+nvim: _config-dir && (_link 'nvim' home_dir / '.config/nvim')
     nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
+    nvim -c "TSInstall vim python lua rust typescript javascript" -c "qa"
 
 direnv: _config-dir && (_link 'config/direnvrc' home_dir / '.direnvrc')
 
@@ -41,7 +42,7 @@ secret command:
 # macOS Only
 # ===============================================================================
 [macos]
-macos: common karabiner hammerspoon polyglot nushell sudo-with-touchid
+macos: common karabiner hammerspoon polyglot nushell sudo-with-touchid keyboard
 
 [macos]
 packages: packages-brew packages-python
@@ -51,7 +52,13 @@ packages-brew:
     cd packages && brew bundle -v
 
 [macos]
-karabiner: _config-dir && (_link 'config/karabiner' home_dir / '.config/karabiner')
+karabiner: _config-dir && (_link 'karabiner' home_dir / '.config/karabiner')
+
+[macos]
+keyboard:
+    defaults write -g InitialKeyRepeat -int 15
+    defaults write -g KeyRepeat -int 1
+    defaults write -g ApplePressAndHoldEnabled -bool false
 
 [macos]
 font:
