@@ -165,9 +165,6 @@ Plug 'tomlion/vim-solidity'
 " IDE - Rust
 Plug 'rust-lang/rust.vim'
 
-" IDE - Python
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
-
 " IDE - helm
 Plug 'towolf/vim-helm'
 
