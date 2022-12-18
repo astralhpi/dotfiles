@@ -5,13 +5,16 @@ up: (
     _up-home ".ssh/config") (
     _up-home ".aws/credentials") (
     _up-home ".aws/config") (
-    _up-home ".kube/config")
+    _up-home ".kube/config") (
+    _up-home ".zsh_history")
 
 down: (
     _down-home ".ssh/config") (
     _down-home ".aws/credentials") (
     _down-home ".aws/config") (
-    _down-home ".kube/config")
+    _down-home ".kube/config") (
+    _down-home ".zsh_history")
+
 
 _up-home path:
     #!/usr/bin/env bash
