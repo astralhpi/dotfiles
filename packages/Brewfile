@@ -42,7 +42,10 @@ brew 'awscli'
 brew 'mitmproxy'
 brew 'pulumi'
 brew 'lua'
+brew 'direnv'
 
+cask 'mimestream'
+cask 'tailscale'
 cask 'google-chrome'
 cask 'firefox'
 cask '1password'
@@ -72,3 +75,4 @@ mas 'KakakoTalk', id: 869223134
 mas 'Pocket', id: 568494494
 mas 'Flow', id: 1423210932
 mas 'Things 3', id: 904280696
+mas 'Okta Verify', id: 490179405
