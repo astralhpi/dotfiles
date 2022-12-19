@@ -41,6 +41,7 @@ secret command:
 # ===============================================================================
 # macOS Only
 # ===============================================================================
+
 [macos]
 macos: common karabiner hammerspoon polyglot nushell sudo-with-touchid keyboard
 
@@ -88,6 +89,7 @@ sudo-with-touchid: (_run-if
 # ===============================================================================
 # Polyglot Language Support
 # ===============================================================================
+
 polyglot: rust
 
 rust: (_install-if-not-installed
@@ -98,6 +100,7 @@ rust: (_install-if-not-installed
 # ===============================================================================
 # Common Private Recipes
 # ===============================================================================
+
 _config-dir: (_dir home_dir / '.config')
 
 _dir path: (_run-if
