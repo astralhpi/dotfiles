@@ -90,7 +90,7 @@ sudo-with-touchid: (_run-if
 # Polyglot Language Support
 # ===============================================================================
 
-polyglot: rust
+polyglot: rust node
 
 rust: (_install-if-not-installed
         "rustup"
