@@ -43,7 +43,7 @@ secret command:
 # ===============================================================================
 
 [macos]
-macos: common karabiner hammerspoon polyglot nushell sudo-with-touchid keyboard
+macos: common karabiner hammerspoon nushell sudo-with-touchid keyboard
 
 [macos]
 packages: packages-brew packages-python
@@ -93,8 +93,17 @@ sudo-with-touchid: (_run-if
 polyglot: rust
 
 rust: (_install-if-not-installed
-        'rustup'
+        "rustup"
         "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+    )
+
+node: (
+    _install-if-not-installed
+        "typescript-language-server"
+        "npm install -g typescript-language-server typescript") (
+    _install-if-not-installed
+        "vscode-json-language-server"
+        "npm install -g vscode-json-language-server"
     )
 
 # ===============================================================================
