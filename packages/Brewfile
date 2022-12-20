@@ -68,6 +68,7 @@ cask 'lens'
 cask 'notion'
 cask 'visual-studio-code'
 cask 'carbon-copy-cloner'
+cask 'libreoffice'
 
 mas 'Xcode', id: 497799835
 mas 'Slack', id: 803453959
