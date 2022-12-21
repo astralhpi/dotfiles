@@ -2019,6 +2019,10 @@
       "Okta Verify": {
         "id": "490179405",
         "version": "3.9.0"
+      },
+      "Microsoft Remote Desktop": {
+        "id": "1295203466",
+        "version": "10.8.0"
       }
     }
   },
