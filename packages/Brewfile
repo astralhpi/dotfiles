@@ -43,6 +43,7 @@ brew 'mitmproxy'
 brew 'pulumi'
 brew 'lua'
 brew 'direnv'
+brew 'qrencode'
 
 cask 'mimestream'
 cask 'tailscale'
