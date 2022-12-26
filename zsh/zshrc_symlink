@@ -25,6 +25,10 @@ zinit snippet PZTM::gnu-utility
 zinit ice wait lucid
 zinit snippet PZTM::utility
 
+# vim mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
 # oh-my-zsh
 zinit ice wait lucid
 zinit snippet OMZP::fzf
@@ -94,3 +98,6 @@ setopt    incappendhistory
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+
+alias qr='qrencode -m 2 -t utf8 <<< "$1"'
+eval "$(op completion zsh)"; compdef _op op
