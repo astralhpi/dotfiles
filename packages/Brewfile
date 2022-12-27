@@ -46,6 +46,7 @@ brew 'direnv'
 brew 'qrencode'
 brew 'k9s'
 brew 'oha'
+brew 'aws-iam-authenticator'
 
 cask 'mimestream'
 cask 'tailscale'
