@@ -101,3 +101,5 @@ eval "$(starship init zsh)"
 
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 eval "$(op completion zsh)"; compdef _op op
+
+export XDG_CONFIG_HOME="$HOME/.config"

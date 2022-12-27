@@ -29,6 +29,8 @@ nvim: _config-dir && (_link 'nvim' home_dir / '.config/nvim')
     nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
     nvim -c "TSInstall vim python lua rust typescript javascript" -c "qa"
 
+k9s: _k9s-dir && (_link 'config/k9s/skin.yml' home_dir / '.config/k9s/skin.yml')
+
 direnv: _config-dir && (_link 'config/direnvrc' home_dir / '.direnvrc')
 
 starship: (_link 'config/starship.toml' home_dir / '.config/starship.toml')
@@ -111,6 +113,8 @@ node: (
 # ===============================================================================
 
 _config-dir: (_dir home_dir / '.config')
+
+_k9s-dir: (_dir home_dir / '.config/k9s')
 
 _dir path: (_run-if
     "[ ! -d "+ path + " ]"
