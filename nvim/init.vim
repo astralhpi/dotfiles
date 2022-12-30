@@ -128,7 +128,7 @@ Plug 'IndianBoy42/tree-sitter-just'
 
 " IDE - Treesitter
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+"Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 
 " IDE - Jenkinsfile
