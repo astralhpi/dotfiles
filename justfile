@@ -25,8 +25,10 @@ tmux: (
 
 git: (_link 'config/gitconfig' home_dir / '.gitconfig')
 
-nvim: _config-dir && (_link 'nvim' home_dir / '.config/nvim')
-    nvim -c "PlugInstall" -c "UpdateRemotePlugins" -c "qa"
+nvim: _config-dir (
+      _clone 'https://github.com/NvChad/NvChad' home_dir / '.config/nvim') (
+      _link 'nvim/custom' home_dir / '.config/nvim/lua/custom')
+    nvim
     nvim -c "TSInstall vim python lua rust typescript javascript" -c "qa"
 
 k9s: _k9s-dir && (_link 'config/k9s/skin.yml' home_dir / '.config/k9s/skin.yml')
@@ -120,7 +122,7 @@ _dir path: (_run-if
     "[ ! -d "+ path + " ]"
     "mkdir -p " + path)
 
-_clone repo dst: (_run-if-not-exists "git clone" repo dst)
+_clone repo dst: (_run-if-not-exists "git clone --depth 1" repo dst)
 _cp src dst: (_run-if-not-exists "cp -n" src dst)
 _link src dst: (_run-if-not-exists "ln -s" justfile_directory() / src dst)
 
