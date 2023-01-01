@@ -40,7 +40,7 @@ starship: (_link 'config/starship.toml' home_dir / '.config/starship.toml')
 chsh: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
 
 secret command:
-    just --justfile keybase.justfile {{command}}
+    just --justfile keybase.just {{command}}
 
 # ===============================================================================
 # macOS Only
