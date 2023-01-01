@@ -528,6 +528,8 @@ let-env config = {
 }
 
 source ~/.cache/starship/init.nu
-source ~/.zoxide.nu
+# TODO: zoxide 업데이트 이후, 주석 해제
+# source ~/.zoxide.nu
+
 
 alias vim = nvim

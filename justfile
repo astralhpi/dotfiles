@@ -37,8 +37,13 @@ k9s: _k9s-dir && (_link 'config/k9s/skin.yml' home_dir / '.config/k9s/skin.yml')
 direnv: _config-dir && (_link 'config/direnvrc' home_dir / '.direnvrc')
 
 starship: (_link 'config/starship.toml' home_dir / '.config/starship.toml')
+  mkdir -p ~/.cache/starship
+  starship init nu | save -f ~/.cache/starship/init.nu
 
-chsh: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
+chsh: chsh-zsh
+
+chsh-zsh: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
+chsh-nushell: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
 
 secret command:
     just --justfile keybase.just {{command}}
@@ -83,6 +88,7 @@ nushell: (
     _dir home_dir / "'/Library/Application Support/nushell'") (
     _link 'nushell/env.nu' home_dir / "'/Library/Application Support/nushell/env.nu'") (
     _link 'nushell/config.nu' home_dir / "'/Library/Application Support/nushell/config.nu'")
+  #!/usr/bin/env nu
 
 [macos]
 sudo-with-touchid: (_run-if 

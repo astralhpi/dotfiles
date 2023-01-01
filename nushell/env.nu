@@ -69,3 +69,5 @@ let-env HOMEBREW_CELLAR = "/opt/homebrew/Cellar"
 let-env HOMEBREW_REPOSITORY = "/opt/homebrew"
 let-env EDITOR = "nvim"
 let-env VISUAL = "nvim"
+
+zoxide init nushell | save -f ~/.zoxide.nu
