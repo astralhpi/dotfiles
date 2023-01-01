@@ -38,7 +38,7 @@ direnv: _config-dir && (_link 'config/direnvrc' home_dir / '.direnvrc')
 
 starship: (_link 'config/starship.toml' home_dir / '.config/starship.toml')
   mkdir -p ~/.cache/starship
-  starship init nu | save -f ~/.cache/starship/init.nu
+  starship init nu > ~/.cache/starship/init.nu
 
 chsh: chsh-zsh
 
