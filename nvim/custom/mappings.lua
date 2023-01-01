@@ -77,7 +77,12 @@ M.lspconfig = {
       "lsp formatting",
     },
   }
+}
 
+M.copilot = {
+  i = {
+    ["<C-g>"] = { "copilot#Accept()", opts = { expr = true }},
+  }
 }
 
 return M

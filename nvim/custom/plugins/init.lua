@@ -59,6 +59,10 @@ return {
       require('custom.plugins.configs.others').symbols_outline()
     end
   },
+  -- IDE - Auto Completion
+  ["hrsh7th/nvim-cmp"] = {
+    override_options = require("custom.plugins.configs.others").cmp(),
+  },
   -- IDE - Diagnostics
   ["folke/trouble.nvim"] = {
     cmd = { "TroubleToggle", "Trouble" },
@@ -98,11 +102,8 @@ return {
     end,
   },
   -- IDE - AI Assistants
-  ["zbirenbaum/copilot.lua"] = {
+  ["github/copilot.vim"] = {
     event = "InsertEnter",
-    config = function ()
-      require('custom.plugins.configs.others').copilot()
-    end,
   },
 
   -- IDE - Just

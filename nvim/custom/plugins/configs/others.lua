@@ -70,4 +70,13 @@ M.symbols_outline = function()
   symbols_outline.setup()
 end
 
+M.cmp = function()
+  return {
+    performance = {
+      debounce = 120,
+      throttle = 60,
+    },
+  }
+end
+
 return M

@@ -21,3 +21,6 @@ opt.foldcolumn = '0'
 
 -- etc
 opt.visualbell = true
+
+-- plugin
+g.copilot_no_tab_map = true
