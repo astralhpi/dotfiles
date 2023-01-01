@@ -4,7 +4,6 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'xo/xo'
 tap 'pulumi/tap'
-tap 'jesseduffield/lazygit/lazygit'
 
 brew 'm-cli'
 brew 'mas'
