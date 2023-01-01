@@ -29,4 +29,9 @@ return {
       require('custom.plugins.configs.nvimtree')
     end
   },
+
+  -- IDE - Just
+  ["NoahTheDuke/vim-just"] = {
+    ft = { "just" }
+  }
 }
