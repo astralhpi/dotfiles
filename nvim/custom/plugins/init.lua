@@ -11,6 +11,9 @@ return {
     opt = true,
     override_options = require("custom.plugins.configs.others").blankline(),
   },
+  ["nvim-treesitter/nvim-treesitter"] = {
+    override_options = require("custom.plugins.configs.treesitter"),
+  },
   ["kevinhwang91/nvim-ufo"] = {
     requires = 'kevinhwang91/promise-async',
     after = "nvim-treesitter",

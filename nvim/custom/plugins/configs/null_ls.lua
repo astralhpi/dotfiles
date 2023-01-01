@@ -17,6 +17,12 @@ local options = {
 
     -- rust
     null_ls.builtins.formatting.rustfmt,
+
+    -- terraform
+    null_ls.builtins.formatting.terraform_fmt,
+
+    -- yaml
+    null_ls.builtins.formatting.yamlfmt,
   }
 }
 

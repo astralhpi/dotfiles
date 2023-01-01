@@ -16,5 +16,13 @@ return {
     "mypy",
     "black",
     "flake8",
+
+    -- terrafrom
+    "terraform-ls",
+
+    -- yaml
+    "yaml-language-server",
+    "yamlfmt",
+
   }
 }

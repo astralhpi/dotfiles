@@ -11,6 +11,12 @@ local servers = {
 
   -- python
   "pyright",
+
+  -- terraform
+  "terraformls",
+
+  -- yaml
+  "yamlls"
 }
 
 for _, lsp in ipairs(servers) do
