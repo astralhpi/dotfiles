@@ -36,20 +36,22 @@ return {
     after = "nvim-cmp",
     override_options = require("custom.plugins.configs.others").autopairs()
   },
+  ["nvim-telescope/telescope-fzf-native.nvim"] = {
+    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  },
   ["nvim-telescope/telescope.nvim"] = {
     requires = {
       "debugloop/telescope-undo.nvim",
-      "nvim-lua/plenary.nvim"
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-fzf-native.nvim",
     },
-    config = function()
-      require('plugins.configs.telescope')
-      require('custom.plugins.configs.others').telescope()
-    end
+    override_options = require("custom.plugins.configs.others").telescope(),
   },
   ['simrat39/symbols-outline.nvim'] = {
     config = function()
       require('custom.plugins.configs.others').symbols_outline()
     end
+
   },
 
   -- IDE - AI Assistants

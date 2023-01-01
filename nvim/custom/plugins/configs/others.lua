@@ -60,8 +60,9 @@ M.autopairs = function()
 end
 
 M.telescope = function()
-  local present, telescope = pcall(require, "telescope")
-  telescope.load_extension("undo")
+  return {
+    extensions_list = { "themes", "terms", "undo", "fzf" },
+  }
 end
 
 M.symbols_outline = function()

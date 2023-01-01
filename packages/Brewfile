@@ -49,6 +49,7 @@ brew 'oha'
 brew 'aws-iam-authenticator'
 brew 'sd'
 brew 'lazygit'
+brew 'cmake'
 
 cask 'mimestream'
 cask 'tailscale'
