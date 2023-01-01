@@ -14,8 +14,10 @@ return {
   ["nvim-treesitter/nvim-treesitter"] = {
     override_options = require("custom.plugins.configs.treesitter"),
   },
+  ['kevinhwang91/promise-async'] = {
+    module = { "async", "promise" }
+  },
   ["kevinhwang91/nvim-ufo"] = {
-    requires = 'kevinhwang91/promise-async',
     after = "nvim-treesitter",
     config = function ()
       require('custom.plugins.configs.others').ufo()
@@ -29,34 +31,49 @@ return {
   },
   ["ggandor/leap.nvim"] = {
     requires = 'tpope/vim-repeat',
+    keys = { "s", "S", "g" },
     config = function ()
       require('leap').add_default_mappings()
     end
   },
   ["mg979/vim-visual-multi"] = {
+    event = "VimEnter",
   },
   ["windwp/nvim-autopairs"] = {
-    after = "nvim-cmp",
     override_options = require("custom.plugins.configs.others").autopairs()
   },
   ["nvim-telescope/telescope-fzf-native.nvim"] = {
+    module = "telescope._extensions.fzf",
     run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   },
+  ["debugloop/telescope-undo.nvim"] = {
+    module = "telescope._extensions.undo",
+  },
   ["nvim-telescope/telescope.nvim"] = {
-    requires = {
-      "debugloop/telescope-undo.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-fzf-native.nvim",
-    },
+    after = { "telescope-undo.nvim", "telescope-fzf-native.nvim" },
     override_options = require("custom.plugins.configs.others").telescope(),
   },
   ['simrat39/symbols-outline.nvim'] = {
+    cmd = "SymbolsOutline",
     config = function()
       require('custom.plugins.configs.others').symbols_outline()
     end
-
   },
-
+  -- IDE - Diagnostics
+  ["folke/trouble.nvim"] = {
+    cmd = { "TroubleToggle", "Trouble" },
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+      }
+    end
+  },
+  ["folke/lsp-colors.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require("lsp-colors").setup {}
+    end
+  },
   -- IDE - Language Server
   ["williamboman/mason.nvim"] = {
     override_options = require("custom.plugins.configs.mason")
@@ -78,6 +95,10 @@ return {
     end,
   },
   ["jose-elias-alvarez/null-ls.nvim"] = {
+    opt = true,
+    setup = function()
+      require("core.lazy_load").on_file_open "null-ls.nvim"
+    end,
     config = function()
       require "custom.plugins.configs.null_ls"
     end,
