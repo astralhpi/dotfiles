@@ -54,6 +54,31 @@ return {
 
   },
 
+  -- IDE - Language Server
+  ["williamboman/mason.nvim"] = {
+    override_options = require("custom.plugins.configs.mason")
+  },
+  ["williamboman/mason-lspconfig.nvim"] = {
+    requires = {"williamboman/mason.nvim"},
+    module = { "mason" },
+    config = function ()
+      require('mason-lspconfig').setup()
+    end
+  },
+  ["neovim/nvim-lspconfig"] = {
+    requires = {
+      "williamboman/mason-lspconfig.nvim",
+    },
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.plugins.configs.lspconfig"
+    end,
+  },
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+    config = function()
+      require "custom.plugins.configs.null_ls"
+    end,
+  },
   -- IDE - AI Assistants
   ["zbirenbaum/copilot.lua"] = {
     event = "InsertEnter",

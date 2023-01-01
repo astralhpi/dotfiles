@@ -62,4 +62,22 @@ M.symbols_outline = {
   }
 }
 
+M.lspconfig = {
+  n = {
+    ["<C-]>"] = {
+      function()
+        vim.lsp.buf.definition()
+      end,
+      "lsp definition",
+    },
+    ["<leader>fm"] = {
+      function()
+        vim.lsp.buf.format { async = true }
+      end,
+      "lsp formatting",
+    },
+  }
+
+}
+
 return M
