@@ -53,4 +53,20 @@ M.copilot = function()
   copilot.setup(options)
 end
 
+M.autopairs = function()
+  return {
+    map_bs = false
+  }
+end
+
+M.telescope = function()
+  local present, telescope = pcall(require, "telescope")
+  telescope.load_extension("undo")
+end
+
+M.symbols_outline = function()
+  local present, symbols_outline = pcall(require, "symbols-outline")
+  symbols_outline.setup()
+end
+
 return M
