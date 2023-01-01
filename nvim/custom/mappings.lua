@@ -52,6 +52,7 @@ M.telescope = {
     ["<leader>fu"] = { "<cmd> Telescope undo <CR>", "show undo history" },
     ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols<CR>", "show document symbole" },
     ["<leader>fS"] = { "<cmd> Telescope lsp_workspace_symbols<CR>", "show workspace symbole" },
+    ["<leader>tr"] = { "<cmd> Telescope resume<CR>", "telescope resume" },
   }
 }
 

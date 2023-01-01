@@ -1,6 +1,6 @@
 -- First read our docs (completely) then check the example_config repo
 
-require "custom/options"
+require "custom.options"
 local M = {}
 
 M.ui = {
@@ -9,5 +9,7 @@ M.ui = {
 
 M.mappings = require "custom.mappings"
 M.plugins = require "custom.plugins"
+
+require 'custom.commands'
 
 return M
