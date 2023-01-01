@@ -29,30 +29,6 @@ M.ufo = function()
   ufo.setup(options)
 end
 
-M.copilot = function()
-  local present, copilot = pcall(require, "copilot")
-
-  if not present then
-    return
-  end
-
-  local options = {
-    panel = {
-      enabled = false
-    },
-    suggestion = {
-      enabled = true,
-      auto_trigger = true,
-      keymap = {
-        accept = "<C-g>",
-      }
-    },
-  }
-
-  options = load_override(options, "zbirenbaum/copilot.lua")
-  copilot.setup(options)
-end
-
 M.autopairs = function()
   return {
     map_bs = false
@@ -76,7 +52,28 @@ M.cmp = function()
       debounce = 120,
       throttle = 60,
     },
+    sources = {
+      { name = "luasnip" },
+      { name = "nvim_lsp" },
+      { name = "buffer" },
+      { name = "nvim_lua" },
+      { name = "path" },
+      { name = "cmp_tabnine"}
+    },
   }
+end
+
+M.cmp_tabnine = function()
+  local present, tabnine = pcall(require, "cmp_tabnine.config")
+
+  local options = {
+    max_lines = 1000,
+    max_num_results = 20,
+    sort = true,
+  }
+
+  options = load_override(options, "cmp_tabnine")
+  tabnine:setup(options)
 end
 
 return M

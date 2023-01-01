@@ -81,7 +81,24 @@ M.lspconfig = {
 
 M.copilot = {
   i = {
-    ["<C-g>"] = { "copilot#Accept()", opts = { expr = true }},
+    ["<C-g>"] = { "copilot#Accept('<CR>')", opts = {
+        noremap = true,
+        expr = true,
+        silent = true,
+        replace_keycodes = false
+      }
+    },
+  }
+}
+
+M.cmp = {
+  i = {
+    ["<C-n>"] = {
+      function()
+        require('cmp').complete()
+      end,
+      "cmp complete",
+    }
   }
 }
 

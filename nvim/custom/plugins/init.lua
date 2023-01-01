@@ -105,6 +105,14 @@ return {
   ["github/copilot.vim"] = {
     event = "InsertEnter",
   },
+  ["tzachar/cmp-tabnine"] = {
+    run = "./install.sh",
+    after = "nvim-cmp",
+    module = { "cmp_tabnine", "cmp_tabnine.compare" },
+    config = function()
+      require("custom.plugins.configs.others").cmp_tabnine()
+    end
+  },
 
   -- IDE - Just
   ["NoahTheDuke/vim-just"] = {
