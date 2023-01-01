@@ -27,7 +27,8 @@ git: (_link 'config/gitconfig' home_dir / '.gitconfig')
 
 nvim: _config-dir (
       _clone 'https://github.com/NvChad/NvChad' home_dir / '.config/nvim') (
-      _link 'nvim/custom' home_dir / '.config/nvim/lua/custom')
+      _link 'nvim/custom' home_dir / '.config/nvim/lua/custom') (
+      _link 'nvim/ftplugin' home_dir / '.config/nvim/ftplugin')
     nvim
     nvim -c "TSInstall vim python lua rust typescript javascript" -c "qa"
 
