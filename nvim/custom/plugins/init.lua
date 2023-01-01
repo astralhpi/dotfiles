@@ -68,12 +68,6 @@ return {
       }
     end
   },
-  ["folke/lsp-colors.nvim"] = {
-    after = "nvim-lspconfig",
-    config = function()
-      require("lsp-colors").setup {}
-    end
-  },
   -- IDE - Language Server
   ["williamboman/mason.nvim"] = {
     override_options = require("custom.plugins.configs.mason")
