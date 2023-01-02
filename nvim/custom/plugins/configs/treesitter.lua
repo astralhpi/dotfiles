@@ -6,6 +6,7 @@ return {
     "rust",
     "typescript",
     "hcl",
+    "terraform",
     "help",
     "yaml",
     "json"
