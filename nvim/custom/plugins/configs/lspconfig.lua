@@ -1,5 +1,6 @@
-local on_attach = require("plugins.configs.lspconfig").on_attach
+local _on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
+local navic = require("nvim-navic")
 
 local lspconfig = require "lspconfig"
 local servers = {
@@ -18,6 +19,14 @@ local servers = {
   -- yaml
   "yamlls"
 }
+
+function on_attach(client, bufnr)
+  _on_attach(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    print("documentSymbolProvider")
+    navic.attach(client, bufnr)
+  end
+end
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

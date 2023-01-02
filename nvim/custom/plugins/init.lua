@@ -59,6 +59,18 @@ return {
       require('custom.plugins.configs.others').symbols_outline()
     end
   },
+  ["SmiteshP/nvim-navic"] = {
+    module = "nvim-navic",
+    config = function()
+      require('nvim-navic').setup()
+    end
+  },
+  ["utilyre/barbecue.nvim"] = {
+    after = { "nvim-navic", "nvim-lspconfig", "nvim-web-devicons" },
+    config = function()
+      require('custom.plugins.configs.barbecue')
+    end,
+  },
   -- IDE - Auto Completion
   ["hrsh7th/nvim-cmp"] = {
     override_options = require("custom.plugins.configs.others").cmp(),
