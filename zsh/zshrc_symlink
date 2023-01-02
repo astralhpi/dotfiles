@@ -45,11 +45,9 @@ zinit wait lucid light-mode for \
       zsh-users/zsh-completions
 
 # direnv
-zinit ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
-    atpull'%atclone' src"zhook.zsh"
-zinit light direnv/direnv
-
-zinit ice from"gh-r" as"program" mv"direnv* -> direnv"
+zinit ice from"gh-r" as"program" bpick"*arm*" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    pick"direnv" src="zhook.zsh"
 zinit light direnv/direnv
 
 # pyenv
