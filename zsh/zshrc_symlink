@@ -60,6 +60,7 @@ export PATH="$HOME/.zinit/plugins/pyenv---pyenv/shims:${PATH}"
 # nvm
 zinit wait lucid as'program' src='zsh-nvm.plugin.zsh' nocompile'!' for lukechilds/zsh-nvm
 
+# fzf
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :200 {}'"
 
@@ -67,12 +68,24 @@ export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-ran
 zinit ice wait lucid
 zinit light laggardkernel/zsh-thefuck
 
+# zoxide
+zinit ice wait"1" as"command" from"gh-r" bpick"*aarch64*" lucid \
+  mv"zoxide* -> zoxide" \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh" nocompile'!'
+zinit light ajeetdsouza/zoxide
+
+# starship
+zinit ice as"command" from"gh-r"  bpick"*aarch64*" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
+
 autoload compinit
 compinit
 
 # alias
 alias vim=nvim
-eval $(thefuck --alias)
 
 # color
 export CLICOLOR=1;
@@ -94,8 +107,6 @@ setopt    incappendhistory
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
 
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 eval "$(op completion zsh)"; compdef _op op
