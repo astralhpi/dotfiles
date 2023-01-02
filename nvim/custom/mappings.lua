@@ -76,6 +76,19 @@ M.lspconfig = {
       end,
       "lsp formatting",
     },
+    ["[d"] = {
+      function()
+        vim.diagnostic.goto_prev()
+      end,
+      "goto prev",
+    },
+
+    ["]d"] = {
+      function()
+        vim.diagnostic.goto_next()
+      end,
+      "goto_next",
+    },
   }
 }
 
