@@ -4,16 +4,21 @@ home_dir := env_var('HOME')
 default:
     just {{os}}
 
-common: packages && font zsh tmux nvim git direnv starship chsh
+common: packages font zsh tmux nvim git direnv starship chsh
 
 packages-python:
     cd packages && pip3 install -r requirements.txt
 
-zsh: (
+zsh: _zinit (
     _link 'zsh/zprofile' home_dir / '.zprofile') (
     _link 'zsh/zshenv' home_dir / '.zshenv') (
     _link 'zsh/zshrc_symlink' home_dir / '.zshrc_symlink') (
     _cp 'zsh/zshrc' home_dir / '.zshrc')
+
+_zinit: (
+  _install-if-not-installed
+  'zinit'
+  'bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"')
 
 tmux: (
     _link 'tmux/tmux.conf' home_dir / '.tmux.conf') (
