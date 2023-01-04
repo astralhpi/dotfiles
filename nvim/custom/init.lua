@@ -1,0 +1,2 @@
+-- cursor
+require("custom.options")

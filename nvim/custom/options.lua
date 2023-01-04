@@ -1,6 +1,9 @@
 local opt = vim.opt
 local g = vim.g
 
+-- cursor
+opt.whichwrap = ""
+
 -- file
 opt.swapfile = false
 opt.backup = true
@@ -24,3 +27,4 @@ opt.visualbell = true
 
 -- plugin
 g.copilot_no_tab_map = true
+

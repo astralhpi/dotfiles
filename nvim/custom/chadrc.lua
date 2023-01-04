@@ -1,6 +1,5 @@
 -- First read our docs (completely) then check the example_config repo
 
-require "custom.options"
 local M = {}
 
 M.ui = {
