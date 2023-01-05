@@ -49,7 +49,6 @@ brew 'cmake'
 cask 'mimestream'
 cask 'tailscale'
 cask 'google-chrome'
-cask 'firefox'
 cask '1password'
 cask '1password-cli'
 cask 'iterm2'
@@ -58,25 +57,19 @@ cask 'alfred'
 cask 'karabiner-elements'
 cask 'hammerspoon'
 cask 'docker'
-cask 'calibre'
 cask 'amethyst'
 cask 'devonthink'
 cask 'adguard'
 cask 'anki'
 cask 'font-jetbrains-mono-nerd-font'
-cask 'gimp'
 cask 'bartender'
 cask 'notion'
 cask 'visual-studio-code'
 cask 'carbon-copy-cloner'
-cask 'libreoffice'
 cask 'obsidian'
 
-mas 'Xcode', id: 497799835
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134
-mas 'Pocket', id: 568494494
 mas 'Flow', id: 1423210932
 mas 'Things 3', id: 904280696
-mas 'Okta Verify', id: 490179405
 mas 'Microsoft Remote Desktop', id: 1295203466
