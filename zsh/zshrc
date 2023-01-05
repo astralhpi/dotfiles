@@ -1,3 +1,14 @@
+# Install zinit
+if [[ ! -f ${zinit_home_escaped}/${ZINIT_REPO_DIR_NAME}/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manag
+er (%F{33}${ZINIT_REPO}%F{220})…%f"
+    command mkdir -p "${zinit_home_escaped}" && command chmod g-rwX "${zinit_home_escaped}"
+    command git clone https://github.com/${ZINIT_REPO} "${zinit_home_escaped}/${ZINIT_REPO_DI
+R_NAME}" && \\
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \\
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
 source $HOME/.zshrc_symlink
 
 if [[ ! -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]]; then
