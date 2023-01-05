@@ -4,7 +4,7 @@ home_dir := env_var('HOME')
 default:
     just {{os}}
 
-common: packages font zsh tmux nvim git direnv starship chsh
+common: packages font polyglot zsh tmux nvim git direnv starship chsh
 
 packages-python:
     cd packages && pip3 install -r requirements.txt
