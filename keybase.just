@@ -3,6 +3,7 @@ home_dir := env_var('HOME')
 
 up: (
     _up-home ".ssh/config") (
+    _up-home ".ssh/authorized_keys") (
     _up-home ".aws/credentials") (
     _up-home ".aws/config") (
     _up-home ".kube/config") (
@@ -10,6 +11,7 @@ up: (
 
 down: (
     _down-home ".ssh/config") (
+    _down-home ".ssh/authorized_keys") (
     _down-home ".aws/credentials") (
     _down-home ".aws/config") (
     _down-home ".kube/config") (
