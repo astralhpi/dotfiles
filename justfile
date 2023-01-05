@@ -30,7 +30,6 @@ nvim: _config-dir (
       _link 'nvim/custom' home_dir / '.config/nvim/lua/custom') (
       _link 'nvim/ftplugin' home_dir / '.config/nvim/ftplugin')
     nvim
-    nvim -c "TSInstall vim python lua rust typescript javascript" -c "qa"
 
 k9s: _k9s-dir && (_link 'config/k9s/skin.yml' home_dir / '.config/k9s/skin.yml')
 
