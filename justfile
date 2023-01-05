@@ -106,20 +106,11 @@ sudo-with-touchid: (_run-if
 # Polyglot Language Support
 # ===============================================================================
 
-polyglot: rust node
+polyglot: rust
 
 rust: (_install-if-not-installed
         "rustup"
         "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
-    )
-
-node: (
-    _install-if-not-installed
-        "typescript-language-server"
-        "npm install -g typescript-language-server typescript") (
-    _install-if-not-installed
-        "vscode-json-language-server"
-        "npm install -g vscode-json-language-server"
     )
 
 # ===============================================================================
