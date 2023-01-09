@@ -98,6 +98,7 @@ sudo-with-touchid: (_run-if
 # ===============================================================================
 # Nix Package Manager
 # ===============================================================================
+
 nix: _nix-pkg-manager _nix-modules
 
 [macos]
@@ -115,12 +116,12 @@ _nix-pkg-manager: (
   _nix-modules)
 
 [macos]
-_nix-modules: _nix-darwin _nix-home-manager
+_nix-modules: nix-darwin nix-home-manager
 
 [linux]
-_nix-modules: _nix-home-manager
+nix-modules: nix-home-manager
 
-_nix-home-manager: (
+nix-home-manager: (
   _dir home_dir / ".config/nixpkgs") (
   _link "nix/home.nix" home_dir / ".config/nixpkgs/home.nix")
     #!/usr/bin/env bash
@@ -135,7 +136,7 @@ _nix-home-manager: (
     home-manager switch
 
 [macos]
-_nix-darwin: (
+nix-darwin: (
   _dir home_dir / ".config/nixpkgs/darwin") (
   _link 'nix/darwin/configuration.nix' home_dir / ".config/nixpkgs/darwin/configuration.nix") (
   _install-if-not-installed
