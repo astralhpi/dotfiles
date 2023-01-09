@@ -4,7 +4,7 @@ home_dir := env_var('HOME')
 default:
     just {{os}}
 
-common: packages font polyglot zsh tmux nvim git direnv starship chsh
+common: packages font polyglot zsh tmux nvim git starship chsh
 
 zsh: (
     _link 'zsh/zprofile' home_dir / '.zprofile') (
@@ -29,8 +29,6 @@ nvim: _config-dir (
     nvim
 
 k9s: _k9s-dir && (_link 'config/k9s/skin.yml' home_dir / '.config/k9s/skin.yml')
-
-direnv: _config-dir && (_link 'config/direnvrc' home_dir / '.direnvrc')
 
 starship: (_link 'config/starship.toml' home_dir / '.config/starship.toml')
   mkdir -p ~/.cache/starship
