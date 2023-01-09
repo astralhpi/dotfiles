@@ -6,9 +6,6 @@ default:
 
 common: packages font polyglot zsh tmux nvim git direnv starship chsh
 
-packages-python:
-    cd packages && pip3 install -r requirements.txt
-
 zsh: (
     _link 'zsh/zprofile' home_dir / '.zprofile') (
     _link 'zsh/zshenv' home_dir / '.zshenv') (
@@ -55,7 +52,7 @@ secret command:
 macos: common karabiner hammerspoon nushell sudo-with-touchid keyboard
 
 [macos]
-packages: packages-brew packages-python
+packages: packages-brew
 
 [macos]
 packages-brew:
@@ -123,7 +120,8 @@ nix-modules: nix-home-manager
 
 nix-home-manager: (
   _dir home_dir / ".config/nixpkgs") (
-  _link "nix/home.nix" home_dir / ".config/nixpkgs/home.nix")
+  _link "nix/home.nix" home_dir / ".config/nixpkgs/home.nix") (
+  _link "nix/node" home_dir / ".config/nixpkgs/node")
     #!/usr/bin/env bash
     set -e
     if [ -z `command -v home-manager` ]; then

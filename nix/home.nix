@@ -1,10 +1,12 @@
 { config, pkgs, programs, ... }:
 
-{
+let extraNodePackages = import ./node/default.nix {};
+in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "jake";
   home.homeDirectory = "/Users/jake";
+
 
   home.packages = [
     # CLI tools - Frequently used
@@ -40,8 +42,13 @@
     pkgs.aws-iam-authenticator
 
     # languages
-    pkgs.python3
+    pkgs.python311
+    pkgs.python311Packages.pip
+    pkgs.poetry
+
     pkgs.nodejs
+    extraNodePackages.pnpm
+
     pkgs.go
     pkgs.nushell
     pkgs.lua
@@ -50,7 +57,7 @@
     pkgs.mycli
     pkgs.mosh
 
-    # build tools
+    # build toolsg
     pkgs.cmake
 
   ];
