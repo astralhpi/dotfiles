@@ -17,7 +17,10 @@ local servers = {
   "terraformls",
 
   -- yaml
-  "yamlls"
+  "yamlls",
+
+  -- nix
+  "nil_ls",
 }
 
 function on_attach(client, bufnr)

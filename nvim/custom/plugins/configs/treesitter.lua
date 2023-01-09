@@ -9,6 +9,7 @@ return {
     "terraform",
     "help",
     "yaml",
-    "json"
+    "json",
+    "nix"
   }
 }

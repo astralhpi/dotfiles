@@ -24,5 +24,8 @@ return {
     "yaml-language-server",
     "yamlfmt",
 
+    -- nix
+    "nil",
+
   }
 }
