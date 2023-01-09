@@ -120,7 +120,9 @@ _nix-modules: _nix-darwin _nix-home-manager
 [linux]
 _nix-modules: _nix-home-manager
 
-_nix-home-manager:
+_nix-home-manager: (
+  _dir home_dir / ".config/nixpkgs") (
+  _link "nix/home.nix" home_dir / ".config/nixpkgs/home.nix")
     #!/usr/bin/env bash
     set -e
     if [ -z `command -v home-manager` ]; then
@@ -130,14 +132,18 @@ _nix-home-manager:
         export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
         nix-shell '<home-manage>' -A install
     fi
+    home-manager switch
 
 [macos]
 _nix-darwin: (
+  _dir home_dir / ".config/nixpkgs/darwin") (
+  _link 'nix/darwin/configuration.nix' home_dir / ".config/nixpkgs/darwin/configuration.nix") (
   _install-if-not-installed
     "darwin-rebuild"
     "nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer;"
     + "./result/bin/darwin-installer"
   )
+  darwin-rebuild switch -I "darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix"
 
 
 # ===============================================================================
