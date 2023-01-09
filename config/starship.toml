@@ -11,6 +11,7 @@ $cmd_duration\
 $character"""
 
 right_format = """
+$nix_shell\
 $nodejs\
 $python\
 $aws\
