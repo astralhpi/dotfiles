@@ -95,6 +95,50 @@ sudo-with-touchid: (_run-if
         "sudo sed -i '' '2s/^/auth       sufficient     pam_tid.so\\n/' /etc/pam.d/sudo"
     )
 
+# ===============================================================================
+# Nix Package Manager
+# ===============================================================================
+nix: _nix-pkg-manager _nix-modules
+
+[macos]
+_nix-pkg-manager: (
+  _install-if-not-installed
+    "nix"
+    "sh <(curl -L https://nixos.org/nix/install)") (
+  _nix-modules)
+
+[linux]
+_nix-pkg-manager: (
+  _install-if-not-installed
+    "nix"
+    "sh <(curl -L https://nixos.org/nix/install) --daemon") (
+  _nix-modules)
+
+[macos]
+_nix-modules: _nix-darwin _nix-home-manager
+
+[linux]
+_nix-modules: _nix-home-manager
+
+_nix-home-manager:
+    #!/usr/bin/env bash
+    set -e
+    if [ -z `command -v home-manager` ]; then
+        echo "Installing Home Manager"
+        nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+        nix-channel --update
+        export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+        nix-shell '<home-manage>' -A install
+    fi
+
+[macos]
+_nix-darwin: (
+  _install-if-not-installed
+    "darwin-rebuild"
+    "nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer;"
+    + "./result/bin/darwin-installer"
+  )
+
 
 # ===============================================================================
 # Polyglot Language Support
