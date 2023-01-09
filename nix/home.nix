@@ -7,6 +7,52 @@
   home.homeDirectory = "/Users/jake";
 
   home.packages = [
+    # CLI tools - Frequently used
+    pkgs.neovim
+    pkgs.tmux
+    pkgs.reattach-to-user-namespace
+    pkgs.direnv
+    pkgs.fd
+    pkgs.bat
+    pkgs.ripgrep
+    pkgs.thefuck
+    pkgs.fzf
+    pkgs.coreutils
+    pkgs.starship
+    pkgs.sd
+    pkgs.zoxide
+
+    # CLI tools - Less frequently used
+    pkgs.qrencode
+
+    # Dev tools
+    pkgs.lazygit
+    pkgs.jq
+    pkgs.yq
+    pkgs.oha
+
+    # Devops
+    pkgs.k9s
+    pkgs.kubectl
+    pkgs.awscli
+    pkgs.helmfile
+    pkgs.pulumi
+    pkgs.aws-iam-authenticator
+
+    # languages
+    pkgs.python3
+    pkgs.nodejs
+    pkgs.go
+    pkgs.nushell
+    pkgs.lua
+
+    # clients
+    pkgs.mycli
+    pkgs.mosh
+
+    # build tools
+    pkgs.cmake
+
   ];
 
   # This value determines the Home Manager release that your

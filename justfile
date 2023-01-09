@@ -137,14 +137,14 @@ nix-home-manager: (
 
 [macos]
 nix-darwin: (
-  _dir home_dir / ".config/nixpkgs/darwin") (
-  _link 'nix/darwin/configuration.nix' home_dir / ".config/nixpkgs/darwin/configuration.nix") (
+  _dir home_dir / ".nixpkgs") (
+  _link 'nix/darwin/configuration.nix' home_dir / ".nixpkgs/darwin-configuration.nix") (
   _install-if-not-installed
     "darwin-rebuild"
     "nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer;"
     + "./result/bin/darwin-installer"
   )
-  darwin-rebuild switch -I "darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix"
+  darwin-rebuild switch
 
 
 # ===============================================================================

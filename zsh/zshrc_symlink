@@ -58,43 +58,23 @@ zinit wait lucid for \
     zsh-users/zsh-completions \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
+    
+zinit light romkatv/zsh-defer
 
-# direnv
-zinit ice from"gh-r" as"program" bpick"*arm*" mv"direnv* -> direnv" \
-    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-    pick"direnv" src="zhook.zsh"
-zinit light direnv/direnv
-
-# pyenv
-zinit wait lucid as'program' pick'bin/pyenv' atinit'export PYENV_ROOT="$PWD"' \
-    atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
-    atpull"%atclone" src"zpyenv.zsh" nocompile'!' for \
-        pyenv/pyenv
-export PATH="$HOME/.zinit/plugins/pyenv---pyenv/shims:${PATH}"
-
-# nvm
-zinit wait lucid as'program' src='zsh-nvm.plugin.zsh' nocompile'!' for lukechilds/zsh-nvm
+zsh-defer eval "$(direnv hook zsh)"
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :200 {}'"
 
 # thefuck
-zinit ice wait lucid
+zinit ice wait'1' lucid
 zinit light laggardkernel/zsh-thefuck
 
 # zoxide
-zinit ice wait"1" as"command" from"gh-r" bpick"*aarch64*" lucid \
-  mv"zoxide* -> zoxide" \
-  atclone"./zoxide init zsh > init.zsh" \
-  atpull"%atclone" src"init.zsh" nocompile'!'
-zinit light ajeetdsouza/zoxide
+zsh-defer eval "$(zoxide init zsh)"
 
-# starship
-zinit ice as"command" from"gh-r"  bpick"*aarch64*" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
+eval "$(starship init zsh)"
 
 # alias
 alias vim=nvim
@@ -117,7 +97,6 @@ setopt    appendhistory
 setopt    sharehistory
 setopt    incappendhistory
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
