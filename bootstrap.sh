@@ -1,18 +1,33 @@
 #!/usr/bin/env bash
 
+set -e
+
 function cmd_exists() {
     local cmd=$1
     type "$cmd" > /dev/null ;
 }
 
+function install_nix_if_need() {
+  option=$1
+  if ! cmd_exists nix; then
+    sh <(curl -L https://nixos.org/nix/install) $option
+  fi
+}
+
 function ubuntu() {
     sudo apt update
+    install_nix_if_need "--daemon"
+
     if ! cmd_exists just; then
-        sudo apt install just
+        echo "Installing just"
+        apt install just
+        echo "Installed just"
     fi
 }
 
 function mac() {
+    install_nix_if_need "--daemon"
+
     if ! cmd_exists brew; then
         echo "Installing Homebrew"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -25,7 +40,6 @@ function mac() {
         brew install just
         echo "Installed just"
     fi
-    just
 }
 
 if [ `uname` == "Darwin" ]; then

@@ -4,7 +4,7 @@ home_dir := env_var('HOME')
 default:
     just {{os}}
 
-common: nix packages font polyglot zsh tmux nvim starship chsh
+common: zsh nix packages font polyglot tmux nvim starship chsh
 
 zsh: (
     _link 'zsh/zprofile' home_dir / '.zprofile') (
@@ -35,7 +35,6 @@ starship: (_link 'config/starship.toml' home_dir / '.config/starship.toml')
 chsh: chsh-zsh
 
 chsh-zsh: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
-chsh-nushell: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
 
 secret command:
     just --justfile keybase.just {{command}}
@@ -92,21 +91,7 @@ sudo-with-touchid: (_run-if
 # Nix Package Manager
 # ===============================================================================
 
-nix: _nix-pkg-manager _nix-modules
-
-[macos]
-_nix-pkg-manager: (
-  _install-if-not-installed
-    "nix"
-    "sh <(curl -L https://nixos.org/nix/install)") (
-  _nix-modules)
-
-[linux]
-_nix-pkg-manager: (
-  _install-if-not-installed
-    "nix"
-    "sh <(curl -L https://nixos.org/nix/install) --daemon") (
-  _nix-modules)
+nix: _nix-modules
 
 [macos]
 _nix-modules: nix-darwin nix-home-manager
