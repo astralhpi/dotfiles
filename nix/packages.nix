@@ -52,7 +52,7 @@ in [
   pkgs.mycli
   pkgs.mosh
 
-  # build toolsg
+  # build tools
   pkgs.cmake
 
 ]
