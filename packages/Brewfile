@@ -5,6 +5,8 @@ tap 'homebrew/cask-fonts'
 tap 'xo/xo'
 tap 'pulumi/tap'
 
+'brew' 'mitmproxy'
+
 cask 'mimestream'
 cask 'tailscale'
 cask 'google-chrome'

@@ -117,7 +117,9 @@ nix-modules: nix-home-manager
 nix-home-manager: (
   _dir home_dir / ".config/nixpkgs") (
   _link "nix/home.nix" home_dir / ".config/nixpkgs/home.nix") (
-  _link "nix/node" home_dir / ".config/nixpkgs/node")
+  _link "nix/packages.nix" home_dir / ".config/nixpkgs/packages.nix") (
+  _link "nix/node" home_dir / ".config/nixpkgs/node") (
+  _link "nix/tools" home_dir / ".config/nixpkgs/tools")
     #!/usr/bin/env bash
     set -e
     if [ -z `command -v home-manager` ]; then
