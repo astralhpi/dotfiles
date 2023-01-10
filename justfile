@@ -4,7 +4,7 @@ home_dir := env_var('HOME')
 default:
     just {{os}}
 
-common: packages font polyglot zsh tmux nvim git starship chsh
+common: packages font polyglot zsh tmux nvim starship chsh
 
 zsh: (
     _link 'zsh/zprofile' home_dir / '.zprofile') (
@@ -19,8 +19,6 @@ tmux: (
     _link 'tmux/powerline/tmux-powerlinerc' home_dir / '.tmux-powerlinerc') (
     _link 'tmux/powerline' home_dir / '.tmux/powerline'
     )
-
-git: (_link 'config/gitconfig' home_dir / '.gitconfig')
 
 nvim: _config-dir (
       _clone 'https://github.com/NvChad/NvChad' home_dir / '.config/nvim') (
