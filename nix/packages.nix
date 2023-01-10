@@ -18,6 +18,7 @@ in [
   pkgs.coreutils
   pkgs.starship
   pkgs.sd
+  pkgs.sad
   pkgs.zoxide
   pkgs.lsd
   pkgs.choose

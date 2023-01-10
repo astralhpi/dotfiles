@@ -71,6 +71,21 @@ return {
       require('custom.plugins.configs.barbecue')
     end,
   },
+  ["ray-x/guihua.lua"] = {
+    run = "cd lua/fzy && make",
+    module = "guihua",
+  },
+  ["ray-x/sad.nvim"] = {
+    commands = { "Sad" },
+    config = function()
+      require("sad").setup {
+        debug = false,
+        diff = "delta",
+        ls_file = "fd",
+      }
+    end
+  },
+
   -- IDE - Auto Completion
   ["hrsh7th/nvim-cmp"] = {
     override_options = require("custom.plugins.configs.others").cmp(),
