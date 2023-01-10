@@ -5,7 +5,8 @@ tap 'homebrew/cask-fonts'
 tap 'xo/xo'
 tap 'pulumi/tap'
 
-'brew' 'mitmproxy'
+brew 'mitmproxy'
+brew 'pam-reattach'
 
 cask 'mimestream'
 cask 'tailscale'

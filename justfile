@@ -82,9 +82,14 @@ nushell: (
   #!/usr/bin/env nu
 
 [macos]
-sudo-with-touchid: (_run-if 
+sudo-with-touchid: (
+      _run-if 
         "! cat /etc/pam.d/sudo | grep pam_tid.so > /dev/null"
         "sudo sed -i '' '2s/^/auth       sufficient     pam_tid.so\\n/' /etc/pam.d/sudo"
+    ) (
+      _run-if
+        "! cat /etc/pam.d/sudo | grep pam_reattach.so > /dev/null"
+        "sudo sed -i '' '2s/^/auth       optional     \\/opt\\/homebrew\\/lib\\/pam\\/pam_reattach.so\\n/' /etc/pam.d/sudo"
     )
 
 # ===============================================================================
