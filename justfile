@@ -4,7 +4,7 @@ home_dir := env_var('HOME')
 default:
     just {{os}}
 
-common: packages font polyglot zsh tmux nvim starship chsh
+common: nix packages font polyglot zsh tmux nvim starship chsh
 
 zsh: (
     _link 'zsh/zprofile' home_dir / '.zprofile') (
@@ -127,7 +127,7 @@ nix-home-manager: (
         nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
         nix-channel --update
         export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
-        nix-shell '<home-manage>' -A install
+        nix-shell '<home-manager>' -A install
     fi
     home-manager switch
 
