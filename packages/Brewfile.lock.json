@@ -8,10 +8,10 @@
         "revision": "9b322f6136b76fc62319f2774727c005fe1e5ecf"
       },
       "homebrew/cask": {
-        "revision": "59231f717d84cb269e6671843edf93bbb5f20de1"
+        "revision": "c05e71b88a988e63fca22d299adef70f1695a26d"
       },
       "pulumi/tap": {
-        "revision": "35bf4c89f505a6b5847735ef8dece7b452749678"
+        "revision": "81fd87cff83d8812fb0159a38ca7dd909ad0e0b8"
       }
     },
     "brew": {
@@ -2369,7 +2369,7 @@
       "ventura": {
         "HOMEBREW_VERSION": "3.6.18",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "01e2f6d3b93eb63a00bf84dfbd1a0cfec4c19752",
+        "Homebrew/homebrew-core": "6484bb519cf43fb9aab7186c117b4b72564afa5c",
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
         "macOS": "13.1"
