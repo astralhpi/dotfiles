@@ -20,8 +20,6 @@ zinit light zdharma-continuum/zinit-annex-patch-dl
 # prezto
 zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:terminal' auto-title 'yes'
-zstyle ':prezto:module:utility:ls' color 'yes'
-zstyle ':prezto:module:utility:ls' dirs-first 'yes'
 zstyle ':prezto:module:utility:grep' color 'yes'
 zstyle ':prezto:module:utility:diff' color 'yes'
 zstyle ':prezto:module:utility:make' color 'yes'
@@ -78,6 +76,9 @@ eval "$(starship init zsh)"
 
 # alias
 alias vim=nvim
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
 
 # color
 export CLICOLOR=1;

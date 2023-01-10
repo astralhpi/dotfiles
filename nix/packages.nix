@@ -19,6 +19,7 @@ in [
   pkgs.starship
   pkgs.sd
   pkgs.zoxide
+  pkgs.lsd
 
   # CLI tools - Less frequently used
   pkgs.qrencode
