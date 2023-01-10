@@ -20,9 +20,18 @@ in [
   pkgs.sd
   pkgs.zoxide
   pkgs.lsd
+  pkgs.choose
+  pkgs.tldr
+  pkgs.procs
 
   # CLI tools - Less frequently used
   pkgs.qrencode
+  pkgs.du-dust
+  pkgs.duf
+  pkgs.bottom
+  pkgs.gping
+  pkgs.httpie
+  pkgs.dogdns
 
   # Dev tools
   pkgs.lazygit
