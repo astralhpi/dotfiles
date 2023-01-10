@@ -24,7 +24,7 @@ nvim: _config-dir (
       _clone 'https://github.com/NvChad/NvChad' home_dir / '.config/nvim') (
       _link 'nvim/custom' home_dir / '.config/nvim/lua/custom') (
       _link 'nvim/ftplugin' home_dir / '.config/nvim/ftplugin')
-    nvim
+    nvim -c "PackerSync"
 
 k9s: _k9s-dir && (_link 'config/k9s/skin.yml' home_dir / '.config/k9s/skin.yml')
 
