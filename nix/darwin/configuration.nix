@@ -19,7 +19,7 @@
   system.stateVersion = 4;
 
   system.defaults = {
-    NSGlobalDomain.InitialKeyRepeat = 10;
+    NSGlobalDomain.InitialKeyRepeat = 15;
     NSGlobalDomain.KeyRepeat = 1;
     NSGlobalDomain.ApplePressAndHoldEnabled = false;
     dock.autohide = true;
