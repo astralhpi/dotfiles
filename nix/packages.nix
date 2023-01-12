@@ -37,15 +37,14 @@ in [
   # Dev tools
   pkgs.lazygit
   pkgs.jq
-  pkgs.yq
+  pkgs.yq-go
   pkgs.oha
 
   # Devops
   pkgs.k9s
   pkgs.kubectl
-  pkgs.awscli
+  pkgs.awscli2
   pkgs.helmfile
-  pkgs.pulumi
   pkgs.aws-iam-authenticator
 
   # languages
