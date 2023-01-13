@@ -14,20 +14,27 @@ M.custom = {
   }
 }
 
+local nextBuffer = {
+  function()
+    require("nvchad_ui.tabufline").tabuflineNext()
+  end,
+  "goto next buffer",
+}
+
+local prevBuffer = {
+  function()
+    require("nvchad_ui.tabufline").tabuflinePrev()
+  end,
+  "goto prev buffer",
+}
+
+
 M.tabufline = {
   n = {
-    ["<M-}>"] = {
-      function()
-        require("nvchad_ui.tabufline").tabuflineNext()
-      end,
-      "goto next buffer",
-    },
-    ["<M-{>"] = {
-      function()
-        require("nvchad_ui.tabufline").tabuflinePrev()
-      end,
-      "goto prev buffer",
-    },
+    ["<M-}>"] = nextBuffer,
+    ["<M-{>"] = prevBuffer,
+    ["<M-S-]>"] = nextBuffer,
+    ["<M-S-[>"] = prevBuffer,
     ["<M-q>"] = {
       function()
         require("nvchad_ui.tabufline").close_buffer()
