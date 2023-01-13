@@ -11,6 +11,7 @@ function install_nix_if_need() {
   option=$1
   if ! cmd_exists nix; then
     sh <(curl -L https://nixos.org/nix/install) $option
+    . /etc/bashrc
   fi
 }
 
