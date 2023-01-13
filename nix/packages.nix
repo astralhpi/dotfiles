@@ -33,6 +33,7 @@ in [
   pkgs.gping
   pkgs.httpie
   pkgs.dogdns
+  pkgs.termshark
 
   # Dev tools
   pkgs.lazygit
