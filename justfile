@@ -44,7 +44,10 @@ secret command:
 # ===============================================================================
 
 [macos]
-macos: common karabiner hammerspoon nushell sudo-with-touchid keyboard
+kitty: (_link 'config/kitty' home_dir / '.config/kitty')
+
+[macos]
+macos: common kitty karabiner hammerspoon nushell sudo-with-touchid keyboard
 
 [macos]
 packages: packages-brew

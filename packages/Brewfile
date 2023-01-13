@@ -29,6 +29,7 @@ cask 'notion'
 cask 'visual-studio-code'
 cask 'carbon-copy-cloner'
 cask 'obsidian'
+cask 'kitty'
 
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134

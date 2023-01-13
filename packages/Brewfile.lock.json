@@ -8,10 +8,10 @@
         "revision": "9b322f6136b76fc62319f2774727c005fe1e5ecf"
       },
       "homebrew/cask": {
-        "revision": "c05e71b88a988e63fca22d299adef70f1695a26d"
+        "revision": "631139ccf98de7c097e091b5932c9406b2de03ec"
       },
       "pulumi/tap": {
-        "revision": "81fd87cff83d8812fb0159a38ca7dd909ad0e0b8"
+        "revision": "2bfa6d008f698308a4f0bbd23fb41b8a99ad61e7"
       }
     },
     "brew": {
@@ -2137,7 +2137,7 @@
     },
     "cask": {
       "google-chrome": {
-        "version": "108.0.5359.124",
+        "version": "109.0.5414.87",
         "options": {
           "full_name": "google-chrome",
           "args": {
@@ -2155,7 +2155,7 @@
         }
       },
       "1password": {
-        "version": "8.9.11",
+        "version": "8.9.12",
         "options": {
           "full_name": "1password",
           "args": {
@@ -2209,7 +2209,7 @@
         }
       },
       "docker": {
-        "version": "4.15.0,93002",
+        "version": "4.16.0,95345",
         "options": {
           "full_name": "docker",
           "args": {
@@ -2227,7 +2227,7 @@
         }
       },
       "amethyst": {
-        "version": "0.16.0",
+        "version": "0.16.1",
         "options": {
           "full_name": "amethyst",
           "args": {
@@ -2317,7 +2317,7 @@
         }
       },
       "visual-studio-code": {
-        "version": "1.74.2",
+        "version": "1.74.3",
         "options": {
           "full_name": "visual-studio-code",
           "args": {
@@ -2369,6 +2369,15 @@
             "appdir": "/Applications"
           }
         }
+      },
+      "kitty": {
+        "version": "0.26.5",
+        "options": {
+          "full_name": "kitty",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
       }
     },
     "mas": {
@@ -2413,7 +2422,7 @@
       "ventura": {
         "HOMEBREW_VERSION": "3.6.18",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "03501f86cbf69c00bb14b47504c55b16ba89ee0d",
+        "Homebrew/homebrew-core": "b89242d712fc2553802a7d97e7bb01d0a7b56e81",
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
         "macOS": "13.1"
