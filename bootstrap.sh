@@ -15,12 +15,11 @@ function install_nix_if_need() {
 }
 
 function ubuntu() {
-    sudo apt update
     install_nix_if_need "--daemon"
 
     if ! cmd_exists just; then
         echo "Installing just"
-        apt install just
+        nix-env -iA nixpkgs.just
         echo "Installed just"
     fi
 }
