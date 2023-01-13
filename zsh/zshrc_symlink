@@ -86,9 +86,6 @@ export CLICOLOR=1;
 function coalesce { print "${${(s: :)@}[1]}" }
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
-
 alias tmux='direnv exec / tmux'
 
 # history
