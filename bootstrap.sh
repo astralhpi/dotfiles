@@ -12,6 +12,7 @@ function install_nix_if_need() {
   if ! cmd_exists nix; then
     sh <(curl -L https://nixos.org/nix/install) $option
     . /etc/bashrc
+    mkdir -p /nix/var/nix/profiles/per-user/$USER
   fi
 }
 
