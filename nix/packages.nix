@@ -46,6 +46,7 @@ in [
   pkgs.kubectl
   pkgs.awscli2
   pkgs.helmfile
+  pkgs.kubernetes-helm
   pkgs.aws-iam-authenticator
 
   # languages
