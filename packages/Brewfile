@@ -30,9 +30,9 @@ cask 'visual-studio-code'
 cask 'carbon-copy-cloner'
 cask 'obsidian'
 cask 'kitty'
+cask 'todoist'
 
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134
 mas 'Flow', id: 1423210932
-mas 'Things 3', id: 904280696
 mas 'Microsoft Remote Desktop', id: 1295203466

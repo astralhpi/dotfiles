@@ -2,16 +2,16 @@
   "entries": {
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "ea84fe986f222730527278fb6afa84c4809be411"
+        "revision": "8a36d012f706a2012a0c344d74adb729d22a8b1f"
       },
       "xo/xo": {
         "revision": "9b322f6136b76fc62319f2774727c005fe1e5ecf"
       },
       "homebrew/cask": {
-        "revision": "631139ccf98de7c097e091b5932c9406b2de03ec"
+        "revision": "eceb28c43aca1e251e05c2948d97e07c743ededd"
       },
       "pulumi/tap": {
-        "revision": "2bfa6d008f698308a4f0bbd23fb41b8a99ad61e7"
+        "revision": "65f772e5e56aa4449de3deccaa8a867eeb08caf7"
       }
     },
     "brew": {
@@ -2155,7 +2155,7 @@
         }
       },
       "1password": {
-        "version": "8.9.12",
+        "version": "8.9.13",
         "options": {
           "full_name": "1password",
           "args": {
@@ -2209,7 +2209,7 @@
         }
       },
       "docker": {
-        "version": "4.16.0,95345",
+        "version": "4.16.1,95567",
         "options": {
           "full_name": "docker",
           "args": {
@@ -2420,9 +2420,9 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "3.6.18",
+        "HOMEBREW_VERSION": "3.6.19",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "b89242d712fc2553802a7d97e7bb01d0a7b56e81",
+        "Homebrew/homebrew-core": "3a9372d57855889b48bc4dfcbccc11035f4c7139",
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
         "macOS": "13.1"
