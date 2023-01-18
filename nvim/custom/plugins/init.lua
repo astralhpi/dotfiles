@@ -144,10 +144,5 @@ return {
   -- IDE - Just
   ["NoahTheDuke/vim-just"] = {
     ft = { "just" }
-  },
-
-  -- TODO
-  ["romgrk/todoist.nvim"] = {
-    commands = { "Todoist" }
-  },
+  }
 }
