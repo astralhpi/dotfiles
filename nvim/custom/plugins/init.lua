@@ -148,7 +148,6 @@ return {
 
   -- TODO
   ["romgrk/todoist.nvim"] = {
-    commands = { "Todoist" },
-    run = ":TodoistInstall"
+    commands = { "Todoist" }
   },
 }
