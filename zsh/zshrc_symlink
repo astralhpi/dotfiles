@@ -79,6 +79,7 @@ alias vim=nvim
 alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
+alias kc='kubectl'
 
 # color
 export CLICOLOR=1;
