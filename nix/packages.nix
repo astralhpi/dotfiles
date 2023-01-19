@@ -67,5 +67,8 @@ in [
   # build tools
   pkgs.cmake
 
+  # for container
+  pkgs.lima
+
 ]
 
