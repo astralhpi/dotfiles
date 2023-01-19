@@ -69,6 +69,7 @@ in [
 
   # for container
   pkgs.lima
+  pkgs.colima
 
 ]
 
