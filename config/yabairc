@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+yabai -m config \
+  layout bsp \
+  external_bar all:0:29 \
+  window_placement second_child
+
+yabai -m rule --add app="^시스템 설정$" manage=off
+yabai -m rule --add app="^시스템 정보$" manage=off
+yabai -m rule --add app="^Dash$" manage=off
+yabai -m rule --add app="^1Password$" manage=off
+
+yabai -m space 1 --label main
+
+echo "yabai configuration loaded.."

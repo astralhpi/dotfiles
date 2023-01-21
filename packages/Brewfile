@@ -7,6 +7,7 @@ tap 'pulumi/tap'
 
 brew 'mitmproxy'
 brew 'pam-reattach'
+brew 'koekeishiya/formulae/yabai'
 
 cask 'mimestream'
 cask 'tailscale'
@@ -26,10 +27,10 @@ cask 'font-jetbrains-mono-nerd-font'
 cask 'bartender'
 cask 'notion'
 cask 'visual-studio-code'
-cask 'carbon-copy-cloner'
 cask 'obsidian'
 cask 'kitty'
 cask 'todoist'
+cask 'ubersicht'
 
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134

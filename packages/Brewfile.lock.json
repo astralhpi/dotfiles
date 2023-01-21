@@ -2,16 +2,16 @@
   "entries": {
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "8a36d012f706a2012a0c344d74adb729d22a8b1f"
+        "revision": "2ea7c0fd33ee3fbd98c32471ebfc7295136b16a9"
       },
       "xo/xo": {
         "revision": "9b322f6136b76fc62319f2774727c005fe1e5ecf"
       },
       "homebrew/cask": {
-        "revision": "eceb28c43aca1e251e05c2948d97e07c743ededd"
+        "revision": "2cca100bba2ef470feec0fd45e03d7cb62f2c151"
       },
       "pulumi/tap": {
-        "revision": "65f772e5e56aa4449de3deccaa8a867eeb08caf7"
+        "revision": "12def68105f40ee951432e1cdb5e035f7d99f7ef"
       }
     },
     "brew": {
@@ -2133,6 +2133,10 @@
             }
           }
         }
+      },
+      "koekeishiya/formulae/yabai": {
+        "version": "5.0.2",
+        "bottle": false
       }
     },
     "cask": {
@@ -2263,7 +2267,7 @@
         }
       },
       "font-jetbrains-mono-nerd-font": {
-        "version": "2.2.2",
+        "version": "2.3.0",
         "options": {
           "full_name": "font-jetbrains-mono-nerd-font",
           "args": {
@@ -2335,7 +2339,7 @@
         }
       },
       "mimestream": {
-        "version": "0.40.2",
+        "version": "0.41.2",
         "options": {
           "full_name": "mimestream",
           "args": {
@@ -2374,6 +2378,15 @@
         "version": "0.26.5",
         "options": {
           "full_name": "kitty",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
+      },
+      "todoist": {
+        "version": "8.1.1",
+        "options": {
+          "full_name": "todoist",
           "args": {
             "appdir": "/Applications"
           }
@@ -2420,9 +2433,9 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "3.6.19",
+        "HOMEBREW_VERSION": "3.6.20",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "3a9372d57855889b48bc4dfcbccc11035f4c7139",
+        "Homebrew/homebrew-core": "4b51c896bd7f15cc90c158dca20c13bc509cf842",
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
         "macOS": "13.1"

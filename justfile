@@ -48,7 +48,7 @@ secret command:
 kitty: (_link 'config/kitty' home_dir / '.config/kitty')
 
 [macos]
-macos: common kitty karabiner hammerspoon nushell sudo-with-touchid keyboard
+macos: common kitty karabiner hammerspoon yabai nushell sudo-with-touchid keyboard
 
 [macos]
 packages: packages-brew
@@ -59,6 +59,19 @@ packages-brew:
 
 [macos]
 karabiner: _config-dir && (_link 'karabiner' home_dir / '.config/karabiner')
+
+[macos]
+yabai: (
+    _dir home_dir / '.config/yabai') (
+    _link 'config/yabairc' home_dir / '.config/yabai/yabairc') (
+    _sudo-link '/opt/homebrew/bin/yabai' '/usr/local/bin/yabai') ubersicht
+  brew services start yabai
+
+[macos]
+ubersicht: (
+    _dir home_dir / '/Library/Application\ Support/Übersicht/widgets') (
+    _clone 'https://github.com/Jean-Tinland/simple-bar' home_dir / '/Library/Application\ Support/Übersicht/widgets/simple-bar')
+
 
 [macos]
 keyboard:
