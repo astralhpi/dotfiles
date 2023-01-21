@@ -30,3 +30,8 @@ After setting the keybase,
 ## Requirements
 
 - macOS 13.\*
+- Apple Silicon
+
+## Reference
+
+- The configuration and code for yabai was based on rtauziac's [Hammerspoon-Yabai](https://github.com/rtauziac/Hammerspoon-Yabai).
