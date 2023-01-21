@@ -1,5 +1,6 @@
 os := os()
 home_dir := env_var('HOME')
+user := env_var('USER')
 
 default:
     just {{os}}
@@ -75,7 +76,10 @@ font:
     fi
 
 [macos]
-hammerspoon: (_link 'hammerspoon' home_dir / '.hammerspoon')
+hammerspoon: (
+    _link 'hammerspoon' home_dir / '.hammerspoon') (
+    _sudo-link '/Applications/Hammerspoon.app/Contents/Frameworks/hs/hs' '/usr/local/bin/hs')
+
 
 [macos]
 nushell: (
@@ -135,7 +139,6 @@ nix-darwin: (
   )
   darwin-rebuild switch
 
-
 # ===============================================================================
 # Polyglot Language Support
 # ===============================================================================
@@ -158,10 +161,14 @@ _k9s-dir: (_dir home_dir / '.config/k9s')
 _dir path: (_run-if
     "[ ! -d "+ path + " ]"
     "mkdir -p " + path)
+_sudo-dir path: (_run-if
+    "[ ! -d "+ path + " ]"
+    "sudo mkdir -p " + path)
 
 _clone repo dst: (_run-if-not-exists "git clone --depth 1" repo dst)
 _cp src dst: (_run-if-not-exists "cp -n" src dst)
 _link src dst: (_run-if-not-exists "ln -s" justfile_directory() / src dst)
+_sudo-link src dst: (_run-if-not-exists "sudo ln -s" src dst)
 
 _run-if-not-exists cmd src dst: (_run-if
     "! ([ -f " + dst + " ] || [ -d " + dst + " ])"

@@ -1,3 +1,5 @@
+require("hs.ipc")
+
 hs.hotkey.bind({"cmd", "ctrl"}, "V", function() hs.eventtap.keyStrokes(hs.pasteboard.getContents()) end)
 
 local inputEnglish = "com.apple.keylayout.ABC"
@@ -29,4 +31,3 @@ function reloadConfig(files)
 end
 myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 hs.alert.show("Config loaded")
-
