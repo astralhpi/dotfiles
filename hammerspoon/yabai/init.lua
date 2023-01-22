@@ -1,4 +1,5 @@
 require("hs.ipc")
+require("yabai.ipc")
 
 
 --# constants
@@ -401,7 +402,6 @@ yabaidirectcall = {
   end
 }
 
-
 --# start yabai
 --os.execute("/usr/local/bin/yabai")
 -- so far I start yabai by hand from terminal so I can see logs
@@ -409,7 +409,3 @@ yabaidirectcall = {
 --toast("Hello world", 1)
 
 onWindowFocusChanged(nil) -- show borders of focused window at startup
-
-return {
-  yabaidirectcall = yabaidirectcall
-}

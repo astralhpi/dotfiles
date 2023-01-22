@@ -3,7 +3,6 @@ return function(args, completion)
     local yabai_error = ""
     -- Runs in background very fast
     local yabai_task = hs.task.new("/usr/local/bin/yabai", function(err, stdout, stderr)
-        print()
     end, function(task, stdout, stderr)
         -- print("stdout:"..stdout, "stderr:"..stderr)
         if stdout ~= nil then

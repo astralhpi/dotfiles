@@ -1,6 +1,6 @@
 require("hs.ipc")
 require("key")
-local yabai = require("yabai")
+require("yabai")
 
 function reloadConfig(files)
     doReload = false
@@ -14,6 +14,6 @@ function reloadConfig(files)
     end
 end
 
-local yabaidirectcall = yabai.yabaidirectcall
+
 myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 hs.alert.show("Config loaded")
