@@ -152,7 +152,13 @@ nix-darwin: (
   )
   darwin-rebuild switch
 
-# ===============================================================================
+node2nix:
+  #!/usr/bin/env bash
+  cd nix/node
+  nix-env -f '<nixpkgs>' -iA nodePackages.node2nix
+  node2nix -i node-packages.json
+
+  # ===============================================================================
 # Polyglot Language Support
 # ===============================================================================
 
