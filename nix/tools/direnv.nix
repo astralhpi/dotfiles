@@ -8,9 +8,10 @@
           poetry init
       fi
 
-      PYTHON_PATH=$(poetry run which python>/dev/null ; true)
+      PYTHON_PATH=$(poetry run which python)
+      echo $PYTHON_PATH
 
-      if [[ -z $PYTHON_PATH || ! -d $PYTHON_PATH ]]; then
+      if [[ -z $PYTHON_PATH || ! -f $PYTHON_PATH ]]; then
           log_status "No virtual environment exists. Executing \`poetry install\` to create one."    
           poetry install
           PYTHON_PATH=$(poetry run which python)
