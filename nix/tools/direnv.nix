@@ -8,19 +8,17 @@
           poetry init
       fi
 
-      if [[ -d ".venv" ]]; then
-          VIRTUAL_ENV="$(pwd)/.venv"
-      else
-          VIRTUAL_ENV=$(poetry env info --path 2>/dev/null ; true)
-      fi
+      PYTHON_PATH=$(poetry run which python>/dev/null ; true)
 
-      if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+      if [[ -z $PYTHON_PATH || ! -d $PYTHON_PATH ]]; then
           log_status "No virtual environment exists. Executing \`poetry install\` to create one."    
           poetry install
-          VIRTUAL_ENV=$(poetry env info --path)
+          PYTHON_PATH=$(poetry run which python)
       fi
+      BIN_PATH=$(dirname $PYTHON_PATH)
+      VIRTUAL_ENV=$(dirname $BIN_PATH)
 
-      PATH_add "$VIRTUAL_ENV/bin"
+      PATH_add "$BIN_PATH"
       export POETRY_ACTIVE=1
       export VIRTUAL_ENV
     }
