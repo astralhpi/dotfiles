@@ -65,6 +65,15 @@ local spaces = {
       end
     end)
   end,
+  moveWindow = function(idxOrLabel)
+    findSpaceThen(idxOrLabel, function(space)
+      local window = hs.window.focusedWindow()
+      if window then
+        hs.spaces.moveWindowToSpace(window:id(), space.id)
+        hs.spaces.gotoSpace(space.id)
+      end
+    end)
+  end,
 }
 
 yabaiipc = {
