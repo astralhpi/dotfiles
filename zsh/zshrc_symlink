@@ -79,7 +79,9 @@ alias vim=nvim
 alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
-alias kc='kubectl'
+alias kb='kubectl'
+alias nd='nerdctl'
+alias docker='nerdctl'
 
 # color
 export CLICOLOR=1;
