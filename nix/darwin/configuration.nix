@@ -10,6 +10,8 @@
       # for container
       pkgs.lima
       pkgs.colima
+
+      pkgs.mycli
     ];
 
   # Use a custom configuration.nix location.

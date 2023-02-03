@@ -60,7 +60,6 @@ in [
   pkgs.lua
 
   # clients
-  pkgs.mycli
   pkgs.mosh
 
   # build tools
