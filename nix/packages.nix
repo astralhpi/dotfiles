@@ -8,7 +8,6 @@ in [
   # CLI tools - Frequently used
   pkgs.neovim
   pkgs.tmux
-  pkgs.reattach-to-user-namespace
   pkgs.direnv
   pkgs.fd
   pkgs.bat
@@ -66,10 +65,5 @@ in [
 
   # build tools
   pkgs.cmake
-
-  # for container
-  pkgs.lima
-  pkgs.colima
-
 ]
 
