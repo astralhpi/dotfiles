@@ -47,7 +47,7 @@ kitty: (_link 'config/kitty' home_dir / '.config/kitty')
 # ===============================================================================
 
 [linux]
-linux: common nushell
+linux: common
 
 [linux]
 packages:
