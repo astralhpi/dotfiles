@@ -5,7 +5,7 @@ user := env_var('USER')
 default:
     just {{os}}
 
-common: zsh nix packages polyglot tmux nvim starship chsh
+common: zsh nix packages polyglot tmux nvim starship chsh kitty
 
 zsh: (
     _link 'zsh/zprofile' home_dir / '.zprofile') (
@@ -40,12 +40,14 @@ chsh-zsh: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
 secret command:
     just --justfile keybase.just {{command}}
 
+kitty: (_link 'config/kitty' home_dir / '.config/kitty')
+
 # ===============================================================================
 # Ubuntu Only
 # ===============================================================================
 
 [linux]
-linux: common kitty nushell
+linux: common nushell
 
 [linux]
 packages:
@@ -54,8 +56,6 @@ packages:
 # macOS Only
 # ===============================================================================
 
-[macos]
-kitty: (_link 'config/kitty' home_dir / '.config/kitty')
 
 [macos]
 macos: common kitty karabiner hammerspoon yabai nushell sudo-with-touchid keyboard font
