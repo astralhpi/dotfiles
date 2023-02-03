@@ -122,7 +122,7 @@ nix: _nix-modules
 _nix-modules: nix-darwin nix-home-manager
 
 [linux]
-nix-modules: nix-home-manager
+_nix-modules: nix-home-manager
 
 nix-home-manager: (
   _dir home_dir / ".config/nixpkgs") (
