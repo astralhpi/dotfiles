@@ -5,7 +5,7 @@ user := env_var('USER')
 default:
     just {{os}}
 
-common: zsh nix packages font polyglot tmux nvim starship chsh
+common: zsh nix packages polyglot tmux nvim starship chsh
 
 zsh: (
     _link 'zsh/zprofile' home_dir / '.zprofile') (
@@ -58,7 +58,7 @@ packages:
 kitty: (_link 'config/kitty' home_dir / '.config/kitty')
 
 [macos]
-macos: common kitty karabiner hammerspoon yabai nushell sudo-with-touchid keyboard
+macos: common kitty karabiner hammerspoon yabai nushell sudo-with-touchid keyboard font
 
 [macos]
 packages: packages-brew
