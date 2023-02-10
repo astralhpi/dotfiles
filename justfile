@@ -40,7 +40,7 @@ chsh-zsh: (_run-if "[ -z `echo $SHELL | grep zsh` ]" "chsh -s `which zsh`")
 secret command:
     just --justfile keybase.just {{command}}
 
-kitty: (_link 'config/kitty' home_dir / '.config/kitty')
+kitty: (_link 'config/kitty' home_dir / '.config/kitty') kitty-icon
 
 # ===============================================================================
 # Ubuntu Only
@@ -51,6 +51,9 @@ linux: common
 
 [linux]
 packages:
+
+[linux]
+kitty-icon:
 
 # ===============================================================================
 # macOS Only
