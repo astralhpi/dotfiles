@@ -56,6 +56,11 @@ packages:
 # macOS Only
 # ===============================================================================
 
+[macos]
+kitty-icon:
+  cp config/kitty/kitty.icns /Applications/kitty.app/Contents/Resources/kitty.icns
+  touch /Applications/kitty.app
+  sudo killall Finder && sudo killall Finder
 
 [macos]
 macos: common kitty karabiner hammerspoon yabai nushell sudo-with-touchid keyboard font
