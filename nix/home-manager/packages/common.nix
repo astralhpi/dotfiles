@@ -1,6 +1,6 @@
 { pkgs, ...}:
 let
-  extraNodePackages = import ./node/default.nix {};
+  extraNodePackages = import ../node/default.nix {};
   pythonPackages = p: with p; [
     pip
   ];
@@ -47,6 +47,7 @@ in [
   pkgs.helmfile
   pkgs.kubernetes-helm
   pkgs.aws-iam-authenticator
+  pkgs.mycli
 
   # languages
   (pkgs.python311.withPackages pythonPackages)

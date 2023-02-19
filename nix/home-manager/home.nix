@@ -1,5 +1,9 @@
-{ config, pkgs, programs, ... }:
-{
+{ config, pkgs, programs, lib, ... }:
+let 
+    commonPackags = import ./packages/common.nix { inherit pkgs; };
+    macPackags = import ./packages/macos.nix { inherit pkgs; };
+    test = builtins.trace ''${pkgs.system}'';
+in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "jake";
@@ -21,8 +25,9 @@
   # Temporarily disabled to avoid a bug
   manual.manpages.enable = false;
 
-  home.packages = import ./packages.nix { inherit pkgs; };
-
+  home.packages = if lib.hasSuffix "darwin" pkgs.system
+                  then macPackags ++ commonPackags
+                  else commonPackags;
   programs.direnv = import ./tools/direnv.nix {};
   programs.git = import ./tools/git.nix {};
 }

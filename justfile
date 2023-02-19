@@ -15,6 +15,9 @@ update command="all":
 secret command:
     just --justfile keybase.just {{command}}
 
+gc:
+  nix store gc
+
 # ===============================================================================
 # Shell Essential Configs
 # ===============================================================================
