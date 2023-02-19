@@ -1,6 +1,5 @@
 { pkgs, ...}:
 let
-  extraNodePackages = import ../node/default.nix {};
   pythonPackages = p: with p; [
     pip
   ];
@@ -53,8 +52,6 @@ in [
   (pkgs.python311.withPackages pythonPackages)
   pkgs.poetry
 
-  pkgs.nodejs
-  extraNodePackages.pnpm
 
   pkgs.go
   pkgs.nushell
