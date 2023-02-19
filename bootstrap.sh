@@ -21,7 +21,9 @@ function ubuntu() {
 
     if ! cmd_exists just; then
         echo "Installing just"
+        nix-channel --update
         nix-env -iA nixpkgs.just
+        nix-env -iA nixpkgs.zsh
         echo "Installed just"
     fi
 }
