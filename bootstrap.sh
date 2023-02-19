@@ -17,7 +17,7 @@ function install_nix_if_need() {
 }
 
 function ubuntu() {
-    install_nix_if_need "--daemon"
+    install_nix_if_need "--no-daemon"
 
     if ! cmd_exists just; then
         echo "Installing just"
