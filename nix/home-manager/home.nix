@@ -2,7 +2,6 @@
 let 
     commonPackags = import ./packages/common.nix { inherit pkgs; };
     macPackags = import ./packages/macos.nix { inherit pkgs; };
-    test = builtins.trace ''${pkgs.system}'';
 in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
