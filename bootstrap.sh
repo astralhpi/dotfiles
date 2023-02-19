@@ -27,7 +27,7 @@ function ubuntu() {
 }
 
 function mac() {
-    install_nix_if_need "--daemon"
+    install_nix_if_need
 
     if ! cmd_exists brew; then
         echo "Installing Homebrew"
