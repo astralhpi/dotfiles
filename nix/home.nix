@@ -18,6 +18,9 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Temporarily disabled to avoid a bug
+  manual.manpages.enable = false;
+
   home.packages = import ./packages.nix { inherit pkgs; };
 
   programs.direnv = import ./tools/direnv.nix {};
