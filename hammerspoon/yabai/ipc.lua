@@ -37,6 +37,9 @@ function findSpaceThen(idxOrLabel, cb)
 end
 
 local spaces = {
+  new = function () 
+    hs.spaces.addSpaceToScreen()
+  end,
   focus = function(idxOrLabel)
     findSpaceThen(idxOrLabel, function(space)
       hs.spaces.gotoSpace(space.id)
