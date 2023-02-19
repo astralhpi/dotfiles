@@ -2,16 +2,16 @@
   "entries": {
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "2ea7c0fd33ee3fbd98c32471ebfc7295136b16a9"
+        "revision": "19c703eb287adfcd8f98ae9635ceff1af58ac8bd"
       },
       "xo/xo": {
-        "revision": "9b322f6136b76fc62319f2774727c005fe1e5ecf"
+        "revision": "19ac869285f531819bcc2db0e8856977a8d9e249"
       },
       "homebrew/cask": {
-        "revision": "2cca100bba2ef470feec0fd45e03d7cb62f2c151"
+        "revision": "8a41398bb1c3fc8d0120247217d5e34bf5de04fd"
       },
       "pulumi/tap": {
-        "revision": "12def68105f40ee951432e1cdb5e035f7d99f7ef"
+        "revision": "61e4c78a583a5a6fef1fa8567d30ecc5ffd3c298"
       }
     },
     "brew": {
@@ -2141,7 +2141,7 @@
     },
     "cask": {
       "google-chrome": {
-        "version": "109.0.5414.87",
+        "version": "110.0.5481.100",
         "options": {
           "full_name": "google-chrome",
           "args": {
@@ -2159,7 +2159,7 @@
         }
       },
       "1password": {
-        "version": "8.9.13",
+        "version": "8.10.0",
         "options": {
           "full_name": "1password",
           "args": {
@@ -2231,7 +2231,7 @@
         }
       },
       "amethyst": {
-        "version": "0.16.1",
+        "version": "0.18.0",
         "options": {
           "full_name": "amethyst",
           "args": {
@@ -2240,7 +2240,7 @@
         }
       },
       "devonthink": {
-        "version": "3.8.7",
+        "version": "3.9",
         "options": {
           "full_name": "devonthink",
           "args": {
@@ -2249,7 +2249,7 @@
         }
       },
       "adguard": {
-        "version": "2.9.1.1217",
+        "version": "2.9.2.1234",
         "options": {
           "full_name": "adguard",
           "args": {
@@ -2258,7 +2258,7 @@
         }
       },
       "anki": {
-        "version": "2.1.56",
+        "version": "2.1.58",
         "options": {
           "full_name": "anki",
           "args": {
@@ -2267,7 +2267,7 @@
         }
       },
       "font-jetbrains-mono-nerd-font": {
-        "version": "2.3.0",
+        "version": "2.3.3",
         "options": {
           "full_name": "font-jetbrains-mono-nerd-font",
           "args": {
@@ -2285,7 +2285,7 @@
         }
       },
       "1password-cli": {
-        "version": "2.12.0",
+        "version": "2.14.0",
         "options": {
           "full_name": "1password-cli",
           "args": {
@@ -2312,7 +2312,7 @@
         }
       },
       "notion": {
-        "version": "2.1.11",
+        "version": "2.1.12",
         "options": {
           "full_name": "notion",
           "args": {
@@ -2321,7 +2321,7 @@
         }
       },
       "visual-studio-code": {
-        "version": "1.74.3",
+        "version": "1.75.1",
         "options": {
           "full_name": "visual-studio-code",
           "args": {
@@ -2339,7 +2339,7 @@
         }
       },
       "mimestream": {
-        "version": "0.41.2",
+        "version": "0.41.5",
         "options": {
           "full_name": "mimestream",
           "args": {
@@ -2348,7 +2348,7 @@
         }
       },
       "tailscale": {
-        "version": "1.34.2",
+        "version": "1.36.1",
         "options": {
           "full_name": "tailscale",
           "args": {
@@ -2375,7 +2375,7 @@
         }
       },
       "kitty": {
-        "version": "0.26.5",
+        "version": "0.27.1",
         "options": {
           "full_name": "kitty",
           "args": {
@@ -2384,9 +2384,18 @@
         }
       },
       "todoist": {
-        "version": "8.1.1",
+        "version": "8.1.2",
         "options": {
           "full_name": "todoist",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
+      },
+      "ubersicht": {
+        "version": "1.6.72",
+        "options": {
+          "full_name": "ubersicht",
           "args": {
             "appdir": "/Applications"
           }
@@ -2417,7 +2426,7 @@
       },
       "Flow": {
         "id": "1423210932",
-        "version": "2.10.0"
+        "version": "2.11.1"
       },
       "Things 3": null,
       "Okta Verify": {
@@ -2426,16 +2435,16 @@
       },
       "Microsoft Remote Desktop": {
         "id": "1295203466",
-        "version": "10.8.0"
+        "version": "10.8.1"
       }
     }
   },
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "3.6.20",
+        "HOMEBREW_VERSION": "4.0.1",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "4b51c896bd7f15cc90c158dca20c13bc509cf842",
+        "Homebrew/homebrew-core": "api",
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
         "macOS": "13.1"
