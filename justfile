@@ -189,11 +189,7 @@ nix: nix-home-manager
 nix-home-manager: config-dir
   #!/usr/bin/env bash
   set -e
-  ./ensure.py dir {{ home_dir }}/.config/nixpkgs
-  ./ensure.py link {{ home_dir }}/.config/nixpkgs/home.nix nix/home.nix
-  ./ensure.py link {{ home_dir }}/.config/nixpkgs/packages.nix nix/packages.nix
-  ./ensure.py link {{ home_dir }}/.config/nixpkgs/node nix/node
-  ./ensure.py link {{ home_dir }}/.config/nixpkgs/tools nix/tools
+  ./ensure.py link {{ home_dir }}/.config/nixpkgs nix/home-manager
 
   if [ -z `command -v home-manager` ]; then
       echo "Installing Home Manager"
@@ -208,7 +204,7 @@ nix-home-manager: config-dir
 [macos]
 nix-darwin:
   ./ensure.py dir {{ home_dir }}/.nixpkgs
-  ./ensure.py link {{ home_dir }}/.nixpkgs/darwin-configuration.nix nix/darwin/configuration.nix
+  ./ensure.py link {{ home_dir }}/.nixpkgs/darwin-configuration.nix nix/darwin/darwin-configuration.nix
   ./ensure.py install darwin-rebuild \
       "nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer" \
       "./result/bin/darwin-installer"
