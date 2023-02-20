@@ -98,12 +98,15 @@ kitty-icon:
   sudo killall Finder && sudo killall Finder
 
 # ===============================================================================
-# Ubuntu Only
+# Crypto Configs
 # ===============================================================================
 
-[linux]
-linux: shell devops op
+crypto: keybase op
 
+[linux]
+keybase:
+  curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+  sudo apt install ./keybase_amd64.deb
 
 [linux]
 op:
@@ -122,6 +125,18 @@ op:
      sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
     sudo apt update && sudo apt install 1password-cli  
   fi
+
+# ===============================================================================
+# Ubuntu Only
+# ===============================================================================
+
+[linux]
+linux: shell devops crypto
+
+[linux]
+keybase:
+  curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+  sudo apt install ./keybase_amd64.deb
 
 
 # ===============================================================================
@@ -236,7 +251,7 @@ node2nix:
   nix-env -f '<nixpkgs>' -iA nodePackages.node2nix
   node2nix -i node-packages.json
 
-  # ===============================================================================
+# ===============================================================================
 # Polyglot Language Support
 # ===============================================================================
 
