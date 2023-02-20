@@ -105,8 +105,11 @@ crypto: keybase op
 
 [linux]
 keybase:
-  curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
-  sudo apt install ./keybase_amd64.deb
+  #!/usr/bin/env bash
+  if [ -z `which run_keybase` ]; then
+    curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+    sudo apt install ./keybase_amd64.deb
+  fi
 
 [linux]
 op:
