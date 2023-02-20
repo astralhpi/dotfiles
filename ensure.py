@@ -15,7 +15,10 @@ def link(path, link):
 
     if os.path.exists(path) and not os.path.islink(path):
         print(f"Remove {path} because it is not a link")
-        shutil.rmtree(path)
+        if os.path.isfile(path):
+            os.remove(path)
+        else:
+            shutil.rmtree(path)
 
     elif os.path.islink(path) and os.readlink(path) != link:
         print(f"Remove link {path} because it points to {os.readlink(path)}")
