@@ -1,1 +1,1 @@
-["pnpm", "npm"]
+["pnpm", "npm", "node-gyp"]

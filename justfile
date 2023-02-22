@@ -101,6 +101,7 @@ kitty-icon:
 # Crypto Configs
 # ===============================================================================
 
+[linux]
 crypto: keybase op
 
 [linux]
@@ -245,7 +246,7 @@ nix-darwin:
 
 node2nix:
   #!/usr/bin/env bash
-  cd nix/node
+  cd nix/home-manager/node
   nix-env -f '<nixpkgs>' -iA nodePackages.node2nix
   node2nix -i node-packages.json
 

@@ -32,6 +32,7 @@ in [
   pkgs.httpie
   pkgs.dogdns
   pkgs.termshark
+  pkgs.gh
 
   # Dev tools
   pkgs.lazygit
