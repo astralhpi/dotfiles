@@ -23,7 +23,7 @@ return {
       require('custom.plugins.configs.others').ufo()
     end
   },
-  ["kyazdani42/nvim-tree.lua"] = {
+  ["nvim-tree/nvim-tree.lua"] = {
     requires = 'nvim-tree/nvim-web-devicons',
     config = function ()
       require('custom.plugins.configs.nvimtree')
