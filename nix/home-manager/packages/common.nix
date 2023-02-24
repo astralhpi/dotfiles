@@ -3,6 +3,7 @@ let
   pythonPackages = p: with p; [
     pip
   ];
+  extraNodePackages = import ../node/default.nix {};
 in [
   # CLI tools - Frequently used
   pkgs.neovim
@@ -52,6 +53,11 @@ in [
   # languages
   (pkgs.python311.withPackages pythonPackages)
   pkgs.poetry
+
+  pkgs.nodejs
+  extraNodePackages.pnpm
+  extraNodePackages.node-gyp
+  extraNodePackages.insect
 
 
   pkgs.go
