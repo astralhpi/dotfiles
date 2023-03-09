@@ -27,5 +27,8 @@ return {
     -- nix
     "nil",
 
+    -- svelte
+    "svelte-language-server"
+
   }
 }

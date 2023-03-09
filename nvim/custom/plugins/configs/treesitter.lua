@@ -10,6 +10,7 @@ return {
     "help",
     "yaml",
     "json",
-    "nix"
+    "nix",
+    "svelte"
   }
 }

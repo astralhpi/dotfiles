@@ -21,6 +21,9 @@ local servers = {
 
   -- nix
   "nil_ls",
+
+  -- svelte
+  "svelte",
 }
 
 function on_attach(client, bufnr)
