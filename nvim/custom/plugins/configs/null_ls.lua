@@ -4,6 +4,7 @@ if not present then
   return
 end
 
+
 local options = {
   sources = {
     -- node
@@ -28,6 +29,11 @@ local options = {
 
 options = require("core.utils").load_override(options, "jose-elias-alvarez/null-ls.nvim")
 null_ls.setup(options)
+null_ls.register({
+  name = "svelte",
+  filetypes = { "svelte" },
+  sources = { null_ls.builtins.formatting.prettier }
+})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
