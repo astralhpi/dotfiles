@@ -16,9 +16,6 @@ local servers = {
   -- terraform
   "terraformls",
 
-  -- yaml
-  "yamlls",
-
   -- nix
   "nil_ls",
 
