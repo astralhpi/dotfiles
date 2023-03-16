@@ -47,7 +47,7 @@ local options = {
   },
   filters = {
     dotfiles = false,
-    custom = { "^.git$", "^.null-ls*$"}
+    custom = { "^.git$", "^.null-ls.*$", "^__pycache__$" },
   },
 }
 
