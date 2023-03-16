@@ -11,8 +11,7 @@ return {
     opt = true,
     override_options = require("custom.plugins.configs.others").blankline(),
   },
-  ["nvim-treesitter/nvim-treesitter"] = {
-    override_options = require("custom.plugins.configs.treesitter"),
+  ["nvim-treesitter/nvim-treesitter"] = { override_options = require("custom.plugins.configs.treesitter"),
   },
   ['kevinhwang91/promise-async'] = {
     module = { "async", "promise" }
@@ -127,6 +126,15 @@ return {
     config = function()
       require "custom.plugins.configs.null_ls"
     end,
+  },
+  ["antosha417/nvim-lsp-file-operations"] = {
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+    after = "nvim-tree.lua",
+    config = function()
+      require("lsp-file-operations").setup({ debug = true})
+    end
   },
   -- IDE - AI Assistants
   ["github/copilot.vim"] = {

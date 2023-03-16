@@ -23,6 +23,10 @@ local servers = {
   "svelte",
 }
 
+capabilities.workspace.fileOperations = {
+  willRename = true,
+}
+
 function on_attach(client, bufnr)
   _on_attach(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
