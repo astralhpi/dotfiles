@@ -13,7 +13,6 @@ return {
 
     -- python
     "pyright",
-    "mypy",
     "black",
     "flake8",
 
