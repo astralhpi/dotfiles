@@ -20,9 +20,6 @@ local options = {
 
     -- terraform
     null_ls.builtins.formatting.terraform_fmt,
-
-    -- yaml
-    null_ls.builtins.formatting.yamlfmt,
   }
 }
 
