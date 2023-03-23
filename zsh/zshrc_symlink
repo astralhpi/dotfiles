@@ -106,5 +106,6 @@ alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 eval "$(op completion zsh)"; compdef _op op
+eval "$(github-copilot-cli alias -- "$0")"
 
 export XDG_CONFIG_HOME="$HOME/.config"

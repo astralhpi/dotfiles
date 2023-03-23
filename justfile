@@ -248,7 +248,7 @@ node2nix:
   #!/usr/bin/env bash
   cd nix/home-manager/node
   nix-env -f '<nixpkgs>' -iA nodePackages.node2nix
-  node2nix -i node-packages.json
+  node2nix -i node-packages.json -18
 
 # ===============================================================================
 # Polyglot Language Support

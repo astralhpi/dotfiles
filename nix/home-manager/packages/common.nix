@@ -58,6 +58,7 @@ in [
   extraNodePackages.pnpm
   extraNodePackages.node-gyp
   extraNodePackages.insect
+  extraNodePackages."@githubnext/github-copilot-cli"
 
 
   pkgs.go
