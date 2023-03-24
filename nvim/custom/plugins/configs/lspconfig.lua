@@ -21,6 +21,9 @@ local servers = {
 
   -- svelte
   "svelte",
+
+  -- kotlin
+  "kotlin_language_server",
 }
 
 capabilities.workspace.fileOperations = {

@@ -11,6 +11,7 @@ return {
     "yaml",
     "json",
     "nix",
-    "svelte"
+    "svelte",
+    "kotlin"
   }
 }

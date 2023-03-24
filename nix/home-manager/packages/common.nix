@@ -60,6 +60,10 @@ in [
   extraNodePackages.insect
   extraNodePackages."@githubnext/github-copilot-cli"
 
+  pkgs.kotlin
+  pkgs.kotlin-language-server
+  pkgs.gradle
+
 
   pkgs.go
   pkgs.nushell
