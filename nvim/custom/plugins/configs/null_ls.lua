@@ -20,6 +20,10 @@ local options = {
 
     -- terraform
     null_ls.builtins.formatting.terraform_fmt,
+
+    -- kotlin
+    null_ls.builtins.formatting.ktlint,
+    null_ls.builtins.diagnostics.ktlint,
   }
 }
 
