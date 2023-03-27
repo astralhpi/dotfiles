@@ -62,6 +62,7 @@ in [
 
   pkgs.kotlin
   pkgs.kotlin-language-server
+  pkgs.ktlint
   pkgs.gradle
 
 
