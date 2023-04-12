@@ -2,6 +2,7 @@
 let
   pythonPackages = p: with p; [
     pip
+    pandas
   ];
   extraNodePackages = import ../node/default.nix {};
 in [
@@ -59,6 +60,7 @@ in [
   extraNodePackages.node-gyp
   extraNodePackages.insect
   extraNodePackages."@githubnext/github-copilot-cli"
+  extraNodePackages.wrangler
 
   pkgs.kotlin
   pkgs.kotlin-language-server
