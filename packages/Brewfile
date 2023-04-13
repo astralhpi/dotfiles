@@ -8,6 +8,7 @@ tap 'pulumi/tap'
 brew 'mitmproxy'
 brew 'pam-reattach'
 brew 'koekeishiya/formulae/yabai'
+brew 'mysql'
 
 cask 'mimestream'
 cask 'tailscale'
