@@ -30,12 +30,6 @@ local options = {
     adaptive_size = true,
     side = "left",
     width = 25,
-    mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
-    },
-    hide_root_folder = true,
   },
   renderer = {
     highlight_git = false,
@@ -44,6 +38,7 @@ local options = {
       enable = false,
     },
     group_empty = true,
+    root_folder_label = false,
   },
   filters = {
     dotfiles = false,
