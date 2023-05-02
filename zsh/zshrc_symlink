@@ -81,7 +81,6 @@ alias l='ls -l'
 alias la='ls -a'
 alias kb='kubectl'
 alias nd='nerdctl'
-alias docker='nerdctl'
 
 if [ "$TERM" = "xterm-kitty" ]; then
   alias ssh="kitty +kitten ssh"
