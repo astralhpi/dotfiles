@@ -10,6 +10,7 @@ brew 'pam-reattach'
 brew 'koekeishiya/formulae/yabai'
 brew 'mysql'
 
+cask 'orbstack'
 cask 'mimestream'
 cask 'tailscale'
 cask 'google-chrome'
