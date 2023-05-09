@@ -11,7 +11,10 @@ return {
     opt = true,
     override_options = require("custom.plugins.configs.others").blankline(),
   },
-  ["nvim-treesitter/nvim-treesitter"] = { override_options = require("custom.plugins.configs.treesitter"),
+  ["nvim-treesitter/nvim-treesitter"] = {
+    config = function()
+      require "custom.plugins.configs.treesitter"
+    end,
   },
   ['kevinhwang91/promise-async'] = {
     module = { "async", "promise" }

@@ -19,10 +19,6 @@ return {
     -- terrafrom
     "terraform-ls",
 
-    -- yaml
-    "yaml-language-server",
-    "yamlfmt",
-
     -- nix
     "nil",
 

@@ -53,6 +53,10 @@ nvim: config-dir
       ./nvim/custom
   ./ensure.py link {{ home_dir }}/.config/nvim/ftplugin \
       ./nvim/ftplugin
+  ./ensure.py link {{ home_dir }}/.config/nvim/ftdetect \
+      ./nvim/ftdetect
+  ./ensure.py link {{ home_dir }}/.config/nvim/queries \
+      ./nvim/queries
   nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 starship:
