@@ -69,7 +69,6 @@ in [
 
 
   pkgs.go
-  pkgs.nushell
   pkgs.lua
 
   # clients

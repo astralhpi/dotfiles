@@ -197,6 +197,7 @@ hammerspoon:
 
 [macos]
 nushell:
+  cargo install nu --features=dataframe
   ./ensure.py dir '{{ home_dir }}/Library/Application Support/nushell'
   ./ensure.py link {{ home_dir }}'/Library/Application Support/nushell/env.nu' nushell/env.nu
   ./ensure.py link {{ home_dir }}'/Library/Application Support/nushell/config.nu' nushell/config.nu
