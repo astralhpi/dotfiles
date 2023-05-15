@@ -166,7 +166,7 @@ yabai: config-dir
   ./ensure.py dir {{ home_dir }}/.config/yabai
   ./ensure.py link {{ home_dir }}/.config/yabai/yabairc config/yabairc
   sudo ./ensure.py link /usr/local/bin/yabai /opt/homebrew/bin/yabai 
-  brew services start yabai
+  yabai --start-service
 
 [macos]
 ubersicht:
