@@ -226,7 +226,8 @@ nix: nix-home-manager
 nix-home-manager: config-dir
   #!/usr/bin/env bash
   set -e
-  ./ensure.py link {{ home_dir }}/.config/nixpkgs nix/home-manager
+  rm -rf {{ home_dir }}/.config/nixpkgs
+  ./ensure.py link {{ home_dir }}/.config/home-manager nix/home-manager
 
   if [ -z `command -v home-manager` ]; then
       echo "Installing Home Manager"
