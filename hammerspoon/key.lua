@@ -12,5 +12,10 @@ function convert_to_eng_with_esc()
 	esc_bind:enable()
 end
 
-esc_bind = hs.hotkey.bind({}, 'escape', convert_to_eng_with_esc)
+esc_bind = hs.hotkey.bind({}, 'escape', function ()
+  -- if error occurs, reload hammerspoon
+  if not pcall(convert_to_eng_with_esc) then
+      hs.reload()
+  end
+end)
 
