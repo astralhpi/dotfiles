@@ -233,11 +233,13 @@ nix-home-manager: config-dir
   if [ -z `command -v home-manager` ]; then
       echo "Installing Home Manager"
       nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+      nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
       nix-channel --update
       export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
       nix-shell '<home-manager>' -A install
   fi
 
+  nix-channel --update
   home-manager switch
 
 [macos]

@@ -8,6 +8,7 @@ nvchad:
   cd {{home_dir}}/.config/nvim && git pull && git submodule update --init --recursive
 
 nix:
+  nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
   nix-channel --update
   darwin-rebuild switch
   home-manager switch
