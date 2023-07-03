@@ -39,11 +39,29 @@ function on_attach(client, bufnr)
 end
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150
+  if lsp == "svelte" then
+    lspconfig.svelte.setup {
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePost", {
+          pattern = { "*.js", "*.ts" },
+          callback = function(ctx)
+            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+          end,
+        })
+        on_attach(client, bufnr)
+      end,
+      capabilities = capabilities,
+      flags = {
+        debounce_text_changes = 150
+      }
     }
-  }
+  else
+    lspconfig[lsp].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      flags = {
+        debounce_text_changes = 150
+      }
+    }
+  end
 end
