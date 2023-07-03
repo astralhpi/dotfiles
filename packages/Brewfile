@@ -34,6 +34,7 @@ cask 'kitty'
 cask 'todoist'
 cask 'ubersicht'
 cask 'deepl'
+cask 'mendeley-reference-manager'
 
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134
