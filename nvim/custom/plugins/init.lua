@@ -87,7 +87,14 @@ return {
       }
     end
   },
-
+  ["booperlv/nvim-gomove"] = {
+    config = function()
+      require("gomove").setup {
+        map_default = true,
+        reindent = true
+      }
+    end
+  },
   -- IDE - Auto Completion
   ["hrsh7th/nvim-cmp"] = {
     override_options = require("custom.plugins.configs.others").cmp(),

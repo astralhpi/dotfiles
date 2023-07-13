@@ -24,6 +24,8 @@ local servers = {
 
   -- kotlin
   "kotlin_language_server",
+
+  "emmet_ls"
 }
 
 capabilities.workspace.fileOperations = {
@@ -53,6 +55,20 @@ for _, lsp in ipairs(servers) do
       capabilities = capabilities,
       flags = {
         debounce_text_changes = 150
+      }
+    }
+  elseif lsp == "emmet_ls" then
+    lspconfig.emmet_ls.setup {
+    -- on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "jsx" },
+      init_options = {
+        html = {
+          options = {
+            -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+            ["bem.enabled"] = true,
+          },
+        },
       }
     }
   else

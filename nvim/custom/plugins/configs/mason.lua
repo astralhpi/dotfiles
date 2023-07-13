@@ -25,5 +25,8 @@ return {
     -- svelte
     "svelte-language-server"
 
+    -- emmet
+    "emmet-ls"
+
   }
 }
