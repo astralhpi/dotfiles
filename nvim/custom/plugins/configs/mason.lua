@@ -23,7 +23,7 @@ return {
     "nil",
 
     -- svelte
-    "svelte-language-server"
+    "svelte-language-server",
 
     -- emmet
     "emmet-ls"

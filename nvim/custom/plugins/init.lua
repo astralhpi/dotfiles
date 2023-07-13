@@ -1,83 +1,98 @@
-return {
+local plugins = {
   -- UI
-  ["goolord/alpha-nvim"] = {
-    disable = false,
-    override_options = require("custom.plugins.configs.alpha")
+  {
+    "folke/which-key.nvim",
+    enabled = true,
   },
-  ["folke/which-key.nvim"] = {
-    disable = false,
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    lazy = true,
+    opts = require("custom.plugins.configs.others").blankline(),
   },
-  ["lukas-reineke/indent-blankline.nvim"] = {
-    opt = true,
-    override_options = require("custom.plugins.configs.others").blankline(),
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = require "custom.plugins.configs.treesitter"
   },
-  ["nvim-treesitter/nvim-treesitter"] = {
-    config = function()
-      require "custom.plugins.configs.treesitter"
-    end,
-  },
-  ['kevinhwang91/promise-async'] = {
+  {
+    "kevinhwang91/promise-async",
     module = { "async", "promise" }
   },
-  ["kevinhwang91/nvim-ufo"] = {
-    after = "nvim-treesitter",
-    config = function ()
-      require('custom.plugins.configs.others').ufo()
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = "nvim-treesitter",
+    opts = require("custom.plugins.configs.others").ufo(),
+    config = function(_, opts)
+      require("ufo").setup(opts)
     end
   },
-  ["nvim-tree/nvim-tree.lua"] = {
-    requires = 'nvim-tree/nvim-web-devicons',
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    opts = require("custom.plugins.configs.nvimtree")
+  },
+  {
+    "ggandor/leap.nvim",
+    dependencies = "tpope/vim-repeat",
+    keys = {
+      {"s"},
+      {"S"},
+      {"g"}
+    },
     config = function ()
-      require('custom.plugins.configs.nvimtree')
+      require("leap").add_default_mappings()
     end
   },
-  ["ggandor/leap.nvim"] = {
-    requires = 'tpope/vim-repeat',
-    keys = { "s", "S", "g" },
-    config = function ()
-      require('leap').add_default_mappings()
-    end
-  },
-  ["mg979/vim-visual-multi"] = {
+  {
+    "mg979/vim-visual-multi",
     event = "VimEnter",
   },
-  ["windwp/nvim-autopairs"] = {
-    override_options = require("custom.plugins.configs.others").autopairs()
+  {
+    "windwp/nvim-autopairs",
+    opts = require("custom.plugins.configs.others").autopairs()
   },
-  ["nvim-telescope/telescope-fzf-native.nvim"] = {
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
     module = "telescope._extensions.fzf",
-    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
   },
-  ["debugloop/telescope-undo.nvim"] = {
+  {
+    "debugloop/telescope-undo.nvim",
     module = "telescope._extensions.undo",
   },
-  ["nvim-telescope/telescope.nvim"] = {
-    after = { "telescope-undo.nvim", "telescope-fzf-native.nvim" },
-    override_options = require("custom.plugins.configs.others").telescope(),
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "telescope-undo.nvim", "telescope-fzf-native.nvim" },
+    opts = require("custom.plugins.configs.others").telescope(),
   },
-  ['simrat39/symbols-outline.nvim'] = {
+  {
+    "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
-    config = function()
-      require('custom.plugins.configs.others').symbols_outline()
+    config = function(_, opts)
+      require("symbols-outline").setup(opts)
     end
   },
-  ["SmiteshP/nvim-navic"] = {
+  {
+    "SmiteshP/nvim-navic",
     module = "nvim-navic",
     config = function()
-      require('nvim-navic').setup()
+      require("nvim-navic").setup()
     end
   },
-  ["utilyre/barbecue.nvim"] = {
-    after = { "nvim-navic", "nvim-lspconfig", "nvim-web-devicons" },
-    config = function()
-      require('custom.plugins.configs.barbecue')
+  {
+  "utilyre/barbecue.nvim",
+    dependencies = { "nvim-navic", "nvim-lspconfig", "nvim-web-devicons" },
+    opts = require("custom.plugins.configs.barbecue"),
+    config = function(_, opts)
+      require("barbecue").setup(opts)
     end,
   },
-  ["ray-x/guihua.lua"] = {
-    run = "cd lua/fzy && make",
-    module = "guihua",
+  {
+    "ray-x/guihua.lua",
+      build = "cd lua/fzy && make",
+      module = "guihua",
   },
-  ["ray-x/sad.nvim"] = {
+  {
+    "ray-x/sad.nvim",
     commands = { "Sad" },
     config = function()
       require("sad").setup {
@@ -87,7 +102,14 @@ return {
       }
     end
   },
-  ["booperlv/nvim-gomove"] = {
+  {
+    "booperlv/nvim-gomove",
+    keys = {
+      {"<M-k>"},
+      {"<M-j>"},
+      {"<M-h>"},
+      {"<M-l>"}
+    },
     config = function()
       require("gomove").setup {
         map_default = true,
@@ -96,31 +118,36 @@ return {
     end
   },
   -- IDE - Auto Completion
-  ["hrsh7th/nvim-cmp"] = {
-    override_options = require("custom.plugins.configs.others").cmp(),
+  {
+    "hrsh7th/nvim-cmp",
+    opts = require("custom.plugins.configs.others").cmp(),
   },
   -- IDE - Diagnostics
-  ["folke/trouble.nvim"] = {
+  {
+    "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
-    requires = "kyazdani42/nvim-web-devicons",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("trouble").setup {
       }
     end
   },
   -- IDE - Language Server
-  ["williamboman/mason.nvim"] = {
-    override_options = require("custom.plugins.configs.mason")
+  {
+    "williamboman/mason.nvim",
+    opts = require("custom.plugins.configs.mason")
   },
-  ["williamboman/mason-lspconfig.nvim"] = {
-    requires = {"williamboman/mason.nvim"},
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {"williamboman/mason.nvim"},
     module = { "mason" },
     config = function ()
-      require('mason-lspconfig').setup()
+      require("mason-lspconfig").setup()
     end
   },
-  ["neovim/nvim-lspconfig"] = {
-    requires = {
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
       "williamboman/mason-lspconfig.nvim",
     },
     config = function()
@@ -128,39 +155,35 @@ return {
       require "custom.plugins.configs.lspconfig"
     end,
   },
-  ["jose-elias-alvarez/null-ls.nvim"] = {
+  {
+    "jose-elias-alvarez/null-ls.nvim",
     opt = true,
-    setup = function()
-      require("core.lazy_load").on_file_open "null-ls.nvim"
-    end,
     config = function()
       require "custom.plugins.configs.null_ls"
     end,
   },
-  ["antosha417/nvim-lsp-file-operations"] = {
-    requires = {
+  {
+    "antosha417/nvim-lsp-file-operations",
+    dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-tree.lua"
     },
-    after = "nvim-tree.lua",
     config = function()
       require("lsp-file-operations").setup()
     end
   },
+
   -- IDE - AI Assistants
-  ["github/copilot.vim"] = {
+  {
+    "github/copilot.vim",
     event = "InsertEnter",
-  },
-  ["tzachar/cmp-tabnine"] = {
-    run = "./install.sh",
-    after = "nvim-cmp",
-    module = { "cmp_tabnine", "cmp_tabnine.compare" },
-    config = function()
-      require("custom.plugins.configs.others").cmp_tabnine()
-    end
   },
 
   -- IDE - Just
-  ["NoahTheDuke/vim-just"] = {
+  {
+    "NoahTheDuke/vim-just",
     ft = { "just" }
   }
 }
+
+return plugins

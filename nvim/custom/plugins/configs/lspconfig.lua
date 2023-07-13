@@ -4,6 +4,9 @@ local navic = require("nvim-navic")
 
 local lspconfig = require "lspconfig"
 local servers = {
+  -- lua
+  "lua_ls",
+
   -- node
   "tsserver",
 

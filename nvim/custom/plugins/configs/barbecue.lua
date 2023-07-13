@@ -1,9 +1,3 @@
-local present, barbecue = pcall(require, "barbecue")
-
-if not present then
-  return
-end
-
 local theme = {
   normal = { background = "#282A36" },
 
@@ -48,5 +42,4 @@ local options = {
   theme = theme
 }
 
-options = require("core.utils").load_override(options, "utilyre/barbecue.nvim")
-barbecue.setup(options)
+return options

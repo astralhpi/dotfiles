@@ -13,20 +13,13 @@ M.blankline = function()
 end
 
 M.ufo = function()
-  local present, ufo  = pcall(require, "ufo")
-
-  if not present then
-    return
-  end
-
   local options = {
     provider_selector = function(bufnr, filetype, buftype)
       return {'treesitter', 'indent'}
     end
   }
 
-  options = load_override(options, "kevinhwang91/nvim-ufo")
-  ufo.setup(options)
+  return options
 end
 
 M.autopairs = function()
@@ -39,11 +32,6 @@ M.telescope = function()
   return {
     extensions_list = { "themes", "terms", "undo", "fzf" },
   }
-end
-
-M.symbols_outline = function()
-  local present, symbols_outline = pcall(require, "symbols-outline")
-  symbols_outline.setup()
 end
 
 M.cmp = function()

@@ -10,11 +10,14 @@ M.ui = {
     DiagnosticUnderlineWarn = { undercurl = true, sp = "#FFB86C" },
     DiagnosticUnderlineInfo = { undercurl = true, sp = "#a1b1e3" },
     DiagnosticUnderlineHint = { undercurl = true, sp = "#BD93F9" },
+  },
+  nvdash = {
+    load_on_startup = true
   }
 }
 
 M.mappings = require "custom.mappings"
-M.plugins = require "custom.plugins"
+M.plugins = "custom.plugins"
 
 require 'custom.commands'
 

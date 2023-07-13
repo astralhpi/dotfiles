@@ -1,9 +1,3 @@
-local present, treesitter = pcall(require, "nvim-treesitter.configs")
-
-if not present then
-  return
-end
-
 local parser_config = require'nvim-treesitter.parsers'.get_parser_configs()
 parser_config.gotmpl = {
   install_info = {
@@ -13,8 +7,6 @@ parser_config.gotmpl = {
   filetype = "gotmpl",
   used_by = {"gohtmltmpl", "gotexttmpl", "gotmpl", "yaml"}
 }
-
-require("base46").load_highlight "treesitter"
 
 local options = {
   ensure_installed = {
@@ -44,7 +36,4 @@ local options = {
   },
 }
 
--- check for any override
-options = require("core.utils").load_override(options, "nvim-treesitter/nvim-treesitter")
-
-treesitter.setup(options)
+return options

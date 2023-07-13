@@ -1,12 +1,12 @@
-local present, nvimtree = pcall(require, "nvim-tree")
-
-if not present then
-  return
-end
-
-
-require("base46").load_highlight "nvimtree"
-
+-- local present, nvimtree = pcall(require, "nvim-tree")
+--
+-- if not present then
+--   return
+-- end
+--
+--
+-- require("base46").load_highlight "nvimtree"
+--
 local options = {
   sort_by = "case_sensitive",
   disable_netrw = true,
@@ -46,7 +46,9 @@ local options = {
 }
 
 -- check for any override
-options = require("core.utils").load_override(options, "kyazdani42/nvim-tree.lua")
-vim.g.nvimtree_side = options.view.side
-
-nvimtree.setup(options)
+-- options = require("core.utils").load_override(options, "kyazdani42/nvim-tree.lua")
+-- vim.g.nvimtree_side = options.view.side
+--
+-- nvimtree.setup(options)
+--
+return options

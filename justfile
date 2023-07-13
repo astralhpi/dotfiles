@@ -57,7 +57,7 @@ nvim: config-dir
       ./nvim/ftdetect
   ./ensure.py link {{ home_dir }}/.config/nvim/queries \
       ./nvim/queries
-  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+  nvim --headless "+Lazy! sync" +qa
 
 starship:
   ./ensure.py dir ~/.cache/starship
@@ -233,7 +233,7 @@ nix-home-manager: config-dir
   if [ -z `command -v home-manager` ]; then
       echo "Installing Home Manager"
       nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-      nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+      nix-channel --add https://nixos.org/channels/nixpkgs-23.05-darwin nixpkgs
       nix-channel --update
       export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
       nix-shell '<home-manager>' -A install
