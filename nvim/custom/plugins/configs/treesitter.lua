@@ -17,7 +17,6 @@ local options = {
     "typescript",
     "hcl",
     "terraform",
-    "help",
     "yaml",
     "json",
     "nix",
