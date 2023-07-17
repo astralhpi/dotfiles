@@ -28,7 +28,6 @@ local options = {
   }
 }
 
-options = require("core.utils").load_override(options, "jose-elias-alvarez/null-ls.nvim")
 null_ls.setup(options)
 null_ls.register({
   name = "svelte",
