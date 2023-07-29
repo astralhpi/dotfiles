@@ -4,13 +4,11 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'xo/xo'
 tap 'pulumi/tap'
-tap 'chiselstrike/tap'
 
 brew 'mitmproxy'
 brew 'pam-reattach'
 brew 'koekeishiya/formulae/yabai'
 brew 'mysql'
-brew 'turso'
 
 cask 'orbstack'
 cask 'mimestream'
