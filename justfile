@@ -207,11 +207,11 @@ sudo-with-touchid:
   #!/usr/bin/env bash
   if ! cat /etc/pam.d/sudo | grep pam_tid.so > /dev/null; then
     echo "Enabling TouchID for sudo"
-    sudo sed -i '' '2s/^/auth       sufficient     pam_tid.so\\n/' /etc/pam.d/sudo
+    sudo sed -i '' '2s/^/auth       sufficient     pam_tid.so\n/' /etc/pam.d/sudo
   fi
   if ! cat /etc/pam.d/sudo | grep pam_reattach.so > /dev/null; then
     echo "Enabling TouchID for sudo in tmux"
-    sudo sed -i '' '2s/^/auth       optional     \/opt\/homebrew\/lib\/pam\/pam_reattach.so\\n/' /etc/pam.d/sudo
+    sudo sed -i '' '2s/^/auth       optional     \/opt\/homebrew\/lib\/pam\/pam_reattach.so\n/' /etc/pam.d/sudo
   fi
 
 # ===============================================================================
