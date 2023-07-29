@@ -266,3 +266,14 @@ polyglot: rust
 
 rust:
   ./ensure.py install rustup "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+
+# ===============================================================================
+# Zotero Plugin
+# ===============================================================================
+
+zotero-addons:
+  mkdir -p ./zotero-addons/
+  https -do ./zotero-addons/zotero-gpt.xpi github.com/MuiseDestiny/zotero-gpt/releases/latest/download/zotero-gpt.xpi
+  https -do ./zotero-addons/zotero-pdf-translate.xpi github.com/windingwind/zotero-pdf-translate/releases/latest/download/zotero-pdf-translate.xpi
+  https -do ./zotero-addons/zotero-scihub.xpi github.com/ethanwillis/zotero-scihub/releases/latest/download/zotero-scihub-1.4.4.xpi
+
