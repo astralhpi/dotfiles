@@ -37,6 +37,7 @@ cask 'todoist'
 cask 'ubersicht'
 cask 'deepl'
 cask 'zotero'
+cask 'gureumkim'
 
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134

@@ -1,5 +1,4 @@
 require("hs.ipc")
-require("key")
 require("yabai")
 
 function reloadConfig(files)
