@@ -150,7 +150,7 @@ linux: shell devops crypto
 macos: gui shell devops polyglot macos-only
 
 [macos]
-macos-only: brew karabiner hammerspoon yabai ubersicht nushell sudo-with-touchid keyboard font
+macos-only: brew karabiner hammerspoon yabai nushell sudo-with-touchid keyboard font
 
 [macos]
 brew:
@@ -167,12 +167,6 @@ yabai: config-dir
   ./ensure.py link {{ home_dir }}/.config/yabai/yabairc config/yabairc
   sudo ./ensure.py link /usr/local/bin/yabai /opt/homebrew/bin/yabai 
   yabai --start-service
-
-[macos]
-ubersicht:
-  ./ensure.py dir '{{ home_dir }}/Library/Application Support/Übersicht/widgets'
-  ./ensure.py clone {{ home_dir }}'/Library/Application Support/Übersicht/widgets/simple-bar' \
-      'https://github.com/Jean-Tinland/simple-bar'
 
 [macos]
 keyboard:

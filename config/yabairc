@@ -2,7 +2,6 @@
 
 yabai -m config \
   layout bsp \
-  external_bar all:0:29 \
   window_placement second_child
 
 yabai -m rule --add app="^시스템 설정$" manage=off
