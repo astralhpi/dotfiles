@@ -13,7 +13,7 @@ Personal dotfiles for macOS
 
 ### Step 2. Run just
 
-After restarting the terminal,
+After restarting the terminal, run the command below. If you're unfamiliar with just, you can learn more about it [here](https://just.systems).
 
 ```bash
   $ just
@@ -21,7 +21,7 @@ After restarting the terminal,
 
 ### Step 3. Sync Secrets
 
-After setting the keybase,
+After setting up keybase (find instructions or more about keybase [here](https://keybase.io)), run the following command.
 
 ```
   $ just secret down
@@ -33,5 +33,8 @@ After setting the keybase,
 - Apple Silicon
 
 ## Reference
+I referenced the repositories below to set up these dotfiles.
 
-- The configuration and code for yabai was based on rtauziac's [Hammerspoon-Yabai](https://github.com/rtauziac/Hammerspoon-Yabai).
+- [NvChad](https://nvchad.com): Neovim configurations.
+- [Hammerspoon-Yabai](https://github.com/rtauziac/Hammerspoon-Yabai): Scripts for Hammerspoon+Yabai integration.
+- [dotfiles(FelixKratz)](https://github.com/FelixKratz/dotfiles.git): Settings for Sketchybar
