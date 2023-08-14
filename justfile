@@ -150,7 +150,7 @@ linux: shell devops crypto
 macos: gui shell devops polyglot macos-only
 
 [macos]
-macos-only: brew karabiner hammerspoon yabai nushell sudo-with-touchid keyboard font
+macos-only: brew karabiner hammerspoon yabai nushell sudo-with-touchid keyboard font sketchybar
 
 [macos]
 brew:
@@ -207,6 +207,11 @@ sudo-with-touchid:
     echo "Enabling TouchID for sudo in tmux"
     sudo sed -i '' '2s/^/auth       optional     \/opt\/homebrew\/lib\/pam\/pam_reattach.so\n/' /etc/pam.d/sudo
   fi
+
+[macos]
+sketchybar:
+  brew services start sketchybar
+  ./ensure.py link {{ home_dir }}/.config/sketchybar config/sketchybar
 
 # ===============================================================================
 # Nix Package Manager

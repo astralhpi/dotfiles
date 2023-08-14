@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+source "$CONFIG_DIR/colors.sh"
+
+ITEM_DIR="$CONFIG_DIR/items"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+FONT="SF Mono"
+NERD_FONT="JetBrainsMono Nerd Font"
+
+sketchybar \
+  --bar \
+    position=bottom \
+    blur_radius=30 \
+    padding_right=10 \
+    padding_left=10 \
+    topmost=window
+
+sketchybar --default icon.font="${FONT}:Regular:13.0"  \
+                     icon.color=0x78789FFF                 \
+                     label.font="${FONT}:Regular:13.0" \
+                     label.color=0x78789FFF                \
+                     padding_left=5                        \
+                     padding_right=5                       \
+                     label.padding_left=4                  \
+                     label.padding_right=4                 \
+                     icon.padding_left=4                   \
+                     icon.padding_right=4                  \
+                     updates=when_shown
+
+source "$ITEM_DIR/spaces.sh"
+
+sketchybar --update
