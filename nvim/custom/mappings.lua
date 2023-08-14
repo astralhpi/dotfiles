@@ -16,14 +16,14 @@ M.custom = {
 
 local nextBuffer = {
   function()
-    require("nvchad.tabufline").move_buf(1)
+    require("nvchad.tabufline").tabuflineNext()
   end,
   "goto next buffer",
 }
 
 local prevBuffer = {
   function()
-    require("nvchad.tabufline").move_buf(-1)
+    require("nvchad.tabufline").tabuflinePrev()
   end,
   "goto prev buffer",
 }
