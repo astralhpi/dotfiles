@@ -2,10 +2,12 @@
 
 yabai -m config \
   layout bsp \
+  external_bar all:0:26 \
   window_placement second_child
 
 yabai -m rule --add app="^시스템 설정$" manage=off
 yabai -m rule --add app="^시스템 정보$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Dash$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
 yabai -m rule --add app="^Steam$" manage=off
