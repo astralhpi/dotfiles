@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 update() {
-  LABEL=`yabai -m query --spaces --space $SID | jq -r '.label' | sed "s/^$/$SID/"`
-  echo "Updating space $SID $NAME $SELECTED $LABEL"
+  LABEL=`yabai -m query --spaces --space $SID | jq -r '.label'`
+  LABEL="${LABEL:-$SID}"
   source "$CONFIG_DIR/colors.sh"
   COLOR=$BACKGROUND_2
   FONT_STYLE=Regular
