@@ -5,10 +5,12 @@ import sys
 import os
 import subprocess
 
+
 def dir(path):
     if not os.path.isdir(path):
         print(f"Creating directory {path}")
         os.makedirs(path)
+
 
 def link(path, link):
     link = os.path.realpath(link)
@@ -28,10 +30,12 @@ def link(path, link):
         print(f"Creating link {path} -> {link}")
         os.symlink(link, path)
 
+
 def copy(path, source):
     if not os.path.isfile(path):
         print(f"Creating copy {path} -> {source}")
         shutil.copyfile(source, path)
+
 
 def clone(path, repo, branch=None):
     need_update_submodules = False
@@ -39,8 +43,11 @@ def clone(path, repo, branch=None):
     if os.path.isdir(path):
         os.chdir(path)
 
-        cur_repo = subprocess.check_output(["git", "remote", "get-url", "origin"])\
-            .strip().decode("utf-8")
+        cur_repo = (
+            subprocess.check_output(["git", "remote", "get-url", "origin"])
+            .strip()
+            .decode("utf-8")
+        )
         if cur_repo != repo:
             print(f"Change remote origin to {repo} because it was {cur_repo}")
             subprocess.check_call(["git", "remote", "set-url", "origin", repo])
@@ -52,7 +59,13 @@ def clone(path, repo, branch=None):
         need_update_submodules = True
         os.chdir(path)
 
-    if branch is not None and subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).strip() != branch:
+    if (
+        branch is not None
+        and subprocess.check_output(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"]
+        ).strip()
+        != branch
+    ):
         print(f"Checkout branch {branch}")
         subprocess.check_call(["git", "checkout", branch])
 
@@ -60,10 +73,12 @@ def clone(path, repo, branch=None):
         print("Update submodules")
         subprocess.check_call(["git", "submodule", "update", "--init", "--recursive"])
 
+
 def file(path, command):
     if not os.path.isfile(path):
         print(f"Creating file {path}")
         subprocess.check_call(command, shell=True)
+
 
 def install(cmd, *install_cmds):
     try:
@@ -73,6 +88,7 @@ def install(cmd, *install_cmds):
         for install_cmd in install_cmds:
             print(f"Run {install_cmd}")
             subprocess.check_call(install_cmd, shell=True)
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
