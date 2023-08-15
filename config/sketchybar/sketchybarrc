@@ -4,8 +4,8 @@ source "$CONFIG_DIR/colors.sh"
 
 ITEM_DIR="$CONFIG_DIR/items"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
-FONT="SF Mono"
-NERD_FONT="JetBrainsMono Nerd Font"
+FONT="Liga SFMono Nerd Font"
+NERD_FONT="Liga SFMono Nerd Font"
 
 sketchybar \
   --bar \

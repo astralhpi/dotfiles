@@ -5,6 +5,7 @@ tap 'homebrew/cask-fonts'
 tap 'xo/xo'
 tap 'pulumi/tap'
 tap 'FelixKratz/formulae'
+tap 'shaunsingh/SFMono-Nerd-Font-Ligaturized'
 
 brew 'mitmproxy'
 brew 'pam-reattach'
@@ -39,6 +40,7 @@ cask 'todoist'
 cask 'deepl'
 cask 'zotero'
 cask 'gureumkim'
+cask 'font-sf-mono-nerd-font-ligaturized'
 
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134
