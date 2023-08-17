@@ -183,6 +183,15 @@ local plugins = {
   {
     "NoahTheDuke/vim-just",
     ft = { "just" }
+  },
+
+  -- IDE - Diff
+  {
+    "sindrets/diffview.nvim",
+    cmd = {"DiffviewOpen", "DiffviewFileHistory", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewRefresh"},
+    config = function()
+      require("diffview").setup()
+    end
   }
 }
 
