@@ -12,7 +12,12 @@ def dir(path):
         os.makedirs(path)
 
 
+def parent_dir(path):
+    dir(os.path.dirname(path))
+
+
 def link(path, link):
+    parent_dir(path)
     link = os.path.realpath(link)
 
     if os.path.exists(path) and not os.path.islink(path):
@@ -32,12 +37,14 @@ def link(path, link):
 
 
 def copy(path, source):
+    parent_dir(path)
     if not os.path.isfile(path):
         print(f"Creating copy {path} -> {source}")
         shutil.copyfile(source, path)
 
 
 def clone(path, repo, branch=None):
+    parent_dir(path)
     need_update_submodules = False
 
     if os.path.isdir(path):
@@ -74,7 +81,15 @@ def clone(path, repo, branch=None):
         subprocess.check_call(["git", "submodule", "update", "--init", "--recursive"])
 
 
+def download(path, url):
+    parent_dir(path)
+    if not os.path.isfile(path):
+        print(f"Downloading {url} to {path}")
+        subprocess.check_call(["curl", "-L", "-o", path, url])
+
+
 def file(path, command):
+    parent_dir(path)
     if not os.path.isfile(path):
         print(f"Creating file {path}")
         subprocess.check_call(command, shell=True)

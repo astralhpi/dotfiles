@@ -209,9 +209,19 @@ sudo-with-touchid:
   fi
 
 [macos]
-sketchybar:
+sketchybar: && sketchybar-app-font
   brew services start sketchybar
   ./ensure.py link {{ home_dir }}/.config/sketchybar config/sketchybar
+
+[macos]
+sketchybar-update-app-font: && sketchybar-app-font
+    rm {{ home_dir }}/Library/Fonts/sketchybar-app-font.ttf
+    rm config/sketchybar/icon_map_fn.sh
+
+[macos]
+sketchybar-app-font:
+  ./ensure.py download {{ home_dir }}/Library/Fonts/sketchybar-app-font.ttf https://github.com/kvndrsslr/sketchybar-app-font/releases/download/latest/sketchybar-app-font.ttf
+  ./ensure.py download config/sketchybar/icon_map_fn.sh https://github.com/kvndrsslr/sketchybar-app-font/releases/download/latest/icon_map_fn.sh
 
 # ===============================================================================
 # Nix Package Manager
@@ -243,12 +253,14 @@ nix-home-manager: config-dir
 
 [macos]
 nix-darwin:
+  #!/usr/bin/env bash
   ./ensure.py dir {{ home_dir }}/.nixpkgs
   ./ensure.py link {{ home_dir }}/.nixpkgs/darwin-configuration.nix nix/darwin/darwin-configuration.nix
   ./ensure.py install darwin-rebuild \
       "nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer" \
       "./result/bin/darwin-installer"
 
+  source /etc/static/bashrc
   darwin-rebuild switch
 
 node2nix:
