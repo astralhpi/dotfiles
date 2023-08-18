@@ -45,4 +45,3 @@ cask 'font-sf-mono-nerd-font-ligaturized'
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134
 mas 'Flow', id: 1423210932
-mas 'Microsoft Remote Desktop', id: 1295203466
