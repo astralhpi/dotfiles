@@ -2,6 +2,8 @@ os := os()
 home_dir := env_var('HOME')
 user := env_var('USER')
 
+nix_version := `cat ./nix-version.txt`
+
 # ===============================================================================
 # Main Commands
 # ===============================================================================
@@ -241,8 +243,8 @@ nix-home-manager: config-dir
 
   if [ -z `command -v home-manager` ]; then
       echo "Installing Home Manager"
-      nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-      nix-channel --add https://nixos.org/channels/nixpkgs-23.05-darwin nixpkgs
+      nix-channel --add https://github.com/nix-community/home-manager/archive/release-{{nix_version}}.tar.gz home-manager
+      nix-channel --add https://nixos.org/channels/nixpkgs-{{nix_version}}-darwin nixpkgs
       nix-channel --update
       export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
       nix-shell '<home-manager>' -A install

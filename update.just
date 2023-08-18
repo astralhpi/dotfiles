@@ -2,13 +2,18 @@ os := os()
 home_dir := env_var('HOME')
 user := env_var('USER')
 
+nix_version := `cat ./nix-version.txt`
+
 all: nvchad nix brew nvim
 
 nvchad:
   cd {{home_dir}}/.config/nvim && git pull && git submodule update --init --recursive
 
 nix:
-  nix-channel --add https://nixos.org/channels/nixpkgs-23.05-darwin nixpkgs
+  nix-channel --remove home-manager
+  nix-channel --remove nixpkgs
+  nix-channel --add https://github.com/nix-community/home-manager/archive/release-{{nix_version}}.tar.gz home-manager
+  nix-channel --add https://nixos.org/channels/nixpkgs-{{nix_version}}-darwin nixpkgs
   nix-channel --update
   darwin-rebuild switch
   home-manager switch
