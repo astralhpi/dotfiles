@@ -147,7 +147,7 @@ linux: shell devops crypto
 # ===============================================================================
 
 [macos]
-macos: gui shell devops polyglot macos-only
+macos: shell devops polyglot macos-only gui
 
 [macos]
 macos-only: brew karabiner hammerspoon yabai nushell sudo-with-touchid keyboard font sketchybar
