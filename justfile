@@ -101,7 +101,7 @@ kitty-icon:
 kitty-icon:
   cp config/kitty/kitty.icns /Applications/kitty.app/Contents/Resources/kitty.icns
   touch /Applications/kitty.app
-  sudo killall Finder && sudo killall Finder
+  (sudo killall Finder && sudo killall Finder) &
 
 # ===============================================================================
 # Crypto Configs
@@ -193,7 +193,7 @@ hammerspoon:
 
 [macos]
 nushell:
-  cargo install nu --features=dataframe
+  cargo install nu
   ./ensure.py dir '{{ home_dir }}/Library/Application Support/nushell'
   ./ensure.py link {{ home_dir }}'/Library/Application Support/nushell/env.nu' nushell/env.nu
   ./ensure.py link {{ home_dir }}'/Library/Application Support/nushell/config.nu' nushell/config.nu
