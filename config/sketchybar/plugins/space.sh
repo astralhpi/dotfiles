@@ -4,16 +4,16 @@ update() {
   LABEL=`yabai -m query --spaces --space $SID | jq -r '.label'`
   LABEL="${LABEL:-$SID}"
   source "$CONFIG_DIR/colors.sh"
-  COLOR=$BACKGROUND_2
   FONT_STYLE=Regular
+  BACKGROUND_COLOR=$BACKGROUND_1
   if [ "$SELECTED" = "true" ]; then
-    COLOR=$GREY
     FONT_STYLE=Bold
+    BACKGROUND_COLOR=$BACKGROUND_2
   fi
   sketchybar --set $NAME icon.highlight=$SELECTED \
                          label.highlight=$SELECTED \
                          icon.font.style=$FONT_STYLE \
-                         background.border_color=$COLOR \
+                         background.color=$BACKGROUND_COLOR \
                          icon="$LABEL"
 }
 

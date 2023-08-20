@@ -14,17 +14,16 @@ do
     icon.padding_left=10
     icon.padding_right=10
     icon.color=$GREY
-    icon.highlight_color=0xFFFFFFFF
+    icon.highlight_color=$WHITE
     padding_left=2
     padding_right=2
     label.padding_right=20
     label.color=$GREY
     label.highlight_color=$WHITE
     label.y_offset=-1
-    label.drawing=off
+    label.font="sketchybar-app-font:Regular:16.0"
     background.color=$BACKGROUND_1
-    background.border_color=$BACKGROUND_2
-    background.drawing=off
+    background.corner_radius=3
     script="$PLUGIN_DIR/space.sh"
   )
 
@@ -32,11 +31,6 @@ do
              --set space.$sid "${space[@]}" \
              --subscribe space.$sid mouse.clicked
 done
-
-spaces_bracket=(
-  background.color=$BACKGROUND_1
-  background.border_color=$BACKGROUND_2
-)
 
 separator=(
   icon=""
@@ -49,8 +43,5 @@ separator=(
   icon.color=$WHITE
 )
 
-sketchybar --add bracket spaces_bracket '/space\..*/'  \
-           --set spaces_bracket "${spaces_bracket[@]}" \
-                                                       \
-           --add item separator left                   \
+sketchybar --add item separator left                   \
            --set separator "${separator[@]}"

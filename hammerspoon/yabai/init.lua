@@ -89,7 +89,7 @@ hs.hotkey.bind(super, hs.keycodes.map["space"], function() yabai({"-m", "space",
 
 
 --# focus fullscreen
-hs.hotkey.bind(super, hs.keycodes.map["f"], function() yabai({"-m", "window", "--toggle", "zoom-fullscreen"}) end)  --["m"]
+hs.hotkey.bind(super, hs.keycodes.map["f"], function() yabai({"-m", "window", "--toggle", "zoom-fullscreen"}, function() toast("Full") end) end)  --["m"]
 --hs.hotkey.bind(super, hs.keycodes.map[","], function() yabai({"-m", "window", "--toggle", "zoom-parent"}) end) -- not so useful  --[","]
 
 

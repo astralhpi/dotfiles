@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 source "$CONFIG_DIR/colors.sh"
+source "$CONFIG_DIR/icon_map_fn.sh"
 
 ITEM_DIR="$CONFIG_DIR/items"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
@@ -28,5 +29,6 @@ sketchybar --default icon.font="${FONT}:Regular:13.0"  \
                      updates=when_shown
 
 source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/yabai.sh"
 
 sketchybar --update
