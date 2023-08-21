@@ -16,7 +16,6 @@ brew 'jq'
 
 cask 'orbstack'
 cask 'mimestream'
-cask 'tailscale'
 cask 'google-chrome'
 cask '1password'
 cask '1password-cli'
