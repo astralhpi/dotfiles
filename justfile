@@ -222,8 +222,8 @@ sketchybar-update-app-font: && sketchybar-app-font
 
 [macos]
 sketchybar-app-font:
-  ./ensure.py download {{ home_dir }}/Library/Fonts/sketchybar-app-font.ttf https://github.com/kvndrsslr/sketchybar-app-font/releases/download/latest/sketchybar-app-font.ttf
-  ./ensure.py download config/sketchybar/icon_map_fn.sh https://github.com/kvndrsslr/sketchybar-app-font/releases/download/latest/icon_map_fn.sh
+  ./ensure.py download {{ home_dir }}/Library/Fonts/sketchybar-app-font.ttf https://github.com/astralhpi/sketchybar-app-font/releases/download/latest/sketchybar-app-font.ttf
+  ./ensure.py download config/sketchybar/icon_map_fn.sh https://github.com/astralhpi/sketchybar-app-font/releases/download/latest/icon_map_fn.sh
 
 # ===============================================================================
 # Nix Package Manager
