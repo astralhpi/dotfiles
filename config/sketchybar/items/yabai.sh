@@ -3,6 +3,7 @@
 apps_in_space=(
   icon.width=0
   label.width=0
+  label.color=$WHITE
   script="$PLUGIN_DIR/yabai.sh"
   icon.font="$FONT:Bold:16.0"
   associated_display=active
