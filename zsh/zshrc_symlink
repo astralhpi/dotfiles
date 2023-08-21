@@ -69,9 +69,6 @@ export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-ran
 zinit ice wait'1' lucid
 zinit light laggardkernel/zsh-thefuck
 
-# zoxide
-zsh-defer eval "$(zoxide init zsh)"
-
 eval "$(starship init zsh)"
 
 # alias
@@ -108,3 +105,6 @@ eval "$(op completion zsh)"; compdef _op op
 eval "$(github-copilot-cli alias -- "$0")"
 
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# zoxide
+zsh-defer -t 1 eval "$(zoxide init zsh)"
