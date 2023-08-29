@@ -67,9 +67,10 @@ in [
   pkgs.ktlint
   pkgs.gradle
 
-
   pkgs.go
   pkgs.lua
+
+  pkgs.zig
 
   # clients
   pkgs.mosh

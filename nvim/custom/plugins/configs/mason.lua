@@ -26,7 +26,10 @@ return {
     "svelte-language-server",
 
     -- emmet
-    "emmet-ls"
+    "emmet-ls",
+
+    -- zig
+    "zls"
 
   }
 }
