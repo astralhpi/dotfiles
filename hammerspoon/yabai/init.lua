@@ -30,7 +30,7 @@ function yabai(args, completion)
   local yabai_output = ""
   local yabai_error = ""
   -- Runs in background very fast
-  local yabai_task = hs.task.new("/usr/local/bin/yabai",nil, function(task, stdout, stderr)
+  local yabai_task = hs.task.new("/opt/homebrew/bin/yabai",nil, function(task, stdout, stderr)
     --print("stdout:"..stdout, "stderr:"..stderr)
     if stdout ~= nil then yabai_output = yabai_output..stdout end
     if stderr ~= nil then yabai_error = yabai_error..stderr end
@@ -403,7 +403,7 @@ yabaidirectcall = {
 }
 
 --# start yabai
---os.execute("/usr/local/bin/yabai")
+--os.execute("/opt/homebrew/bin/yabai")
 -- so far I start yabai by hand from terminal so I can see logs
 
 --toast("Hello world", 1)
