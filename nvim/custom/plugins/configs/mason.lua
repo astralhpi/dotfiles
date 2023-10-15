@@ -29,7 +29,10 @@ return {
     "emmet-ls",
 
     -- zig
-    "zls"
+    "zls",
+
+    -- deno
+    "deno"
 
   }
 }

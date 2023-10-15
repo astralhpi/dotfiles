@@ -77,5 +77,7 @@ in [
 
   # build tools
   pkgs.cmake
+
+  pkgs.deno
 ]
 

@@ -1,6 +1,7 @@
 local _on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 local navic = require("nvim-navic")
+local util = require "lspconfig/util"
 
 local lspconfig = require "lspconfig"
 local servers = {
@@ -9,6 +10,9 @@ local servers = {
 
   -- node
   "tsserver",
+
+  -- deno
+  "denols",
 
   -- rust
   "rust_analyzer",
@@ -72,6 +76,26 @@ for _, lsp in ipairs(servers) do
             ["bem.enabled"] = true,
           },
         },
+      }
+    }
+  elseif lsp == "tsserver" then
+    lspconfig.tsserver.setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      root_dir = util.root_pattern("package.json"),
+      single_file_support = false,
+      flags = {
+        debounce_text_changes = 150
+      }
+
+    }
+  elseif lsp == 'denols' then
+    lspconfig.denols.setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+      flags = {
+        debounce_text_changes = 150
       }
     }
   else
