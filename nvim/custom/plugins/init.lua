@@ -61,8 +61,11 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "telescope-undo.nvim", "telescope-fzf-native.nvim" },
+    dependencies = { "telescope-undo.nvim", "telescope-fzf-native.nvim", { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0", } },
     opts = require("custom.plugins.configs.others").telescope(),
+    config = function()
+      require("telescope").load_extension("live_grep_args")
+    end,
   },
   {
     "simrat39/symbols-outline.nvim",
