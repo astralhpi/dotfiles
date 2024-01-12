@@ -25,7 +25,6 @@ in [
   pkgs.choose
   pkgs.tldr
   pkgs.procs
-  pkgs.atuin
 
   # CLI tools - Less frequently used
   pkgs.qrencode
