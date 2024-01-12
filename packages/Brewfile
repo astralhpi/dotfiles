@@ -1,8 +1,6 @@
 cask_args appdir: '/Applications'
 
-tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
-tap 'xo/xo'
 tap 'pulumi/tap'
 tap 'FelixKratz/formulae'
 tap 'shaunsingh/SFMono-Nerd-Font-Ligaturized'

@@ -4,7 +4,7 @@ user := env_var('USER')
 
 nix_version := `cat ./nix-version.txt`
 
-all: nvchad nix brew nvim
+all: nvchad nix brew nvim rust
 
 nvchad:
   cd {{home_dir}}/.config/nvim && git pull && git submodule update --init --recursive
@@ -24,3 +24,6 @@ brew:
 
 nvim:
   nvim --headless "+Lazy! sync" +qa
+
+rust:
+  rustup update
