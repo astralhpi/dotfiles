@@ -5,13 +5,13 @@
         "revision": "f58ce77ad2ca81ae825352d824e2901659e41c3d"
       },
       "homebrew/cask-fonts": {
-        "revision": "cb5a031b8b969be9685c5e5106dc52e9484172c9"
+        "revision": "ce6d85bb40f1113ec132a57007810cb3da052dcb"
       },
       "xo/xo": {
         "revision": "ad977a48546ec66874769e0b972d7c03bdd68f81"
       },
       "pulumi/tap": {
-        "revision": "c9f70a34e8890d728863a3ffb7d8c87970aa0043"
+        "revision": "342634c48b6dee20552a7346f50ece51625ec776"
       },
       "planetscale/tap": {
         "revision": "76dd0cca85791862a6aca167092a9755a13715dc"
@@ -418,7 +418,7 @@
         }
       },
       "todoist": {
-        "version": "8.14.1",
+        "version": "8.15.0",
         "options": {
           "full_name": "todoist",
           "args": {
@@ -502,12 +502,12 @@
     "mas": {
       "Slack": {
         "id": "803453959",
-        "version": "4.35.126"
+        "version": "4.35.131"
       },
       "KakakoTalk": null,
       "Flow": {
         "id": "1423210932",
-        "version": "2.13.2"
+        "version": "2.14.1"
       },
       "Microsoft Remote Desktop": {
         "id": "1295203466",
@@ -530,8 +530,8 @@
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.0.0.0.1.1694021235",
-        "Xcode": "15.1",
-        "macOS": "14.1"
+        "Xcode": "15.0",
+        "macOS": "14.0"
       }
     }
   }
