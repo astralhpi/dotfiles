@@ -68,6 +68,17 @@
       plus-style = "syntax #004433";
       whitespace-error-style = "#280050";
     };
+    commit = {
+      pgpsign = true;
+    };
+    gpg = {
+      format = "ssh";
+    };
+    "gpg \"ssh\"" = {
+      program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+    };
+    user.signingkey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz+GFwenyPkH1B76UkiAYpuz9mqirKA5U7KKsovbDSLXdogi8o9jWxQM3TeCBsCRcHWadS8e25CGBTXHaJIe2moSf3f6ALeW+O5y8bho9PvPrDKXIPpnnAMQkDh7RCzb6DIC6p4C/tTZHZAAEXgsBmSbnsuZ104oclRzfFuDAbAtUu0xeJlSzE6B/NJNz8mIpODaDQVjM/+2r0zUrOUJwhdUxCooF6EQ7QIbDyYLf5kbYC2NC5Mt4GrLLIdh2P4TWlIjuuWkIXu1bldCTzGJotiQendcEebWPiz4W7WJfueVj5wf7ttMLDbqaDOKnfclRpgIfjvn/PHvwsrNj61ioq5bOvxq95zYEOl/IRnvUGpt68UEdItp+qX6kVSofCsWhTidWnHSe7LRZNIJKjIb/u7EnU/rwsI+7bBJytDQtA8jX4UcopY/Sc7lXPaN3hfLR1qI8a1tirBdQZvybaL7Qf5cpgWCWtyKLo3LB2RgMEVetZZaJwlDltWDU2e5go8AjMovEoTHettldPZbnkMop866XE7jUP+ysJuJXWFFnF48FuF5J3QWrfVdXm30uBoUs5eLh8YGNH9PwfLfLVXdBtpqP+t8DjHD1XqaKFbtpt2x3PA0gLwVr+XUaSor9cp/AgvkjSPs30WV2zSHPwDOnZx35qeSYVNSajMYF924j4cw==";
+
   };
   lfs = {
     enable = true;
