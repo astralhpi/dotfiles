@@ -69,7 +69,7 @@
       whitespace-error-style = "#280050";
     };
     commit = {
-      pgpsign = true;
+      ggpsign = true;
     };
     gpg = {
       format = "ssh";
