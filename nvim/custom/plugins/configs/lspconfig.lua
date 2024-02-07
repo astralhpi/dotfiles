@@ -59,6 +59,7 @@ for _, lsp in ipairs(servers) do
         })
         on_attach(client, bufnr)
       end,
+      root_dir = util.root_pattern("package.json"),
       capabilities = capabilities,
       flags = {
         debounce_text_changes = 150
@@ -66,9 +67,10 @@ for _, lsp in ipairs(servers) do
     }
   elseif lsp == "emmet_ls" then
     lspconfig.emmet_ls.setup {
-    -- on_attach = on_attach,
+      -- on_attach = on_attach,
       capabilities = capabilities,
-      filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "jsx" },
+      filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug",
+        "typescriptreact", "vue", "jsx" },
       init_options = {
         html = {
           options = {

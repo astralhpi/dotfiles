@@ -11,7 +11,6 @@ brew 'koekeishiya/formulae/yabai'
 brew 'mysql-client'
 brew 'sketchybar'
 brew 'jq'
-brew 'atuin'
 
 cask 'orbstack'
 cask 'mimestream'

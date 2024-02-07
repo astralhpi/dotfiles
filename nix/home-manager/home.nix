@@ -29,4 +29,5 @@ in {
                   else commonPackags;
   programs.direnv = import ./tools/direnv.nix {};
   programs.git = import ./tools/git.nix {};
+  programs.atuin = import ./tools/atuin.nix {};
 }
