@@ -9,7 +9,8 @@ up: (
     _up-home ".aws/credentials") (
     _up-home ".aws/config") (
     _up-home ".kube/config") (
-    _up-home ".zsh_history")
+    _up-home ".kubero/kubero") (
+    _up-home ".kubero/credentials")
 
 down: (
     _down-home ".ssh/config") (
@@ -19,8 +20,8 @@ down: (
     _down-home ".aws/credentials") (
     _down-home ".aws/config") (
     _down-home ".kube/config") (
-    _down-home ".zsh_history")
-
+    _down-home ".kubero/kubero") (
+    _down-home ".kubero/credentials")
 
 _up-home path:
     #!/usr/bin/env bash
