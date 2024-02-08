@@ -5,13 +5,13 @@
         "revision": "f58ce77ad2ca81ae825352d824e2901659e41c3d"
       },
       "homebrew/cask-fonts": {
-        "revision": "595beecc6a831cb9e23598dacb8a98459b99963b"
+        "revision": "289205374586d0476d3dee30cd87298fa368b864"
       },
       "xo/xo": {
         "revision": "ad977a48546ec66874769e0b972d7c03bdd68f81"
       },
       "pulumi/tap": {
-        "revision": "d96ff903812de721408493a7ac2f8d1b9ffd71f5"
+        "revision": "e8c5083d265a1e4f34ef3f38f74133158a0ce6ad"
       },
       "planetscale/tap": {
         "revision": "76dd0cca85791862a6aca167092a9755a13715dc"
@@ -21,6 +21,9 @@
       },
       "shaunsingh/sfmono-nerd-font-ligaturized": {
         "revision": "231a1592cf5e9813ac5f4f6236c9dbd0cdbbd71b"
+      },
+      "kubero-dev/kubero": {
+        "revision": "9cf3509a7916b1deba8852e6358af01d2ab62b41"
       }
     },
     "brew": {
@@ -225,6 +228,10 @@
             }
           }
         }
+      },
+      "kubero-cli": {
+        "version": "2.0.0",
+        "bottle": false
       }
     },
     "cask": {
@@ -511,12 +518,12 @@
     "mas": {
       "Slack": {
         "id": "803453959",
-        "version": "4.35.126"
+        "version": "4.36.140"
       },
       "KakakoTalk": null,
       "Flow": {
         "id": "1423210932",
-        "version": "2.13.2"
+        "version": "2.14.1"
       },
       "Microsoft Remote Desktop": {
         "id": "1295203466",
@@ -538,9 +545,9 @@
         "HOMEBREW_VERSION": "4.2.7",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
-        "CLT": "15.0.0.0.1.1694021235",
-        "Xcode": "15.1",
-        "macOS": "14.1"
+        "CLT": "15.1.0.0.1.1700200546",
+        "Xcode": "15.2",
+        "macOS": "14.2.1"
       }
     }
   }
