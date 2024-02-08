@@ -89,7 +89,7 @@ k9s:
 # GUI Tools Configs
 # ===============================================================================
 
-gui: kitty
+gui: kitty wezterm
 
 kitty: && kitty-icon
   ./ensure.py link {{ home_dir }}/.config/kitty config/kitty
@@ -102,6 +102,9 @@ kitty-icon:
   cp config/kitty/kitty.icns /Applications/kitty.app/Contents/Resources/kitty.icns
   touch /Applications/kitty.app
   (sudo killall Finder && sudo killall Finder) &
+
+wezterm:
+  ./ensure.py link {{ home_dir }}/.wezterm.lua wezterm/wezterm.lua
 
 # ===============================================================================
 # Crypto Configs
