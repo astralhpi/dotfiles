@@ -62,6 +62,7 @@ in [
   extraNodePackages.node-gyp
   extraNodePackages.insect
   extraNodePackages."@githubnext/github-copilot-cli"
+  extraNodePackages.aicommits
 
   pkgs.kotlin
   pkgs.kotlin-language-server
