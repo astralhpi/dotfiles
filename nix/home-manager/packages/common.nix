@@ -37,6 +37,7 @@ in [
   pkgs.dogdns
   pkgs.termshark
   pkgs.gh
+  pkgs.duckdb
 
   # Dev tools
   pkgs.lazygit
