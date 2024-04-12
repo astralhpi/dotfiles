@@ -13,6 +13,7 @@ brew 'mysql-client'
 brew 'sketchybar'
 brew 'jq'
 brew 'kubero-cli'
+brew 'gnu-sed'
 
 cask 'orbstack'
 cask 'mimestream'

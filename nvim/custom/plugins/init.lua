@@ -34,11 +34,11 @@ local plugins = {
     "ggandor/leap.nvim",
     dependencies = "tpope/vim-repeat",
     keys = {
-      {"s"},
-      {"S"},
-      {"g"}
+      { "s" },
+      { "S" },
+      { "g" }
     },
-    config = function ()
+    config = function()
       require("leap").add_default_mappings()
     end
   },
@@ -53,7 +53,8 @@ local plugins = {
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     module = "telescope._extensions.fzf",
-    build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+    build =
+    "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
   },
   {
     "debugloop/telescope-undo.nvim",
@@ -61,7 +62,8 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "telescope-undo.nvim", "telescope-fzf-native.nvim", { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0", } },
+    dependencies = { "telescope-undo.nvim", "telescope-fzf-native.nvim",
+      { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0", } },
     opts = require("custom.plugins.configs.others").telescope(),
     config = function()
       require("telescope").load_extension("live_grep_args")
@@ -82,7 +84,7 @@ local plugins = {
     end
   },
   {
-  "utilyre/barbecue.nvim",
+    "utilyre/barbecue.nvim",
     dependencies = { "nvim-navic", "nvim-lspconfig", "nvim-web-devicons" },
     opts = require("custom.plugins.configs.barbecue"),
     config = function(_, opts)
@@ -91,8 +93,8 @@ local plugins = {
   },
   {
     "ray-x/guihua.lua",
-      build = "cd lua/fzy && make",
-      module = "guihua",
+    build = "cd lua/fzy && make",
+    module = "guihua",
   },
   {
     "ray-x/sad.nvim",
@@ -108,10 +110,10 @@ local plugins = {
   {
     "booperlv/nvim-gomove",
     keys = {
-      {"<M-k>"},
-      {"<M-j>"},
-      {"<M-h>"},
-      {"<M-l>"}
+      { "<M-k>" },
+      { "<M-j>" },
+      { "<M-h>" },
+      { "<M-l>" }
     },
     config = function()
       require("gomove").setup {
@@ -142,9 +144,9 @@ local plugins = {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = {"williamboman/mason.nvim"},
+    dependencies = { "williamboman/mason.nvim" },
     module = { "mason" },
-    config = function ()
+    config = function()
       require("mason-lspconfig").setup()
     end
   },
@@ -191,7 +193,7 @@ local plugins = {
   -- IDE - Diff
   {
     "sindrets/diffview.nvim",
-    cmd = {"DiffviewOpen", "DiffviewFileHistory", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewRefresh"},
+    cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewRefresh" },
     config = function()
       require("diffview").setup()
     end
@@ -202,6 +204,19 @@ local plugins = {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
     build = "make install_jsregexp"
+  },
+
+  -- IDE - Find and Replace
+  {
+    "nvim-pack/nvim-spectre",
+    cmd = { "Spectre" },
+    dependencies = "nvim-lua/plenary.nvim",
+  },
+
+  --- IDE - Git
+  {
+    "FabijanZulj/blame.nvim",
+    cmd = { "ToggleBlame", "EnableBlame" }
   }
 }
 
