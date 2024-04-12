@@ -46,7 +46,7 @@ M.tabufline = {
 
 M.nvimtree = {
   n = {
-    ["<C-\\>"]  = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+    ["<C-\\>"]     = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
     ["<leader>\\"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
   }
 }
@@ -95,18 +95,6 @@ M.lspconfig = {
         vim.diagnostic.goto_next()
       end,
       "goto_next",
-    },
-  }
-}
-
-M.copilot = {
-  i = {
-    ["<C-g>"] = { "copilot#Accept('<CR>')", opts = {
-        noremap = true,
-        expr = true,
-        silent = true,
-        replace_keycodes = false
-      }
     },
   }
 }
