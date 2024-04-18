@@ -43,6 +43,7 @@ cask 'font-sf-mono-nerd-font-ligaturized'
 cask 'sf-symbols'
 cask 'wezterm'
 cask 'bruno'
+cask 'flutter'
 
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134
