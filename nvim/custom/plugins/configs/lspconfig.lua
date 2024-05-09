@@ -82,7 +82,10 @@ for _, lsp in ipairs(servers) do
     }
   elseif lsp == "tsserver" then
     lspconfig.tsserver.setup {
-      on_attach = on_attach,
+      on_attach = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end,
       capabilities = capabilities,
       root_dir = util.root_pattern("package.json"),
       single_file_support = false,
