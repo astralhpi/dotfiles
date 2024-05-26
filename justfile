@@ -24,7 +24,7 @@ gc:
 # Shell Essential Configs
 # ===============================================================================
 
-shell: nix devbox zsh tmux nvim starship chsh
+shell: nix zsh tmux nvim starship chsh
 
 config-dir:
   ./ensure.py dir {{ home_dir }}/.config
@@ -231,10 +231,6 @@ sketchybar-app-font:
 # ===============================================================================
 # Nix Package Manager
 # ===============================================================================
-
-devbox: nix
-  ./ensure.py install devbox "curl -fsSL https://get.jetify.com/devbox | bash"
-
 
 [macos]
 nix: nix-darwin nix-home-manager
