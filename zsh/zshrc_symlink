@@ -112,4 +112,3 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # zoxide
 zsh-defer -t 1 eval "$(zoxide init zsh)"
 export PATH="/Users/jake/.deno/bin:$PATH"
-eval "$(mise activate zsh)"
