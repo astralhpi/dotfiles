@@ -57,9 +57,10 @@ zinit wait lucid for \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
     
-zinit light romkatv/zsh-defer
-
-zsh-defer eval "$(direnv hook zsh)"
+zinit id-as"direnv" wait lucid as=null atclone'direnv hook zsh > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
@@ -70,7 +71,10 @@ zinit ice wait'1' lucid
 zinit light laggardkernel/zsh-thefuck
 
 # atuin
-zsh-defer -t 0.1 eval "$(atuin init zsh --disable-up-arrow)"
+zinit id-as"atuin" wait lucid as=null atclone'atuin init zsh --disable-up-arrow > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
 
 eval "$(starship init zsh)"
 
@@ -104,11 +108,32 @@ setopt    incappendhistory
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
-eval "$(op completion zsh)"; compdef _op op
-eval "$(github-copilot-cli alias -- "$0")"
+
+# 1password
+zinit id-as"op" wait'1' lucid as=null atclone'op completion zsh > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
+
+# copilot cli
+zinit id-as"github-copilot-cli" wait'1' lucid as=null atclone'github-copilot-cli alias -- "$0" > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
+
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # zoxide
-zsh-defer -t 1 eval "$(zoxide init zsh)"
-export PATH="/Users/jake/.deno/bin:$PATH"
+zinit id-as"z" wait lucid as=null atclone'zoxide init zsh > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
+
+# mise
+zinit id-as"mise" wait lucid as=null atclone'$HOME/.local/bin/mise activate zsh > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
+
+export PATH="$HOME/.deno/bin:$PATH"
