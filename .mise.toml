@@ -1,0 +1,14 @@
+[tasks.config-dir]
+description = "Ensure the config directory exists"
+run = [
+  './ensure.py dir $HOME/.config'
+]
+
+[tasks.mise]
+description = "Configure mise"
+run = [
+  './ensure.py link $HOME/.config/mise ./mise'
+]
+depends = [
+  "config-dir"
+]

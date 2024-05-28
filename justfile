@@ -24,10 +24,13 @@ gc:
 # Shell Essential Configs
 # ===============================================================================
 
-shell: nix zsh tmux nvim starship chsh
+shell: nix zsh tmux nvim starship chsh mise
 
 config-dir:
   ./ensure.py dir {{ home_dir }}/.config
+
+mise:
+  mise run mise
 
 zsh:
   ./ensure.py link {{ home_dir }}/.zprofile ./zsh/zprofile
