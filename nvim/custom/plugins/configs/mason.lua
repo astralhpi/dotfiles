@@ -13,8 +13,7 @@ return {
 
     -- python
     "pyright",
-    "black",
-    "flake8",
+    "ruff",
 
     -- terrafrom
     "terraform-ls",

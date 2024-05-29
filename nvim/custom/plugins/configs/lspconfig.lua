@@ -19,6 +19,7 @@ local servers = {
 
   -- python
   "pyright",
+  "ruff",
 
   -- terraform
   "terraformls",
