@@ -6,6 +6,7 @@ python = "3.12"
 "npm:insect" = "latest"
 "npm:@githubnext/github-copilot-cli" = "latest"
 "npm:@usebruno/cli" = "latest"
+"pipx:aider-chat" = "latest"
 
 [settings]
 experimental = true
