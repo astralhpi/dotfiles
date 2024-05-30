@@ -109,5 +109,22 @@ M.cmp = {
     }
   }
 }
+M.copilot_chat = {
+  v = {
+    ["<leader>ae"] = {"<cmd>CopilotChatExplain<cr>", "Copilot Chat Explain"},
+    ["<leader>ar"] = {"<cmd>CopilotChatReview<cr>", "Copilot Chat Review"},
+    ["<leader>af"] = {"<cmd>CopilotChatFix<cr>", "Copilot Chat Fix"},
+    ["<leader>aa"] = {"<cmd>CopilotChatFixDiagnostic<cr>", "Copilot Chat Fix Diagnostic"},
+    ["<leader>ao"] = {"<cmd>CopilotChatOptimize<cr>", "Copilot Chat Optimize"},
+    ["<leader>ad"] = {"<cmd>CopilotChatDocs<cr>", "Copilot Chat Docs"},
+    ["<leader>at"] = {"<cmd>CopilotChatTests<cr>", "Copilot Chat Tests"},
+  },
+  n = {
+    ["<leader>aa"] = {"<cmd>CopilotChatFixDiagnostic<cr>", "Copilot Chat Fix Diagnostic"},
+    ["<leader>ac"] = {"<cmd>CopilotChatCommit<cr>", "Copilot Chat Commit"},
+    ["<leader>as"] = {"<cmd>CopilotChatCommitStaged<cr>", "Copilot Chat Commit Staged"},
+  }
+
+}
 
 return M

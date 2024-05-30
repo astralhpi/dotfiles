@@ -199,11 +199,16 @@ local plugins = {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
     dependencies = {
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
     },
+    cmd = { "CopilotChat" },
+    event = "VeryLazy",
+    config = function()
+      local opts = require("custom.plugins.configs.copilot_chat")
+      require('CopilotChat').setup(opts)
+    end
   },
-
   -- IDE - Just
   {
     "NoahTheDuke/vim-just",
@@ -237,7 +242,8 @@ local plugins = {
   {
     "FabijanZulj/blame.nvim",
     cmd = { "ToggleBlame", "EnableBlame" }
-  }
+  },
+
 }
 
 return plugins
