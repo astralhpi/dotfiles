@@ -10,7 +10,8 @@ local prompts = {
     prompt = '/COPILOT_EXPLAIN Write an explanation for the active selection as paragraphs of text.' .. language_prompt,
   },
   Review = {
-    prompt = '/COPILOT_REVIEW Review the selected code.' .. language_prompt,
+    prompt = '/COPILOT_REVIEW Review the selected code. 확실하게 코드가 개선될 수 있는 점 위주로 리뷰하고, 리뷰가 반영된 예제 코드도 줘.' ..
+    language_prompt,
     callback = function(response, source)
       local ns = vim.api.nvim_create_namespace('copilot_review')
       local diagnostics = {}
