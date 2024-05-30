@@ -5,7 +5,6 @@ let
     pandas
     requests
   ];
-  extraNodePackages = import ../node/default.nix {};
 in [
   # CLI tools - Frequently used
   pkgs.neovim
@@ -56,14 +55,10 @@ in [
 
   # languages
   (pkgs.python311.withPackages pythonPackages)
+  pkgs.pipx
   pkgs.poetry
 
   pkgs.nodejs
-  extraNodePackages.pnpm
-  extraNodePackages.node-gyp
-  extraNodePackages.insect
-  extraNodePackages."@githubnext/github-copilot-cli"
-  extraNodePackages."@usebruno/cli"
 
   pkgs.kotlin
   pkgs.kotlin-language-server

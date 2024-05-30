@@ -1,6 +1,11 @@
 [tools]
 node = "22"
 pnpm = "9"
+python = "3.12"
+"npm:node-gyp" = "latest"
+"npm:insect" = "latest"
+"npm:@githubnext/github-copilot-cli" = "latest"
+"npm:@usebruno/cli" = "latest"
 
 [settings]
 experimental = true
