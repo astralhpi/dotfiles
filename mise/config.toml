@@ -7,6 +7,7 @@ python = "3.12"
 "npm:@githubnext/github-copilot-cli" = "latest"
 "npm:@usebruno/cli" = "latest"
 "pipx:aider-chat" = "v0.36"
+"npm:devspace" = "latest"
 
 [settings]
 experimental = true
