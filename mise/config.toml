@@ -8,6 +8,7 @@ python = "3.12"
 "npm:@usebruno/cli" = "latest"
 "pipx:aider-chat" = "v0.36"
 "npm:devspace" = "latest"
+"npm:@google/clasp" = "latest"
 
 [settings]
 experimental = true
