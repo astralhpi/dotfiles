@@ -154,7 +154,7 @@ local plugins = {
     "neovim/nvim-lspconfig",
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
+      "nvimtools/none-ls.nvim",
     },
     config = function()
       require "plugins.configs.lspconfig"
@@ -162,7 +162,7 @@ local plugins = {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     config = function()
       require "custom.plugins.configs.null_ls"
     end,
