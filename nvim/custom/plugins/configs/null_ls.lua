@@ -9,14 +9,13 @@ local options = {
   sources = {
     -- node
     null_ls.builtins.formatting.prettier,
-    null_ls.builtins.code_actions.eslint_d,
 
     -- python
-    null_ls.builtins.formatting.ruff,
-    null_ls.builtins.diagnostics.ruff,
+    require("none-ls.formatting.ruff"),
+    require("none-ls.diagnostics.ruff"),
 
     -- rust
-    null_ls.builtins.formatting.rustfmt,
+    require("none-ls.formatting.rustfmt"),
 
     -- terraform
     null_ls.builtins.formatting.terraform_fmt,
