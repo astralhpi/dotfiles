@@ -7,7 +7,6 @@ let
   ];
 in [
   # CLI tools - Frequently used
-  pkgs.neovim
   pkgs.tmux
   pkgs.direnv
   pkgs.fd
@@ -67,8 +66,6 @@ in [
 
   pkgs.go
   pkgs.lua
-
-  pkgs.zig
 
   # clients
   pkgs.mosh

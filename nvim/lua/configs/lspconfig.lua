@@ -1,5 +1,5 @@
-local _on_attach = require("plugins.configs.lspconfig").on_attach
-local capabilities = require("plugins.configs.lspconfig").capabilities
+local _on_attach = require("nvchad.configs.lspconfig").on_attach
+local capabilities = require("nvchad.configs.lspconfig").capabilities
 local navic = require("nvim-navic")
 local util = require "lspconfig/util"
 

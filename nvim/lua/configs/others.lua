@@ -1,7 +1,5 @@
 local M = {}
 
-local load_override = require("core.utils").load_override
-
 M.blankline = function()
   return {
     indentLine_enabled = 1,
@@ -50,18 +48,4 @@ M.cmp = function()
     },
   }
 end
-
-M.cmp_tabnine = function()
-  local present, tabnine = pcall(require, "cmp_tabnine.config")
-
-  local options = {
-    max_lines = 1000,
-    max_num_results = 20,
-    sort = true,
-  }
-
-  options = load_override(options, "cmp_tabnine")
-  tabnine:setup(options)
-end
-
 return M

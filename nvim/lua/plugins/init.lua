@@ -1,18 +1,12 @@
-local plugins = {
+return {
   -- UI
   {
     "folke/which-key.nvim",
     enabled = true,
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    -- lazy = true,
-    -- opts = require("custom.plugins.configs.others").blankline(),
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
-    opts = require "custom.plugins.configs.treesitter"
+    opts = require "configs.treesitter"
   },
   {
     "kevinhwang91/promise-async",
@@ -21,7 +15,7 @@ local plugins = {
   {
     "kevinhwang91/nvim-ufo",
     dependencies = "nvim-treesitter",
-    opts = require("custom.plugins.configs.others").ufo(),
+    opts = require("configs.others").ufo(),
     config = function(_, opts)
       require("ufo").setup(opts)
     end
@@ -29,7 +23,7 @@ local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = "nvim-tree/nvim-web-devicons",
-    opts = require("custom.plugins.configs.nvimtree")
+    opts = require("configs.nvimtree")
   },
   {
     "ggandor/leap.nvim",
@@ -49,7 +43,7 @@ local plugins = {
   },
   {
     "windwp/nvim-autopairs",
-    opts = require("custom.plugins.configs.others").autopairs()
+    opts = require("configs.others").autopairs()
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
@@ -65,7 +59,7 @@ local plugins = {
     "nvim-telescope/telescope.nvim",
     dependencies = { "telescope-undo.nvim", "telescope-fzf-native.nvim",
       { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0", } },
-    opts = require("custom.plugins.configs.others").telescope(),
+    opts = require("configs.others").telescope(),
     config = function()
       require("telescope").load_extension("live_grep_args")
     end,
@@ -87,7 +81,7 @@ local plugins = {
   {
     "utilyre/barbecue.nvim",
     dependencies = { "nvim-navic", "nvim-lspconfig", "nvim-web-devicons" },
-    opts = require("custom.plugins.configs.barbecue"),
+    opts = require("configs.barbecue"),
     config = function(_, opts)
       require("barbecue").setup(opts)
     end,
@@ -126,7 +120,7 @@ local plugins = {
   -- IDE - Auto Completion
   {
     "hrsh7th/nvim-cmp",
-    opts = require("custom.plugins.configs.others").cmp(),
+    opts = require("configs.others").cmp(),
   },
   -- IDE - Diagnostics
   {
@@ -141,7 +135,7 @@ local plugins = {
   -- IDE - Language Server
   {
     "williamboman/mason.nvim",
-    opts = require("custom.plugins.configs.mason")
+    opts = require("configs.mason")
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -158,8 +152,8 @@ local plugins = {
       "nvimtools/none-ls.nvim",
     },
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.plugins.configs.lspconfig"
+      require "nvchad.configs.lspconfig"
+      require "configs.lspconfig"
     end,
   },
   {
@@ -168,7 +162,7 @@ local plugins = {
       "nvimtools/none-ls-extras.nvim",
     },
     config = function()
-      require "custom.plugins.configs.null_ls"
+      require "configs.null_ls"
     end,
   },
   {
@@ -209,7 +203,7 @@ local plugins = {
     cmd = { "CopilotChat" },
     event = "VeryLazy",
     config = function()
-      local opts = require("custom.plugins.configs.copilot_chat")
+      local opts = require("configs.copilot_chat")
       require('CopilotChat').setup(opts)
     end
   },
@@ -248,6 +242,5 @@ local plugins = {
     cmd = { "ToggleBlame", "EnableBlame" }
   },
 
-}
 
-return plugins
+}

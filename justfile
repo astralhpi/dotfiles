@@ -51,19 +51,9 @@ tmux:
   ./ensure.py link {{ home_dir }}/.tmux/powerline \
       ./tmux/powerline
 
-nvim: config-dir
-  ./ensure.py clone {{ home_dir }}/.config/nvim \
-      'https://github.com/NvChad/NvChad'
-  ./ensure.py link {{ home_dir }}/.config/nvim/lua/custom \
-      ./nvim/custom
-  ./ensure.py link {{ home_dir }}/.config/nvim/ftplugin \
-      ./nvim/ftplugin
-  ./ensure.py link {{ home_dir }}/.config/nvim/ftdetect \
-      ./nvim/ftdetect
-  ./ensure.py link {{ home_dir }}/.config/nvim/queries \
-      ./nvim/queries
-  nvim --headless "+Lazy! sync" +qa
-
+nvim:
+  mise run nvim
+ 
 starship:
   ./ensure.py dir ~/.cache/starship
   ./ensure.py link {{ home_dir }}/.config/starship.toml config/starship.toml

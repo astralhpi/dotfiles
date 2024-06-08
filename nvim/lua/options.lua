@@ -1,3 +1,5 @@
+require "nvchad.options"
+
 local opt = vim.opt
 local g = vim.g
 
@@ -18,6 +20,7 @@ opt.colorcolumn = "88"
 opt.foldmethod = "expr"
 opt.foldlevel = 99
 opt.foldcolumn = '0'
+
 -- TODO: fold column을 예쁘게 만들기 위해서 
 -- 1. neovim에 https://github.com/neovim/neovim/pull/17446 머지된 이후,
 -- 2. https://github.com/kevinhwang91/nvim-ufo/issues/4 참고해서 수정해야함.

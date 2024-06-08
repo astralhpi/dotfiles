@@ -1,5 +1,4 @@
--- First read our docs (completely) then check the example_config repo
-
+---@type ChadrcConfig
 local M = {}
 
 M.ui = {
@@ -13,12 +12,9 @@ M.ui = {
   },
   nvdash = {
     load_on_startup = true
-  }
+  },
 }
 
-M.mappings = require "custom.mappings"
-M.plugins = "custom.plugins"
-
-require 'custom.commands'
+require 'commands'
 
 return M

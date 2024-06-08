@@ -12,3 +12,18 @@ run = [
 depends = [
   "config-dir"
 ]
+
+[tasks.nvim]
+description = "Configure neovim"
+
+run = [
+  './ensure.py link $HOME/.config/nvim ./nvim',
+  'nvim --headless "+Lazy! sync" +qa'
+]
+
+depends = [
+  "config-dir"
+]
+
+[tools]
+neovim = "latest"

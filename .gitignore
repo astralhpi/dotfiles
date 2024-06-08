@@ -6,3 +6,4 @@ nvim/.netrwhist
 .backup
 .direnv
 zotero-addons
+.aider.*
