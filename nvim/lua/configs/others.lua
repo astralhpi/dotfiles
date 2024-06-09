@@ -1,19 +1,9 @@
 local M = {}
 
-M.blankline = function()
-  return {
-    indentLine_enabled = 1,
-    show_current_context = true,
-    show_current_context_start = false,
-    char = "▏",
-    context_char = "▎",
-  }
-end
-
 M.ufo = function()
   local options = {
     provider_selector = function(bufnr, filetype, buftype)
-      return {'treesitter', 'indent'}
+      return { 'treesitter', 'indent' }
     end
   }
 
@@ -44,7 +34,7 @@ M.cmp = function()
       { name = "buffer" },
       { name = "nvim_lua" },
       { name = "path" },
-      { name = "cmp_tabnine"}
+      { name = "cmp_tabnine" }
     },
   }
 end

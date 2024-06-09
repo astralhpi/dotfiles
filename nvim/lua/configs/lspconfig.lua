@@ -5,9 +5,6 @@ local util = require "lspconfig/util"
 
 local lspconfig = require "lspconfig"
 local servers = {
-  -- lua
-  "lua_ls",
-
   -- node
   "tsserver",
 
