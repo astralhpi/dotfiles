@@ -1,37 +1,37 @@
 return {
-    ensure_installed = {
-        -- lua
-        "lua-language-server",
+  ensure_installed = {
+    -- lua
+    "lua-language-server",
 
-        -- node
-        "typescript-language-server",
-        "eslint_d",
+    -- node
+    "typescript-language-server",
+    "eslint_d",
 
-        -- rust
-        "rust-analyzer",
-        "rustfmt",
+    -- rust
+    "rust-analyzer",
+    "rustfmt",
 
-        -- python
-        "pyright",
-        "ruff",
+    -- python
+    "pyright",
+    "ruff",
 
-        -- terrafrom
-        "terraform-ls",
+    -- terrafrom
+    "terraform-ls",
 
-        -- nix
-        "nil",
+    -- nix
+    "nil",
 
-        -- svelte
-        "svelte-language-server",
+    -- svelte
+    "svelte-language-server",
 
-        -- emmet
-        "emmet-ls",
+    -- emmet
+    "emmet-ls",
 
-        -- zig
-        "zls",
+    -- zig
+    "zls",
 
-        -- deno
-        "deno"
+    -- deno
+    "deno"
 
-    }
+  }
 }

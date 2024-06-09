@@ -4,17 +4,17 @@ local map = vim.keymap.set
 
 -- common mappings
 map("n", "<leader>rr", function()
-    require("custom/utils").reload_nvim_conf()
+  require("custom/utils").reload_nvim_conf()
 end, { desc = "reload config" })
 
 
 -- tabufline
 local nextBuffer = function()
-    require("nvchad.tabufline").next()
+  require("nvchad.tabufline").next()
 end
 
 local prevBuffer = function()
-    require("nvchad.tabufline").prev()
+  require("nvchad.tabufline").prev()
 end
 
 map("n", "<M-}>", nextBuffer, { desc = "goto next buffer" })
@@ -22,7 +22,7 @@ map("n", "<M-{>", prevBuffer, { desc = "goto prev buffer" })
 map("n", "<M-S-]>", nextBuffer, { desc = "goto next buffer" })
 map("n", "<M-S-[>", prevBuffer, { desc = "goto prev buffer" })
 map("n", "<M-q>", function()
-    require("nvchad.tabufline").close_buffer()
+  require("nvchad.tabufline").close_buffer()
 end, { desc = "close buffer" })
 
 -- nvim-tree
@@ -49,7 +49,7 @@ map("n", "]d", ":lua vim.diagnostic.goto_next() <CR>", { desc = "diagnostic next
 
 -- cmp
 map("i", "<C-n>", function()
-    require("cmp").complete()
+  require("cmp").complete()
 end, { desc = "cmp complete" })
 
 -- copliot chat
