@@ -1,246 +1,249 @@
 return {
-  -- UI
-  {
-    "folke/which-key.nvim",
-    enabled = true,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = require "configs.treesitter"
-  },
-  {
-    "kevinhwang91/promise-async",
-    module = { "async", "promise" }
-  },
-  {
-    "kevinhwang91/nvim-ufo",
-    dependencies = "nvim-treesitter",
-    opts = require("configs.others").ufo(),
-    config = function(_, opts)
-      require("ufo").setup(opts)
-    end
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    opts = require("configs.nvimtree")
-  },
-  {
-    "ggandor/leap.nvim",
-    dependencies = "tpope/vim-repeat",
-    keys = {
-      { "s" },
-      { "S" },
-      { "g" }
+    -- UI
+    {
+        "nvim-treesitter/nvim-treesitter",
+        opts = require "configs.treesitter"
     },
-    config = function()
-      require("leap").add_default_mappings()
-    end
-  },
-  {
-    "mg979/vim-visual-multi",
-    event = "VimEnter",
-  },
-  {
-    "windwp/nvim-autopairs",
-    opts = require("configs.others").autopairs()
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    module = "telescope._extensions.fzf",
-    build =
-    "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
-  },
-  {
-    "debugloop/telescope-undo.nvim",
-    module = "telescope._extensions.undo",
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "telescope-undo.nvim", "telescope-fzf-native.nvim",
-      { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0", } },
-    opts = require("configs.others").telescope(),
-    config = function()
-      require("telescope").load_extension("live_grep_args")
-    end,
-  },
-  {
-    "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline",
-    config = function(_, opts)
-      require("symbols-outline").setup(opts)
-    end
-  },
-  {
-    "SmiteshP/nvim-navic",
-    module = "nvim-navic",
-    config = function()
-      require("nvim-navic").setup()
-    end
-  },
-  {
-    "utilyre/barbecue.nvim",
-    dependencies = { "nvim-navic", "nvim-lspconfig", "nvim-web-devicons" },
-    opts = require("configs.barbecue"),
-    config = function(_, opts)
-      require("barbecue").setup(opts)
-    end,
-  },
-  {
-    "ray-x/guihua.lua",
-    build = "cd lua/fzy && make",
-    module = "guihua",
-  },
-  {
-    "ray-x/sad.nvim",
-    commands = { "Sad" },
-    config = function()
-      require("sad").setup {
-        debug = false,
-        diff = "delta",
-        ls_file = "fd",
-      }
-    end
-  },
-  {
-    "booperlv/nvim-gomove",
-    keys = {
-      { "<M-k>" },
-      { "<M-j>" },
-      { "<M-h>" },
-      { "<M-l>" }
+    {
+        "kevinhwang91/promise-async",
+        module = { "async", "promise" }
     },
-    config = function()
-      require("gomove").setup {
-        map_default = true,
-        reindent = true
-      }
-    end
-  },
-  -- IDE - Auto Completion
-  {
-    "hrsh7th/nvim-cmp",
-    opts = require("configs.others").cmp(),
-  },
-  -- IDE - Diagnostics
-  {
-    "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-      }
-    end
-  },
-  -- IDE - Language Server
-  {
-    "williamboman/mason.nvim",
-    opts = require("configs.mason")
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
-    module = { "mason" },
-    config = function()
-      require("mason-lspconfig").setup()
-    end
-  },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      "nvimtools/none-ls.nvim",
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = "nvim-treesitter",
+        opts = require("configs.others").ufo(),
+        config = function(_, opts)
+            require("ufo").setup(opts)
+        end
     },
-    config = function()
-      require("nvchad.configs.lspconfig").defaults()
-      require "configs.lspconfig"
-    end,
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    dependencies = {
-      "nvimtools/none-ls-extras.nvim",
+    {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = "nvim-tree/nvim-web-devicons",
+        opts = require("configs.nvimtree")
     },
-    config = function()
-      require "configs.null_ls"
-    end,
-  },
-  {
-    "antosha417/nvim-lsp-file-operations",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree.lua"
+    {
+        "ggandor/leap.nvim",
+        dependencies = "tpope/vim-repeat",
+        keys = {
+            { "s" },
+            { "S" },
+            { "g" }
+        },
+        config = function()
+            require("leap").add_default_mappings()
+        end
     },
-    config = function()
-      require("lsp-file-operations").setup()
-    end
-  },
+    {
+        "mg979/vim-visual-multi",
+        event = "VimEnter",
+    },
+    {
+        "windwp/nvim-autopairs",
+        opts = require("configs.others").autopairs()
+    },
+    {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        module = "telescope._extensions.fzf",
+        build =
+        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+    },
+    {
+        "debugloop/telescope-undo.nvim",
+        module = "telescope._extensions.undo",
+    },
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "telescope-undo.nvim", "telescope-fzf-native.nvim",
+            { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0", } },
+        opts = require("configs.others").telescope(),
+        config = function()
+            require("telescope").load_extension("live_grep_args")
+        end,
+    },
+    {
+        "simrat39/symbols-outline.nvim",
+        cmd = "SymbolsOutline",
+        config = function(_, opts)
+            require("symbols-outline").setup(opts)
+        end
+    },
+    {
+        "SmiteshP/nvim-navic",
+        module = "nvim-navic",
+        config = function()
+            require("nvim-navic").setup()
+        end
+    },
+    {
+        "utilyre/barbecue.nvim",
+        dependencies = { "nvim-navic", "nvim-lspconfig", "nvim-web-devicons" },
+        opts = require("configs.barbecue"),
+        config = function(_, opts)
+            require("barbecue").setup(opts)
+        end,
+    },
+    {
+        "ray-x/guihua.lua",
+        build = "cd lua/fzy && make",
+        module = "guihua",
+    },
+    {
+        "ray-x/sad.nvim",
+        commands = { "Sad" },
+        config = function()
+            require("sad").setup {
+                debug = false,
+                diff = "delta",
+                ls_file = "fd",
+            }
+        end
+    },
+    {
+        "booperlv/nvim-gomove",
+        keys = {
+            { "<M-k>" },
+            { "<M-j>" },
+            { "<M-h>" },
+            { "<M-l>" }
+        },
+        config = function()
+            require("gomove").setup {
+                map_default = true,
+                reindent = true
+            }
+        end
+    },
+    {
+        'numToStr/Comment.nvim',
+        opts = {
+            -- add any options here
+        },
+        lazy = false,
+    },
+    -- IDE - Auto Completion
+    {
+        "hrsh7th/nvim-cmp",
+        opts = require("configs.others").cmp(),
+    },
+    -- IDE - Diagnostics
+    {
+        "folke/trouble.nvim",
+        cmd = { "TroubleToggle", "Trouble" },
+        dependencies = "nvim-tree/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {
+            }
+        end
+    },
+    -- IDE - Language Server
+    {
+        "williamboman/mason.nvim",
+        opts = require("configs.mason")
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = { "williamboman/mason.nvim" },
+        module = { "mason" },
+        config = function()
+            require("mason-lspconfig").setup()
+        end
+    },
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            "williamboman/mason-lspconfig.nvim",
+            "nvimtools/none-ls.nvim",
+        },
+        config = function()
+            require("nvchad.configs.lspconfig").defaults()
+            require "configs.lspconfig"
+        end,
+    },
+    {
+        "nvimtools/none-ls.nvim",
+        dependencies = {
+            "nvimtools/none-ls-extras.nvim",
+        },
+        config = function()
+            require "configs.null_ls"
+        end,
+    },
+    {
+        "antosha417/nvim-lsp-file-operations",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree.lua"
+        },
+        config = function()
+            require("lsp-file-operations").setup()
+        end
+    },
 
-  -- IDE - AI Assistants
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = {
-          auto_trigger = true,
-          debounce = 50,
-          keymap = {
-            accept = "<C-g>"
-          }
-        }
-      })
-    end,
-  },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
+    -- IDE - AI Assistants
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                suggestion = {
+                    auto_trigger = true,
+                    debounce = 50,
+                    keymap = {
+                        accept = "<C-g>"
+                    }
+                }
+            })
+        end,
     },
-    cmd = { "CopilotChat" },
-    event = "VeryLazy",
-    config = function()
-      local opts = require("configs.copilot_chat")
-      require('CopilotChat').setup(opts)
-    end
-  },
-  -- IDE - Just
-  {
-    "NoahTheDuke/vim-just",
-    ft = { "just" }
-  },
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        branch = "canary",
+        dependencies = {
+            { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+            { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
+        },
+        cmd = { "CopilotChat" },
+        event = "VeryLazy",
+        config = function()
+            local opts = require("configs.copilot_chat")
+            require('CopilotChat').setup(opts)
+        end
+    },
+    -- IDE - Just
+    {
+        "NoahTheDuke/vim-just",
+        ft = { "just" }
+    },
 
-  -- IDE - Diff
-  {
-    "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewRefresh" },
-    config = function()
-      require("diffview").setup()
-    end
-  },
+    -- IDE - Diff
+    {
+        "sindrets/diffview.nvim",
+        cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewRefresh" },
+        config = function()
+            require("diffview").setup()
+        end
+    },
 
-  -- IDE - Snip
-  {
-    "L3MON4D3/LuaSnip",
-    version = "v2.*",
-    build = "make install_jsregexp"
-  },
+    -- IDE - Snip
+    {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        build = "make install_jsregexp"
+    },
 
-  -- IDE - Find and Replace
-  {
-    "nvim-pack/nvim-spectre",
-    cmd = { "Spectre" },
-    dependencies = "nvim-lua/plenary.nvim",
-  },
+    -- IDE - Find and Replace
+    {
+        "nvim-pack/nvim-spectre",
+        cmd = { "Spectre" },
+        dependencies = "nvim-lua/plenary.nvim",
+    },
 
-  --- IDE - Git
-  {
-    "FabijanZulj/blame.nvim",
-    cmd = { "ToggleBlame", "EnableBlame" }
-  },
+    --- IDE - Git
+    {
+        "FabijanZulj/blame.nvim",
+        cmd = { "ToggleBlame", "EnableBlame" }
+    },
 
 
 }
