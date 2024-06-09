@@ -63,3 +63,15 @@ map("v", "<leader>at", ":CopilotChatTests <CR>", { desc = "Copilot Chat Tests" }
 map("n", "<leader>aa", ":CopilotChatFixDiagnostic <CR>", { desc = "Copilot Chat Fix Diagnostic" })
 map("n", "<leader>ac", ":CopilotChatCommit <CR>", { desc = "Copilot Chat Commit" })
 map("n", "<leader>as", ":CopilotChatCommitStaged <CR>", { desc = "Copilot Chat Commit Staged" })
+
+-- ufo
+local openAllFolds = function()
+  require("ufo").openAllFolds()
+end
+
+local closeAllFolds = function()
+  require("ufo").closeAllFolds()
+end
+
+map("n", "zR", openAllFolds, { desc = "open all folds" })
+map("n", "zM", closeAllFolds, { desc = "close all folds" })

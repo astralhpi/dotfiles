@@ -3,6 +3,9 @@ local M = {}
 
 M.ui = {
   theme = "chadracula",
+  hl_override = {
+    FoldColumn = { bg = "none", fg = "light_grey" },
+  },
   hl_add = {
     -- Diagnostic
     DiagnosticUnderlineError = { undercurl = true, sp = "#ff7070" },

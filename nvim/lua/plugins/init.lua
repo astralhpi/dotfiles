@@ -4,14 +4,28 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = require "configs.treesitter"
   },
-  {
-    "kevinhwang91/promise-async",
-    module = { "async", "promise" }
-  },
+  -- UI - folding
   {
     "kevinhwang91/nvim-ufo",
-    dependencies = "nvim-treesitter",
+    dependencies = {
+      "kevinhwang91/promise-async",
+      {
+        "luukvbaal/statuscol.nvim",
+        config = function()
+          local builtin = require("statuscol.builtin")
+          require("statuscol").setup({
+            relculright = true,
+            segments = {
+              { text = { builtin.foldfunc },      click = "v:lua.ScFa" },
+              { text = { "%s" },                  click = "v:lua.ScSa" },
+              { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+            },
+          })
+        end,
+      },
+    },
     opts = require("configs.others").ufo(),
+    event = "VeryLazy",
     config = function(_, opts)
       require("ufo").setup(opts)
     end
@@ -200,8 +214,8 @@ return {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
     dependencies = {
-      { "zbirenbaum/copilot.lua" },       -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" },        -- for curl, log wrapper
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
     },
     cmd = { "CopilotChat" },
     event = "VeryLazy",
