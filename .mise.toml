@@ -25,5 +25,5 @@ depends = [
   "config-dir"
 ]
 
-[tools]
-neovim = "latest"
+[settings]
+experimental = true
