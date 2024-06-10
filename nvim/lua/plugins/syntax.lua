@@ -52,12 +52,6 @@ return {
     end
   },
 
-  -- nvim-autopairs: 자동 괄호 삽입 플러그인
-  {
-    "windwp/nvim-autopairs",
-    opts = require("configs.others").autopairs()
-  },
-
   -- outline.nvim: 파일의 symbol outline을 보여주는 플러그인
   {
     "hedyhli/outline.nvim",

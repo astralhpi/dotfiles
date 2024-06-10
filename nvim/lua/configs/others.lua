@@ -40,13 +40,6 @@ M.ufo = function()
   return options
 end
 
-M.autopairs = function()
-  return {
-    map_bs = false,
-    check_ts = true,
-  }
-end
-
 M.telescope = function()
   return {
     extensions_list = { "themes", "terms", "undo", "fzf" },
@@ -60,12 +53,11 @@ M.cmp = function()
       throttle = 60,
     },
     sources = {
-      { name = "luasnip" },
       { name = "nvim_lsp" },
+      { name = "luasnip" },
       { name = "buffer" },
       { name = "nvim_lua" },
       { name = "path" },
-      { name = "cmp_tabnine" }
     },
   }
 end

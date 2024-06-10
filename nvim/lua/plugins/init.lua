@@ -13,13 +13,6 @@ return {
     end
   },
 
-  -- IDE - Snip
-  {
-    "L3MON4D3/LuaSnip",
-    version = "v2.*",
-    build = "make install_jsregexp"
-  },
-
   --- IDE - Git
   {
     "FabijanZulj/blame.nvim",
