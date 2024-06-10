@@ -9,6 +9,7 @@ python = "3.12"
 "pipx:aider-chat" = "v0.36"
 "npm:devspace" = "latest"
 "npm:@google/clasp" = "latest"
+neovim = "latest"
 
 [settings]
 experimental = true
