@@ -1,6 +1,5 @@
 local _on_attach = require("nvchad.configs.lspconfig").on_attach
 local capabilities = require("nvchad.configs.lspconfig").capabilities
-local navic = require("nvim-navic")
 local util = require "lspconfig/util"
 
 local lspconfig = require "lspconfig"
@@ -37,14 +36,6 @@ capabilities.workspace.fileOperations = {
   willRename = true,
 }
 
-function on_attach(client, bufnr)
-  _on_attach(client, bufnr)
-  if client.server_capabilities.documentSymbolProvider then
-    print("documentSymbolProvider")
-    navic.attach(client, bufnr)
-  end
-end
-
 for _, lsp in ipairs(servers) do
   if lsp == "svelte" then
     lspconfig.svelte.setup {
@@ -55,7 +46,7 @@ for _, lsp in ipairs(servers) do
             client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
           end,
         })
-        on_attach(client, bufnr)
+        _on_attach(client, bufnr)
       end,
       root_dir = util.root_pattern("package.json"),
       capabilities = capabilities,

@@ -42,7 +42,8 @@ end
 
 M.autopairs = function()
   return {
-    map_bs = false
+    map_bs = false,
+    check_ts = true,
   }
 end
 

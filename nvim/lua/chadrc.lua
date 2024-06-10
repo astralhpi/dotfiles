@@ -12,6 +12,8 @@ M.ui = {
     DiagnosticUnderlineWarn = { undercurl = true, sp = "#FFB86C" },
     DiagnosticUnderlineInfo = { undercurl = true, sp = "#a1b1e3" },
     DiagnosticUnderlineHint = { undercurl = true, sp = "#BD93F9" },
+    WinBar = { bg = "none" },
+    WinBarNC = { bg = "none" },
   },
   nvdash = {
     load_on_startup = true

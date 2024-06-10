@@ -38,8 +38,8 @@ map("n", "<leader>fs", ":Telescope lsp_document_symbols <CR>", { desc = "show do
 map("n", "<leader>fS", ":Telescope lsp_workspace_symbols <CR>", { desc = "show workspace symbole" })
 map("n", "<leader>tr", ":Telescope resume <CR>", { desc = "telescope resume" })
 
--- symbols outline
-map("n", "<M-\\>", ":SymbolsOutline <CR>", { desc = "show symbols outline" })
+-- outline
+map("n", "<M-\\>", ":Outline <CR>", { desc = "show symbols outline" })
 
 -- lspconfig
 map("n", "<C-]>", ":lua vim.lsp.buf.definition() <CR>", { desc = "lsp definition" })
@@ -75,3 +75,9 @@ end
 
 map("n", "zR", openAllFolds, { desc = "open all folds" })
 map("n", "zM", closeAllFolds, { desc = "close all folds" })
+
+-- dropbar.nvim
+local dropbarPick = function()
+  require("dropbar.api").pick()
+end
+map("n", "<leader>q", dropbarPick, { desc = "dropbar pick" })
