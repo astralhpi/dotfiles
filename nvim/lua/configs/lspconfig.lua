@@ -72,7 +72,7 @@ for _, lsp in ipairs(servers) do
   elseif lsp == "tsserver" then
     lspconfig.tsserver.setup {
       on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
+        _on_attach(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
       end,
@@ -86,7 +86,7 @@ for _, lsp in ipairs(servers) do
     }
   elseif lsp == 'denols' then
     lspconfig.denols.setup {
-      on_attach = on_attach,
+      on_attach = _on_attach,
       capabilities = capabilities,
       root_dir = util.root_pattern("deno.json", "deno.jsonc"),
       flags = {
@@ -95,7 +95,7 @@ for _, lsp in ipairs(servers) do
     }
   else
     lspconfig[lsp].setup {
-      on_attach = on_attach,
+      on_attach = _on_attach,
       capabilities = capabilities,
       flags = {
         debounce_text_changes = 150
