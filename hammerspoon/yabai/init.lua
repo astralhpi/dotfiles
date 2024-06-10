@@ -9,9 +9,9 @@ windowCornerRadius = 10
 
 
 local windowAction = require("yabai.windowAction")
-windowAction.new(super, hs.keycodes.map["s"], "swap", "Swap")  --["y"]
-windowAction.new(super, hs.keycodes.map["w"], "warp", "Warp")  --["n"]
-windowAction.new(super, hs.keycodes.map["c"], "stack", "Stack")  --["h"]
+windowAction.new(super, hs.keycodes.map["s"], "swap", "Swap")   --["y"]
+windowAction.new(super, hs.keycodes.map["w"], "warp", "Warp")   --["n"]
+windowAction.new(super, hs.keycodes.map["c"], "stack", "Stack") --["h"]
 
 
 --# canvas elements
@@ -30,10 +30,10 @@ function yabai(args, completion)
   local yabai_output = ""
   local yabai_error = ""
   -- Runs in background very fast
-  local yabai_task = hs.task.new("/opt/homebrew/bin/yabai",nil, function(task, stdout, stderr)
+  local yabai_task = hs.task.new("/opt/homebrew/bin/yabai", nil, function(task, stdout, stderr)
     --print("stdout:"..stdout, "stderr:"..stderr)
-    if stdout ~= nil then yabai_output = yabai_output..stdout end
-    if stderr ~= nil then yabai_error = yabai_error..stderr end
+    if stdout ~= nil then yabai_output = yabai_output .. stdout end
+    if stderr ~= nil then yabai_error = yabai_error .. stderr end
     return true
   end, args)
   if type(completion) == "function" then
@@ -42,11 +42,9 @@ function yabai(args, completion)
   yabai_task:start()
 end
 
-
 function delayed(fn, delay)
   return hs.timer.delayed.new(delay, fn):start()
 end
-
 
 toasts = {
   main = nil
@@ -59,6 +57,7 @@ function killToast(params)
     toasts[name] = nil
   end
 end
+
 function toast(str, time, params)
   killToast(params)
   params = params or empty_table
@@ -79,47 +78,69 @@ function toast(str, time, params)
 end
 
 --# set layout
-hs.hotkey.bind(super, hs.keycodes.map["5"], function() yabai({"-m", "space", "--layout", "bsp"}, function() toast("BSP") end) end)  --["1"]
-hs.hotkey.bind(super, hs.keycodes.map["6"], function() yabai({"-m", "space", "--layout", "stack"}, function() toast("Stack") end) end)  --["2"]
-hs.hotkey.bind(super, hs.keycodes.map["7"], function() yabai({"-m", "space", "--layout", "float"}, function() toast("Float") end) end)  --["3"]
+hs.hotkey.bind(super, hs.keycodes.map["5"],
+  function() yabai({ "-m", "space", "--layout", "bsp" }, function() toast("BSP") end) end)                                             --["1"]
+hs.hotkey.bind(super, hs.keycodes.map["6"],
+  function() yabai({ "-m", "space", "--layout", "stack" }, function() toast("Stack") end) end)                                         --["2"]
+hs.hotkey.bind(super, hs.keycodes.map["7"],
+  function() yabai({ "-m", "space", "--layout", "float" }, function() toast("Float") end) end)                                         --["3"]
 
 
 --# rotate space
-hs.hotkey.bind(super, hs.keycodes.map["space"], function() yabai({"-m", "space", "--rotate", "270"}, function() toast("  ") end) end)  --["."]
+hs.hotkey.bind(super, hs.keycodes.map["space"],
+  function() yabai({ "-m", "space", "--rotate", "270" }, function() toast("  ") end) end) --["."]
 
 
 --# focus fullscreen
-hs.hotkey.bind(super, hs.keycodes.map["f"], function() yabai({"-m", "window", "--toggle", "zoom-fullscreen"}, function() toast("Full") end) end)  --["m"]
+hs.hotkey.bind(super, hs.keycodes.map["f"],
+  function() yabai({ "-m", "window", "--toggle", "zoom-fullscreen" }, function() toast("Full") end) end)                                         --["m"]
 --hs.hotkey.bind(super, hs.keycodes.map[","], function() yabai({"-m", "window", "--toggle", "zoom-parent"}) end) -- not so useful  --[","]
 
 
 --# toggle float layout for window
-hs.hotkey.bind(super, hs.keycodes.map["/"], function() yabai({"-m", "window", "--toggle", "float"}) toast("  ") end)  --["/"]
+hs.hotkey.bind(super, hs.keycodes.map["/"], function()
+  yabai({ "-m", "window", "--toggle", "float" })
+  toast("  ")
+end) --["/"]
 
 
 --# change window stack focus
-hs.hotkey.bind(super, hs.keycodes.map["t"], function() yabai({"-m", "window", "--focus", "stack.next"}, function() toast("Stack ↥") end) end)  --["t"]
-hs.hotkey.bind(super, hs.keycodes.map["g"], function() yabai({"-m", "window", "--focus", "stack.prev"}, function() toast("Stack ↧") end) end)  --["g"]
+hs.hotkey.bind(super, hs.keycodes.map["t"],
+  function() yabai({ "-m", "window", "--focus", "stack.next" }, function() toast("Stack ↥") end) end) --["t"]
+hs.hotkey.bind(super, hs.keycodes.map["g"],
+  function() yabai({ "-m", "window", "--focus", "stack.prev" }, function() toast("Stack ↧") end) end) --["g"]
 
 
 --# change window focus to direction
-hs.hotkey.bind(super, hs.keycodes.map["l"], function() yabai({"-m", "window", "--focus", "east"}) end)  --[";"]
-hs.hotkey.bind(super, hs.keycodes.map["h"], function() yabai({"-m", "window", "--focus", "west"}) end)  --["j"]
-hs.hotkey.bind(super, hs.keycodes.map["k"], function() yabai({"-m", "window", "--focus", "north"}) end)  --["l"]
-hs.hotkey.bind(super, hs.keycodes.map["j"], function() yabai({"-m", "window", "--focus", "south"}) end)  --["k"]
+hs.hotkey.bind(super, hs.keycodes.map["l"], function() yabai({ "-m", "window", "--focus", "east" }) end) --[";"]
+hs.hotkey.bind(super, hs.keycodes.map["h"], function() yabai({ "-m", "window", "--focus", "west" }) end) --["j"]
+hs.hotkey.bind(super, hs.keycodes.map["k"], function() yabai({ "-m", "window", "--focus", "north" }) end) --["l"]
+hs.hotkey.bind(super, hs.keycodes.map["j"], function() yabai({ "-m", "window", "--focus", "south" }) end) --["k"]
 
 
 --# bsp ratio
-hs.hotkey.bind(super, hs.keycodes.map["8"], function() yabai({"-m", "window", "--ratio", "abs:0.38"}) toast(" ⅓") end)  --["7"]
-hs.hotkey.bind(super, hs.keycodes.map["9"], function() yabai({"-m", "window", "--ratio", "abs:0.5"}) toast(" ½") end)  --["8"]
-hs.hotkey.bind(super, hs.keycodes.map["0"], function() yabai({"-m", "window", "--ratio", "abs:0.62"}) toast(" ⅔") end)  --["9"]
-hs.hotkey.bind(super, hs.keycodes.map["="], function() yabai({"-m", "space", "--balance"}) toast(" 󰇼") end)  --["-"]
+hs.hotkey.bind(super, hs.keycodes.map["8"], function()
+  yabai({ "-m", "window", "--ratio", "abs:0.38" })
+  toast(" ⅓")
+end) --["7"]
+hs.hotkey.bind(super, hs.keycodes.map["9"], function()
+  yabai({ "-m", "window", "--ratio", "abs:0.5" })
+  toast(" ½")
+end) --["8"]
+hs.hotkey.bind(super, hs.keycodes.map["0"], function()
+  yabai({ "-m", "window", "--ratio", "abs:0.62" })
+  toast(" ⅔")
+end) --["9"]
+hs.hotkey.bind(super, hs.keycodes.map["="], function()
+  yabai({ "-m", "space", "--balance" })
+  toast(" 󰇼")
+end) --["-"]
 
 
 --# modals
 
-local focus_display_mod = hs.hotkey.modal.new(super, hs.keycodes.map["tab"])  --["v"]
-local insert_window_modal = hs.hotkey.modal.new(super, hs.keycodes.map["i"])  --["tab"]
+local focus_display_mod = hs.hotkey.modal.new(super, hs.keycodes.map["tab"]) --["v"]
+local insert_window_modal = hs.hotkey.modal.new(super, hs.keycodes.map["i"]) --["tab"]
 local move_display_modal = hs.hotkey.modal.new(super, hs.keycodes.map["d"])  --["b"]
 local resize_window_modal = hs.hotkey.modal.new(super, hs.keycodes.map["r"])
 
@@ -127,12 +148,22 @@ local resize_window_modal = hs.hotkey.modal.new(super, hs.keycodes.map["r"])
 function focus_display_mod:entered()
   toast(" 󰍺 ", true, { name = "modal" })
 end
+
 function focus_display_mod:exited()
   killToast({ name = "modal" })
 end
-focus_display_mod:bind("", hs.keycodes.map["escape"], function() focus_display_mod:exit() end)  --["escape"]
-focus_display_mod:bind(super, hs.keycodes.map["l"], function() yabai({"-m", "display", "--focus", "next"}, function() delayed(function() toast(" 󰍺  ") end, 0.1) end) focus_display_mod:exit() end)  --[";"]
-focus_display_mod:bind(super, hs.keycodes.map["h"], function() yabai({"-m", "display", "--focus", "prev"}, function() delayed(function() toast(" 󰍺  ") end, 0.1) end) focus_display_mod:exit() end)  --["j"]
+
+focus_display_mod:bind("", hs.keycodes.map["escape"], function() focus_display_mod:exit() end) --["escape"]
+focus_display_mod:bind(super, hs.keycodes.map["l"],
+  function()
+    yabai({ "-m", "display", "--focus", "next" }, function() delayed(function() toast(" 󰍺  ") end, 0.1) end)
+    focus_display_mod:exit()
+  end) --[";"]
+focus_display_mod:bind(super, hs.keycodes.map["h"],
+  function()
+    yabai({ "-m", "display", "--focus", "prev" }, function() delayed(function() toast(" 󰍺  ") end, 0.1) end)
+    focus_display_mod:exit()
+  end) --["j"]
 
 
 --# insert window rule
@@ -140,15 +171,17 @@ focus_display_mod:bind(super, hs.keycodes.map["h"], function() yabai({"-m", "dis
 function insert_window_modal:entered()
   toast("🔲🌱 ", true, { name = "modal" })
 end
+
 function insert_window_modal:exited()
   killToast({ name = "modal" })
 end
-insert_window_modal:bind("", hs.keycodes.map["escape"], function() insert_window_modal:exit() end)  --["escape"]
-insert_window_modal:bind(super, hs.keycodes.map["l"], function() yabai({"-m", "window", "--insert", "east"}) end)  --[";"]
-insert_window_modal:bind(super, hs.keycodes.map["k"], function() yabai({"-m", "window", "--insert", "west"}) end)  --["j"]
-insert_window_modal:bind(super, hs.keycodes.map["j"], function() yabai({"-m", "window", "--insert", "north"}) end)  --["l"]
-insert_window_modal:bind(super, hs.keycodes.map["h"], function() yabai({"-m", "window", "--insert", "south"}) end)  --["k"]
-insert_window_modal:bind(super, hs.keycodes.map["c"], function() yabai({"-m", "window", "--insert", "stack"}) end)  --["h"]
+
+insert_window_modal:bind("", hs.keycodes.map["escape"], function() insert_window_modal:exit() end)                 --["escape"]
+insert_window_modal:bind(super, hs.keycodes.map["l"], function() yabai({ "-m", "window", "--insert", "east" }) end) --[";"]
+insert_window_modal:bind(super, hs.keycodes.map["k"], function() yabai({ "-m", "window", "--insert", "west" }) end) --["j"]
+insert_window_modal:bind(super, hs.keycodes.map["j"], function() yabai({ "-m", "window", "--insert", "north" }) end) --["l"]
+insert_window_modal:bind(super, hs.keycodes.map["h"], function() yabai({ "-m", "window", "--insert", "south" }) end) --["k"]
+insert_window_modal:bind(super, hs.keycodes.map["c"], function() yabai({ "-m", "window", "--insert", "stack" }) end) --["h"]
 
 
 --# send window to display
@@ -156,7 +189,7 @@ local move_display_ = {
   selected = nil
 }
 function move_display_modal:entered()
-  yabai({"-m", "query", "--windows", "--window"},
+  yabai({ "-m", "query", "--windows", "--window" },
     function(out)
       local window = hs.json.decode(out)
       if (window ~= nil) then
@@ -167,14 +200,16 @@ function move_display_modal:entered()
     end
   )
 end
+
 function move_display_modal:exited()
   move_display_.selected = nil
   killToast({ name = "move_display" })
 end
-move_display_modal:bind(super, hs.keycodes.map["l"],  --[";"]
+
+move_display_modal:bind(super, hs.keycodes.map["l"], --[";"]
   function()
     if (move_display_.selected ~= nil) then
-      yabai({"-m", "window", "--display", "next"},
+      yabai({ "-m", "window", "--display", "next" },
         function()
           move_display_modal:exit()
         end
@@ -182,10 +217,10 @@ move_display_modal:bind(super, hs.keycodes.map["l"],  --[";"]
     end
   end
 )
-move_display_modal:bind(super, hs.keycodes.map["h"],  --["j"]
+move_display_modal:bind(super, hs.keycodes.map["h"], --["j"]
   function()
     if (move_display_.selected ~= nil) then
-      yabai({"-m", "window", "--display", "prev"},
+      yabai({ "-m", "window", "--display", "prev" },
         function()
           move_display_modal:exit()
         end
@@ -193,84 +228,90 @@ move_display_modal:bind(super, hs.keycodes.map["h"],  --["j"]
     end
   end
 )
-move_display_modal:bind("", hs.keycodes.map["escape"], function() move_display_modal:exit() end)  --["escape"]
+move_display_modal:bind("", hs.keycodes.map["escape"], function() move_display_modal:exit() end) --["escape"]
 
 
 --# resize window
 local resize_window = {
   size = 20,
   horizontalEdge = nil, -- 1 is for right, -1 is for left
-  verticalEdge = nil -- 1 is for bottom, -1 is for top
+  verticalEdge = nil    -- 1 is for bottom, -1 is for top
 }
 function resize_window_modal:entered()
   toast("   ", true, { name = "resize_window" })
 end
+
 function resize_window_modal:exited()
   resize_window.horizontalEdge = nil
   resize_window.verticalEdge = nil
   killToast({ name = "resize_window" })
 end
-resize_window_modal:bind(super, hs.keycodes.map["l"], function()  --[";"]
+
+resize_window_modal:bind(super, hs.keycodes.map["l"], function() --[";"]
   if resize_window.horizontalEdge == nil then
     resize_window.horizontalEdge = 1
   end
   if resize_window.horizontalEdge == 1 then
     -- grow from right
     print("grow from right")
-    yabai({"-m", "window", "--resize", "right:"..resize_window.size..":0"}, function(out, err) print(out, err) end)
+    yabai({ "-m", "window", "--resize", "right:" .. resize_window.size .. ":0" }, function(out, err) print(out, err) end)
   else
     -- shrink from left
     print("shrink from left")
-    yabai({"-m", "window", "--resize", "left:"..resize_window.size..":0"}, function(out, err) print(out, err) end)
+    yabai({ "-m", "window", "--resize", "left:" .. resize_window.size .. ":0" }, function(out, err) print(out, err) end)
   end
 end)
-resize_window_modal:bind(super, hs.keycodes.map["h"], function()  --["j"]
+resize_window_modal:bind(super, hs.keycodes.map["h"], function() --["j"]
   if resize_window.horizontalEdge == nil then
     resize_window.horizontalEdge = -1
   end
   if resize_window.horizontalEdge == 1 then
     -- shrink from right
     print("shrink from right")
-    yabai({"-m", "window", "--resize", "right:-"..resize_window.size..":0"}, function(out, err) print(out, err) end)
+    yabai({ "-m", "window", "--resize", "right:-" .. resize_window.size .. ":0" }, function(out, err) print(out, err) end)
   else
     -- grow from left
     print("grow from left")
-    yabai({"-m", "window", "--resize", "left:-"..resize_window.size..":0"}, function(out, err) print(out, err) end)
+    yabai({ "-m", "window", "--resize", "left:-" .. resize_window.size .. ":0" }, function(out, err) print(out, err) end)
   end
 end)
-resize_window_modal:bind(super, hs.keycodes.map["j"], function()  --["k"]
+resize_window_modal:bind(super, hs.keycodes.map["j"], function() --["k"]
   if resize_window.verticalEdge == nil then
     resize_window.verticalEdge = 1
   end
   if resize_window.verticalEdge == 1 then
     -- grow from bottom
     print("grow from bottom")
-    yabai({"-m", "window", "--resize", "bottom:0:"..resize_window.size}, function(out, err) print(out, err) end)
+    yabai({ "-m", "window", "--resize", "bottom:0:" .. resize_window.size }, function(out, err) print(out, err) end)
   else
     -- shrink from top
     print("shrink from top")
-    yabai({"-m", "window", "--resize", "top:0:"..resize_window.size}, function(out, err) print(out, err) end)
+    yabai({ "-m", "window", "--resize", "top:0:" .. resize_window.size }, function(out, err) print(out, err) end)
   end
 end)
-resize_window_modal:bind(super, hs.keycodes.map["k"], function()  --["l"]
+resize_window_modal:bind(super, hs.keycodes.map["k"], function() --["l"]
   if resize_window.verticalEdge == nil then
     resize_window.verticalEdge = -1
   end
   if resize_window.verticalEdge == 1 then
     -- shrink from bottom
     print("shrink from bottom")
-    yabai({"-m", "window", "--resize", "bottom:0:-"..resize_window.size}, function(out, err) print(out, err) end)
+    yabai({ "-m", "window", "--resize", "bottom:0:-" .. resize_window.size }, function(out, err) print(out, err) end)
   else
     -- grow from top
     print("grow from top")
-    yabai({"-m", "window", "--resize", "top:0:-"..resize_window.size}, function(out, err) print(out, err) end)
+    yabai({ "-m", "window", "--resize", "top:0:-" .. resize_window.size }, function(out, err) print(out, err) end)
   end
 end)
-resize_window_modal:bind("", hs.keycodes.map["escape"], function() resize_window_modal:exit() end)  --["escape"]
+resize_window_modal:bind("", hs.keycodes.map["escape"], function() resize_window_modal:exit() end) --["escape"]
 
 
 --# debug
-hs.hotkey.bind(super, hs.keycodes.map["§"], function() yabai({"-m", "query", "--windows", "--window"}, function(out) print(out) end) toast("🐞") end)  --["§"]
+hs.hotkey.bind(super, hs.keycodes.map["§"],
+  function()
+    yabai({ "-m", "query", "--windows", "--window" }, function(out) print(out) end)
+    toast("🐞")
+  end) --["§"]
 
 
 --# window focus listener
@@ -290,7 +331,6 @@ function onWindowFocusChanged(window_id)
   end)
 end
 
-
 function onWindowResized(window_id)
   if currentFocus ~= nil and currentFocus.id == window_id then
     getWindow(currentFocus.id,
@@ -302,7 +342,6 @@ function onWindowResized(window_id)
   end
 end
 
-
 function onWindowMoved(window_id)
   if currentFocus ~= nil and currentFocus.id == window_id then
     getWindow(currentFocus.id,
@@ -311,20 +350,19 @@ function onWindowMoved(window_id)
         createBorder(win)
       end
     )
-  end 
+  end
 end
-
 
 function createBorder(win)
   if win == nil or canvases.winFocusRect == nil then
-    return 
+    return
   end
   canvases.winFocusRect:topLeft({ x = win.frame.x - 2, y = win.frame.y - 2 })
   canvases.winFocusRect:size({ w = win.frame.w + 4, h = win.frame.h + 4 })
-  local borderColor = { red = 0.8, green = 0.8, blue = 0.2 , alpha = 0.6 }
+  local borderColor = { red = 0.8, green = 0.8, blue = 0.2, alpha = 0.6 }
   local zoomed = win["zoom-fullscreen"] == 1
   if zoomed then
-    borderColor = { red = 0.8, green = 0.2, blue = 0.2 , alpha = 0.6 }
+    borderColor = { red = 0.8, green = 0.2, blue = 0.2, alpha = 0.6 }
   end
   canvases.winFocusRect:replaceElements({
     type = "rectangle",
@@ -337,20 +375,20 @@ function createBorder(win)
   })
   canvases.winFocusRect:show()
 end
+
 function deleteBorder(fadeTime)
   canvases.winFocusRect:hide()
 end
 
-
 --# query
 function getFocusedWindow(callback)
-  yabai({"-m", "query", "--windows"},
+  yabai({ "-m", "query", "--windows" },
     function(out, err)
       if out == nil or type(out) ~= "string" or string.len(out) == 0 then
         callback(nil)
       else
         out = string.gsub(out, ":inf,", ":0.0,")
-        local json = "{\"windows\":"..out.."}"
+        local json = "{\"windows\":" .. out .. "}"
         --print(json)
         local json_obj = hs.json.decode(json)
         if json_obj ~= nil then
@@ -370,9 +408,8 @@ function getFocusedWindow(callback)
   )
 end
 
-
 function getWindow(window_id, callback)
-  yabai({"-m", "query", "--windows", "--window", tostring(window_id)},
+  yabai({ "-m", "query", "--windows", "--window", tostring(window_id) },
     function(out, err)
       if out == nil or string.len(out) == 0 then
         callback(nil)
@@ -384,7 +421,6 @@ function getWindow(window_id, callback)
     end
   )
 end
-
 
 -- calls made by yabai frow cli, see .yabairc
 yabaidirectcall = {

@@ -1,17 +1,16 @@
 local yabai = require "yabai.yabai_cmd"
 
 function getSpacesThen(cb)
-
   function decodeAndCb(data)
     local spaces = hs.json.decode(data)
     cb(spaces)
   end
 
-  yabai({"-m", "query", "--spaces"}, function(spacesData)
+  yabai({ "-m", "query", "--spaces" }, function(spacesData)
     --Added simple retry logic to fix passing of an empty string in error.
     if #spacesData == 0 then
       hs.timer.doAfter(0.01, function()
-        yabai({"-m", "query", "--spaces"}, function(spacesData)
+        yabai({ "-m", "query", "--spaces" }, function(spacesData)
           decodeAndCb(spacesData)
         end)
       end):start()
@@ -37,7 +36,7 @@ function findSpaceThen(idxOrLabel, cb)
 end
 
 local spaces = {
-  new = function () 
+  new = function()
     hs.spaces.addSpaceToScreen()
   end,
   focus = function(idxOrLabel)
