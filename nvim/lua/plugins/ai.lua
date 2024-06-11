@@ -1,21 +1,33 @@
 -- AI 관련 플러그인
 return {
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
+    "supermaven-inc/supermaven-nvim",
     event = "InsertEnter",
     config = function()
-      require("copilot").setup({
-        suggestion = {
-          auto_trigger = true,
-          debounce = 50,
-          keymap = {
-            accept = "<C-g>"
-          }
+      require("supermaven-nvim").setup({
+        keymaps = {
+          accept_suggestion = "<C-g>",
         }
       })
     end,
   },
+  -- supermaven-nvim 테스트 중. copilot 임시 제거
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup({
+  --       suggestion = {
+  --         auto_trigger = true,
+  --         debounce = 50,
+  --         keymap = {
+  --           accept = "<C-g>"
+  --         }
+  --       }
+  --     })
+  --   end,
+  -- },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
@@ -29,6 +41,5 @@ return {
       local opts = require("configs.copilot_chat")
       require('CopilotChat').setup(opts)
     end
-  },
-
+  }
 }
