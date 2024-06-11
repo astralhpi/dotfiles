@@ -1,4 +1,3 @@
-local _on_attach = require("nvchad.configs.lspconfig").on_attach
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 local util = require "lspconfig/util"
 
@@ -36,6 +35,38 @@ capabilities.workspace.fileOperations = {
   willRename = true,
 }
 
+local map = vim.keymap.set
+local conf = require("nvconfig").ui.lsp
+local on_attach = function(client, bufnr)
+  local function opts(desc)
+    return { buffer = bufnr, desc = "LSP " .. desc }
+  end
+
+  map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
+  map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
+  map("n", "gi", vim.lsp.buf.implementation, opts "Go to implementation")
+  map("n", "<leader>sh", vim.lsp.buf.signature_help, opts "Show signature help")
+  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "Add workspace folder")
+  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts "Remove workspace folder")
+
+  map("n", "<leader>wl", function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, opts "List workspace folders")
+
+  map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Go to type definition")
+
+  map("n", "<leader>ra", function()
+    require "nvchad.lsp.renamer" ()
+  end, opts "NvRenamer")
+
+  map("n", "gr", vim.lsp.buf.references, opts "Show references")
+
+  -- setup signature popup
+  if conf.signature and client.server_capabilities.signatureHelpProvider then
+    require("nvchad.lsp.signature").setup(client, bufnr)
+  end
+end
+
 for _, lsp in ipairs(servers) do
   if lsp == "svelte" then
     lspconfig.svelte.setup {
@@ -46,7 +77,7 @@ for _, lsp in ipairs(servers) do
             client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
           end,
         })
-        _on_attach(client, bufnr)
+        on_attach(client, bufnr)
       end,
       root_dir = util.root_pattern("package.json"),
       capabilities = capabilities,
@@ -72,7 +103,7 @@ for _, lsp in ipairs(servers) do
   elseif lsp == "tsserver" then
     lspconfig.tsserver.setup {
       on_attach = function(client, bufnr)
-        _on_attach(client, bufnr)
+        on_attach(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
       end,
@@ -86,7 +117,7 @@ for _, lsp in ipairs(servers) do
     }
   elseif lsp == 'denols' then
     lspconfig.denols.setup {
-      on_attach = _on_attach,
+      on_attach = on_attach,
       capabilities = capabilities,
       root_dir = util.root_pattern("deno.json", "deno.jsonc"),
       flags = {
@@ -95,7 +126,7 @@ for _, lsp in ipairs(servers) do
     }
   else
     lspconfig[lsp].setup {
-      on_attach = _on_attach,
+      on_attach = on_attach,
       capabilities = capabilities,
       flags = {
         debounce_text_changes = 150

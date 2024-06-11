@@ -86,4 +86,4 @@ map("n", "<leader>q", dropbarPick, { desc = "dropbar pick" })
 local actionsPreview = function()
   require("actions-preview").code_actions()
 end
-map({ "n", "v" }, "<leader>cA", actionsPreview, { desc = "actions preview" })
+map({ "n", "v" }, "<leader>ca", actionsPreview, { desc = "LSP code actions preview" })
