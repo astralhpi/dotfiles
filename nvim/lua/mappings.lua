@@ -81,3 +81,9 @@ local dropbarPick = function()
   require("dropbar.api").pick()
 end
 map("n", "<leader>q", dropbarPick, { desc = "dropbar pick" })
+
+-- actions-preview.nvim
+local actionsPreview = function()
+  require("actions-preview").code_actions()
+end
+map({ "n", "v" }, "<leader>cA", actionsPreview, { desc = "actions preview" })
