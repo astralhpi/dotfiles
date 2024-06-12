@@ -87,3 +87,18 @@ local actionsPreview = function()
   require("actions-preview").code_actions()
 end
 map({ "n", "v" }, "<leader>ca", actionsPreview, { desc = "LSP code actions preview" })
+
+-- neotest
+map("n", "<leader>tt",
+  function()
+    require("neotest").run.run()
+  end,
+  { desc = "neotest run" }
+)
+
+map("n", "<leader>tT",
+  function()
+    require("neotest").run.run(vim.fn.expand("%"))
+  end,
+  { desc = "neotest run file" }
+)
