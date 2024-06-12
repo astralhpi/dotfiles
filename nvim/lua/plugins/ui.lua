@@ -40,11 +40,16 @@ return {
   -- telescope: 텍스트 검색 및 파일 탐색을 위한 플러그인
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "telescope-undo.nvim", "telescope-fzf-native.nvim",
-      { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0", } },
+    dependencies = {
+      "telescope-undo.nvim",
+      "telescope-fzf-native.nvim",
+      { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0", },
+      "cbochs/grapple.nvim",
+    },
     opts = require("configs.others").telescope(),
     config = function()
       require("telescope").load_extension("live_grep_args")
+      require("telescope").load_extension("grapple")
     end,
   },
 
@@ -91,4 +96,31 @@ return {
       }
     end
   },
+  -- grapple.nvim: 파일 단위 북마크 관리
+  {
+    "cbochs/grapple.nvim",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons", lazy = true }
+    },
+    opts = {
+      scope = "git_branch",
+    },
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = "Grapple",
+    keys = {
+      { ";",       "<cmd>Grapple toggle<cr>",          desc = "Grapple toggle tag" },
+      { "<C-e>",   "<cmd>Telescope grapple tags<cr>",  desc = "Grapple open tags window" },
+      { "<C-S-e>", "<cmd>Grapple toggle_tags<cr>",     desc = "Grapple open tags window" },
+      { "H",       "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
+      { "L",       "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
+    },
+  },
+  -- portal.nvim: 빠른 이동 기능
+  {
+    "cbochs/portal.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    dependencies = {
+      "cbochs/grapple.nvim"
+    },
+  }
 }

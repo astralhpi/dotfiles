@@ -102,3 +102,10 @@ map("n", "<leader>tT",
   end,
   { desc = "neotest run file" }
 )
+-- portal
+map("n", "<leader>o", "<cmd>Portal jumplist backward<cr>")
+map("n", "<leader>i", "<cmd>Portal jumplist forward<cr>")
+map("n", "<leader>p", "<cmd>Portal quickfix backward<cr>")
+map("n", "<leader>n", "<cmd>Portal quickfix forward<cr>")
+map("n", "<leader>H", "<cmd>Portal grapple backward<cr>")
+map("n", "<leader>L", "<cmd>Portal grapple forward<cr>")
