@@ -6,18 +6,19 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     opts = require("configs.nvimtree")
   },
-  -- leap.nvim: 빠르게 텍스트 이동하기 위한 플러그인
+  -- flash.nvim: 빠르게 텍스트 이동하기 위한 플러그인
   {
-    "ggandor/leap.nvim",
-    dependencies = "tpope/vim-repeat",
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+    -- stylua: ignore
     keys = {
-      { "s" },
-      { "S" },
-      { "g" }
+      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
-    config = function()
-      require("leap").add_default_mappings()
-    end
   },
   -- multicursors.nvim: 다중 커서 플러그인
   {
@@ -122,5 +123,14 @@ return {
     dependencies = {
       "cbochs/grapple.nvim"
     },
+  },
+  -- marks.nvim: mark 강화
+  {
+    'chentoast/marks.nvim',
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("marks").setup {
+      }
+    end
   }
 }
