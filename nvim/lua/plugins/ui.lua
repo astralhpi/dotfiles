@@ -13,11 +13,23 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o",               function() require("flash").remote() end,     desc = "Remote Flash" },
+      {
+        "R",
+        mode = { "o", "x" },
+        function() require("flash").treesitter_search() end,
+        desc =
+        "Treesitter Search"
+      },
+      {
+        "<c-s>",
+        mode = { "c" },
+        function() require("flash").toggle() end,
+        desc =
+        "Toggle Flash Search"
+      },
     },
   },
   -- multicursors.nvim: 다중 커서 플러그인
@@ -109,11 +121,10 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     cmd = "Grapple",
     keys = {
-      { ";",       "<cmd>Grapple toggle<cr>",          desc = "Grapple toggle tag" },
-      { "<C-e>",   "<cmd>Telescope grapple tags<cr>",  desc = "Grapple open tags window" },
-      { "<C-S-e>", "<cmd>Grapple toggle_tags<cr>",     desc = "Grapple open tags window" },
-      { "H",       "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
-      { "L",       "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
+      { ";",     "<cmd>Grapple toggle<cr>",          desc = "Grapple toggle tag" },
+      { "<C-e>", "<cmd>Grapple toggle_tags<cr>",     desc = "Grapple open tags window" },
+      { "H",     "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
+      { "L",     "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
     },
   },
   -- portal.nvim: 빠른 이동 기능
