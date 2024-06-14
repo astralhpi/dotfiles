@@ -125,7 +125,7 @@ zinit id-as"github-copilot-cli" wait'1' lucid as=null atclone'github-copilot-cli
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # zoxide
-zinit id-as"z" wait lucid as=null atclone'zoxide init zsh > zhook.zsh' \
+zinit id-as"z" as=null atclone'zoxide init zsh > zhook.zsh' \
   atpull'%atclone' \
   src"zhook.zsh" for \
   zdharma-continuum/null
