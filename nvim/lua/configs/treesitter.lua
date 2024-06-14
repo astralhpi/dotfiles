@@ -24,7 +24,8 @@ local options = {
     "svelte",
     "kotlin",
     "gotmpl",
-    "zig"
+    "zig",
+    "toml"
   },
 
   highlight = {
