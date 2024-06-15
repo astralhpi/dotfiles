@@ -10,7 +10,6 @@ python = "3.12"
 "npm:devspace" = "latest"
 "npm:@google/clasp" = "latest"
 neovim = "latest"
-"pipx:harlequin" = "latest"
 
 [settings]
 experimental = true
