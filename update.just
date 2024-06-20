@@ -4,10 +4,7 @@ user := env_var('USER')
 
 nix_version := `cat ./nix-version.txt`
 
-all: nvchad nix brew nvim rust
-
-nvchad:
-  cd {{home_dir}}/.config/nvim && git pull && git submodule update --init --recursive
+all: nix brew nvim rust
 
 nix:
   nix-channel --remove home-manager
