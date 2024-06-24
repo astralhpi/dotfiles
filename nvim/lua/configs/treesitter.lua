@@ -25,7 +25,8 @@ local options = {
     "kotlin",
     "gotmpl",
     "zig",
-    "toml"
+    "toml",
+    "dart"
   },
 
   highlight = {
