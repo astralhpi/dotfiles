@@ -26,7 +26,8 @@ local options = {
     "gotmpl",
     "zig",
     "toml",
-    "dart"
+    "dart",
+    "elixir",
   },
 
   highlight = {

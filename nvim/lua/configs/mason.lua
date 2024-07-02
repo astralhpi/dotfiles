@@ -31,7 +31,11 @@ return {
     "zls",
 
     -- deno
-    "deno"
+    "deno",
+
+    -- elixir
+    "elixir-ls",
+
 
   }
 }

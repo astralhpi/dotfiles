@@ -28,6 +28,9 @@ local servers = {
   -- kotlin
   "kotlin_language_server",
 
+  -- elixir
+  "elixirls",
+
   "emmet_ls"
 }
 
