@@ -8,8 +8,8 @@ end
 local options = {
   sources = {
     -- node
-    null_ls.builtins.formatting.prettier,
-
+    null_ls.builtins.formatting.prettierd,
+    require("none-ls.diagnostics.eslint_d"),
     -- python
     require("none-ls.formatting.ruff"),
     require("none-ls.diagnostics.ruff"),
@@ -27,11 +27,6 @@ local options = {
 }
 
 null_ls.setup(options)
-null_ls.register({
-  name = "svelte",
-  filetypes = { "svelte" },
-  sources = { null_ls.builtins.formatting.prettier }
-})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
