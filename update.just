@@ -4,7 +4,7 @@ user := env_var('USER')
 
 nix_version := `cat ./nix-version.txt`
 
-all: nix brew nvim rust
+all: nix brew nvim rust mise
 
 nix:
   nix-channel --remove home-manager
@@ -24,3 +24,6 @@ nvim:
 
 rust:
   rustup update
+
+mise:
+  mise up
