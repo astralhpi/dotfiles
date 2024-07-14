@@ -71,4 +71,17 @@ return {
       require("dbee").setup( --[[optional config]])
     end,
   },
+
+  -- catppuccin
+  {
+    "catppuccin/nvim",
+    priority = 1000,
+    event = "VeryLazy",
+    config = function()
+      require("catppuccin").setup({
+        flavour = 'macchiato', -- latte, frappe, macchiato, mocha
+      })
+      vim.cmd.colorscheme "catppuccin-macchiato"
+    end,
+  },
 }

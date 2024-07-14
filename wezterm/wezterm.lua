@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
-config.color_scheme = 'Dracula (Official)'
+config.color_scheme = 'Catppuccin Macchiato'
 config.window_decorations = "RESIZE"
 
 local font_family = "Liga SFMono Nerd Font"

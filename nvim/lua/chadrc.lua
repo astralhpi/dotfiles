@@ -2,7 +2,7 @@
 local M = {}
 
 M.ui = {
-  theme = "chadracula",
+  theme = "catppuccin",
   hl_override = {
     FoldColumn = { bg = "none", fg = "light_grey" },
   },

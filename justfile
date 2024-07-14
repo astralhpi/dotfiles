@@ -44,12 +44,6 @@ tmux:
   ./ensure.py link {{ home_dir }}/.tmux.conf ./tmux/tmux.conf
   ./ensure.py clone {{ home_dir }}/.tmux/plugins/tpm \
       'https://github.com/tmux-plugins/tpm' 
-  ./ensure.py clone {{ home_dir }}/.tmux/plugins/tmux-powerline \
-      'https://github.com/erikw/tmux-powerline'
-  ./ensure.py link {{ home_dir }}/.tmux-powerlinerc \
-      ./tmux/powerline/tmux-powerlinerc
-  ./ensure.py link {{ home_dir }}/.tmux/powerline \
-      ./tmux/powerline
 
 nvim:
   mise run nvim
