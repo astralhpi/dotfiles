@@ -63,11 +63,6 @@ local on_attach = function(client, bufnr)
   end, opts "NvRenamer")
 
   map("n", "gr", vim.lsp.buf.references, opts "Show references")
-
-  -- setup signature popup
-  if conf.signature and client.server_capabilities.signatureHelpProvider then
-    require("nvchad.lsp.signature").setup(client, bufnr)
-  end
 end
 
 for _, lsp in ipairs(servers) do
