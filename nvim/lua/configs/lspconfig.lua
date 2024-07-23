@@ -71,8 +71,9 @@ for _, lsp in ipairs(servers) do
       on_attach = function(client, bufnr)
         vim.api.nvim_create_autocmd("BufWritePost", {
           pattern = { "*.js", "*.ts" },
+          group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
           callback = function(ctx)
-            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
           end,
         })
         on_attach(client, bufnr)
