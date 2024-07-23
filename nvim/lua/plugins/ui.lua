@@ -1,5 +1,15 @@
 -- 언어와 무관한 UI 플러그인들
 return {
+  {
+    "folke/which-key.nvim",
+    keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
+    cmd = "WhichKey",
+    version = "3.9.0",
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "whichkey")
+      require("which-key").setup(opts)
+    end,
+  },
   -- nvim-tree: 파일 탐색기
   {
     "nvim-tree/nvim-tree.lua",
