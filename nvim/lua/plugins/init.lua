@@ -45,11 +45,13 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "marilari88/neotest-vitest",
+      "jfpedroza/neotest-elixir",
     },
     config = function()
       require("neotest").setup({
         adapters = {
-          require("neotest-vitest")
+          require("neotest-vitest"),
+          require("neotest-elixir")
         }
       })
     end

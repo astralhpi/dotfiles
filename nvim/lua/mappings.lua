@@ -102,6 +102,35 @@ map("n", "<leader>tT",
   end,
   { desc = "neotest run file" }
 )
+
+map("n", "<leader>twt",
+  function()
+    require("neotest").watch.toggle()
+  end,
+  { desc = "neotest toggle watch mode" }
+)
+
+map("n", "<leader>twT",
+  function()
+    require("neotest").watch.toggle(vim.fn.expand("%"))
+  end,
+  { desc = "neotest toggle file watch mode" }
+)
+
+map("n", "<leader>to",
+  function()
+    require("neotest").output.open()
+  end,
+  { desc = "neotest toggle output" }
+)
+
+
+map("n", "<leader>tO",
+  function()
+    require("neotest").output_panel.toggle()
+  end,
+  { desc = "neotest toggle output" }
+)
 -- portal
 map("n", "<leader>o", "<cmd>Portal jumplist backward<cr>")
 map("n", "<leader>i", "<cmd>Portal jumplist forward<cr>")
