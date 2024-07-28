@@ -81,6 +81,7 @@ local prompts = {
 }
 
 local options = {
+  model = "gpt-4o-2024-05-13",
   prompts = prompts,
 }
 
