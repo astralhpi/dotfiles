@@ -25,6 +25,9 @@
     difftool = {
       prompt = false;
     };
+    rerere = {
+      enabled = true;
+    };
     pull = {
       rebase = true;
     };
