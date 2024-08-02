@@ -68,11 +68,24 @@ return {
       "telescope-fzf-native.nvim",
       { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0", },
       "cbochs/grapple.nvim",
+      "marskey/telescope-sg"
     },
     opts = require("configs.others").telescope(),
     config = function()
       require("telescope").load_extension("live_grep_args")
       require("telescope").load_extension("grapple")
+      require('telescope').setup {
+        extensions = {
+          ast_grep = {
+            command = {
+              "sg",
+              "--json=stream"
+            },
+            grep_open_files = false,
+            lang = nil,
+          }
+        }
+      }
     end,
   },
 

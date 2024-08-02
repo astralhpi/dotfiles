@@ -3,5 +3,13 @@ vim.api.nvim_create_user_command(
   function(opts)
     require("telescope").extensions.live_grep_args.live_grep_args({ default_text = opts.args })
   end,
-  { nargs = 1 }
+  { nargs = '?' }
+)
+
+vim.api.nvim_create_user_command(
+  "Sg",
+  function(opts)
+    require("telescope").extensions.ast_grep.ast_grep({ default_text = opts.args })
+  end,
+  { nargs = '?' }
 )
