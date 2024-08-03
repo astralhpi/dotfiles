@@ -2,7 +2,7 @@ local select = require('CopilotChat.select')
 
 local language_prompt = " Please try to answer in 한글 as much as possible."
 local commit_prompt =
-    "Write commit message for the change with conventional commits. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit. 본문은 최대한 간략하게, 리스트 형태로 적어줘. " ..
+    "Write commit message for the change with conventional commits in Korean. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit. 본문은 최대한 간략하게, 리스트 형태로 적어줘. " ..
     language_prompt
 
 local prompts = {
