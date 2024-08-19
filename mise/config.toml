@@ -12,6 +12,8 @@ python = "3.12"
 neovim = "latest"
 elixir = "latest"
 erlang = "latest"
+pulumi = "latest"
+azure-cli = "latest"
 
 [settings]
 experimental = true

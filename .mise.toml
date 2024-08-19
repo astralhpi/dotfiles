@@ -27,3 +27,6 @@ depends = [
 
 [settings]
 experimental = true
+
+[tools]
+python = "3.10.11"
