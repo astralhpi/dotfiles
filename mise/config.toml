@@ -14,6 +14,7 @@ elixir = "latest"
 erlang = "latest"
 pulumi = "latest"
 azure-cli = "latest"
+rye = "latest"
 
 [settings]
 experimental = true

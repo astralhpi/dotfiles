@@ -142,6 +142,8 @@ zinit id-as"manai" as=null atclone'./download-manai.zsh' \
   src"manai.zsh" for \
   mecab/manai
 
+source "$HOME/.rye/env"
+
 bindkey '\eh' manai
 
 export PATH="$HOME/.deno/bin:$PATH"
