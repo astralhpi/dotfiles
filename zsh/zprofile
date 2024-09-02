@@ -54,4 +54,7 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
 fi
 
 # Added by OrbStack: command-line tools and integration
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+if [[ ":$PATH:" != *":$HOME/.orbstack/bin:"* ]]; then
+  source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+fi

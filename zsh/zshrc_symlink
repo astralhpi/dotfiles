@@ -14,10 +14,12 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # brew
-zinit id-as"brew" as=null atclone'/opt/homebrew/bin/brew shellenv > brew.zsh' \
-  atpull'%atclone' \
-  src"brew.zsh" for \
-  zdharma-continuum/null
+if [[ ":$PATH:" != *":/opt/homebrew/bin:"* ]]; then
+  zinit id-as"brew" as=null atclone'/opt/homebrew/bin/brew shellenv > brew.zsh' \
+    atpull'%atclone' \
+    src"brew.zsh" for \
+    zdharma-continuum/null
+fi
 
 
 # z-a-bin-gem-node
@@ -153,4 +155,6 @@ source "$HOME/.rye/env"
 
 bindkey '\eh' manai
 
-export PATH="$HOME/.deno/bin:$PATH"
+if [[ ":$PATH:" != *":$HOME/.deno/bin:"* ]]; then
+  export PATH="$HOME/.deno/bin:$PATH"
+fi
