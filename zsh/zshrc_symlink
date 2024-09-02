@@ -13,6 +13,13 @@ source $HOME/.local/share/zinit/zinit.git/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+# brew
+zinit id-as"brew" as=null atclone'/opt/homebrew/bin/brew shellenv > brew.zsh' \
+  atpull'%atclone' \
+  src"brew.zsh" for \
+  zdharma-continuum/null
+
+
 # z-a-bin-gem-node
 zinit light zdharma-continuum/zinit-annex-bin-gem-node
 zinit light zdharma-continuum/zinit-annex-patch-dl
