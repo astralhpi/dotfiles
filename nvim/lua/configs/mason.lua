@@ -1,5 +1,5 @@
 return {
-  ensure_installed = {
+  pkgs = {
     -- lua
     "lua-language-server",
 

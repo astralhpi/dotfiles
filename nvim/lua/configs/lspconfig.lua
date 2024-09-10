@@ -4,7 +4,7 @@ local util = require "lspconfig/util"
 local lspconfig = require "lspconfig"
 local servers = {
   -- node
-  "tsserver",
+  "ts_ls",
 
   -- deno
   "denols",

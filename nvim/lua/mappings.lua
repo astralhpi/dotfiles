@@ -53,17 +53,17 @@ map("i", "<C-n>", function()
 end, { desc = "cmp complete" })
 
 -- copliot chat
-map("v", "<leader>ae", ":CopilotChatExplain <CR>", { desc = "Copilot Chat Explain" })
-map("v", "<leader>ar", ":CopilotChatReview <CR>", { desc = "Copilot Chat Review" })
-map("v", "<leader>af", ":CopilotChatFix <CR>", { desc = "Copilot Chat Fix" })
-map("v", "<leader>aa", ":CopilotChatFixDiagnostic <CR>", { desc = "Copilot Chat Fix Diagnostic" })
-map("v", "<leader>ao", ":CopilotChatOptimize <CR>", { desc = "Copilot Chat Optimize" })
-map("v", "<leader>ad", ":CopilotChatDocs <CR>", { desc = "Copilot Chat Docs" })
-map("v", "<leader>at", ":CopilotChatTests <CR>", { desc = "Copilot Chat Tests" })
-map("n", "<leader>aa", ":CopilotChatFixDiagnostic <CR>", { desc = "Copilot Chat Fix Diagnostic" })
-map("n", "<leader>ac", ":CopilotChatCommit <CR>", { desc = "Copilot Chat Commit" })
-map("n", "<leader>as", ":CopilotChatCommitStaged <CR>", { desc = "Copilot Chat Commit Staged" })
-
+-- map("v", "<leader>ae", ":CopilotChatExplain <CR>", { desc = "Copilot Chat Explain" })
+-- map("v", "<leader>ar", ":CopilotChatReview <CR>", { desc = "Copilot Chat Review" })
+-- map("v", "<leader>af", ":CopilotChatFix <CR>", { desc = "Copilot Chat Fix" })
+-- map("v", "<leader>aa", ":CopilotChatFixDiagnostic <CR>", { desc = "Copilot Chat Fix Diagnostic" })
+-- map("v", "<leader>ao", ":CopilotChatOptimize <CR>", { desc = "Copilot Chat Optimize" })
+-- map("v", "<leader>ad", ":CopilotChatDocs <CR>", { desc = "Copilot Chat Docs" })
+-- map("v", "<leader>at", ":CopilotChatTests <CR>", { desc = "Copilot Chat Tests" })
+-- map("n", "<leader>aa", ":CopilotChatFixDiagnostic <CR>", { desc = "Copilot Chat Fix Diagnostic" })
+-- map("n", "<leader>ac", ":CopilotChatCommit <CR>", { desc = "Copilot Chat Commit" })
+-- map("n", "<leader>as", ":CopilotChatCommitStaged <CR>", { desc = "Copilot Chat Commit Staged" })
+--
 -- ufo
 local openAllFolds = function()
   require("ufo").openAllFolds()
