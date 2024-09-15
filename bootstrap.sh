@@ -40,7 +40,7 @@ function mac() {
         echo "Installing Homebrew"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         echo "Installed Homebrew"
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
     fi
 
     if ! cmd_exists just; then
