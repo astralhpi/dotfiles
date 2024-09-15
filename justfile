@@ -24,7 +24,7 @@ gc:
 # Shell Essential Configs
 # ===============================================================================
 
-shell: nix zsh tmux nvim starship chsh mise
+shell: nix zsh mise tmux nvim starship chsh
 
 config-dir:
   ./ensure.py dir {{ home_dir }}/.config
@@ -76,7 +76,7 @@ k9s:
 # GUI Tools Configs
 # ===============================================================================
 
-gui: kitty wezterm
+gui: wezterm
 
 kitty: && kitty-icon
   ./ensure.py link {{ home_dir }}/.config/kitty config/kitty
@@ -139,10 +139,10 @@ linux: shell devops crypto
 # ===============================================================================
 
 [macos]
-macos: shell devops polyglot macos-only gui
+macos: macos-only shell devops polyglot gui
 
 [macos]
-macos-only: brew karabiner hammerspoon yabai nushell sudo-with-touchid keyboard font sketchybar
+macos-only: brew karabiner hammerspoon yabai sudo-with-touchid keyboard font sketchybar
 
 [macos]
 brew:
