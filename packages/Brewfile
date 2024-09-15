@@ -14,6 +14,7 @@ brew 'gnu-sed'
 brew 'mise'
 brew 'supabase'
 brew 'ast-grep'
+brew 'p7zip'
 
 cask 'mitmproxy'
 cask 'orbstack'
