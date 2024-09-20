@@ -786,6 +786,15 @@
             "appdir": "/Applications"
           }
         }
+      },
+      "chatgpt": {
+        "version": "1.2024.247,1725665409",
+        "options": {
+          "full_name": "chatgpt",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
       }
     },
     "mas": {
@@ -801,6 +810,10 @@
       "Microsoft Remote Desktop": {
         "id": "1295203466",
         "version": "10.8.4"
+      },
+      "Tailscale": {
+        "id": "1475387142",
+        "version": "1.74.0"
       }
     }
   },
