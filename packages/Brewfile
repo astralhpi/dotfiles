@@ -41,5 +41,6 @@ cask 'sf-symbols'
 cask 'wezterm'
 cask 'bruno'
 
+mas 'Tailscale', id: 1475387142
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134
