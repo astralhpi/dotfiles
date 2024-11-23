@@ -16,6 +16,7 @@ local options = {
     "python",
     "rust",
     "typescript",
+    "tsx",
     "hcl",
     "terraform",
     "yaml",
