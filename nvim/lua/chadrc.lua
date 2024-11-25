@@ -15,10 +15,11 @@ M.ui = {
     WinBar = { bg = "none" },
     WinBarNC = { bg = "none" },
   },
-  nvdash = {
-    load_on_startup = true
-  },
 }
+M.nvdash = {
+    load_on_startup = true
+}
+
 
 require 'commands'
 
