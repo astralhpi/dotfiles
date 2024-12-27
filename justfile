@@ -76,7 +76,7 @@ k9s:
 # GUI Tools Configs
 # ===============================================================================
 
-gui: wezterm
+gui: wezterm ghostty
 
 kitty: && kitty-icon
   ./ensure.py link {{ home_dir }}/.config/kitty config/kitty
@@ -92,6 +92,9 @@ kitty-icon:
 
 wezterm:
   ./ensure.py link {{ home_dir }}/.wezterm.lua wezterm/wezterm.lua
+
+ghostty:
+  ./ensure.py link {{ home_dir }}/.config/ghostty ghostty
 
 # ===============================================================================
 # Crypto Configs

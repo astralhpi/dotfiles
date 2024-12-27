@@ -15,6 +15,7 @@ brew 'mise'
 brew 'supabase'
 brew 'ast-grep'
 brew 'p7zip'
+brew 'ghostty'
 
 cask 'android-studio'
 cask 'google-chrome'
