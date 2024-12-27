@@ -5,6 +5,7 @@
   aliases = {
     lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
     permission-reset = "!git diff -p -R --no-ext-diff --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply";
+    ap = "!git add -N . && git add -p";
   };
   extraConfig = {
     core = {
