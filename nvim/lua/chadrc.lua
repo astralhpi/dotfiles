@@ -3,6 +3,7 @@ local M = {}
 
 M.ui = {
   theme = "catppuccin",
+  transparency = true,
   hl_override = {
     FoldColumn = { bg = "none", fg = "light_grey" },
   },
