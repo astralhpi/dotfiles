@@ -1,7 +1,8 @@
-[tasks.config-dir]
-description = "Ensure the config directory exists"
-run = [
-  './ensure.py dir $HOME/.config'
+[tasks.default]
+description = "Run all tasks (default)"
+depends = [
+  "mise",
+  "nvim",
 ]
 
 [tasks.mise]
@@ -24,6 +25,13 @@ run = [
 depends = [
   "config-dir"
 ]
+
+[tasks.config-dir]
+description = "Ensure the config directory exists"
+run = [
+  './ensure.py dir $HOME/.config'
+]
+
 
 [settings]
 experimental = true
