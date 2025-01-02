@@ -106,6 +106,7 @@ function coalesce { print "${${(s: :)@}[1]}" }
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 alias tmux='direnv exec / tmux'
+alias zl="zellij"
 
 # history
 HISTSIZE=999999999
