@@ -3,6 +3,7 @@ description = "Run all tasks (default)"
 depends = [
   "mise",
   "nvim",
+  "zellij"
 ]
 
 [tasks.mise]
@@ -24,6 +25,12 @@ run = [
 
 depends = [
   "config-dir"
+]
+
+[tasks.zellij]
+description = "Configure zellij"
+run = [
+  './ensure.py link $HOME/.config/zellij ./config/zellij'
 ]
 
 [tasks.config-dir]
