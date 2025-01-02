@@ -1,18 +1,7 @@
-[tasks.default]
-description = "Run all tasks"
-
-depends = [
-  "mise",
-  "nvim",
-]
-
-[tasks.tmuxp]
-description = "Configure tmuxp"
+[tasks.config-dir]
+description = "Ensure the config directory exists"
 run = [
-  './ensure.py link $HOME/.config/tmuxp ./config/tmuxp'
-]
-depends = [
-  "config-dir"
+  './ensure.py dir $HOME/.config'
 ]
 
 [tasks.mise]
@@ -35,13 +24,6 @@ run = [
 depends = [
   "config-dir"
 ]
-
-[tasks.config-dir]
-description = "Ensure the config directory exists"
-run = [
-  './ensure.py dir $HOME/.config'
-]
-
 
 [settings]
 experimental = true
