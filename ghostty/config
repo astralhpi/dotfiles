@@ -8,3 +8,6 @@ background-opacity = 0.95
 macos-option-as-alt = true
 
 macos-titlebar-style = tabs
+
+keybind = ctrl+physical:c=text:\x03  
+keybind = ctrl+physical:d=text:\x04 
