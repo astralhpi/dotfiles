@@ -4,6 +4,8 @@ tap 'pulumi/tap'
 tap 'FelixKratz/formulae'
 tap 'shaunsingh/SFMono-Nerd-Font-Ligaturized'
 tap 'supabase/tap'
+tap 'arl/arl'
+
 
 brew 'pam-reattach'
 brew 'koekeishiya/formulae/yabai'
@@ -17,6 +19,7 @@ brew 'ast-grep'
 brew 'p7zip'
 brew 'ghostty'
 brew 'zellij'
+brew 'gitmux'
 
 cask 'android-studio'
 cask 'google-chrome'
