@@ -22,6 +22,7 @@ brew 'zellij'
 brew 'gitmux'
 brew 'nushell'
 brew 'starship'
+brew 'aichat'
 
 cask 'android-studio'
 cask 'google-chrome'
