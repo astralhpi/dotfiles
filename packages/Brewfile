@@ -21,6 +21,7 @@ brew 'ghostty'
 brew 'zellij'
 brew 'gitmux'
 brew 'nushell'
+brew 'starship'
 
 cask 'android-studio'
 cask 'google-chrome'

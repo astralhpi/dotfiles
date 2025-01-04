@@ -15,7 +15,6 @@ in [
   pkgs.thefuck
   pkgs.fzf
   pkgs.coreutils
-  pkgs.starship
   pkgs.sd
   pkgs.sad
   pkgs.zoxide
