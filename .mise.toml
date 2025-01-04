@@ -42,7 +42,7 @@ description = "Configure nushell"
 run = '''
 #!/usr/bin/env bash
 ./ensure.py link $HOME/.config/nushell ./nushell
-cargo install nu_plugin_skim
+cargo install nu_plugin_skim nu_plugin_polars nu_plugin_formats nu_plugin_gstat nu_plugin_query nu_plugin_inc --locked
 '''
 
 [tasks.config-dir]

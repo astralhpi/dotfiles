@@ -15,3 +15,4 @@ atuin init nu --disable-up-arrow | save -f $atuin_cache_path
 $env.PATH = ($env.PATH | split row (char esep) | append "~/.rye/shims")
 
 $env.config.show_banner = false
+$env.config.rm.always_trash = false
