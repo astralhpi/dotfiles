@@ -12,4 +12,6 @@ zoxide init nushell | save -f $zoxide_cache_path
 const atuin_cache_path = ($config_cache_dir | path join atuin.nu)
 atuin init nu | save -f $atuin_cache_path
 
+$env.PATH = ($env.PATH | split row (char esep) | append "~/.rye/shims")
+
 $env.config.show_banner = false

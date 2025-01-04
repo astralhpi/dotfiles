@@ -42,6 +42,7 @@ description = "Configure nushell"
 run = '''
 #!/usr/bin/env bash
 ./ensure.py link $HOME/.config/nushell ./nushell
+cargo install nu_plugin_skim
 '''
 
 [tasks.config-dir]
