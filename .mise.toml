@@ -8,9 +8,11 @@ depends = [
 
 [tasks.mise]
 description = "Configure mise"
-run = [
-  './ensure.py link $HOME/.config/mise ./mise'
-]
+run = '''
+#!/usr/bin/env bash
+./ensure.py link $HOME/.config/mise ./mise
+'''
+
 depends = [
   "config-dir"
 ]
@@ -18,10 +20,11 @@ depends = [
 [tasks.nvim]
 description = "Configure neovim"
 
-run = [
-  './ensure.py link $HOME/.config/nvim ./nvim',
-  'nvim --headless "+Lazy! sync" +qa'
-]
+run = '''
+#!/usr/bin/env bash
+./ensure.py link $HOME/.config/nvim ./nvim
+nvim --headless "+Lazy! sync" +qa
+'''
 
 depends = [
   "config-dir"
@@ -29,15 +32,24 @@ depends = [
 
 [tasks.zellij]
 description = "Configure zellij"
-run = [
-  './ensure.py link $HOME/.config/zellij ./config/zellij'
-]
+run = '''
+#!/usr/bin/env bash
+./ensure.py link $HOME/.config/zellij ./config/zellij
+'''
+
+[tasks.nushell]
+description = "Configure nushell"
+run = '''
+#!/usr/bin/env bash
+./ensure.py link $HOME/.config/nushell ./nushell
+'''
 
 [tasks.config-dir]
 description = "Ensure the config directory exists"
-run = [
-  './ensure.py dir $HOME/.config'
-]
+run = '''
+#!/usr/bin/env bash
+./ensure.py dir $HOME/.config
+'''
 
 
 [settings]

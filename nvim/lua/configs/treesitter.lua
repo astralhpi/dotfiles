@@ -29,6 +29,7 @@ local options = {
     "toml",
     "dart",
     "elixir",
+    "nu",
   },
 
   highlight = {

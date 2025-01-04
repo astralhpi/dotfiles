@@ -8,6 +8,7 @@ $git_branch\
 $git_state\
 $git_status\
 $cmd_duration\
+$shell\
 $character"""
 
 right_format = """
@@ -19,6 +20,13 @@ $time
 """
 
 palette = "catppuccin_macchiato"
+
+[shell]
+disabled = false
+bash_indicator = 'B'
+zsh_indicator = 'Z'
+nu_indicator = 'N'
+
 
 [character]
 error_symbol = "[✘](bold red)"
