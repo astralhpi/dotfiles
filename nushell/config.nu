@@ -31,3 +31,12 @@ $env.config.use_kitty_protocol = true
 
 alias vim = nvim
 alias tailscale = /Applications/Tailscale.app/Contents/MacOS/Tailscale
+
+
+def l [_path? --all(-a), --long(-l), --full-paths(-f)] {
+  mut path = $_path
+  if $_path == null {
+    $path = "."
+  }
+  ls $path --all=$all --long=$long --full-paths=$full_paths | sort-by type name -i
+}
