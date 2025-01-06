@@ -23,6 +23,7 @@ brew 'gitmux'
 brew 'nushell'
 brew 'starship'
 brew 'aichat'
+brew 'atuin'
 
 cask 'android-studio'
 cask 'google-chrome'
