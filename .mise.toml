@@ -9,6 +9,13 @@ depends = [
   "tmuxp",
 ]
 
+[tasks.'brew:install']
+description = "Install brew packages"
+run = '''
+#!/usr/bin/env bash
+cd packages && brew bundle -v
+'''
+
 [tasks.tmuxp]
 description = "Configure tmuxp"
 run = '''
