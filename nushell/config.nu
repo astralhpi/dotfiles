@@ -32,6 +32,13 @@ $env.config.use_kitty_protocol = true
 alias vim = nvim
 alias tailscale = /Applications/Tailscale.app/Contents/MacOS/Tailscale
 
+def pnpm-release [version='patch'] {
+  let semver = (pnpm version $version)
+  echo $semver
+  git push origin main
+  git push origin $semver
+}
+
 
 def l [_path? --all(-a), --long(-l), --full-paths(-f)] {
   mut path = $_path

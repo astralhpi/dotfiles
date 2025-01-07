@@ -8,4 +8,4 @@ windows:
     layout: main-vertical
     panes:
       - "pnpm dev"
-      - "echo shell"
+      - ""
