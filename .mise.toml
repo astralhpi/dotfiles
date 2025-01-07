@@ -5,7 +5,18 @@ depends = [
   "nvim",
   "zellij",
   "nushell",
-  "atuin"
+  "atuin",
+  "tmuxp",
+]
+
+[tasks.tmuxp]
+description = "Configure tmuxp"
+run = '''
+#!/usr/bin/env bash
+  './ensure.py link $HOME/.config/tmuxp ./config/tmuxp'
+'''
+depends = [
+  "config-dir"
 ]
 
 [tasks.mise]

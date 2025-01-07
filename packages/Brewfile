@@ -24,6 +24,7 @@ brew 'nushell'
 brew 'starship'
 brew 'aichat'
 brew 'atuin'
+brew 'tmuxp'
 
 cask 'android-studio'
 cask 'google-chrome'
