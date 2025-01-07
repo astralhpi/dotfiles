@@ -20,7 +20,7 @@ cd packages && brew bundle -v
 description = "Configure tmuxp"
 run = '''
 #!/usr/bin/env bash
-  './ensure.py link $HOME/.config/tmuxp ./config/tmuxp'
+./ensure.py link $HOME/.config/tmuxp ./config/tmuxp
 '''
 depends = [
   "config-dir"
