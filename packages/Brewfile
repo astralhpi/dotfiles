@@ -25,6 +25,8 @@ brew 'aichat'
 brew 'atuin'
 brew 'tmuxp'
 brew 'cocoapods'
+brew 'imagemagick'
+brew 'viu'
 
 cask 'ghostty'
 cask 'android-studio'

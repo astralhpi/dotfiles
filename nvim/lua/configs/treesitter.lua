@@ -30,6 +30,7 @@ local options = {
     "dart",
     "elixir",
     "nu",
+    "scss"
   },
 
   highlight = {

@@ -99,8 +99,8 @@ for _, lsp in ipairs(servers) do
         },
       }
     }
-  elseif lsp == "tsserver" then
-    lspconfig.tsserver.setup {
+  elseif lsp == "ts_ls" then
+    lspconfig.ts_ls.setup {
       on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false

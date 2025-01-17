@@ -87,4 +87,16 @@ return {
       vim.cmd.colorscheme "catppuccin-macchiato"
     end,
   },
+
+  -- image preview 
+  {
+    "3rd/image.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("image").setup({
+        backend = "kitty",
+        processor = "magick_cli"
+      })
+    end,
+  }
 }

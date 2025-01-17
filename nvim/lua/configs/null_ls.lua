@@ -8,8 +8,9 @@ end
 local options = {
   sources = {
     -- node
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettierd,
     require("none-ls.diagnostics.eslint_d"),
+
     -- python
     require("none-ls.formatting.ruff"),
     require("none-ls.diagnostics.ruff"),
