@@ -133,3 +133,24 @@ for _, lsp in ipairs(servers) do
     }
   end
 end
+
+local biome_config_file = "biome.jsonc"
+
+local function biome_config_exists()
+  local cwd = vim.fn.getcwd()
+  local config_path = cwd .. "/" .. biome_config_file
+  local stat = vim.loop.fs_stat(config_path)
+  return stat and stat.type == "file"
+end
+
+if biome_config_exists() then
+  lspconfig.biome.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150
+    }
+  }
+end
+
+
