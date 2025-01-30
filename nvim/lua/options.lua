@@ -31,3 +31,6 @@ g.copilot_no_tab_map = true
 
 -- color
 opt.termguicolors = true
+
+
+opt.laststatus = 3
