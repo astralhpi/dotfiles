@@ -1,0 +1,11 @@
+session_name: chat
+start_directory: $HOME/Projects/chat-web/
+windows:
+  - window_name: nvim
+    panes:
+      - nvim
+  - window_name: shell
+    layout: main-vertical
+    panes:
+      - "bun dev"
+      - ""
