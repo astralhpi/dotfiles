@@ -27,6 +27,7 @@ brew 'tmuxp'
 brew 'cocoapods'
 brew 'imagemagick'
 brew 'viu'
+brew 'neovim'
 
 cask 'ghostty'
 cask 'android-studio'
