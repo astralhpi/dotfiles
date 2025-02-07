@@ -12,66 +12,85 @@ return {
     end,
   },
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false, -- set this if you want to always pull the latest change
-    opts = {
-      -- add any opts here
-    },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    "olimorris/codecompanion.nvim",
     dependencies = {
-      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "echasnovski/mini.pick", -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua", -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      "nvim-treesitter/nvim-treesitter",
       {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
+        "MeanderingProgrammer/render-markdown.nvim",
+        ft = { "markdown", "codecompanion" }
       },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
+      "j-hui/fidget.nvim",
+      'echasnovski/mini.diff'
     },
-  },
-  -- {
-  --   "CopilotC-Nvim/CopilotChat.nvim",
-  --   branch = "canary",
-  --   dependencies = {
-  --     { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-  --     { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
-  --   },
-  --   cmd = { "CopilotChat" },
-  --   event = "VeryLazy",
-  --   config = function()
-  --     local opts = require("configs.copilot_chat")
-  --     require('CopilotChat').setup(opts)
-  --   end
-  -- }
+    lazy = false,
+    init = function()
+      require("configs.codecompanion.fidget-spinner"):init()
+    end,
+    config = function()
+      require("codecompanion").setup({
+        display = {
+          diff = {
+            provider = "mini_diff"
+          }
+        },
+        opts = {
+          language = "Korean"
+        },
+        strategies = {
+          chat = {
+            adapter = "gemini",
+          },
+          inline = {
+            adapter = "gemini",
+          },
+          cmd = {
+            adapter = "gemini",
+          }
+        },
+        adapters = {
+          gemini = function()
+            return require("codecompanion.adapters").extend("gemini", {
+              env = {
+                api_key = "cmd:op read op://Dev/gemini/api-key --no-newline",
+              },
+              handlers = {
+                inline_output = function(self, data, context)
+                  if data and data ~= "" then
+                    data = data:sub(6)
+                    local ok, json = pcall(vim.json.decode, data, { luanil = { object = true } })
+
+                    if not ok then
+                      return
+                    end
+
+                    local text = json.candidates[1].content.parts[1].text
+                    local model = json.modelVersion
+
+                    if model == "gemini-2.0-flash-001" then
+                      text = text:gsub("```", "")
+                      if context then
+                        text = text:gsub(context.filetype .. "\n", "")
+                      end
+                    end
+
+                    return text
+                  end
+                end,
+              },
+              schema = {
+                model = {
+                  default = "gemini-2.0-flash-001",
+                },
+                choices = {
+                  "gemini-2.0-flash-001",
+                  "gemini-2.0-flash-lite-preview-02-05",
+                }
+              }
+            })
+          end,
+        },
+      })
+    end
+  }
 }
