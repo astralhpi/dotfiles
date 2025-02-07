@@ -64,6 +64,12 @@ end, { desc = "cmp complete" })
 -- map("n", "<leader>ac", ":CopilotChatCommit <CR>", { desc = "Copilot Chat Commit" })
 -- map("n", "<leader>as", ":CopilotChatCommitStaged <CR>", { desc = "Copilot Chat Commit Staged" })
 --
+-- codecompanion
+map("n", "<leader>aa", ":CodeCompanion<CR>", { desc = "CodeCompanion" })
+map("n", "<leader>ac", ":CodeCompanionChat<CR>", { desc = "CodeCompanion" })
+map("n", "<leader>as", ":CodeCompanionActions<CR>", { desc = "CodeCompanion Actions" })
+map("v", "<leader>aa", ":CodeCompanion ", { desc = "CodeCompanion" })
+
 -- ufo
 local openAllFolds = function()
   require("ufo").openAllFolds()
