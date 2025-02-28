@@ -1,5 +1,5 @@
 session_name: chat
-start_directory: $HOME/Projects/chat-web/
+start_directory: $HOME/Projects/chat-monorepo
 windows:
   - window_name: nvim
     panes:
@@ -7,5 +7,4 @@ windows:
   - window_name: shell
     layout: main-vertical
     panes:
-      - "bun dev"
       - ""

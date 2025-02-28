@@ -66,7 +66,7 @@ end, { desc = "cmp complete" })
 --
 -- codecompanion
 map("n", "<leader>aa", ":CodeCompanion<CR>", { desc = "CodeCompanion" })
-map("n", "<leader>ac", ":CodeCompanionChat<CR>", { desc = "CodeCompanion" })
+map("n", "<leader>ac", ":CodeCompanionChat<CR>", { desc = "CodeCompanion Chat" })
 map("n", "<leader>as", ":CodeCompanionActions<CR>", { desc = "CodeCompanion Actions" })
 map("v", "<leader>aa", ":CodeCompanion ", { desc = "CodeCompanion" })
 
