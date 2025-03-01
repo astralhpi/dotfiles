@@ -1,13 +1,16 @@
 [tasks.default]
 description = "Run all tasks (default)"
-depends = [
-  "mise",
-  "nvim",
-  "zellij",
-  "nushell",
-  "atuin",
-  "tmuxp",
-]
+depends = ["mise", "nvim", "zellij", "nushell", "atuin", "tmuxp", "zed"]
+
+[tasks.zed]
+description = "Configure zed"
+run = '''
+#!/usr/bin/env bash
+./ensure.py dir $HOME/.config/zed
+./ensure.py link $HOME/.config/zed/keymap.json ./config/zed/keymap.json
+./ensure.py link $HOME/.config/zed/settings.json ./config/zed/settings.json
+'''
+depends = ["config-dir"]
 
 [tasks.'brew:install']
 description = "Install brew packages"
@@ -22,9 +25,7 @@ run = '''
 #!/usr/bin/env bash
 ./ensure.py link $HOME/.config/tmuxp ./config/tmuxp
 '''
-depends = [
-  "config-dir"
-]
+depends = ["config-dir"]
 
 [tasks.mise]
 description = "Configure mise"
@@ -33,9 +34,7 @@ run = '''
 ./ensure.py link $HOME/.config/mise ./mise
 '''
 
-depends = [
-  "config-dir"
-]
+depends = ["config-dir"]
 
 [tasks.nvim]
 description = "Configure neovim"
@@ -46,9 +45,7 @@ run = '''
 nvim --headless "+Lazy! sync" +qa
 '''
 
-depends = [
-  "config-dir"
-]
+depends = ["config-dir"]
 
 [tasks.zellij]
 description = "Configure zellij"
