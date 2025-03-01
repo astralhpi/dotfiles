@@ -1,6 +1,15 @@
 [tasks.default]
 description = "Run all tasks (default)"
-depends = ["mise", "nvim", "zellij", "nushell", "atuin", "tmuxp", "zed"]
+depends = ["mise", "nvim", "zellij", "nushell", "atuin", "tmuxp", "zed", "git"]
+
+[tasks.git]
+description = "Configure git"
+run = '''
+#!/usr/bin/env bash
+./ensure.py dir $HOME/.config/git
+./ensure.py link $HOME/.config/git/config ./config/git/config
+'''
+depends = ["config-dir"]
 
 [tasks.zed]
 description = "Configure zed"

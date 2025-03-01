@@ -1,5 +1,5 @@
 { config, pkgs, programs, lib, ... }:
-let 
+let
     commonPackags = import ./packages/common.nix { inherit pkgs; };
     macPackags = import ./packages/macos.nix { inherit pkgs; };
 in {
@@ -16,7 +16,7 @@ in {
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -28,5 +28,4 @@ in {
                   then macPackags ++ commonPackags
                   else commonPackags;
   programs.direnv = import ./tools/direnv.nix {};
-  programs.git = import ./tools/git.nix {};
 }

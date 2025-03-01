@@ -17,6 +17,7 @@ rye = "latest"
 java = "latest"
 bun = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
+delta = "latest"
 
 [settings]
 experimental = true
