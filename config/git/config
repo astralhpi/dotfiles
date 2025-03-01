@@ -82,7 +82,7 @@
     defaultBranch = "main"
 
 [interactive]
-    diffFilter = "/nix/store/ljpbjwp3s11wqqnfdwg1g6ylw7vlhmpn-delta-0.17.0/bin/delta --color-only"
+    diffFilter = "delta --color-only"
 
 [merge]
     tool = "nvimdiff"
