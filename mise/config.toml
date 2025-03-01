@@ -16,6 +16,7 @@ azure-cli = "latest"
 rye = "latest"
 java = "latest"
 bun = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
 
 [settings]
 experimental = true
