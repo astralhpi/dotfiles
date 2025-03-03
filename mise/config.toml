@@ -18,6 +18,7 @@ java = "latest"
 bun = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
 delta = "latest"
+"npm:eas-cli" = "latest"
 
 [settings]
 experimental = true
