@@ -32,7 +32,8 @@
     "context": "vim_mode == normal || vim_mode == visual",
     "bindings": {
       "s": ["vim::PushOperator", { "Sneak": {} }],
-      "S": ["vim::PushOperator", { "SneakBackward": {} }]
+      "S": ["vim::PushOperator", { "SneakBackward": {} }],
+      "g r": "editor::Rename"
     }
   }
 ]
