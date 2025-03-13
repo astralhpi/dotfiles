@@ -19,6 +19,8 @@ bun = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
 delta = "latest"
 "npm:eas-cli" = "latest"
+"pipx:aider-chat" = "latest" 
+"npm:playwright" = "latest"
 
 [settings]
 experimental = true
