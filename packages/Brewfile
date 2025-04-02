@@ -5,6 +5,7 @@ tap 'FelixKratz/formulae'
 tap 'shaunsingh/SFMono-Nerd-Font-Ligaturized'
 tap 'supabase/tap'
 tap 'arl/arl'
+tap 'archivebox/archivebox'
 
 
 brew 'pam-reattach'
@@ -28,6 +29,7 @@ brew 'cocoapods'
 brew 'imagemagick'
 brew 'viu'
 brew 'neovim'
+brew 'archivebox'
 
 cask 'ghostty'
 cask 'android-studio'

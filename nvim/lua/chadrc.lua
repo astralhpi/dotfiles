@@ -3,7 +3,7 @@ local M = {}
 
 M.ui = {
   theme = "catppuccin",
-  transparency = true,
+    transparency = true,
   hl_override = {
     FoldColumn = { bg = "none", fg = "light_grey" },
   },
@@ -18,7 +18,7 @@ M.ui = {
   },
 }
 M.nvdash = {
-    load_on_startup = true
+    load_on_startup = !vim.g.vscode
 }
 
 

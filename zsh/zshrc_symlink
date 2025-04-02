@@ -141,7 +141,7 @@ zinit id-as"z" as=null atclone'zoxide init zsh > zhook.zsh' \
   zdharma-continuum/null
 
 # mise
-zinit id-as"mise" wait lucid as=null atclone'/opt/homebrew/bin/mise activate zsh > zhook.zsh' \
+zinit id-as"mise" as=null atclone'/opt/homebrew/bin/mise activate zsh > zhook.zsh' \
   atpull'%atclone' \
   src"zhook.zsh" for \
   zdharma-continuum/null
