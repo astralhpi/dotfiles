@@ -20,7 +20,9 @@ bun = "latest"
 delta = "latest"
 "npm:eas-cli" = "latest"
 "pipx:aider-chat" = "latest" 
+"pipx:google-generativeai" = "latest"
 "npm:playwright" = "latest"
+"npm:wrangler" = "latest"
 
 [settings]
 experimental = true
