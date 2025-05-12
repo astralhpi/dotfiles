@@ -20,7 +20,7 @@ bun = "latest"
 delta = "latest"
 "npm:eas-cli" = "latest"
 "pipx:aider-chat" = "latest" 
-"pipx:google-generativeai" = "latest"
+"pipx:google-generativeai" = { version = "latest", pipx_args = "--include-deps" }
 "npm:playwright" = "latest"
 "npm:wrangler" = "latest"
 
