@@ -23,6 +23,7 @@ delta = "latest"
 "pipx:google-generativeai" = { version = "latest", pipx_args = "--include-deps" }
 "npm:playwright" = "latest"
 "npm:wrangler" = "latest"
+duckdb = "latest"
 
 [settings]
 experimental = true
