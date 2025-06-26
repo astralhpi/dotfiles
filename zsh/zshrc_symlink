@@ -159,3 +159,5 @@ bindkey '\eh' manai
 if [[ ":$PATH:" != *":$HOME/.deno/bin:"* ]]; then
   export PATH="$HOME/.deno/bin:$PATH"
 fi
+
+export GOOGLE_CLOUD_PROJECT="watnee"
