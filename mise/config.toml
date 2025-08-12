@@ -24,6 +24,8 @@ delta = "latest"
 "npm:playwright" = "latest"
 "npm:wrangler" = "latest"
 duckdb = "latest"
+"pipx:uv" = "latest"
+"npm:@google/gemini-cli" = "latest"
 
 [settings]
 experimental = true

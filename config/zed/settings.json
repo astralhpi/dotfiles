@@ -7,148 +7,148 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
-  "icon_theme": "Catppuccin Macchiato",
-  "auto_update_extensions": {
-    "svelte": true
-  },
-  "assistant": {
-    "always_allow_tool_actions": true,
-    "profiles": {
-      "minimal": {
-        "name": "Minimal",
-        "tools": {},
-        "enable_all_context_servers": false,
-        "context_servers": {
-          "mcp-server-context7": {
-            "tools": {
-              "get-library-docs": false,
-              "resolve-library-id": false
+    "icon_theme": "Catppuccin Macchiato",
+    "auto_update_extensions": {
+        "svelte": true
+    },
+    "agent": {
+        "always_allow_tool_actions": true,
+        "profiles": {
+            "minimal": {
+                "name": "Minimal",
+                "tools": {},
+                "enable_all_context_servers": false,
+                "context_servers": {
+                    "mcp-server-context7": {
+                        "tools": {
+                            "get-library-docs": false,
+                            "resolve-library-id": false
+                        }
+                    },
+                    "postgres-context-server": {
+                        "tools": {
+                            "pg-schema": false,
+                            "query": false
+                        }
+                    }
+                }
+            },
+            "ask": {
+                "name": "Ask",
+                "tools": {
+                    "terminal": false,
+                    "rename": true,
+                    "symbol_info": true,
+                    "open": true,
+                    "move_path": true,
+                    "edit_file": false,
+                    "create_file": true,
+                    "delete_path": false,
+                    "create_directory": false,
+                    "copy_path": true,
+                    "code_symbols": true,
+                    "code_actions": true,
+                    "batch_tool": true,
+                    "contents": true,
+                    "diagnostics": true,
+                    "fetch": true,
+                    "list_directory": true,
+                    "now": true,
+                    "find_path": true,
+                    "read_file": true,
+                    "grep": true,
+                    "thinking": true,
+                    "web_search": true
+                },
+                "enable_all_context_servers": false,
+                "context_servers": {
+                    "mcp-server-context7": {
+                        "tools": {
+                            "resolve-library-id": true,
+                            "get-library-docs": true
+                        }
+                    },
+                    "postgres-context-server": {
+                        "tools": {
+                            "query": true,
+                            "pg-schema": true
+                        }
+                    }
+                }
+            },
+            "write": {
+                "name": "Write",
+                "tools": {
+                    "web_search": true,
+                    "find_path": true,
+                    "terminal": false,
+                    "grep": true,
+                    "edit_file": true,
+                    "rename": false,
+                    "contents": false,
+                    "code_actions": false,
+                    "open": true,
+                    "create_directory": true,
+                    "terminal": true,
+                    "batch_tool": false,
+                    "code_symbols": false,
+                    "copy_path": true,
+                    "create_file": false,
+                    "delete_path": true,
+                    "diagnostics": true,
+                    "edit_file": true,
+                    "fetch": true,
+                    "list_directory": true,
+                    "move_path": true,
+                    "now": true,
+                    "find_path": false,
+                    "read_file": true,
+                    "grep": true,
+                    "symbol_info": false,
+                    "thinking": true
+                },
+                "enable_all_context_servers": true,
+                "context_servers": {
+                    "mcp-server-context7": {
+                        "tools": {
+                            "get-library-docs": true,
+                            "resolve-library-id": true
+                        }
+                    },
+                    "postgres-context-server": {
+                        "tools": {
+                            "query": true,
+                            "pg-schema": true
+                        }
+                    }
+                }
             }
-          },
-          "postgres-context-server": {
-            "tools": {
-              "pg-schema": false,
-              "query": false
-            }
-          }
-        }
-      },
-      "ask": {
-        "name": "Ask",
-        "tools": {
-          "terminal": false,
-          "rename": true,
-          "symbol_info": true,
-          "open": true,
-          "move_path": true,
-          "edit_file": false,
-          "create_file": true,
-          "delete_path": false,
-          "create_directory": false,
-          "copy_path": true,
-          "code_symbols": true,
-          "code_actions": true,
-          "batch_tool": true,
-          "contents": true,
-          "diagnostics": true,
-          "fetch": true,
-          "list_directory": true,
-          "now": true,
-          "path_search": true,
-          "read_file": true,
-          "grep": true,
-          "thinking": true,
-          "web_search": true
         },
-        "enable_all_context_servers": false,
-        "context_servers": {
-          "mcp-server-context7": {
-            "tools": {
-              "resolve-library-id": true,
-              "get-library-docs": true
-            }
-          },
-          "postgres-context-server": {
-            "tools": {
-              "query": true,
-              "pg-schema": true
-            }
-          }
+        "default_profile": "write",
+        "default_model": {
+            "provider": "zed.dev",
+            "model": "claude-sonnet-4"
         }
-      },
-      "write": {
-        "name": "Write",
-        "tools": {
-          "web_search": true,
-          "find_path": true,
-          "terminal": false,
-          "grep": true,
-          "edit_file": true,
-          "rename": false,
-          "contents": false,
-          "code_actions": false,
-          "open": true,
-          "create_directory": true,
-          "bash": true,
-          "batch_tool": false,
-          "code_symbols": false,
-          "copy_path": true,
-          "create_file": false,
-          "delete_path": true,
-          "diagnostics": true,
-          "find_replace_file": true,
-          "fetch": true,
-          "list_directory": true,
-          "move_path": true,
-          "now": true,
-          "path_search": false,
-          "read_file": true,
-          "regex_search": true,
-          "symbol_info": false,
-          "thinking": true
+    },
+    "features": {
+        "edit_prediction_provider": "zed"
+    },
+    "vim_mode": true,
+    "helix_mode": false,
+    "ui_font_size": 14,
+    "buffer_font_size": 13,
+    "buffer_font_family": "Liga SFMono Nerd Font",
+    "theme": {
+        "mode": "system",
+        "light": "One Light",
+        "dark": "Catppuccin Macchiato"
+    },
+    "languages": {
+        "Svelte": {
+            "tab_size": 2
         },
-        "enable_all_context_servers": true,
-        "context_servers": {
-          "mcp-server-context7": {
-            "tools": {
-              "get-library-docs": true,
-              "resolve-library-id": true
-            }
-          },
-          "postgres-context-server": {
-            "tools": {
-              "query": true,
-              "pg-schema": true
-            }
-          }
+        "TypeScript": {
+            "tab_size": 2
         }
-      }
-    },
-    "default_profile": "write",
-    "default_model": {
-      "provider": "google",
-      "model": "gemini-2.5-pro-preview-03-25"
-    },
-    "version": "2"
-  },
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
-  "vim_mode": true,
-  "ui_font_size": 13,
-  "buffer_font_size": 12,
-  "buffer_font_family": "Liga SFMono Nerd Font",
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Catppuccin Macchiato"
-  },
-  "languages": {
-    "Svelte": {
-      "tab_size": 2
-    },
-    "TypeScript": {
-      "tab_size": 2
     }
-  }
 }
