@@ -81,12 +81,21 @@ launchctl load $HOME/Library/LaunchAgents/com.atuin.daemon.plist
 launchctl start com.atuin.daemon
 '''
 
+
 [tasks.aerospace]
 description = "Configure aerospace"
 run = '''
 #!/usr/bin/env bash
 ./ensure.py link $HOME/.config/.aerospace.toml ./config/aerospace.toml
 '''
+
+[tasks.keyboardcowboy]
+description = "Configure keyboardcowboy"
+run = '''
+#!/usr/bin/env bash
+./ensure.py link $HOME/.config/keyboardcowboy ./config/keyboardcowboy
+'''
+
 
 [tasks.config-dir]
 description = "Ensure the config directory exists"
