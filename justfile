@@ -38,16 +38,15 @@ zsh:
   ./ensure.py link {{ home_dir }}/.zshrc_symlink ./zsh/zshrc_symlink
   ./ensure.py copy {{ home_dir }}/.zshrc ./zsh/zshrc
 
-
-tmux: 
+tmux:
   ./ensure.py dir {{ home_dir }}/.tmux/plugins
   ./ensure.py link {{ home_dir }}/.tmux.conf ./tmux/tmux.conf
   ./ensure.py clone {{ home_dir }}/.tmux/plugins/tpm \
-      'https://github.com/tmux-plugins/tpm' 
+    'https://github.com/tmux-plugins/tpm'
 
 nvim:
   mise run nvim
- 
+
 starship:
   ./ensure.py dir ~/.cache/starship
   ./ensure.py link {{ home_dir }}/.config/starship.toml config/starship.toml
@@ -127,7 +126,7 @@ op:
     sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
     curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
      sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
-    sudo apt update && sudo apt install 1password-cli  
+    sudo apt update && sudo apt install 1password-cli
   fi
 
 # ===============================================================================
@@ -145,7 +144,7 @@ linux: shell devops crypto
 macos: macos-only shell devops polyglot gui
 
 [macos]
-macos-only: brew karabiner hammerspoon sudo-with-touchid keyboard font sketchybar
+macos-only: brew karabiner hammerspoon sudo-with-touchid keyboard font
 
 [macos]
 brew:
@@ -154,7 +153,7 @@ brew:
 [macos]
 karabiner: config-dir
   ./ensure.py link {{ home_dir }}/.config/karabiner karabiner
-  
+
 
 [macos]
 keyboard:
@@ -195,16 +194,6 @@ sudo-with-touchid:
     echo "Enabling TouchID for sudo in tmux"
     sudo sed -i '' '2s/^/auth       optional     \/opt\/homebrew\/lib\/pam\/pam_reattach.so\n/' /etc/pam.d/sudo
   fi
-
-[macos]
-sketchybar: && sketchybar-app-font
-  brew services start sketchybar
-  ./ensure.py link {{ home_dir }}/.config/sketchybar config/sketchybar
-
-[macos]
-sketchybar-update-app-font: && sketchybar-app-font
-    rm {{ home_dir }}/Library/Fonts/sketchybar-app-font.ttf
-    rm config/sketchybar/icon_map_fn.sh
 
 [macos]
 sketchybar-app-font:
@@ -269,4 +258,3 @@ zotero-addons:
   https -do ./zotero-addons/zotero-gpt.xpi github.com/MuiseDestiny/zotero-gpt/releases/latest/download/zotero-gpt.xpi
   https -do ./zotero-addons/zotero-pdf-translate.xpi github.com/windingwind/zotero-pdf-translate/releases/latest/download/zotero-pdf-translate.xpi
   https -do ./zotero-addons/zotero-scihub.xpi github.com/ethanwillis/zotero-scihub/releases/latest/download/zotero-scihub-1.4.4.xpi
-

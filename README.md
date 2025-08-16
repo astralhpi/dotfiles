@@ -37,4 +37,3 @@ I referenced the repositories below to set up these dotfiles.
 
 - [NvChad](https://nvchad.com): Neovim configurations.
 - [Hammerspoon-Yabai](https://github.com/rtauziac/Hammerspoon-Yabai): Scripts for Hammerspoon+Yabai integration.
-- [dotfiles(FelixKratz)](https://github.com/FelixKratz/dotfiles.git): Settings for Sketchybar
