@@ -86,7 +86,7 @@ launchctl start com.atuin.daemon
 description = "Configure aerospace"
 run = '''
 #!/usr/bin/env bash
-./ensure.py link $HOME/.config/.aerospace.toml ./config/aerospace.toml
+./ensure.py link $HOME/.aerospace.toml ./config/aerospace.toml
 '''
 
 [tasks.keyboardcowboy]
@@ -95,7 +95,7 @@ run = '''
 #!/usr/bin/env bash
 ./ensure.py link $HOME/.config/keyboardcowboy ./config/keyboardcowboy
 '''
-
+depends = ["config-dir"]
 
 [tasks.config-dir]
 description = "Ensure the config directory exists"
