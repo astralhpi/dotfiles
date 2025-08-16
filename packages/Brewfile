@@ -6,10 +6,10 @@ tap 'shaunsingh/SFMono-Nerd-Font-Ligaturized'
 tap 'supabase/tap'
 tap 'arl/arl'
 tap 'archivebox/archivebox'
+tap 'nikitabobko/tap'
 
 
 brew 'pam-reattach'
-brew 'koekeishiya/formulae/yabai'
 brew 'mysql-client'
 brew 'sketchybar'
 brew 'jq'
@@ -58,6 +58,7 @@ cask 'font-sf-mono-nerd-font-ligaturized'
 cask 'sf-symbols'
 cask 'wezterm'
 cask 'bruno'
+cask 'aerospace'
 
 mas 'Tailscale', id: 1475387142
 mas 'Slack', id: 803453959
