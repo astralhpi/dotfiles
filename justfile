@@ -145,7 +145,7 @@ linux: shell devops crypto
 macos: macos-only shell devops polyglot gui
 
 [macos]
-macos-only: brew karabiner hammerspoon yabai sudo-with-touchid keyboard font sketchybar
+macos-only: brew karabiner hammerspoon sudo-with-touchid keyboard font sketchybar
 
 [macos]
 brew:
@@ -155,13 +155,6 @@ brew:
 karabiner: config-dir
   ./ensure.py link {{ home_dir }}/.config/karabiner karabiner
   
-
-[macos]
-yabai: config-dir
-  ./ensure.py dir {{ home_dir }}/.config/yabai
-  ./ensure.py link {{ home_dir }}/.config/yabai/yabairc config/yabairc
-  sudo ./ensure.py link /usr/local/bin/yabai /opt/homebrew/bin/yabai 
-  yabai --start-service
 
 [macos]
 keyboard:

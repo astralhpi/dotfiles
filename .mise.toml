@@ -1,6 +1,6 @@
 [tasks.default]
 description = "Run all tasks (default)"
-depends = ["mise", "nvim", "zellij", "nushell", "atuin", "tmuxp", "zed", "git"]
+depends = ["mise", "nvim", "zellij", "nushell", "atuin", "tmuxp", "zed", "git", "aerospace"]
 
 [tasks.git]
 description = "Configure git"
@@ -79,6 +79,13 @@ run = '''
 ./ensure.py link $HOME/Library/LaunchAgents/com.atuin.daemon.plist ./config/atuin/com.atuin.daemon.plist
 launchctl load $HOME/Library/LaunchAgents/com.atuin.daemon.plist
 launchctl start com.atuin.daemon
+'''
+
+[tasks.aerospace]
+description = "Configure aerospace"
+run = '''
+#!/usr/bin/env bash
+./ensure.py link $HOME/.config/.aerospace.toml ./config/aerospace.toml
 '''
 
 [tasks.config-dir]

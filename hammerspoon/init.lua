@@ -1,5 +1,4 @@
 require("hs.ipc")
-require("yabai")
 
 function reloadConfig(files)
   doReload = false
