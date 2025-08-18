@@ -411,6 +411,42 @@
                 ]
               }
             }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.hnc.Discord",
+                    "bundleName" : "Discord",
+                    "displayName" : "Discord",
+                    "path" : "\/Applications\/Discord.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "1478CF3F-AC6B-4255-B7C0-2CFE78A12F8D",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "6D5EB782-F3D1-44BC-88B6-D8EE37D4FD3A",
+            "name" : "Untitled workflow",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "D8A7A59B-86AC-4827-9D73-962040FA1353",
+                    "key" : "d",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
           }
         ]
       },
