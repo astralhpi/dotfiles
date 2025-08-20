@@ -213,9 +213,30 @@ shift-down = ['volume set 0', 'mode main']
 1 = 'main'
 2 = 1
 3 = 3
+s = 'built-in'
+c = 'main'
 
 [[on-window-detected]]
 if.app-id="com.mitchellh.ghostty"
-run= [
+run = [
   "layout tiling",
+]
+
+
+[[on-window-detected]]
+if.app-id="com.tinyspeck.slackmacgap"
+run = [
+  "move-node-to-workspace S"
+]
+
+[[on-window-detected]]
+if.app-id="com.todesktop.230313mzl4w4u92"
+run = [
+  "move-node-to-workspace C"
+]
+
+[[on-window-detected]]
+if.app-id="dev.zed.Zed"
+run = [
+  "move-node-to-workspace 1"
 ]
