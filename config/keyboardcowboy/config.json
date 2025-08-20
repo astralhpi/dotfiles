@@ -954,6 +954,56 @@
             }
           }
         ]
+      },
+      {
+        "color" : "#000",
+        "id" : "B2316CA6-3457-4A53-B574-E0F1F5A9E83A",
+        "name" : "Ghostty",
+        "rule" : {
+          "bundleIdentifiers" : [
+            "com.mitchellh.ghostty"
+          ],
+          "id" : "41794067-5720-483E-ABD7-0D3F9A8AA947"
+        },
+        "symbol" : "folder",
+        "workflows" : [
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "hide",
+                  "application" : {
+                    "bundleIdentifier" : "com.mitchellh.ghostty",
+                    "bundleName" : "Ghostty",
+                    "displayName" : "Ghostty",
+                    "path" : "\/Applications\/Ghostty.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "D90224EC-AE1E-4EBF-BF7C-C56E1A1477E6",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "0A8558FD-EE1C-4DB1-AB14-B131A2D334EA",
+            "name" : "Hide Terminal",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "1E04160C-538F-4670-9462-57272CB39033",
+                    "key" : "t",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
       }
     ],
     "id" : "60E8F0FE-9937-4470-82B9-0E65A44BA8E9",
