@@ -433,7 +433,7 @@
             ],
             "execution" : "serial",
             "id" : "6D5EB782-F3D1-44BC-88B6-D8EE37D4FD3A",
-            "name" : "Untitled workflow",
+            "name" : "Switch to Discord",
             "trigger" : {
               "keyboardShortcuts" : {
                 "shortcuts" : [
@@ -443,6 +443,39 @@
                     "modifiers" : [
                       "fn"
                     ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.kakao.KakaoTalkMac",
+                    "bundleName" : "KakaoTalk",
+                    "displayName" : "KakaoTalk",
+                    "path" : "\/Applications\/KakaoTalk.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "5EF4C424-B593-4017-8CEC-C9F841C08D7C",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "085B7D76-7869-4C5E-9554-61AA1BD0134E",
+            "name" : "Switch to Kakaotalk",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "8DFBE85C-CE81-48DF-967D-ED3074FBDBC3",
+                    "key" : "↖"
                   }
                 ]
               }
@@ -998,6 +1031,53 @@
                     "modifiers" : [
                       "fn"
                     ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "color" : "#000",
+        "id" : "9B270D9D-5253-4A82-A10A-E7046A8AC91B",
+        "name" : "KakaoTalk",
+        "rule" : {
+          "bundleIdentifiers" : [
+            "com.kakao.KakaoTalkMac"
+          ],
+          "id" : "841CD534-6D00-4CBF-A6C9-D6DB04C88E95"
+        },
+        "symbol" : "folder",
+        "workflows" : [
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "hide",
+                  "application" : {
+                    "bundleIdentifier" : "com.kakao.KakaoTalkMac",
+                    "bundleName" : "KakaoTalk",
+                    "displayName" : "KakaoTalk",
+                    "path" : "\/Applications\/KakaoTalk.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "82CD590D-6E0F-46E4-8455-666F389EC97A",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "4A7ED9AB-81A5-4FAA-BB1F-8ADE96C3B38D",
+            "name" : "Hide Kakaotalk",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "6F9CB99B-2689-4BB9-A7A9-AB6564F81A5D",
+                    "key" : "↖"
                   }
                 ]
               }

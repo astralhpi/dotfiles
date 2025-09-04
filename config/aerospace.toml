@@ -213,8 +213,8 @@ shift-down = ['volume set 0', 'mode main']
 1 = 'main'
 2 = 1
 3 = 3
-s = 'built-in'
-c = 'main'
+S = 'built-in'
+C = 'main'
 
 [[on-window-detected]]
 if.app-id="com.mitchellh.ghostty"
