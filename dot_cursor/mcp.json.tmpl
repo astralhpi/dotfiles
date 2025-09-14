@@ -1,30 +1,3 @@
 {
-  "mcpServers": {
-    "duckdb": {
-      "source": "custom",
-      "enabled": true,
-      "command": "uvx",
-      "args": [
-        "mcp-server-motherduck",
-        "--db-path",
-        "md:",
-        "--motherduck-token",
-        "{{ .motherduck_token }}"
-      ],
-      "env": {}
-    },
-    "mcp-server-context7": {
-      "source": "extension",
-      "enabled": true,
-      "settings": {
-        "default_minimum_tokens": "10000"
-      }
-    },
-    "mcp-server-github": {
-      "source": "extension",
-      "settings": {
-        "github_personal_access_token": "{{ .github_pat }}"
-      }
-    }
-  }
+  "mcpServers": {{- template "common-mcp-servers" (merge . (dict "format" "cursor")) }}
 }

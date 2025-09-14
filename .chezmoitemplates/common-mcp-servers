@@ -1,0 +1,35 @@
+{{- /* Define server configurations once */ -}}
+{{- $duckdb := dict
+  "command" "uvx"
+  "args" (list "mcp-server-motherduck" "--db-path" "md:" "--motherduck-token" .motherduck_token)
+  "env" (dict)
+-}}
+{{- $postgres := dict
+  "command" "uvx"
+  "args" (list "postgres-mcp" "--access-mode=restricted")
+  "env" (dict "DATABASE_URI" .postgres_url)
+-}}
+{{- $context7 := dict
+  "settings" (dict "default_minimum_tokens" "10000")
+-}}
+{{- $github := dict
+  "settings" (dict "github_personal_access_token" .github_pat)
+-}}
+
+{{- /* Define wrapper functions */ -}}
+{{- $zedCustomWrapper := dict "source" "custom" "enabled" true -}}
+{{- $zedExtensionWrapper := dict "source" "extension" "enabled" true -}}
+
+{{- if eq .format "cursor" -}}
+{
+  "duckdb": {{ $duckdb | toJson }},
+  "postgres": {{ $postgres | toJson }}
+}
+{{- else if eq .format "zed" -}}
+{
+  "duckdb": {{- $duckdb | merge $zedCustomWrapper | toJson }},
+  "mcp-server-context7": {{- $context7 | merge $zedExtensionWrapper | toJson }},
+  "mcp-server-github": {{- $github | merge $zedExtensionWrapper | toJson }},
+  "postgres": {{- $postgres | merge $zedCustomWrapper | toJson }}
+}
+{{- end -}}
