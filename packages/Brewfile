@@ -30,6 +30,7 @@ brew 'lsd'
 brew 'mise'
 brew 'yq'
 brew 'zoxide'
+brew 'asimov'
 
 cask 'ghostty'
 cask 'android-studio'
