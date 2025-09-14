@@ -54,6 +54,8 @@ cask 'ghostty'
 cask 'aerospace'
 cask 'keyboard-cowboy'
 cask 'homerow'
+cask 'discord'
+cask 'cloudflare-warp'
 
 mas 'Tailscale', id: 1475387142
 mas 'Slack', id: 803453959
