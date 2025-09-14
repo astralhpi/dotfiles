@@ -175,27 +175,31 @@ S = 'built-in'
 C = 'main'
 
 [[on-window-detected]]
-if.app-id="com.mitchellh.ghostty"
+if.app-id = "com.mitchellh.ghostty"
 run = [
   "layout tiling",
 ]
 
 [[on-window-detected]]
-if.app-id="com.tinyspeck.slackmacgap"
+if.app-id = "com.tinyspeck.slackmacgap"
 run = [
   "move-node-to-workspace S"
 ]
 
 [[on-window-detected]]
-if.app-id="com.todesktop.230313mzl4w4u92"
+if.app-id = "com.todesktop.230313mzl4w4u92"
 run = [
   "move-node-to-workspace C"
 ]
 
 [[on-window-detected]]
-if.app-id="dev.zed.Zed"
+if.app-id = "dev.zed.Zed"
 run = [
   "move-node-to-workspace 1"
 ]
 
-
+[[on-window-detected]]
+if.app-id = "com.1password.1password"
+run = [
+    "layout floating"
+]

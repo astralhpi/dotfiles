@@ -28,6 +28,8 @@ brew 'chezmoi'
 brew 'fzf'
 brew 'lsd'
 brew 'mise'
+brew 'yq'
+brew 'zoxide'
 
 cask 'ghostty'
 cask 'android-studio'
@@ -56,6 +58,7 @@ cask 'keyboard-cowboy'
 cask 'homerow'
 cask 'discord'
 cask 'cloudflare-warp'
+cask 'arc'
 
 mas 'Tailscale', id: 1475387142
 mas 'Slack', id: 803453959
