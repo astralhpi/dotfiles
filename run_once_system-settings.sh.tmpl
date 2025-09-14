@@ -13,14 +13,7 @@ defaults write com.apple.dock autohide -bool true
 
 sudo tmutil addexclusion -p /Library/Caches
 sudo tmutil addexclusion -p $HOME/Library/Caches
-sudo tmutil addexclusion -p $HOME/Library/Developer/CoreSimulator
-sudo tmutil addexclusion -p $HOME/Library/Developer/XCPGDevices
-sudo tmutil addexclusion -p $HOME/Library/Developer/XCTestDevices
-sudo tmutil addexclusion -p $HOME/Library/Developer/Xcode/DerivedData
-sudo tmutil addexclusion -p $HOME/Library/Developer/Xcode/DocumentationCache
-sudo tmutil addexclusion -p $HOME/Library/Developer/Xcode/iOS\ DeviceSupport
-sudo tmutil addexclusion -p $HOME/Library/Developer/Xcode/tvOS\ DeviceSupport
-sudo tmutil addexclusion -p $HOME/Library/Developer/Xcode/watchOS\ DeviceSupport
+sudo tmutil addexclusion -p $HOME/Library/Developer
 sudo tmutil addexclusion -p $HOME/Library/Logs/CoreSimulator
 sudo tmutil addexclusion -p $HOME/.cache
 sudo tmutil addexclusion -p $HOME/.orbstack
@@ -28,6 +21,7 @@ sudo tmutil addexclusion -p $HOME/.npm
 sudo tmutil addexclusion -p $HOME/.docker
 sudo tmutil addexclusion -p $HOME/.local/share
 sudo tmutil addexclusion -p $HOME/.bun
+sudo tmutil addexclusion -p $HOME/.cargo
 sudo tmutil addexclusion -p /Library/Backblaze.bzpkg
 sudo tmutil addexclusion -p ~/OrbStack
 sudo tmutil addexclusion -p /Library/Developer/
