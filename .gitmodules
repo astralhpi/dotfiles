@@ -1,6 +1,0 @@
-[submodule "zsh/prezto"]
-	path = zsh/prezto
-	url = https://github.com/sorin-ionescu/prezto.git
-[submodule "nushell/nu_scripts"]
-	path = nushell/nu_scripts
-	url = https://github.com/nushell/nu_scripts.git

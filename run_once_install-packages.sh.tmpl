@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cmd_exists() { command -v "$1" >/dev/null 2>&1; }
+
+install_homebrew_if_needed() {
+  if [[ "$(uname)" == "Darwin" ]] && ! cmd_exists brew; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+}
+
+main() {
+  install_homebrew_if_needed
+}
+
+main "$@"

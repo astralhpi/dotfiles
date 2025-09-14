@@ -1,0 +1,28 @@
+[tools]
+node = "24"
+pnpm = "10"
+python = "3.13"
+"npm:node-gyp" = "latest"
+"npm:insect" = "latest"
+"npm:devspace" = "latest"
+"npm:@google/clasp" = "latest"
+"npm:@fsouza/prettierd" = "latest"
+elixir = "latest"
+erlang = "latest"
+pulumi = "latest"
+rye = "latest"
+java = "latest"
+bun = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
+delta = "latest"
+"npm:eas-cli" = "latest"
+"pipx:aider-chat" = "latest"
+"npm:playwright" = "latest"
+"npm:wrangler" = "latest"
+duckdb = "latest"
+"pipx:uv" = "latest"
+"npm:@google/gemini-cli" = "latest"
+cmake = "latest"
+
+[settings]
+experimental = true

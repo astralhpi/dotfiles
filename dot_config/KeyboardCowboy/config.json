@@ -1,0 +1,61 @@
+[
+  {
+    "groups" : [
+      {
+        "color" : "#EB5545",
+        "id" : "6EF9B47A-4809-4813-87AC-3707975900FC",
+        "name" : "Automation",
+        "symbol" : "autostartstop"
+      },
+      {
+        "color" : "#F2A23C",
+        "id" : "C3BBE5AD-633B-4D9E-9F79-466646D0572F",
+        "name" : "Applications",
+        "symbol" : "app.dashed",
+        "workflows" : [
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.apple.finder",
+                    "bundleName" : "Finder",
+                    "displayName" : "Finder",
+                    "path" : "/System/Library/CoreServices/Finder.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "C6941E1D-C1B0-4E01-8503-0C05EE23459F",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "concurrent",
+            "id" : "9FE720BC-52EC-49C1-9375-9BAA5BF3CC48",
+            "name" : "Switch to Finder",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "9B30A267-2E75-4938-ABD4-1C2CC98731DD",
+                    "key" : "F",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "id" : "60E8F0FE-9937-4470-82B9-0E65A44BA8E9",
+    "name" : "Default Configuration",
+    "userModes" : [
+
+    ]
+  }
+]

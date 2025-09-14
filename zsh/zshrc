@@ -1,6 +1,0 @@
-if [[ ! -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]]; then
-  touch "${ZDOTDIR:-$HOME}/.zshrc_local"
-fi
-source "${ZDOTDIR:-$HOME}/.zshrc_local"
-
-source $HOME/.zshrc_symlink

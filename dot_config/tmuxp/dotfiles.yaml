@@ -1,0 +1,11 @@
+session_name: dotfiles
+start_directory: $HOME/Projects/dotfiles
+windows:
+  - window_name: nvim
+    panes:
+      - nvim
+  - window_name: shell
+    panes:
+      - echo "Start shell"
+
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# misefile hash: {{ include "./dot_config/mise/config.toml" | sha256sum }}
+mise trust
+mise install -y

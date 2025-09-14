@@ -1,0 +1,41 @@
+theme = catppuccin-macchiato
+
+font-family = "Liga SFMono Nerd Font"
+font-family = "AppleGothic"
+
+font-size = 12
+background-opacity = 0.93
+background-blur-radius=10
+
+macos-option-as-alt = true
+
+macos-titlebar-style = tabs
+
+keybind = ctrl+physical:a=text:\x01
+keybind = ctrl+physical:b=text:\x02
+keybind = ctrl+physical:c=text:\x03  
+keybind = ctrl+physical:d=text:\x04 
+keybind = ctrl+physical:e=text:\x05
+keybind = ctrl+physical:f=text:\x06
+keybind = ctrl+physical:g=text:\x07
+keybind = ctrl+physical:h=text:\x08
+keybind = ctrl+physical:i=text:\x09
+keybind = ctrl+physical:j=text:\x0a
+keybind = ctrl+physical:k=text:\x0b
+keybind = ctrl+physical:l=text:\x0c
+keybind = ctrl+physical:m=text:\x0d
+keybind = ctrl+physical:n=text:\x0e
+keybind = ctrl+physical:o=text:\x0f
+keybind = ctrl+physical:p=text:\x10
+keybind = ctrl+physical:q=text:\x11
+keybind = ctrl+physical:r=text:\x12
+keybind = ctrl+physical:s=text:\x13
+keybind = ctrl+physical:t=text:\x14
+keybind = ctrl+physical:u=text:\x15
+keybind = ctrl+physical:v=text:\x16
+keybind = ctrl+physical:w=text:\x17
+keybind = ctrl+physical:x=text:\x18
+keybind = ctrl+physical:y=text:\x19
+keybind = ctrl+physical:z=text:\x1a
+
+

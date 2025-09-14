@@ -1,0 +1,128 @@
+[alias]
+    ap = "!git add -N . && git add -p"
+    lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+    permission-reset = "!git diff -p -R --no-ext-diff --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply"
+
+[commit]
+    gpgsign = true
+
+[core]
+    editor = "nvim"
+    pager = "delta"
+    excludesfile = ~/.gitignore
+
+[delta]
+    dart = true
+    features = "delta-styles"
+
+[delta "delta-styles"]
+    commit-decoration-style = "#11ce16 box"
+    commit-style = "#ffd21a bold italic"
+    dark = true
+    file-added-label = "[+]"
+    file-copied-label = "[==]"
+    file-modified-label = "[*]"
+    file-removed-label = "[-]"
+    file-renamed-label = "[->]"
+    file-style = "omit"
+    hunk-header-decoration-style = "#1688f0 box ul"
+    hunk-header-file-style = "#c63bee ul bold"
+    hunk-header-line-number-style = "#ffd21a box bold"
+    hunk-header-style = "file line-number syntax bold italic"
+    hyperlinks = true
+    keep-plus-minus-markers = true
+    line-numbers = true
+    line-numbers-left-format = "{nm:>1}|"
+    line-numbers-left-style = "#1688f0"
+    line-numbers-minus-style = "#ff0051 bold"
+    line-numbers-plus-style = "#03e57f bold"
+    line-numbers-right-format = "{np:>1}|"
+    line-numbers-right-style = "#1688f0"
+    line-numbers-zero-style = "#aaaaaa italic"
+    minus-emph-style = "syntax bold #b80000"
+    minus-style = "syntax #5d001e"
+    navigate = true
+    plus-emph-style = "syntax bold #007800"
+    plus-style = "syntax #004433"
+    side-by-side = true
+    syntax-theme = "Dracula"
+    whitespace-error-style = "#280050"
+    zero-style = "syntax"
+
+[diff]
+    tool = "delta"
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+
+[difftool]
+    prompt = false
+
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+
+[filter "lfs"]
+    clean = "git-lfs clean -- %f"
+    process = "git-lfs filter-process"
+    required = true
+    smudge = "git-lfs smudge -- %f"
+
+[gpg]
+    format = "ssh"
+
+[gpg "ssh"]
+    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[init]
+    defaultBranch = "main"
+
+[interactive]
+    diffFilter = "delta --color-only"
+
+[merge]
+    tool = "nvimdiff"
+
+[mergetool]
+    prompt = true
+
+[mergetool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\""
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+    default = simple
+    autoSetupRemote = true
+    followTags = true
+
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+
+[help]
+    autocorrect = prompt
+
+[commit]
+    verbose = true
+
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+
+[rerere]
+    enabled = true
+    autoupdate = true
+
+[user]
+    email = "{{ .email }}"
+    name = "{{ .name }}"
+    signingkey = "{{ default .signingkey }}"

@@ -1,39 +1,20 @@
 # Dotfiles
 
-Personal dotfiles for macOS
+Personal dotfiles for macOS managed with [chezmoi](https://chezmoi.io)
+
+## Prerequisites
+
+Before setting up the dotfiles, make sure you have the following:
+
+- **macOS 26.*** or later
+- **Apple Silicon**
+- **1Password** installed and configured with CLI access
+  - Install 1Password from the App Store or download from [1password.com](https://1password.com)
+  - Set up 1Password CLI by running `op signin` and following the prompts
+  - Make sure you can access your vault with `op vault list`
 
 ## Installation
 
-### Step 1. Run bootstrap.sh
-
 ```bash
-  $ git clone --recursive https://github.com/astralhpi/dotfiles.git ~/.dotfiles
-  $ cd ~/.dotfiles && ./bootstrap.sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply astralhpi
 ```
-
-### Step 2. Run just
-
-After restarting the terminal, run the command below. If you're unfamiliar with just, you can learn more about it [here](https://just.systems).
-
-```bash
-  $ just
-```
-
-### Step 3. Sync Secrets
-
-After setting up keybase (find instructions or more about keybase [here](https://keybase.io)), run the following command.
-
-```
-  $ just secret down
-```
-
-## Requirements
-
-- macOS 13.\*
-- Apple Silicon
-
-## Reference
-I referenced the repositories below to set up these dotfiles.
-
-- [NvChad](https://nvchad.com): Neovim configurations.
-- [Hammerspoon-Yabai](https://github.com/rtauziac/Hammerspoon-Yabai): Scripts for Hammerspoon+Yabai integration.

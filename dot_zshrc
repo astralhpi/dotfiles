@@ -1,0 +1,162 @@
+if [[ ! -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]]; then
+  touch "${ZDOTDIR:-$HOME}/.zshrc_local"
+fi
+source "${ZDOTDIR:-$HOME}/.zshrc_local"
+
+# Install zinit if not installed
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source $HOME/.local/share/zinit/zinit.git/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# brew
+if [[ ":$PATH:" != *":/opt/homebrew/bin:"* ]]; then
+  zinit id-as"brew" as=null atclone'/opt/homebrew/bin/brew shellenv > brew.zsh' \
+    atpull'%atclone' \
+    src"brew.zsh" for \
+    zdharma-continuum/null
+fi
+
+# z-a-bin-gem-node
+zinit light zdharma-continuum/zinit-annex-bin-gem-node
+zinit light zdharma-continuum/zinit-annex-patch-dl
+
+# prezto
+zstyle ':prezto:module:editor' key-bindings 'vi'
+zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:utility:grep' color 'yes'
+zstyle ':prezto:module:utility:diff' color 'yes'
+zstyle ':prezto:module:utility:make' color 'yes'
+
+zinit snippet PZTM::environment
+zinit ice wait lucid
+zinit snippet PZTM::completion
+zinit ice wait lucid
+zinit snippet PZTM::directory
+zinit snippet PZTM::editor
+zinit ice wait lucid
+zinit snippet PZTM::gnu-utility
+zinit ice wait lucid
+zinit snippet PZTM::utility
+
+# vim mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
+# oh-my-zsh
+zinit ice wait lucid
+zinit snippet OMZP::fzf
+
+# forgit
+zinit ice wait lucid
+zinit light wfxr/forgit
+
+# zsh-completions & fast-syntax-highlighting
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+
+zinit id-as"direnv" wait lucid as=null atclone'direnv hook zsh > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
+
+# fzf
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :200 {}'"
+
+# thefuck
+zinit ice wait'1' lucid
+zinit light laggardkernel/zsh-thefuck
+
+# atuin
+zinit id-as"atuin" wait lucid as=null atclone'atuin init zsh --disable-up-arrow > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
+
+eval "$(starship init zsh)"
+
+# alias
+alias vim=nvim
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias kb='kubectl'
+alias nd='nerdctl'
+
+if [ "$TERM" = "xterm-kitty" ]; then
+  alias ssh="kitty +kitten ssh"
+fi
+
+# color
+export CLICOLOR=1;
+
+function coalesce { print "${${(s: :)@}[1]}" }
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+alias zl="zellij"
+
+# history
+HISTSIZE=999999999
+SAVEHIST=999999999
+setopt    appendhistory
+setopt    sharehistory
+setopt    incappendhistory
+
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+alias qr='qrencode -m 2 -t utf8 <<< "$1"'
+
+# 1password
+zinit id-as"op" wait'1' lucid as=null atclone'op completion zsh > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
+
+# copilot cli
+zinit id-as"github-copilot-cli" wait'1' lucid as=null atclone'github-copilot-cli alias -- "$0" > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
+
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# zoxide
+zinit id-as"z" as=null atclone'zoxide init zsh > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
+
+# mise (runtime/tool version manager)
+zinit id-as"mise" as=null atclone'/opt/homebrew/bin/mise activate zsh > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
+
+# manai
+zinit id-as"manai" as=null atclone'./download-manai.zsh' \
+  atpull'%atclone' \
+  src"manai.zsh" for \
+  mecab/manai
+
+
+bindkey '\eh' manai
+
+if [[ ":$PATH:" != *":$HOME/.deno/bin:"* ]]; then
+  export PATH="$HOME/.deno/bin:$PATH"
+fi
+
+export GOOGLE_CLOUD_PROJECT="watnee"
+export AWS_REGION=ap-northeast-2
