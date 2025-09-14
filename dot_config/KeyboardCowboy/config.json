@@ -22,7 +22,7 @@
                     "bundleIdentifier" : "com.apple.finder",
                     "bundleName" : "Finder",
                     "displayName" : "Finder",
-                    "path" : "/System/Library/CoreServices/Finder.app"
+                    "path" : "\/System\/Library\/CoreServices\/Finder.app"
                   },
                   "meta" : {
                     "enabled" : true,
@@ -44,6 +44,1040 @@
                     "modifiers" : [
                       "fn"
                     ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.apple.dt.Xcode",
+                    "bundleName" : "Sketch",
+                    "displayName" : "Sketch",
+                    "path" : "\/Applications\/Xcode.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "155035F3-A69A-4F09-B37F-3ADD6F9FAFC9",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "disabled" : true,
+            "execution" : "concurrent",
+            "id" : "01B04C08-252A-4EFC-ABA1-C3521D453B19",
+            "name" : "Switch to Xcode",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "BC6A2BEF-0AAF-4962-B22E-71EFED914C33",
+                    "key" : "E",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.mitchellh.ghostty",
+                    "bundleName" : "Ghostty",
+                    "displayName" : "Ghostty",
+                    "path" : "\/Applications\/Ghostty.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "CD8C30D4-9780-481B-B0E4-76D08318461F",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "concurrent",
+            "id" : "BFB4AD46-F69E-4D2B-8CAC-37E802786BC7",
+            "name" : "Switch to Terminal",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "5221646F-4EA3-4BD5-BCCB-97B97A51D67E",
+                    "key" : "T",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.apple.Safari",
+                    "bundleName" : "Safari",
+                    "displayName" : "Safari",
+                    "path" : "\/Applications\/Safari.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "2667AF8E-6339-4E97-B8BA-E7C4A9FAE419",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "disabled" : true,
+            "execution" : "concurrent",
+            "id" : "3E2036F3-6C0A-44E4-BED2-4AE57EB1443B",
+            "name" : "Switch to Safari",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "08942979-4C34-46B0-B70D-88C1CA8E4D99",
+                    "key" : "S",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.apple.systempreferences",
+                    "bundleName" : "System Settings",
+                    "displayName" : "System Settings",
+                    "path" : "\/System\/Applications\/System Settings.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "75543D70-1AD3-4E21-A64D-44F0E93937B7",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "disabled" : true,
+            "execution" : "concurrent",
+            "id" : "0E6FDF3F-8E94-4A16-9DFA-D6137C4A5380",
+            "name" : "Open System Settings",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "1B0D68F0-4DCE-46FF-A881-A65042EC9606",
+                    "key" : ",",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.tinyspeck.slackmacgap",
+                    "bundleName" : "Slack",
+                    "displayName" : "Slack",
+                    "path" : "\/Applications\/Slack.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "1922753E-5D75-461F-94C2-8541776546E4",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "B185118B-1835-472E-9994-E5F1E0687BA0",
+            "name" : "Switch to Slack",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "A09687C0-B20F-40A5-B3C2-DD4EFAFA23CF",
+                    "key" : "s",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.apple.Safari",
+                    "bundleName" : "Safari",
+                    "displayName" : "Safari",
+                    "path" : "\/System\/Volumes\/Preboot\/Cryptexes\/App\/System\/Applications\/Safari.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "31EAD809-4A76-49E5-9868-021968D62067",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "199A1052-1536-4BD2-8691-F88F2471F3D8",
+            "name" : "Switch to Safari",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "B52EE5DC-5C6D-429C-AACD-776255588EA0",
+                    "key" : "a",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "dev.zed.Zed",
+                    "bundleName" : "Zed",
+                    "displayName" : "Zed",
+                    "path" : "\/Applications\/Zed.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "F1AEA001-C18D-49E6-B81E-ED57E604A150",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "12F39B6F-0E5A-4E4F-9CB2-AA6041342DCF",
+            "name" : "Switch to Zed",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "55701680-7EC7-4948-8E48-BD3FB49D3A90",
+                    "key" : "z",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.todesktop.230313mzl4w4u92",
+                    "bundleName" : "Cursor",
+                    "displayName" : "Cursor",
+                    "path" : "\/Applications\/Cursor.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "C57822E6-DE85-41B5-B09B-014F50F48D7C",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "7B840339-F219-48E3-B5B5-EE4E8AEA1386",
+            "name" : "Switch to Cursor",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "1A75D4A2-B8B5-41DA-9CA2-A1DC48667BBD",
+                    "key" : "c",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.1password.1password",
+                    "bundleName" : "1Password",
+                    "displayName" : "1Password",
+                    "path" : "\/Applications\/1Password.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "792B7A0D-730C-430D-B5A6-36D23DFDC6FC",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "570A3AFC-3117-42CD-9AB2-BA61DBC4A2E9",
+            "name" : "Switch to 1Password",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "DE209A4B-4339-4841-B97F-ECE8BFA0768A",
+                    "key" : "p",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.anytype.anytype",
+                    "bundleName" : "Anytype",
+                    "displayName" : "Anytype",
+                    "path" : "\/Applications\/Anytype.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "F258590A-FD02-47A2-A0A0-AB56F64DF743",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "39A959DE-87A3-4B9A-BB38-75ECE470BAA9",
+            "name" : "Switch to anytype",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "587A735B-E50F-4072-8F57-E69E920FFECB",
+                    "key" : "n",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.hnc.Discord",
+                    "bundleName" : "Discord",
+                    "displayName" : "Discord",
+                    "path" : "\/Applications\/Discord.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "1478CF3F-AC6B-4255-B7C0-2CFE78A12F8D",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "6D5EB782-F3D1-44BC-88B6-D8EE37D4FD3A",
+            "name" : "Switch to Discord",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "D8A7A59B-86AC-4827-9D73-962040FA1353",
+                    "key" : "d",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "open",
+                  "application" : {
+                    "bundleIdentifier" : "com.kakao.KakaoTalkMac",
+                    "bundleName" : "KakaoTalk",
+                    "displayName" : "KakaoTalk",
+                    "path" : "\/Applications\/KakaoTalk.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "5EF4C424-B593-4017-8CEC-C9F841C08D7C",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "085B7D76-7869-4C5E-9554-61AA1BD0134E",
+            "name" : "Switch to Kakaotalk",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "8DFBE85C-CE81-48DF-967D-ED3074FBDBC3",
+                    "key" : "↖"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "color" : "#F9D64A",
+        "id" : "B433F0A2-4315-4AC1-82A0-EFFEC481334A",
+        "name" : "AppleScripts",
+        "symbol" : "applescript",
+        "workflows" : [
+          {
+            "commands" : [
+              {
+                "scriptCommand" : {
+                  "kind" : {
+                    "appleScript" : {
+                      "variant" : {
+                        "regular" : {
+
+                        }
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "67CD66D2-1E5C-426F-8E6E-78CA35E42287",
+                    "name" : "Show note"
+                  },
+                  "source" : {
+                    "inline" : {
+                      "_0" : "tell application \"Notes\"\n    show note \"awesome note\"\nend tell"
+                    }
+                  }
+                }
+              }
+            ],
+            "execution" : "concurrent",
+            "id" : "7BA24348-1B23-45C3-A560-7FD8497772AA",
+            "name" : "Open a specific note"
+          }
+        ]
+      },
+      {
+        "color" : "#6BD35F",
+        "id" : "FA7FBA5E-07EE-4B79-B4D8-51B89EE332FF",
+        "name" : "Files & Folders",
+        "rule" : {
+          "bundleIdentifiers" : [
+            "com.apple.finder"
+          ],
+          "id" : "52121DDE-F7D5-44FD-A2F7-08BEBB3F68AF"
+        },
+        "symbol" : "folder",
+        "workflows" : [
+          {
+            "commands" : [
+              {
+                "openCommand" : {
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "0D89C111-2101-4CF4-99AF-E0C8F41F9D5F",
+                    "name" : ""
+                  },
+                  "path" : "\/Users\/jaehak"
+                }
+              }
+            ],
+            "execution" : "concurrent",
+            "id" : "49E340FD-2EAC-4712-B4C6-B69D293AC106",
+            "name" : "Open Home folder",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "B1023713-9F6D-4705-A136-7F2A2F467FD7",
+                    "key" : "H",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "openCommand" : {
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "A764232D-90E5-4F7B-91E2-582783D452CE",
+                    "name" : ""
+                  },
+                  "path" : "\/Users\/jaehak\/Documents"
+                }
+              }
+            ],
+            "execution" : "concurrent",
+            "id" : "226A35BC-2528-4E62-A120-38DF0E627AA4",
+            "name" : "Open Documents folder",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "2C16D82F-ABAA-408E-8444-FE0FE65D05F2",
+                    "key" : "d",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "openCommand" : {
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "D019D583-E915-40FD-84CB-1CB77E45FF01",
+                    "name" : ""
+                  },
+                  "path" : "\/Users\/jaehak\/Downloads"
+                }
+              }
+            ],
+            "execution" : "concurrent",
+            "id" : "5535205C-CAD7-40E5-AFF5-A462E57CB33E",
+            "name" : "Open Downloads folder",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "EA7B82DA-2FA3-4E2B-929C-B8B0B3E11B9E",
+                    "key" : "w",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "color" : "#3984F7",
+        "id" : "49D4D051-B6F0-453B-96E4-348E60E3EAB5",
+        "name" : "Rebinding",
+        "symbol" : "app.connected.to.app.below.fill",
+        "workflows" : [
+          {
+            "commands" : [
+              {
+                "keyboardCommand" : {
+                  "kind" : {
+                    "key" : {
+                      "command" : {
+                        "iterations" : 1,
+                        "keyboardShortcuts" : [
+                          {
+                            "id" : "066FB588-49AF-4666-AB5F-BF568B0FB9A0",
+                            "key" : "←"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "A786BE67-D3D4-435F-A755-76BB009C7412",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "disabled" : true,
+            "execution" : "concurrent",
+            "id" : "90000D11-6010-4B6E-9B01-C4B0873757A8",
+            "name" : "Vim bindings H to ←",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "2E578212-B46A-4D1D-9C7F-EA7AE95A5A5E",
+                    "key" : "H",
+                    "modifiers" : [
+                      "~"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "keyboardCommand" : {
+                  "kind" : {
+                    "key" : {
+                      "command" : {
+                        "iterations" : 1,
+                        "keyboardShortcuts" : [
+                          {
+                            "id" : "564064A1-0E9B-4EEF-9BBA-CCE1E32F3B3D",
+                            "key" : "↓"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "96C6CD25-2485-410B-9C5A-FFE59658BFCA",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "disabled" : true,
+            "execution" : "concurrent",
+            "id" : "6CEB400B-03AA-4D77-8680-CDDEE21500DA",
+            "name" : "Vim bindings J to ↓",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "03A17E2A-8692-44F3-AE21-A787A0FAD09E",
+                    "key" : "J",
+                    "modifiers" : [
+                      "~"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "keyboardCommand" : {
+                  "kind" : {
+                    "key" : {
+                      "command" : {
+                        "iterations" : 1,
+                        "keyboardShortcuts" : [
+                          {
+                            "id" : "A6A624BD-0D40-45CE-8948-236B59A15A03",
+                            "key" : "↑"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "67C8E99A-F8FB-4AAE-92F2-298131B78EE1",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "disabled" : true,
+            "execution" : "concurrent",
+            "id" : "0A3E3CA9-51AF-43FF-84EE-D9F10A0604BE",
+            "name" : "Vim bindings K to ↑",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "F95DA935-B56F-4B8B-88ED-DDF86580CE10",
+                    "key" : "K",
+                    "modifiers" : [
+                      "~"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "keyboardCommand" : {
+                  "kind" : {
+                    "key" : {
+                      "command" : {
+                        "iterations" : 1,
+                        "keyboardShortcuts" : [
+                          {
+                            "id" : "90E59340-385F-48FA-BD6D-A5DCFB7E45AF",
+                            "key" : "→"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "B2B342D4-16BD-472C-8948-76D2F8ABE6DE",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "disabled" : true,
+            "execution" : "concurrent",
+            "id" : "4875522C-21D4-47FD-8BE3-5062AB7C3CA5",
+            "name" : "Vim bindings L to →",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "2787070E-88E8-40D4-B8AA-D742DF6ECE67",
+                    "key" : "L",
+                    "modifiers" : [
+                      "~"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "color" : "#B263EA",
+        "id" : "14C4E156-0267-4C28-9058-2B8792F0E0A8",
+        "name" : "Shortcuts",
+        "symbol" : "flowchart"
+      },
+      {
+        "color" : "#5D5FDE",
+        "id" : "5E71A418-2D13-4055-B55A-A9E73E01485C",
+        "name" : "ShellScripts",
+        "symbol" : "terminal"
+      },
+      {
+        "color" : "#A78F6D",
+        "id" : "5593235E-CD3D-41E3-A093-9E780A4D9C1A",
+        "name" : "System",
+        "symbol" : "laptopcomputer"
+      },
+      {
+        "color" : "#98989D",
+        "id" : "DA8F9BD5-E26B-4F1E-890D-128F4D88AEE1",
+        "name" : "Websites",
+        "symbol" : "safari",
+        "workflows" : [
+          {
+            "commands" : [
+              {
+                "openCommand" : {
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "446D3E32-E588-4729-84DC-AD0D8E9B8FBB",
+                    "name" : ""
+                  },
+                  "path" : "https:\/\/www.apple.com"
+                }
+              }
+            ],
+            "execution" : "concurrent",
+            "id" : "9F3B7DA6-1247-4D6E-B397-1E094BF2096D",
+            "name" : "Open apple.com",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "5645134C-ED63-4814-BED8-F4FF855EA454",
+                    "key" : "⇥",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  },
+                  {
+                    "id" : "2CC6CDB6-D763-458D-ADAB-214CD75C0794",
+                    "key" : "A"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "openCommand" : {
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "BF983602-6F6C-44DA-AA91-BDC68B96614E",
+                    "name" : ""
+                  },
+                  "path" : "https:\/\/www.github.com"
+                }
+              }
+            ],
+            "execution" : "concurrent",
+            "id" : "6BD1A9FA-6934-45D4-86AE-7F278A64EBDE",
+            "name" : "Open github.com",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "19983981-11F0-4F66-BFCD-D797746DF2E9",
+                    "key" : "⇥",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  },
+                  {
+                    "id" : "6FC949DF-C558-498D-9CF6-A7396D52FB8D",
+                    "key" : "G"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "commands" : [
+              {
+                "openCommand" : {
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "BDA3B041-5F24-4590-AEB2-F333D5FC7A12",
+                    "name" : ""
+                  },
+                  "path" : "https:\/\/www.imdb.com"
+                }
+              }
+            ],
+            "execution" : "concurrent",
+            "id" : "C91A6144-BAEC-4B87-AFE7-64C218CA58F9",
+            "name" : "Open imdb.com",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "AAA0D65E-260B-44DD-A51F-0CAF0E5C2618",
+                    "key" : "⇥",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  },
+                  {
+                    "id" : "AE8C44F9-93C1-4BDF-9D91-EC7D88569A1A",
+                    "key" : "I"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "color" : "#3984F7",
+        "id" : "AA8E7FD3-7545-4BFF-A495-E5450ABF4E2C",
+        "name" : "Mail",
+        "rule" : {
+          "bundleIdentifiers" : [
+            "com.apple.mail"
+          ],
+          "id" : "2550FB04-35C8-493F-A560-2C42C58F1B05"
+        },
+        "symbol" : "folder",
+        "workflows" : [
+          {
+            "commands" : [
+              {
+                "textCommand" : {
+                  "kind" : {
+                    "insertText" : {
+                      "_0" : {
+                        "actions" : [
+                          "insertEnter"
+                        ],
+                        "input" : "Stay hungry, stay awesome!\n--------------------------\nxoxo\nSong Jaehak",
+                        "meta" : {
+                          "enabled" : true,
+                          "id" : "246AD7A0-ABBB-43DE-803C-AB3EA19CBB17",
+                          "name" : "Signature"
+                        },
+                        "mode" : "Instant"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "execution" : "concurrent",
+            "id" : "5821EC87-9971-46E0-A3F6-1573BDDC6177",
+            "name" : "Type mail signature",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "FEE5A41C-A21E-4F41-A8E0-260E54CB3EE5",
+                    "key" : "S",
+                    "modifiers" : [
+                      "fn",
+                      "@"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "color" : "#000",
+        "id" : "B2316CA6-3457-4A53-B574-E0F1F5A9E83A",
+        "name" : "Ghostty",
+        "rule" : {
+          "bundleIdentifiers" : [
+            "com.mitchellh.ghostty"
+          ],
+          "id" : "41794067-5720-483E-ABD7-0D3F9A8AA947"
+        },
+        "symbol" : "folder",
+        "workflows" : [
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "hide",
+                  "application" : {
+                    "bundleIdentifier" : "com.mitchellh.ghostty",
+                    "bundleName" : "Ghostty",
+                    "displayName" : "Ghostty",
+                    "path" : "\/Applications\/Ghostty.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "D90224EC-AE1E-4EBF-BF7C-C56E1A1477E6",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "0A8558FD-EE1C-4DB1-AB14-B131A2D334EA",
+            "name" : "Hide Terminal",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "1E04160C-538F-4670-9462-57272CB39033",
+                    "key" : "t",
+                    "modifiers" : [
+                      "fn"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "color" : "#000",
+        "id" : "9B270D9D-5253-4A82-A10A-E7046A8AC91B",
+        "name" : "KakaoTalk",
+        "rule" : {
+          "bundleIdentifiers" : [
+            "com.kakao.KakaoTalkMac"
+          ],
+          "id" : "841CD534-6D00-4CBF-A6C9-D6DB04C88E95"
+        },
+        "symbol" : "folder",
+        "workflows" : [
+          {
+            "commands" : [
+              {
+                "applicationCommand" : {
+                  "action" : "hide",
+                  "application" : {
+                    "bundleIdentifier" : "com.kakao.KakaoTalkMac",
+                    "bundleName" : "KakaoTalk",
+                    "displayName" : "KakaoTalk",
+                    "path" : "\/Applications\/KakaoTalk.app"
+                  },
+                  "meta" : {
+                    "enabled" : true,
+                    "id" : "82CD590D-6E0F-46E4-8455-666F389EC97A",
+                    "name" : ""
+                  }
+                }
+              }
+            ],
+            "execution" : "serial",
+            "id" : "4A7ED9AB-81A5-4FAA-BB1F-8ADE96C3B38D",
+            "name" : "Hide Kakaotalk",
+            "trigger" : {
+              "keyboardShortcuts" : {
+                "shortcuts" : [
+                  {
+                    "id" : "6F9CB99B-2689-4BB9-A7A9-AB6564F81A5D",
+                    "key" : "↖"
                   }
                 ]
               }
