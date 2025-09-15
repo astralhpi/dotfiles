@@ -32,6 +32,7 @@ brew 'yq'
 brew 'zoxide'
 brew 'asimov'
 brew 'fd'
+brew 'postgresql@17'
 
 cask 'ghostty'
 cask 'android-studio'
