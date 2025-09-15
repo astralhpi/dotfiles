@@ -1,4 +1,3 @@
-{{- /* Define server configurations once */ -}}
 {{- $duckdb := dict
   "command" "uvx"
   "args" (list "mcp-server-motherduck" "--db-path" "md:" "--motherduck-token" .motherduck_token)
@@ -27,9 +26,9 @@
 }
 {{- else if eq .format "zed" -}}
 {
-  "duckdb": {{- $duckdb | merge $zedCustomWrapper | toJson }},
-  "mcp-server-context7": {{- $context7 | merge $zedExtensionWrapper | toJson }},
-  "mcp-server-github": {{- $github | merge $zedExtensionWrapper | toJson }},
-  "postgres": {{- $postgres | merge $zedCustomWrapper | toJson }}
+  "duckdb": {{- $zedCustomWrapper | merge $duckdb | toJson }},
+  "mcp-server-context7": {{- $zedExtensionWrapper | merge $context7 | toJson }},
+  "mcp-server-github": {{- $zedExtensionWrapper | merge $github | toJson }},
+  "postgres": {{- $zedCustomWrapper | merge $postgres | toJson }}
 }
 {{- end -}}
