@@ -9,6 +9,7 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSAutoFillHeuristicControllerEnabled false
 defaults write com.apple.dock autohide -bool true
 
 sudo tmutil addexclusion -p /Library/Caches
@@ -23,7 +24,6 @@ sudo tmutil addexclusion -p $HOME/.local/share
 sudo tmutil addexclusion -p $HOME/.bun
 sudo tmutil addexclusion -p $HOME/.cargo
 sudo tmutil addexclusion -p /Library/Backblaze.bzpkg
-sudo tmutil addexclusion -p ~/OrbStack
 sudo tmutil addexclusion -p /Library/Developer/
 
 

@@ -5,7 +5,7 @@
 -}}
 {{- $postgres := dict
   "command" "uvx"
-  "args" (list "postgres-mcp" "--access-mode=restricted")
+  "args" (list "postgres-mcp")
   "env" (dict "DATABASE_URI" .postgres_url)
 -}}
 {{- $context7 := dict

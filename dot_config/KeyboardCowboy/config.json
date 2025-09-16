@@ -213,8 +213,7 @@
                 "shortcuts": [
                   {
                     "id": "A09687C0-B20F-40A5-B3C2-DD4EFAFA23CF",
-                    "key": "s",
-                    "modifiers": ["fn"]
+                    "key": "⇞"
                   }
                 ]
               }
