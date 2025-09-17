@@ -19,7 +19,7 @@
 {{- $zedCustomWrapper := dict "source" "custom" "enabled" true -}}
 {{- $zedExtensionWrapper := dict "source" "extension" "enabled" true -}}
 
-{{- if eq .format "cursor" -}}
+{{- if eq .format "common" -}}
 {
   "duckdb": {{ $duckdb | toJson }},
   "postgres": {{ $postgres | toJson }}
