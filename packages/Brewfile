@@ -66,6 +66,7 @@ cask 'homerow'
 cask 'discord'
 cask 'cloudflare-warp'
 cask 'arc'
+cask 'chatgpt'
 
 mas 'Tailscale', id: 1475387142
 mas 'Slack', id: 803453959
