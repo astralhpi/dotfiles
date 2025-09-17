@@ -54,8 +54,8 @@
                   "action": "open",
                   "application": {
                     "bundleIdentifier": "com.apple.dt.Xcode",
-                    "bundleName": "Sketch",
-                    "displayName": "Sketch",
+                    "bundleName": "Xcode",
+                    "displayName": "Xcode",
                     "path": "\/Applications\/Xcode.app"
                   },
                   "meta": {
