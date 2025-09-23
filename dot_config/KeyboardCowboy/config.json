@@ -361,10 +361,10 @@
                 "applicationCommand": {
                   "action": "open",
                   "application": {
-                    "bundleIdentifier": "com.anytype.anytype",
-                    "bundleName": "Anytype",
-                    "displayName": "Anytype",
-                    "path": "\/Applications\/Anytype.app"
+                    "bundleIdentifier": "co.noteplan.NotePlan3",
+                    "bundleName": "NotePlan",
+                    "displayName": "NotePlan",
+                    "path": "\/Applications\/NotePlan.app"
                   },
                   "meta": {
                     "enabled": true,
@@ -376,7 +376,7 @@
             ],
             "execution": "serial",
             "id": "39A959DE-87A3-4B9A-BB38-75ECE470BAA9",
-            "name": "Switch to anytype",
+            "name": "Switch to NotePlan",
             "trigger": {
               "keyboardShortcuts": {
                 "shortcuts": [
@@ -1072,9 +1072,9 @@
       {
         "color": "#000",
         "id": "A2B3C4D5-E6F7-8901-BCDE-F23456789012",
-        "name": "Anytype",
+        "name": "NotePlan",
         "rule": {
-          "bundleIdentifiers": ["com.anytype.anytype"],
+          "bundleIdentifiers": ["co.noteplan.NotePlan3"],
           "id": "A2345678-9012-3456-7890-BCDEF0123456"
         },
         "symbol": "folder",
@@ -1085,10 +1085,10 @@
                 "applicationCommand": {
                   "action": "hide",
                   "application": {
-                    "bundleIdentifier": "com.anytype.anytype",
-                    "bundleName": "Anytype",
-                    "displayName": "Anytype",
-                    "path": "\/Applications\/Anytype.app"
+                    "bundleIdentifier": "co.noteplan.NotePlan3",
+                    "bundleName": "NotePlan",
+                    "displayName": "NotePlan",
+                    "path": "\/Applications\/NotePlan.app"
                   },
                   "meta": {
                     "enabled": true,
