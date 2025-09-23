@@ -23,6 +23,7 @@ duckdb = "latest"
 "pipx:uv" = "latest"
 "npm:@google/gemini-cli" = "latest"
 cmake = "latest"
+"npm:@openai/codex" = "latest"
 
 [settings]
 experimental = true
