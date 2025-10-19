@@ -39,6 +39,7 @@ brew 'k9s'
 brew 'kubectl'
 brew 'uv'
 brew 'awscli'
+brew 'ripgrep'
 
 cask 'ghostty'
 cask 'android-studio'
