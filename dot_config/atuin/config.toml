@@ -2,4 +2,4 @@ sync_address = "https://atuin.make.codes"
 sync_frequency = "5m"
 
 [daemon]
-enabled = true
+enabled = false

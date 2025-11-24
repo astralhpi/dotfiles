@@ -7,7 +7,6 @@ tap 'supabase/tap'
 tap 'arl/arl'
 tap 'nikitabobko/tap'
 
-
 brew 'pam-reattach'
 brew 'jq'
 brew 'gnu-sed'
@@ -40,6 +39,7 @@ brew 'kubectl'
 brew 'uv'
 brew 'awscli'
 brew 'ripgrep'
+brew 'borders'
 
 cask 'ghostty'
 cask 'android-studio'
