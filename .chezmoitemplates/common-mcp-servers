@@ -14,6 +14,20 @@
 {{- $github := dict
   "settings" (dict "github_personal_access_token" .github_pat)
 -}}
+{{- $clickhouse := dict
+  "command" "uv"
+  "args" (list "run" "--with" "mcp-clickhouse" "--python" "3.10" "mcp-clickhouse")
+  "env" (dict
+    "CLICKHOUSE_HOST" .clickhouse_host
+    "CLICKHOUSE_PORT" .clickhouse_port
+    "CLICKHOUSE_USER" .clickhouse_user
+    "CLICKHOUSE_PASSWORD" .clickhouse_password
+    "CLICKHOUSE_SECURE" "true"
+    "CLICKHOUSE_VERIFY" "true"
+    "CLICKHOUSE_CONNECT_TIMEOUT" "30"
+    "CLICKHOUSE_SEND_RECEIVE_TIMEOUT" "60"
+  )
+-}}
 
 {{- /* Define wrapper functions */ -}}
 {{- $zedCustomWrapper := dict "source" "custom" "enabled" true -}}
