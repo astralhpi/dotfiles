@@ -1,6 +1,7 @@
 theme = catppuccin-macchiato.conf
 
 font-family = "Liga SFMono Nerd Font"
+font-family = "D2CodingLigature Nerd Font"
 
 font-size = 12
 background-opacity = 0.93
