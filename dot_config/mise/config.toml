@@ -22,6 +22,7 @@ duckdb = "latest"
 cmake = "latest"
 "npm:@openai/codex" = "latest"
 rust = "latest"
+"npm:opencode-ai" = "latest"
 
 [settings]
 experimental = true

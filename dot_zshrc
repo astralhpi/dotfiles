@@ -146,5 +146,4 @@ zinit id-as"mise" as=null atclone'/opt/homebrew/bin/mise activate zsh > zhook.zs
   zdharma-continuum/null
 
 export GOOGLE_CLOUD_PROJECT="watnee"
-export AWS_REGION=ap-northeast-2
 export PATH="$HOME/.local/bin:$PATH"
