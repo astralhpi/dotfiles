@@ -40,6 +40,7 @@ brew 'uv'
 brew 'awscli'
 brew 'ripgrep'
 brew 'borders'
+brew 'gh'
 
 cask 'ghostty'
 cask 'android-studio'
