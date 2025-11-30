@@ -23,6 +23,7 @@ cmake = "latest"
 "npm:@openai/codex" = "latest"
 rust = "latest"
 "npm:opencode-ai" = "latest"
+"npm:windmill-cli" = "latest"
 
 [settings]
 experimental = true
