@@ -1,8 +1,8 @@
 sourceDir = "{{ .chezmoi.sourceDir }}"
 
 [data]
-  {{- range (onepassword "vxy342flg5qfr5lxkgvelgeqaa").fields -}}
-  {{-  if hasKey . "value" -}}
-  {{    .label }} = {{- .value | quote -}}
-  {{-  end }}
-  {{ end }}
+  {{- range (onepassword "vxy342flg5qfr5lxkgvelgeqaa").fields }}
+  {{-   if hasKey . "value" }}
+  {{ .label }} = {{ .value | quote }}
+  {{-   end }}
+  {{- end }}

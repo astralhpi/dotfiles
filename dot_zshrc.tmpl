@@ -1,3 +1,6 @@
+# PATH 설정 (먼저 로드)
+export PATH="$HOME/.local/bin:$HOME/.atuin/bin:$PATH"
+
 if [[ ! -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]]; then
   touch "${ZDOTDIR:-$HOME}/.zshrc_local"
 fi
@@ -16,13 +19,15 @@ source $HOME/.local/share/zinit/zinit.git/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# brew
+{{ if eq .chezmoi.os "darwin" -}}
+# brew (macOS)
 if [[ ":$PATH:" != *":/opt/homebrew/bin:"* ]]; then
   zinit id-as"brew" as=null atclone'/opt/homebrew/bin/brew shellenv > brew.zsh' \
     atpull'%atclone' \
     src"brew.zsh" for \
     zdharma-continuum/null
 fi
+{{ end -}}
 
 # z-a-bin-gem-node
 zinit light zdharma-continuum/zinit-annex-bin-gem-node
@@ -86,7 +91,11 @@ zinit id-as"atuin" wait lucid as=null atclone'atuin init zsh --disable-up-arrow 
   src"zhook.zsh" for \
   zdharma-continuum/null
 
-eval "$(starship init zsh)"
+# starship (zsh-vi-mode 호환)
+zinit id-as"starship" as=null atclone'starship init zsh > zhook.zsh' \
+  atpull'%atclone' \
+  src"zhook.zsh" for \
+  zdharma-continuum/null
 
 # alias
 alias vim=nvim
@@ -104,7 +113,9 @@ fi
 export CLICOLOR=1;
 
 function coalesce { print "${${(s: :)@}[1]}" }
+{{ if eq .chezmoi.os "darwin" -}}
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+{{ end -}}
 
 alias zl="zellij"
 
@@ -115,7 +126,9 @@ setopt    appendhistory
 setopt    sharehistory
 setopt    incappendhistory
 
+{{ if eq .chezmoi.os "darwin" -}}
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+{{ end -}}
 
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 
@@ -140,10 +153,9 @@ zinit id-as"z" as=null atclone'zoxide init zsh > zhook.zsh' \
   zdharma-continuum/null
 
 # mise (runtime/tool version manager)
-zinit id-as"mise" as=null atclone'/opt/homebrew/bin/mise activate zsh > zhook.zsh' \
+zinit id-as"mise" as=null atclone'mise activate zsh > zhook.zsh' \
   atpull'%atclone' \
   src"zhook.zsh" for \
   zdharma-continuum/null
 
 export GOOGLE_CLOUD_PROJECT="watnee"
-export PATH="$HOME/.local/bin:$PATH"

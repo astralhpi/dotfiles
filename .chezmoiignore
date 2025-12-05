@@ -1,2 +1,22 @@
 README.md
 packages/
+Vagrantfile
+
+{{ if eq .chezmoi.os "linux" }}
+# macOS 전용 - GUI 앱
+.aerospace.toml
+.config/karabiner/
+.config/KeyboardCowboy/
+.config/ghostty/
+.config/wezterm/
+.config/zed/
+.cursor/
+
+# macOS 전용 - 시스템
+Library/
+
+# macOS 전용 - 스크립트
+atuin-daemon.sh
+system-settings.sh
+homebrew.sh
+{{ end }}

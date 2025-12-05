@@ -53,8 +53,9 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
+{{ if eq .chezmoi.os "darwin" -}}
 # Added by OrbStack: command-line tools and integration
-
 if [[ ":$PATH:" != *":$HOME/.orbstack/bin:"* ]]; then
   source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 fi
+{{ end -}}

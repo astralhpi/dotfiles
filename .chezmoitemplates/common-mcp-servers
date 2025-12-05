@@ -47,4 +47,24 @@
   "postgres": {{- $zedCustomWrapper | merge $postgres | toJson }},
   "clickhouse": {{- $zedCustomWrapper | merge $clickhouse | toJson }}
 }
+{{- else if eq .format "opencode" -}}
+{
+  "postgres": {
+    "type": "local",
+    "command": [{{ $postgres.command | quote }}, {{ range $i, $v := $postgres.args }}{{ if $i }}, {{ end }}{{ $v | quote }}{{ end }}],
+    "environment": {{ $postgres.env | toJson }}
+  },
+  "clickhouse": {
+    "type": "local",
+    "command": [{{ $clickhouse.command | quote }}, {{ range $i, $v := $clickhouse.args }}{{ if $i }}, {{ end }}{{ $v | quote }}{{ end }}],
+    "environment": {{ $clickhouse.env | toJson }}
+  },
+  "linear": {
+    "type": "remote",
+    "url": "https://mcp.linear.app/sse",
+    "headers": {
+      "Authorization": "Bearer {{ .linear_api_key }}"
+    }
+  }
+}
 {{- end -}}

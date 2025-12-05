@@ -1,5 +1,6 @@
 #!/bin/bash
 
 # misefile hash: {{ include "./dot_config/mise/config.toml" | sha256sum }}
+export PATH="$HOME/.local/bin:$PATH"
 mise trust
 mise install -y

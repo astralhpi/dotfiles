@@ -1,4 +1,6 @@
+{{ if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
 # Brewfile hash: {{ include "./packages/Brewfile" | sha256sum }}
 cd {{ joinPath .chezmoi.sourceDir "./packages" }} && brew bundle -v
+{{ end -}}
