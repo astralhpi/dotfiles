@@ -1,8 +1,20 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -uo pipefail
 
 cmd_exists() { command -v "$1" >/dev/null 2>&1; }
+
+# 개별 설치 함수 - 실패해도 계속 진행
+try_install() {
+  local name="$1"
+  shift
+  echo "==> Installing $name..."
+  if "$@"; then
+    echo "    $name installed successfully"
+  else
+    echo "    WARNING: $name installation failed, skipping..."
+  fi
+}
 
 install_homebrew_if_needed() {
   if [[ "$(uname)" == "Darwin" ]] && ! cmd_exists brew; then
@@ -22,45 +34,42 @@ install_linux_packages() {
     ripgrep \
     fd-find \
     direnv \
-    ncurses-term
+    ncurses-term || echo "WARNING: Some apt packages failed to install"
 
   # lsd (apt에 없어서 직접 설치)
   if ! cmd_exists lsd; then
-    echo "==> Installing lsd..."
-    LSD_VERSION=$(curl -s https://api.github.com/repos/lsd-rs/lsd/releases/latest | grep -oP '"tag_name": "v?\K[^"]+')
-    curl -fsSL "https://github.com/lsd-rs/lsd/releases/download/v${LSD_VERSION}/lsd_${LSD_VERSION}_{{ .chezmoi.arch }}.deb" -o /tmp/lsd.deb
-    sudo dpkg -i /tmp/lsd.deb
-    rm /tmp/lsd.deb
+    try_install "lsd" bash -c '
+      LSD_VERSION=$(curl -s https://api.github.com/repos/lsd-rs/lsd/releases/latest | grep -oP "\"tag_name\": \"v?\K[^\"]+")
+      curl -fsSL "https://github.com/lsd-rs/lsd/releases/download/v${LSD_VERSION}/lsd_${LSD_VERSION}_{{ .chezmoi.arch }}.deb" -o /tmp/lsd.deb
+      sudo dpkg -i /tmp/lsd.deb
+      rm -f /tmp/lsd.deb
+    '
   fi
 
   # mise
   if ! cmd_exists mise && [[ ! -f ~/.local/bin/mise ]]; then
-    echo "==> Installing mise..."
-    curl https://mise.run | sh
+    try_install "mise" bash -c 'curl https://mise.run | sh'
   fi
 
   # starship
   if ! cmd_exists starship && [[ ! -f ~/.local/bin/starship ]]; then
-    echo "==> Installing starship..."
-    curl -sS https://starship.rs/install.sh | sh -s -- -y -b ~/.local/bin
+    try_install "starship" bash -c 'curl -sS https://starship.rs/install.sh | sh -s -- -y -b ~/.local/bin'
   fi
 
   # atuin
   if [[ ! -f ~/.atuin/bin/atuin ]]; then
-    echo "==> Installing atuin..."
-    curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+    try_install "atuin" bash -c 'curl --proto "=https" --tlsv1.2 -LsSf https://setup.atuin.sh | sh'
   fi
 
   # zoxide
   if ! cmd_exists zoxide && [[ ! -f ~/.local/bin/zoxide ]]; then
-    echo "==> Installing zoxide..."
-    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+    try_install "zoxide" bash -c 'curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh'
   fi
 
   # Set zsh as default shell
   if [[ "$SHELL" != *"zsh"* ]]; then
     echo "==> Setting zsh as default shell..."
-    sudo chsh -s "$(which zsh)" "$USER"
+    sudo chsh -s "$(which zsh)" "$USER" || echo "WARNING: Failed to change default shell"
   fi
 }
 {{ end -}}
@@ -70,6 +79,7 @@ main() {
 {{ if eq .chezmoi.os "linux" -}}
   install_linux_packages
 {{ end -}}
+  echo "==> Package installation complete!"
 }
 
 main "$@"
