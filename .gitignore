@@ -9,3 +9,4 @@ zotero-addons
 .aider.*
 nushell/history.txt
 .aider*
+.vagrant/
