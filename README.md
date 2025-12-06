@@ -5,7 +5,7 @@ Personal dotfiles managed with [chezmoi](https://chezmoi.io)
 ## Supported Platforms
 
 - **macOS** (Apple Silicon) - Full support with GUI apps
-- **Linux** (Debian/Ubuntu, ARM64) - Terminal only
+- **Linux** (Debian/Ubuntu, Arch Linux, ARM64) - Terminal only
 
 ## Prerequisites
 
@@ -27,20 +27,20 @@ brew install --cask 1password 1password-cli
 eval $(op signin)
 
 # 4. Install and apply dotfiles
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply jaehak
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply astralhpi
 ```
 
-### Linux (Debian/Ubuntu)
+### Linux (Debian/Ubuntu/Arch)
 
 ```bash
 # 1. Run bootstrap script (installs 1Password CLI, chezmoi, terminfo)
-curl -fsSL https://raw.githubusercontent.com/jaehak/dotfiles/main/packages/bootstrap-linux.sh | bash
+curl -fsSL https://raw.githubusercontent.com/astralhpi/dotfiles/main/packages/bootstrap-linux.sh | bash
 
 # 2. Sign in to 1Password
 eval $(op signin)
 
 # 3. Apply dotfiles
-~/.local/bin/chezmoi init --apply jaehak
+~/.local/bin/chezmoi init --apply astralhpi
 ```
 
 ## What's Included
