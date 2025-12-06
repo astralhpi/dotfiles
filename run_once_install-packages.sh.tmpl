@@ -23,8 +23,42 @@ install_homebrew_if_needed() {
 }
 
 {{ if eq .chezmoi.os "linux" -}}
-install_linux_packages() {
-  echo "==> Installing Linux packages..."
+install_arch_packages() {
+  echo "==> Installing Arch Linux packages..."
+  sudo pacman -Syu --noconfirm \
+    base-devel \
+    tmux \
+    neovim \
+    fzf \
+    ripgrep \
+    fd \
+    direnv \
+    ncurses \
+    python-pipx \
+    lsd \
+    zoxide || echo "WARNING: Some pacman packages failed to install"
+
+  # pipx PATH 설정
+  pipx ensurepath 2>/dev/null || true
+
+  # mise
+  if ! cmd_exists mise && [[ ! -f ~/.local/bin/mise ]]; then
+    try_install "mise" bash -c 'curl https://mise.run | sh'
+  fi
+
+  # starship
+  if ! cmd_exists starship && [[ ! -f ~/.local/bin/starship ]]; then
+    try_install "starship" bash -c 'curl -sS https://starship.rs/install.sh | sh -s -- -y -b ~/.local/bin'
+  fi
+
+  # atuin
+  if [[ ! -f ~/.atuin/bin/atuin ]]; then
+    try_install "atuin" bash -c 'curl --proto "=https" --tlsv1.2 -LsSf https://setup.atuin.sh | sh'
+  fi
+}
+
+install_debian_packages() {
+  echo "==> Installing Debian/Ubuntu packages..."
   sudo apt-get update
   sudo apt-get install -y \
     build-essential \
@@ -34,7 +68,11 @@ install_linux_packages() {
     ripgrep \
     fd-find \
     direnv \
-    ncurses-term || echo "WARNING: Some apt packages failed to install"
+    ncurses-term \
+    pipx || echo "WARNING: Some apt packages failed to install"
+  
+  # pipx PATH 설정
+  pipx ensurepath 2>/dev/null || true
 
   # lsd (apt에 없어서 직접 설치)
   if ! cmd_exists lsd; then
@@ -65,6 +103,14 @@ install_linux_packages() {
   if ! cmd_exists zoxide && [[ ! -f ~/.local/bin/zoxide ]]; then
     try_install "zoxide" bash -c 'curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh'
   fi
+}
+
+install_linux_packages() {
+  {{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "archarm") -}}
+  install_arch_packages
+  {{ else -}}
+  install_debian_packages
+  {{ end -}}
 
   # Set zsh as default shell
   if [[ "$SHELL" != *"zsh"* ]]; then
