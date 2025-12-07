@@ -32,5 +32,19 @@ g.copilot_no_tab_map = true
 -- color
 opt.termguicolors = true
 
-
 opt.laststatus = 3
+
+-- clipboard - SSH 연결 시 OSC 52 사용
+if os.getenv("SSH_CONNECTION") then
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+      ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+  }
+end

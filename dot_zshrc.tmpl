@@ -132,6 +132,26 @@ alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 
+# clipboard - SSH 연결 시 OSC 52, 로컬은 네이티브
+if [[ -n "$SSH_CONNECTION" ]]; then
+  # 원격: OSC 52 사용
+  clip() {
+    local data=$(cat "$@" | base64 | tr -d '\n')
+    printf "\033]52;c;%s\007" "$data"
+  }
+else
+  # 로컬: 네이티브 클립보드
+  {{ if eq .chezmoi.os "darwin" -}}
+  alias clip='pbcopy'
+  {{ else -}}
+  if command -v wl-copy &>/dev/null; then
+    alias clip='wl-copy'
+  elif command -v xclip &>/dev/null; then
+    alias clip='xclip -selection clipboard'
+  fi
+  {{ end -}}
+fi
+
 # 1password
 zinit id-as"op" wait'1' lucid as=null atclone'op completion zsh > zhook.zsh' \
   atpull'%atclone' \
