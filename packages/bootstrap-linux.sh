@@ -96,33 +96,74 @@ if [[ "$SHELL" != *"zsh"* ]]; then
   sudo chsh -s "$(which zsh)" "$USER" || echo "WARNING: Failed to change default shell"
 fi
 
-# Setup 1Password SSH agent for git
-setup_1password_ssh() {
-  echo "==> Setting up 1Password SSH agent..."
+# Setup SSH key from 1Password
+setup_ssh_from_1password() {
+  echo "==> Setting up SSH key from 1Password..."
   
   mkdir -p ~/.ssh
   chmod 700 ~/.ssh
   
-  # SSH config for 1Password agent
-  if ! grep -q "IdentityAgent.*1password" ~/.ssh/config 2>/dev/null; then
-    cat >> ~/.ssh/config << 'EOF'
-Host *
-    IdentityAgent ~/.1password/agent.sock
-EOF
-    chmod 600 ~/.ssh/config
+  # SSH key가 이미 있으면 스킵
+  if [[ -f ~/.ssh/id_ed25519 ]]; then
+    echo "    SSH key already exists, skipping..."
+    return 0
   fi
   
-  echo "    SSH config updated for 1Password agent"
+  # 1Password 로그인 상태 확인
+  if ! op account get &>/dev/null; then
+    echo "    Not signed in to 1Password, skipping SSH setup..."
+    echo "    Run 'eval \$(op signin)' and re-run this script to setup SSH key"
+    return 0
+  fi
+  
+  # SSH 키 경로 입력받기
+  echo ""
+  echo "    Enter your 1Password SSH key reference"
+  echo "    Example: op://Private/xxxxxx/private key"
+  echo -n "    > "
+  read -r SSH_KEY_REF
+  
+  if [[ -z "$SSH_KEY_REF" ]]; then
+    echo "    No SSH key reference provided, skipping..."
+    return 0
+  fi
+  
+  # private key 경로에서 public key 경로 생성
+  SSH_PUB_REF="${SSH_KEY_REF/private key/public key}"
+  
+  echo "    Extracting SSH key from 1Password..."
+  if op read "$SSH_KEY_REF" > ~/.ssh/id_ed25519 2>/dev/null; then
+    chmod 600 ~/.ssh/id_ed25519
+    
+    op read "$SSH_PUB_REF" > ~/.ssh/id_ed25519.pub 2>/dev/null
+    chmod 644 ~/.ssh/id_ed25519.pub
+    
+    # Git 서명 설정
+    echo "    Configuring Git commit signing..."
+    git config --global gpg.format ssh
+    git config --global user.signingkey ~/.ssh/id_ed25519.pub
+    git config --global commit.gpgsign true
+    
+    echo "    SSH key setup complete!"
+    echo ""
+    echo "    Don't forget to add your public key to GitHub:"
+    echo "      - SSH: https://github.com/settings/ssh/new"
+    echo "      - Signing: https://github.com/settings/ssh/new?type=signing"
+  else
+    echo "    Failed to extract SSH key. Please check the reference path."
+    rm -f ~/.ssh/id_ed25519
+  fi
 }
 
-setup_1password_ssh
+setup_ssh_from_1password
 
 echo ""
 echo "=========================================="
 echo "Bootstrap complete!"
 echo ""
 echo "Next steps:"
-echo "  1. op signin"
-echo "  2. Enable SSH agent in 1Password settings"
-echo "  3. ~/.local/bin/chezmoi init --apply astralhpi"
+echo "  1. Add public key to GitHub (if not done):"
+echo "     - SSH: https://github.com/settings/ssh/new"
+echo "     - Signing: https://github.com/settings/ssh/new?type=signing"
+echo "  2. ~/.local/bin/chezmoi init --apply astralhpi"
 echo "=========================================="
