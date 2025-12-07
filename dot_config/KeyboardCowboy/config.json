@@ -455,6 +455,40 @@
                 ]
               }
             }
+          },
+          {
+            "commands": [
+              {
+                "applicationCommand": {
+                  "action": "open",
+                  "application": {
+                    "bundleIdentifier": "com.linear",
+                    "bundleName": "Linear",
+                    "displayName": "Linear",
+                    "path": "\/Applications\/Linear.app"
+                  },
+                  "meta": {
+                    "enabled": true,
+                    "id": "E1234567-8901-2345-6789-ABCDEF012345",
+                    "name": ""
+                  }
+                }
+              }
+            ],
+            "execution": "serial",
+            "id": "L1234567-8901-2345-6789-ABCDEF012345",
+            "name": "Switch to Linear",
+            "trigger": {
+              "keyboardShortcuts": {
+                "shortcuts": [
+                  {
+                    "id": "L2345678-9012-3456-7890-BCDEF0123456",
+                    "key": "i",
+                    "modifiers": ["fn"]
+                  }
+                ]
+              }
+            }
           }
         ]
       },
@@ -1153,6 +1187,52 @@
                   {
                     "id": "B7777777-8888-9999-0000-111111111111",
                     "key": "p",
+                    "modifiers": ["fn"]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "color": "#5E6AD2",
+        "id": "C4D5E6F7-G8H9-0123-DEFG-456789012345",
+        "name": "Linear",
+        "rule": {
+          "bundleIdentifiers": ["com.linear"],
+          "id": "C4567890-1234-5678-9012-DEFG01234567"
+        },
+        "symbol": "folder",
+        "workflows": [
+          {
+            "commands": [
+              {
+                "applicationCommand": {
+                  "action": "hide",
+                  "application": {
+                    "bundleIdentifier": "com.linear",
+                    "bundleName": "Linear",
+                    "displayName": "Linear",
+                    "path": "\/Applications\/Linear.app"
+                  },
+                  "meta": {
+                    "enabled": true,
+                    "id": "C4444444-5555-6666-7777-888888888888",
+                    "name": ""
+                  }
+                }
+              }
+            ],
+            "execution": "serial",
+            "id": "C0000000-1111-2222-3333-444444444444",
+            "name": "Hide Linear",
+            "trigger": {
+              "keyboardShortcuts": {
+                "shortcuts": [
+                  {
+                    "id": "C8888888-9999-0000-1111-222222222222",
+                    "key": "i",
                     "modifiers": ["fn"]
                   }
                 ]

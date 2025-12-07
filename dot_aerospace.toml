@@ -175,6 +175,7 @@ alt-shift-l = ['join-with right', 'mode main']
 3 = 3
 S = 'built-in'
 C = 'main'
+I = 'built-in'
 
 [[on-window-detected]]
 if.app-id = "com.tinyspeck.slackmacgap"
@@ -192,6 +193,12 @@ run = [
 if.app-id = "dev.zed.Zed"
 run = [
   "move-node-to-workspace 1"
+]
+
+[[on-window-detected]]
+if.app-id = "com.linear"
+run = [
+  "move-node-to-workspace I"
 ]
 
 [[on-window-detected]]
