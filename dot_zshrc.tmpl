@@ -117,7 +117,27 @@ function coalesce { print "${${(s: :)@}[1]}" }
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 {{ end -}}
 
-alias zl="zellij"
+# zellij
+alias zj="zellij"
+alias zjl="zellij list-sessions"
+alias zjk="zellij kill-session"
+alias zjka="zellij kill-all-sessions"
+
+# 세션 있으면 attach, 없으면 새로 생성
+zja() {
+  if [[ -z "$1" ]]; then
+    # 인자 없으면 fzf로 세션 선택
+    local session
+    session=$(zellij list-sessions -n 2>/dev/null | fzf --height=40% --reverse)
+    if [[ -n "$session" ]]; then
+      zellij attach "$session"
+    else
+      zellij
+    fi
+  else
+    zellij attach "$1" 2>/dev/null || zellij --session "$1"
+  fi
+}
 
 # history
 HISTSIZE=999999999
