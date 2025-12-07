@@ -109,24 +109,24 @@ setup_ssh_from_1password() {
     return 0
   fi
   
+  # OP_SSH_KEY 환경변수 확인
+  if [[ -z "${OP_SSH_KEY:-}" ]]; then
+    echo "    OP_SSH_KEY not set, skipping SSH setup..."
+    echo "    To setup SSH key, run:"
+    echo "      export OP_SSH_KEY='op://Private/xxxxxx/private key'"
+    echo "      eval \$(op signin)"
+    echo "    Then re-run this script"
+    return 0
+  fi
+  
   # 1Password 로그인 상태 확인
   if ! op account get &>/dev/null; then
     echo "    Not signed in to 1Password, skipping SSH setup..."
-    echo "    Run 'eval \$(op signin)' and re-run this script to setup SSH key"
+    echo "    Run 'eval \$(op signin)' and re-run this script"
     return 0
   fi
   
-  # SSH 키 경로 입력받기
-  echo ""
-  echo "    Enter your 1Password SSH key reference"
-  echo "    Example: op://Private/xxxxxx/private key"
-  echo -n "    > "
-  read -r SSH_KEY_REF </dev/tty
-  
-  if [[ -z "$SSH_KEY_REF" ]]; then
-    echo "    No SSH key reference provided, skipping..."
-    return 0
-  fi
+  SSH_KEY_REF="$OP_SSH_KEY"
   
   # private key 경로에서 public key 경로 생성
   SSH_PUB_REF="${SSH_KEY_REF/private key/public key}"
