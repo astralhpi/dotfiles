@@ -177,12 +177,6 @@ S = 'built-in'
 C = 'main'
 
 [[on-window-detected]]
-if.app-id = "com.mitchellh.ghostty"
-run = [
-  "layout floating",
-]
-
-[[on-window-detected]]
 if.app-id = "com.tinyspeck.slackmacgap"
 run = [
   "move-node-to-workspace S"
