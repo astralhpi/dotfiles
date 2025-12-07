@@ -44,8 +44,13 @@ keybinds clear-defaults=true {
         bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
         bind "\\" { NewPane "Right"; SwitchToMode "Normal"; }  // | 대신 \ 도 가능
+        bind "_" { NewPane "stacked"; SwitchToMode "Normal"; }  // 스택 pane
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+        bind "!" { BreakPane; SwitchToMode "Normal"; }  // pane을 새 탭으로 분리
+        bind "{" { MovePane "Left"; SwitchToMode "Normal"; }
+        bind "}" { MovePane "Right"; SwitchToMode "Normal"; }
+        bind "." { SwitchToMode "RenamePane"; PaneNameInput 0; }  // pane 이름 변경
 
         // Pane 이동 (vim 스타일)
         bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
@@ -99,6 +104,10 @@ keybinds clear-defaults=true {
 
         // Space - 레이아웃 전환
         bind "Space" { NextSwapLayout; SwitchToMode "Normal"; }
+
+        // Clear & Quit
+        bind "Ctrl l" { Clear; SwitchToMode "Normal"; }  // scrollback 클리어
+        bind "q" { Quit; }  // zellij 종료
 
         // 도움말 (플로팅 창)
         bind "?" {

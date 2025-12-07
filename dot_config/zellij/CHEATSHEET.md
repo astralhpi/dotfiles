@@ -8,12 +8,16 @@ Prefix: `Ctrl+a`
 |---|---|
 | `Ctrl+a` `-` | 수평 분할 (아래) |
 | `Ctrl+a` `\|` 또는 `\` | 수직 분할 (오른쪽) |
+| `Ctrl+a` `_` | 스택 분할 |
 | `Ctrl+a` `x` | 현재 pane 닫기 |
 | `Ctrl+a` `z` | 현재 pane 전체화면 토글 |
 | `Ctrl+a` `f` | Floating pane 토글 |
 | `Ctrl+a` `o` | 다음 pane으로 이동 |
+| `Ctrl+a` `!` | Pane을 새 탭으로 분리 |
+| `Ctrl+a` `{` / `}` | Pane 위치 이동 (좌/우) |
+| `Ctrl+a` `.` | Pane 이름 변경 |
 
-## Pane 이동 (vim 스타일)
+## Pane 포커스 이동 (vim 스타일)
 
 | 키 | 설명 |
 |---|---|
@@ -79,6 +83,8 @@ Prefix: `Ctrl+a`
 | `Ctrl+a` `Ctrl+a` | 실제 Ctrl+a 전송 |
 | `Ctrl+a` `s` | Sync 모드 (모든 pane에 동시 입력) |
 | `Ctrl+a` `Space` | 레이아웃 전환 |
+| `Ctrl+a` `Ctrl+l` | Scrollback 클리어 |
+| `Ctrl+a` `q` | Zellij 종료 |
 | `Ctrl+a` `?` | 도움말 |
 
 ## CLI 명령어
