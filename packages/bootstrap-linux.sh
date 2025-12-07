@@ -85,9 +85,9 @@ fi
 
 echo "==> Installing ghostty terminfo..."
 if ! infocmp xterm-ghostty &>/dev/null; then
-  if [[ -f "$SCRIPT_DIR/ghostty.terminfo" ]]; then
-    tic -x "$SCRIPT_DIR/ghostty.terminfo"
-  fi
+  curl -fsSL https://raw.githubusercontent.com/astralhpi/dotfiles/main/packages/ghostty.terminfo -o /tmp/ghostty.terminfo
+  tic -x /tmp/ghostty.terminfo
+  rm -f /tmp/ghostty.terminfo
 fi
 
 # Set zsh as default shell
