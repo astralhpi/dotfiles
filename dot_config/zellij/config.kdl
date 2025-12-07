@@ -5,7 +5,7 @@
 // =============================================================================
 
 theme "catppuccin-macchiato"  // built-in theme
-default_layout "default"        // 상단 tab-bar + 하단 status-bar (단축키 힌트)
+default_layout "compact"        // 하단에 탭바+상태바 통합
 default_mode "normal"
 simplified_ui false
 pane_frames false               // pane 테두리 없음
