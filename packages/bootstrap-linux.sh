@@ -121,7 +121,7 @@ setup_ssh_from_1password() {
   echo "    Enter your 1Password SSH key reference"
   echo "    Example: op://Private/xxxxxx/private key"
   echo -n "    > "
-  read -r SSH_KEY_REF
+  read -r SSH_KEY_REF </dev/tty
   
   if [[ -z "$SSH_KEY_REF" ]]; then
     echo "    No SSH key reference provided, skipping..."
