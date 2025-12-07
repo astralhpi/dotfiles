@@ -28,6 +28,7 @@ install_arch_packages() {
   sudo pacman -Syu --noconfirm \
     base-devel \
     tmux \
+    zellij \
     neovim \
     fzf \
     ripgrep \
@@ -102,6 +103,14 @@ install_debian_packages() {
   # zoxide
   if ! cmd_exists zoxide && [[ ! -f ~/.local/bin/zoxide ]]; then
     try_install "zoxide" bash -c 'curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh'
+  fi
+
+  # zellij
+  if ! cmd_exists zellij && [[ ! -f ~/.local/bin/zellij ]]; then
+    try_install "zellij" bash -c '
+      ZELLIJ_VERSION=$(curl -s https://api.github.com/repos/zellij-org/zellij/releases/latest | grep -oP "\"tag_name\": \"v?\K[^\"]+")
+      curl -fsSL "https://github.com/zellij-org/zellij/releases/download/v${ZELLIJ_VERSION}/zellij-x86_64-unknown-linux-musl.tar.gz" | tar -xz -C ~/.local/bin
+    '
   fi
 }
 
