@@ -1,6 +1,9 @@
 {{ if eq .chezmoi.os "darwin" -}}
-#!/bin/sh
+#!/bin/bash
 
+# =============================================================================
+# Keyboard Settings
+# =============================================================================
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -12,6 +15,24 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutoFillHeuristicControllerEnabled false
 defaults write com.apple.dock autohide -bool true
 
+# =============================================================================
+# Gureum Input Method (구름 입력기)
+# - 한글 조합 중 Ctrl+C, Ctrl+D 등 단축키 문제 해결
+# =============================================================================
+if [[ -d "/Library/Input Methods/Gureum.app" ]]; then
+  echo "==> 구름 입력기가 설치되어 있습니다."
+  echo ""
+  echo "    수동 설정이 필요합니다:"
+  echo "    1. 시스템 설정 > 키보드 > 입력 소스 > 편집..."
+  echo "    2. '+' 버튼 클릭 > '구름' 검색 > '구름 입력기' 추가"
+  echo "    3. 기존 '한국어 - 2벌식' 입력 소스 제거 (선택사항)"
+  echo "    4. 로그아웃 후 다시 로그인"
+  echo ""
+fi
+
+# =============================================================================
+# Time Machine Exclusions
+# =============================================================================
 sudo tmutil addexclusion -p /Library/Caches
 sudo tmutil addexclusion -p $HOME/Library/Caches
 sudo tmutil addexclusion -p $HOME/Library/Developer

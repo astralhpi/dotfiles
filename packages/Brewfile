@@ -70,6 +70,7 @@ cask 'discord'
 cask 'cloudflare-warp'
 cask 'arc'
 cask 'chatgpt'
+cask 'gureumkim'  # 한글 입력기 - Ctrl 키 조합 문제 해결
 
 mas 'Tailscale', id: 1475387142
 mas 'Slack', id: 803453959
