@@ -83,13 +83,6 @@ if ! cmd_exists chezmoi && [[ ! -f ~/.local/bin/chezmoi ]]; then
   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
 fi
 
-echo "==> Installing ghostty terminfo..."
-if ! infocmp xterm-ghostty &>/dev/null; then
-  curl -fsSL https://raw.githubusercontent.com/astralhpi/dotfiles/main/packages/ghostty.terminfo -o /tmp/ghostty.terminfo
-  tic -x /tmp/ghostty.terminfo
-  rm -f /tmp/ghostty.terminfo
-fi
-
 # Set zsh as default shell
 if [[ "$SHELL" != *"zsh"* ]]; then
   echo "==> Setting zsh as default shell..."

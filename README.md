@@ -33,14 +33,29 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply astralhpi
 ### Linux (Debian/Ubuntu/Arch)
 
 ```bash
-# 1. Run bootstrap script (installs 1Password CLI, chezmoi, terminfo)
-curl -fsSL https://raw.githubusercontent.com/astralhpi/dotfiles/main/packages/bootstrap-linux.sh | bash
-
-# 2. Sign in to 1Password
+# 1. Set SSH key reference and sign in to 1Password
+export OP_SSH_KEY='op://Private/xxxxxx/private key'
 eval $(op signin)
+
+# 2. Run bootstrap script
+curl -fsSL https://raw.githubusercontent.com/astralhpi/dotfiles/main/packages/bootstrap-linux.sh | bash
 
 # 3. Apply dotfiles
 ~/.local/bin/chezmoi init --apply astralhpi
+```
+
+### Ghostty Terminfo (SSH)
+
+If you use Ghostty and SSH into Linux servers, install terminfo from your local machine:
+
+```bash
+# From your local machine (where Ghostty is installed)
+infocmp -x xterm-ghostty | ssh YOUR-SERVER -- tic -x -
+```
+
+Or add to your Ghostty config for automatic installation:
+```
+shell-integration-features = ssh-terminfo
 ```
 
 ## What's Included
