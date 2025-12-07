@@ -25,34 +25,26 @@ install_homebrew_if_needed() {
 {{ if eq .chezmoi.os "linux" -}}
 install_arch_packages() {
   echo "==> Installing Arch Linux packages..."
+  # Core packages only - CLI tools (bat, fd, ripgrep, lsd, zoxide, starship, direnv) managed by mise
   sudo pacman -Syu --noconfirm \
     base-devel \
     tmux \
     zellij \
     neovim \
     fzf \
-    ripgrep \
-    fd \
-    direnv \
     ncurses \
     python-pipx \
-    lsd \
-    zoxide || echo "WARNING: Some pacman packages failed to install"
+    thefuck || echo "WARNING: Some pacman packages failed to install"
 
   # pipx PATH 설정
   pipx ensurepath 2>/dev/null || true
 
-  # mise
+  # mise (manages most CLI tools)
   if ! cmd_exists mise && [[ ! -f ~/.local/bin/mise ]]; then
     try_install "mise" bash -c 'curl https://mise.run | sh'
   fi
 
-  # starship
-  if ! cmd_exists starship && [[ ! -f ~/.local/bin/starship ]]; then
-    try_install "starship" bash -c 'curl -sS https://starship.rs/install.sh | sh -s -- -y -b ~/.local/bin'
-  fi
-
-  # atuin
+  # atuin (uses its own installer)
   if [[ ! -f ~/.atuin/bin/atuin ]]; then
     try_install "atuin" bash -c 'curl --proto "=https" --tlsv1.2 -LsSf https://setup.atuin.sh | sh'
   fi
@@ -60,52 +52,31 @@ install_arch_packages() {
 
 install_debian_packages() {
   echo "==> Installing Debian/Ubuntu packages..."
+  # Core packages only - CLI tools (bat, fd, ripgrep, lsd, zoxide, starship, direnv) managed by mise
   sudo apt-get update
   sudo apt-get install -y \
     build-essential \
     tmux \
     neovim \
     fzf \
-    ripgrep \
-    fd-find \
-    direnv \
     ncurses-term \
-    pipx || echo "WARNING: Some apt packages failed to install"
+    pipx \
+    thefuck || echo "WARNING: Some apt packages failed to install"
   
   # pipx PATH 설정
   pipx ensurepath 2>/dev/null || true
 
-  # lsd (apt에 없어서 직접 설치)
-  if ! cmd_exists lsd; then
-    try_install "lsd" bash -c '
-      LSD_VERSION=$(curl -s https://api.github.com/repos/lsd-rs/lsd/releases/latest | grep -oP "\"tag_name\": \"v?\K[^\"]+")
-      curl -fsSL "https://github.com/lsd-rs/lsd/releases/download/v${LSD_VERSION}/lsd_${LSD_VERSION}_{{ .chezmoi.arch }}.deb" -o /tmp/lsd.deb
-      sudo dpkg -i /tmp/lsd.deb
-      rm -f /tmp/lsd.deb
-    '
-  fi
-
-  # mise
+  # mise (manages most CLI tools)
   if ! cmd_exists mise && [[ ! -f ~/.local/bin/mise ]]; then
     try_install "mise" bash -c 'curl https://mise.run | sh'
   fi
 
-  # starship
-  if ! cmd_exists starship && [[ ! -f ~/.local/bin/starship ]]; then
-    try_install "starship" bash -c 'curl -sS https://starship.rs/install.sh | sh -s -- -y -b ~/.local/bin'
-  fi
-
-  # atuin
+  # atuin (uses its own installer)
   if [[ ! -f ~/.atuin/bin/atuin ]]; then
     try_install "atuin" bash -c 'curl --proto "=https" --tlsv1.2 -LsSf https://setup.atuin.sh | sh'
   fi
 
-  # zoxide
-  if ! cmd_exists zoxide && [[ ! -f ~/.local/bin/zoxide ]]; then
-    try_install "zoxide" bash -c 'curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh'
-  fi
-
-  # zellij
+  # zellij (not in apt)
   if ! cmd_exists zellij && [[ ! -f ~/.local/bin/zellij ]]; then
     try_install "zellij" bash -c '
       ZELLIJ_VERSION=$(curl -s https://api.github.com/repos/zellij-org/zellij/releases/latest | grep -oP "\"tag_name\": \"v?\K[^\"]+")

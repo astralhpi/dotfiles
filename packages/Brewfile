@@ -1,6 +1,5 @@
 cask_args appdir: '/Applications'
 
-tap 'pulumi/tap'
 tap 'FelixKratz/formulae'
 tap 'shaunsingh/SFMono-Nerd-Font-Ligaturized'
 tap 'supabase/tap'
@@ -14,7 +13,7 @@ brew 'ast-grep'
 brew 'p7zip'
 brew 'zellij'
 brew 'gitmux'
-brew 'starship'
+# starship - managed by mise
 brew 'aichat'
 brew 'atuin'
 brew 'tmuxp'
@@ -25,20 +24,22 @@ brew 'neovim'
 brew 'pipx'
 brew 'chezmoi'
 brew 'fzf'
-brew 'lsd'
+# lsd - managed by mise
 brew 'mise'
 brew 'yq'
-brew 'zoxide'
+# zoxide - managed by mise
 brew 'asimov'
-brew 'fd'
+# fd - managed by mise
 brew 'postgresql@17'
 brew 'cloudflared'
 brew 'helm'
 brew 'k9s'
 brew 'kubectl'
-brew 'uv'
 brew 'awscli'
-brew 'ripgrep'
+# ripgrep - managed by mise
+# bat - managed by mise
+brew 'tmux'
+brew 'thefuck'
 brew 'borders'
 brew 'gh'
 

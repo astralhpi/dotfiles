@@ -34,8 +34,8 @@ map("n", "<C-p>", ":Telescope find_files <CR>", { desc = "find files" })
 map("n", "<C-t>", ":Telescope buffers <CR>", { desc = "find buffers" })
 map("n", "<leader>fk", ":Telescope keymaps <CR>", { desc = "show keys" })
 map("n", "<leader>fu", ":Telescope undo <CR>", { desc = "show undo history" })
-map("n", "<leader>fs", ":Telescope lsp_document_symbols <CR>", { desc = "show document symbole" })
-map("n", "<leader>fS", ":Telescope lsp_workspace_symbols <CR>", { desc = "show workspace symbole" })
+map("n", "<leader>fs", ":Telescope lsp_document_symbols <CR>", { desc = "show document symbols" })
+map("n", "<leader>fS", ":Telescope lsp_workspace_symbols <CR>", { desc = "show workspace symbols" })
 map("n", "<leader>tr", ":Telescope resume <CR>", { desc = "telescope resume" })
 
 -- outline
@@ -52,7 +52,7 @@ map("i", "<C-n>", function()
   require("cmp").complete()
 end, { desc = "cmp complete" })
 
--- copliot chat
+-- copilot chat
 -- map("v", "<leader>ae", ":CopilotChatExplain <CR>", { desc = "Copilot Chat Explain" })
 -- map("v", "<leader>ar", ":CopilotChatReview <CR>", { desc = "Copilot Chat Review" })
 -- map("v", "<leader>af", ":CopilotChatFix <CR>", { desc = "Copilot Chat Fix" })

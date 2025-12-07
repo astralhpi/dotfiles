@@ -18,7 +18,7 @@ M.ui = {
   },
 }
 M.nvdash = {
-    load_on_startup = !vim.g.vscode
+    load_on_startup = not vim.g.vscode
 }
 
 
