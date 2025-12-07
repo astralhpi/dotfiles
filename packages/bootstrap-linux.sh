@@ -96,11 +96,33 @@ if [[ "$SHELL" != *"zsh"* ]]; then
   sudo chsh -s "$(which zsh)" "$USER" || echo "WARNING: Failed to change default shell"
 fi
 
+# Setup 1Password SSH agent for git
+setup_1password_ssh() {
+  echo "==> Setting up 1Password SSH agent..."
+  
+  mkdir -p ~/.ssh
+  chmod 700 ~/.ssh
+  
+  # SSH config for 1Password agent
+  if ! grep -q "IdentityAgent.*1password" ~/.ssh/config 2>/dev/null; then
+    cat >> ~/.ssh/config << 'EOF'
+Host *
+    IdentityAgent ~/.1password/agent.sock
+EOF
+    chmod 600 ~/.ssh/config
+  fi
+  
+  echo "    SSH config updated for 1Password agent"
+}
+
+setup_1password_ssh
+
 echo ""
 echo "=========================================="
 echo "Bootstrap complete!"
 echo ""
 echo "Next steps:"
 echo "  1. op signin"
-echo "  2. ~/.local/bin/chezmoi init --apply <github-user>"
+echo "  2. Enable SSH agent in 1Password settings"
+echo "  3. ~/.local/bin/chezmoi init --apply astralhpi"
 echo "=========================================="
