@@ -35,7 +35,7 @@ zinit light zdharma-continuum/zinit-annex-patch-dl
 
 # prezto
 zstyle ':prezto:module:editor' key-bindings 'vi'
-zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal' auto-title 'no'
 zstyle ':prezto:module:utility:grep' color 'yes'
 zstyle ':prezto:module:utility:diff' color 'yes'
 zstyle ':prezto:module:utility:make' color 'yes'
@@ -139,6 +139,40 @@ zja() {
     fi
   else
     zellij attach "$1" 2>/dev/null || zellij --session "$1"
+  fi
+}
+
+# tmux
+alias tx="tmux"
+alias txl="tmux ls"
+alias txk="tmux kill-session -t"
+alias txka="tmux kill-server"
+
+# 세션 있으면 attach, 없으면 새로 생성
+txa() {
+  if [[ -z "$1" ]]; then
+    local session
+    session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --height=40% --reverse)
+    if [[ -n "$session" ]]; then
+      tmux attach -t "$session"
+    elif [[ -n "$TMUX" ]]; then
+      echo "Already in tmux session"
+    else
+      tmux new-session
+    fi
+  else
+    tmux attach -t "$1" 2>/dev/null || tmux new-session -s "$1"
+  fi
+}
+
+# tmuxp: fzf로 yaml 선택해서 로드
+txp() {
+  local config
+  if [[ -z "$1" ]]; then
+    config=$(ls ~/.config/tmuxp/*.yaml 2>/dev/null | xargs -n1 basename | sed 's/.yaml$//' | fzf --height=40% --reverse --prompt="tmuxp> ")
+    [[ -n "$config" ]] && tmuxp load "$config"
+  else
+    tmuxp load "$1"
   fi
 }
 
