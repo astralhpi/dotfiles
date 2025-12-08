@@ -79,6 +79,8 @@ keybinds clear-defaults=true {
         bind "9" { GoToTab 9; SwitchToMode "Normal"; }
         bind "Tab" { ToggleTab; SwitchToMode "Normal"; }
         bind "&" { CloseTab; SwitchToMode "Normal"; }
+        bind "<" { MoveTab "Left"; }
+        bind ">" { MoveTab "Right"; }
 
         // Copy 모드 (tmux의 [ )
         bind "[" { SwitchToMode "Scroll"; }
