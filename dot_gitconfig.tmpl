@@ -80,7 +80,7 @@
 {{ if eq .chezmoi.os "darwin" -}}
     program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 {{ else -}}
-    program = "/opt/1Password/op-ssh-sign"
+    program = "/usr/bin/ssh-keygen"
 {{ end -}}
 
 [init]
@@ -126,4 +126,8 @@
 [user]
     email = "{{ .email }}"
     name = "{{ .name }}"
-    signingkey = "{{ default .signingkey }}"
+{{ if eq .chezmoi.os "darwin" -}}
+    signingkey = "{{ .signingkey }}"
+{{ else -}}
+    signingkey = ~/.ssh/signing_key.pub
+{{ end -}}
