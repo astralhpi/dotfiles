@@ -24,13 +24,13 @@ echo "==> Detected distro: $DISTRO"
 
 install_prerequisites_arch() {
   echo "==> Installing minimal prerequisites (Arch)..."
-  sudo pacman -Syu --noconfirm curl git zsh
+  sudo pacman -Syu --noconfirm curl git zsh less
 }
 
 install_prerequisites_debian() {
   echo "==> Installing minimal prerequisites (Debian/Ubuntu)..."
   sudo apt-get update
-  sudo apt-get install -y curl git zsh
+  sudo apt-get install -y curl git zsh less
 }
 
 install_1password_arch() {
