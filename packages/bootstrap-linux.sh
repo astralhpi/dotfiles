@@ -83,6 +83,11 @@ if ! cmd_exists chezmoi && [[ ! -f ~/.local/bin/chezmoi ]]; then
   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
 fi
 
+echo "==> Installing uv..."
+if ! cmd_exists uv && [[ ! -f ~/.local/bin/uv ]]; then
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+fi
+
 # Set zsh as default shell
 if [[ "$SHELL" != *"zsh"* ]]; then
   echo "==> Setting zsh as default shell..."
