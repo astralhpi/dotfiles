@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Package hashes for change detection:
+# Arch: {{ include "./packages/packages-arch.txt" | sha256sum }}
+# Apt: {{ include "./packages/packages-apt.txt" | sha256sum }}
 
 set -uo pipefail
 
@@ -25,7 +28,8 @@ install_homebrew_if_needed() {
 {{ if eq .chezmoi.os "linux" -}}
 install_arch_packages() {
   echo "==> Installing Arch Linux packages..."
-  # Core packages only - CLI tools (bat, fd, ripgrep, lsd, zoxide, starship, direnv) managed by mise
+
+  # Core packages
   sudo pacman -Syu --noconfirm \
     base-devel \
     tmux \
@@ -33,13 +37,22 @@ install_arch_packages() {
     neovim \
     fzf \
     ncurses \
-    python-pipx \
     thefuck || echo "WARNING: Some pacman packages failed to install"
 
-  # pipx PATH 설정
-  pipx ensurepath 2>/dev/null || true
+  # CLI tools from packages-arch.txt
+  echo "==> Installing CLI tools from packages-arch.txt..."
+  sudo pacman -S --noconfirm --needed \
+    bat \
+    fd \
+    ripgrep \
+    lsd \
+    zoxide \
+    direnv \
+    git-delta \
+    uv \
+    starship || echo "WARNING: Some CLI tool packages failed to install"
 
-  # mise (manages most CLI tools)
+  # mise
   if ! cmd_exists mise && [[ ! -f ~/.local/bin/mise ]]; then
     try_install "mise" bash -c 'curl https://mise.run | sh'
   fi
@@ -52,7 +65,8 @@ install_arch_packages() {
 
 install_debian_packages() {
   echo "==> Installing Debian/Ubuntu packages..."
-  # Core packages only - CLI tools (bat, fd, ripgrep, lsd, zoxide, starship, direnv) managed by mise
+
+  # Core packages
   sudo apt-get update
   sudo apt-get install -y \
     build-essential \
@@ -60,13 +74,30 @@ install_debian_packages() {
     neovim \
     fzf \
     ncurses-term \
-    pipx \
     thefuck || echo "WARNING: Some apt packages failed to install"
-  
-  # pipx PATH 설정
-  pipx ensurepath 2>/dev/null || true
 
-  # mise (manages most CLI tools)
+  # CLI tools from packages-apt.txt
+  echo "==> Installing CLI tools from packages-apt.txt..."
+  sudo apt-get install -y \
+    bat \
+    fd-find \
+    ripgrep \
+    lsd \
+    zoxide \
+    direnv \
+    git-delta || echo "WARNING: Some CLI tool packages failed to install"
+
+  # uv (not in apt, use official installer)
+  if ! cmd_exists uv && [[ ! -f ~/.local/bin/uv ]]; then
+    try_install "uv" bash -c 'curl -LsSf https://astral.sh/uv/install.sh | sh'
+  fi
+
+  # starship (not in apt, use official installer)
+  if ! cmd_exists starship && [[ ! -f ~/.local/bin/starship ]]; then
+    try_install "starship" bash -c 'curl -sS https://starship.rs/install.sh | sh -s -- -y -b ~/.local/bin'
+  fi
+
+  # mise
   if ! cmd_exists mise && [[ ! -f ~/.local/bin/mise ]]; then
     try_install "mise" bash -c 'curl https://mise.run | sh'
   fi

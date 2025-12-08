@@ -1,0 +1,10 @@
+# Debian/Ubuntu packages (apt)
+# CLI tools - previously managed by mise ubi
+# Note: uv, starship are installed via official scripts (not in apt)
+bat
+fd-find
+ripgrep
+lsd
+zoxide
+direnv
+git-delta

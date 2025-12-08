@@ -1,0 +1,11 @@
+# Arch Linux packages (pacman)
+# CLI tools - previously managed by mise ubi
+bat
+fd
+ripgrep
+lsd
+zoxide
+direnv
+git-delta
+uv
+starship

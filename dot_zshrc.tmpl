@@ -105,9 +105,6 @@ alias la='ls -a'
 alias kb='kubectl'
 alias nd='nerdctl'
 
-# uvx fallback (mise shim 이슈 대비)
-command -v uvx >/dev/null 2>&1 || alias uvx='uv tool run'
-
 if [ "$TERM" = "xterm-kitty" ]; then
   alias ssh="kitty +kitten ssh"
 fi
