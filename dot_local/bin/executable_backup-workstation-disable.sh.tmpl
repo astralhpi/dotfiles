@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Workstation Backup - Disable Script
+#
+
+PLIST_PATH="$HOME/Library/LaunchAgents/com.backup.workstation.plist"
+LABEL="com.backup.workstation"
+
+if launchctl list | grep -q "$LABEL"; then
+    if launchctl unload "$PLIST_PATH" 2>/dev/null; then
+        echo "Workstation backup disabled"
+    else
+        echo "Error: Failed to disable backup"
+        exit 1
+    fi
+else
+    echo "Backup is not currently enabled"
+fi

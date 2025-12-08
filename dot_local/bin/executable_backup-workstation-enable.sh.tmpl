@@ -1,113 +1,25 @@
 #!/bin/bash
 #
-# Workstation Backup - Enable/Disable Script
+# Workstation Backup - Enable Script
 #
 
 PLIST_PATH="$HOME/Library/LaunchAgents/com.backup.workstation.plist"
 LABEL="com.backup.workstation"
 
-usage() {
-    cat <<EOF
-Usage: $(basename "$0") [OPTION]
+if ! [ -f "$PLIST_PATH" ]; then
+    echo "Error: LaunchAgent plist not found at $PLIST_PATH"
+    echo "Run 'chezmoi apply' first."
+    exit 1
+fi
 
-Options:
-    --enable, -e    Enable automatic backup (default)
-    --disable, -d   Disable automatic backup
-    --status, -s    Show current status
-    --run, -r       Run backup now
-    --help, -h      Show this help
+# 이미 로드되어 있으면 먼저 언로드
+launchctl list | grep -q "$LABEL" && launchctl unload "$PLIST_PATH" 2>/dev/null
 
-Example:
-    $(basename "$0")           # Enable backup
-    $(basename "$0") --status  # Check status
-    $(basename "$0") --run     # Run backup immediately
-EOF
-}
-
-enable_backup() {
-    if ! [ -f "$PLIST_PATH" ]; then
-        echo "Error: LaunchAgent plist not found at $PLIST_PATH"
-        echo "Run 'chezmoi apply' first."
-        exit 1
-    fi
-    
-    # 이미 로드되어 있으면 먼저 언로드
-    launchctl list | grep -q "$LABEL" && launchctl unload "$PLIST_PATH" 2>/dev/null
-    
-    if launchctl load "$PLIST_PATH" 2>/dev/null; then
-        echo "Workstation backup enabled (runs every 30 minutes)"
-        echo "Backup destination: {{ .work_backup_dest }}"
-    else
-        echo "Error: Failed to enable backup"
-        exit 1
-    fi
-}
-
-disable_backup() {
-    if launchctl list | grep -q "$LABEL"; then
-        if launchctl unload "$PLIST_PATH" 2>/dev/null; then
-            echo "Workstation backup disabled"
-        else
-            echo "Error: Failed to disable backup"
-            exit 1
-        fi
-    else
-        echo "Backup is not currently enabled"
-    fi
-}
-
-show_status() {
-    echo "=== Workstation Backup Status ==="
-    echo ""
-    
-    if launchctl list | grep -q "$LABEL"; then
-        echo "Status: ENABLED"
-        echo ""
-        # 마지막 실행 정보
-        if launchctl list "$LABEL" 2>/dev/null; then
-            :
-        fi
-    else
-        echo "Status: DISABLED"
-    fi
-    
-    echo ""
+if launchctl load "$PLIST_PATH" 2>/dev/null; then
+    echo "Workstation backup enabled (runs every 30 minutes)"
     echo "Backup destination: {{ .work_backup_dest }}"
-    
-    # 마지막 백업 로그 확인
-    local log_file="{{ .work_backup_dest }}/.backup.log"
-    if [ -f "$log_file" ]; then
-        echo ""
-        echo "=== Last 5 log entries ==="
-        tail -5 "$log_file"
-    fi
-}
-
-run_now() {
-    echo "Running backup now..."
-    backup-workstation.sh
-}
-
-# 메인
-case "${1:-}" in
-    --enable|-e|"")
-        enable_backup
-        ;;
-    --disable|-d)
-        disable_backup
-        ;;
-    --status|-s)
-        show_status
-        ;;
-    --run|-r)
-        run_now
-        ;;
-    --help|-h)
-        usage
-        ;;
-    *)
-        echo "Unknown option: $1"
-        usage
-        exit 1
-        ;;
-esac
+    echo "Backup paths: {{ .work_backup_paths }}"
+else
+    echo "Error: Failed to enable backup"
+    exit 1
+fi

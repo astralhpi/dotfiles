@@ -43,6 +43,7 @@ brew 'thefuck'
 brew 'borders'
 brew 'gh'
 brew 'terminal-notifier'
+brew 'rsync'
 
 cask 'ghostty'
 cask 'android-studio'

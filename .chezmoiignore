@@ -21,9 +21,10 @@ system-settings.sh
 homebrew.sh
 {{ end }}
 
-# Workstation 백업 - work_hostname이 설정되지 않으면 무시
-{{ if not (index . "work_hostname") }}
+# Workstation 백업 - 필수 변수가 설정되지 않으면 무시
+{{ if not (and (index . "work_hostname") (index . "work_backup_paths")) }}
 .local/bin/backup-workstation.sh
 .local/bin/backup-workstation-enable.sh
+.local/bin/backup-workstation-disable.sh
 Library/LaunchAgents/com.backup.workstation.plist
 {{ end }}

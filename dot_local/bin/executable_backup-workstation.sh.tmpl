@@ -1,16 +1,21 @@
 #!/bin/bash
 #
 # Workstation Backup Script
-# 원격 워크스테이션의 홈 디렉토리를 로컬로 백업합니다.
+# 원격 워크스테이션의 여러 경로를 로컬로 백업합니다.
 #
 
 set -euo pipefail
 
 # === 설정 ===
 SSH_HOST="work"
-REMOTE_PATH="/home/{{ .work_user }}/"
-LOCAL_PATH="{{ .work_backup_dest }}"
-LOG_FILE="$LOCAL_PATH/.backup.log"
+BACKUP_PATHS="{{ .work_backup_paths }}"  # 콜론으로 구분된 원격 경로들
+LOCAL_BASE="{{ .work_backup_dest }}"
+LOG_FILE="$LOCAL_BASE/.backup.log"
+TAILSCALE="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+RSYNC="/opt/homebrew/bin/rsync"
+
+# 로그 디렉토리 미리 생성
+mkdir -p "$LOCAL_BASE"
 
 # === 제외 목록 ===
 EXCLUDES=(
@@ -96,13 +101,13 @@ check_network() {
 }
 
 check_tailscale() {
-    # Tailscale 연결 확인
-    if ! command -v tailscale &>/dev/null; then
-        log "Tailscale not found. Skipping backup."
+    # Tailscale 연결 확인 (macOS App Store 버전)
+    if ! [ -x "$TAILSCALE" ]; then
+        log "Tailscale not found at $TAILSCALE. Skipping backup."
         exit 0
     fi
     
-    if ! tailscale status &>/dev/null; then
+    if ! "$TAILSCALE" status &>/dev/null; then
         log "Tailscale not connected. Skipping backup."
         exit 0
     fi
@@ -116,26 +121,23 @@ check_host_reachable() {
     fi
 }
 
-run_backup() {
+backup_path() {
+    local remote_path="$1"
+    
+    # 로컬 경로 생성: /home/jaehak -> $LOCAL_BASE/home/jaehak
+    local local_path="$LOCAL_BASE$remote_path"
+    mkdir -p "$local_path"
+    
     # 제외 옵션 생성
     local exclude_opts=()
     for pattern in "${EXCLUDES[@]}"; do
         exclude_opts+=(--exclude="$pattern")
     done
     
-    # 백업 디렉토리 생성
-    mkdir -p "$LOCAL_PATH"
-    
-    log "Starting backup from $SSH_HOST:$REMOTE_PATH to $LOCAL_PATH"
+    log "Backing up $SSH_HOST:$remote_path -> $local_path"
     
     # rsync 실행
-    # --archive: 권한, 시간 등 보존
-    # --compress: 전송 시 압축
-    # --delete: 소스에서 삭제된 파일은 백업에서도 삭제
-    # --delete-excluded: 제외 패턴에 해당하는 파일도 백업에서 삭제
-    # --partial: 중단된 전송 재개 가능
-    # --progress: 진행 상황 표시 (로그용)
-    if rsync \
+    if "$RSYNC" \
         --archive \
         --compress \
         --delete \
@@ -144,18 +146,41 @@ run_backup() {
         --human-readable \
         "${exclude_opts[@]}" \
         -e "ssh -o ConnectTimeout=30" \
-        "$SSH_HOST:$REMOTE_PATH" \
-        "$LOCAL_PATH/" \
+        "$SSH_HOST:$remote_path/" \
+        "$local_path/" \
         >> "$LOG_FILE" 2>&1; then
-        
-        log "Backup completed successfully."
-        notify_success "Backup completed"
+        log "Completed: $remote_path"
         return 0
     else
         local exit_code=$?
-        log "Backup failed with exit code $exit_code"
-        notify_error "Backup failed (exit code: $exit_code)"
+        log "Failed: $remote_path (exit code: $exit_code)"
         return $exit_code
+    fi
+}
+
+run_backup() {
+    log "=== Starting backup ==="
+    
+    local failed=0
+    
+    # 콜론으로 구분된 경로들을 순회
+    IFS=':' read -ra PATHS <<< "$BACKUP_PATHS"
+    for path in "${PATHS[@]}"; do
+        # 빈 경로 스킵
+        [[ -z "$path" ]] && continue
+        
+        if ! backup_path "$path"; then
+            failed=1
+        fi
+    done
+    
+    if [[ $failed -eq 0 ]]; then
+        log "=== All backups completed successfully ==="
+        notify_success "Backup completed"
+    else
+        log "=== Some backups failed ==="
+        notify_error "Some backups failed"
+        return 1
     fi
 }
 
