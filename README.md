@@ -77,6 +77,7 @@ shell-integration-features = ssh-terminfo
 - Ghostty / WezTerm (terminal)
 - Karabiner-Elements (keyboard customization)
 - Various GUI app configs (Zed, Cursor, etc.)
+- Workstation backup (rsync over Tailscale)
 
 ## Structure
 
@@ -87,6 +88,8 @@ shell-integration-features = ssh-terminfo
 │   ├── tmux/            # tmux (via dot_tmux.conf)
 │   ├── starship.toml    # Prompt configuration
 │   └── ...
+├── dot_local/bin/       # ~/.local/bin/* (scripts)
+├── private_dot_ssh/     # ~/.ssh/config
 ├── dot_zshrc.tmpl       # Shell configuration
 ├── dot_gitconfig.tmpl   # Git configuration
 ├── packages/
@@ -95,6 +98,51 @@ shell-integration-features = ssh-terminfo
 │   └── ghostty.terminfo    # Terminal compatibility
 └── run_once_*.tmpl      # One-time setup scripts
 ```
+
+## Workstation Backup (Optional)
+
+Automatically backup a remote workstation's home directory to your Mac via Tailscale. Backups are then protected by Time Machine and Backblaze (3-2-1 backup).
+
+### Setup
+
+1. Add these fields to your 1Password item:
+   - `work_hostname` - Tailscale hostname (e.g., `myserver.tail1234.ts.net`)
+   - `work_user` - SSH username
+   - `work_backup_dest` - Local backup path (e.g., `~/Backups/workstation`)
+
+2. Apply dotfiles:
+   ```bash
+   chezmoi apply
+   ```
+
+3. Enable backup:
+   ```bash
+   backup-workstation-enable.sh
+   ```
+
+### Usage
+
+```bash
+# SSH to workstation
+ssh work
+
+# Check backup status
+backup-workstation-enable.sh --status
+
+# Run backup manually
+backup-workstation-enable.sh --run
+
+# Disable automatic backup
+backup-workstation-enable.sh --disable
+```
+
+### Features
+
+- Runs every 30 minutes (when enabled)
+- Skips on tethering/cellular (expensive network detection)
+- Skips when Tailscale is disconnected
+- Excludes caches and dependencies (node_modules, .venv, target, etc.)
+- Notifies on failure via terminal-notifier
 
 ## Updating
 

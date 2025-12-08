@@ -28,7 +28,7 @@ rust = "latest"
 # CLI tools (cross-platform via ubi)
 "ubi:sharkdp/bat" = "latest"
 "ubi:sharkdp/fd" = "latest"
-"aqua:BurntSushi/ripgrep" = "latest"
+"ubi:BurntSushi/ripgrep[exe=rg]" = "latest"
 "ubi:lsd-rs/lsd" = "latest"
 "ubi:ajeetdsouza/zoxide" = "latest"
 "ubi:starship/starship" = "latest"

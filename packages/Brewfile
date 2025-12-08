@@ -42,6 +42,7 @@ brew 'tmux'
 brew 'thefuck'
 brew 'borders'
 brew 'gh'
+brew 'terminal-notifier'
 
 cask 'ghostty'
 cask 'android-studio'

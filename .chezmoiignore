@@ -20,3 +20,10 @@ atuin-daemon.sh
 system-settings.sh
 homebrew.sh
 {{ end }}
+
+# Workstation 백업 - work_hostname이 설정되지 않으면 무시
+{{ if not (index . "work_hostname") }}
+.local/bin/backup-workstation.sh
+.local/bin/backup-workstation-enable.sh
+Library/LaunchAgents/com.backup.workstation.plist
+{{ end }}

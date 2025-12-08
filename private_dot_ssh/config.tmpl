@@ -1,0 +1,27 @@
+{{- if eq .chezmoi.os "darwin" }}
+# OrbStack: SSH host for Linux machines
+Include ~/.orbstack/ssh/config
+
+{{- end }}
+
+{{- if and (index . "work_hostname") (index . "work_user") }}
+
+Host work
+    HostName {{ .work_hostname }}
+    User {{ .work_user }}
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h-%p
+    ControlPersist 600
+    ServerAliveInterval 30
+    ServerAliveCountMax 3
+    PreferredAuthentications publickey
+    Compression yes
+    TCPKeepAlive yes
+    IPQoS lowdelay throughput
+{{- end }}
+
+Host *
+{{- if eq .chezmoi.os "darwin" }}
+    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{{- end }}
+    ForwardAgent yes

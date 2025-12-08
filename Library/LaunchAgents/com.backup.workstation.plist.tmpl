@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.backup.workstation</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>{{ .chezmoi.homeDir }}/.local/bin/backup-workstation.sh</string>
+    </array>
+
+    <!-- 30분마다 실행 -->
+    <key>StartInterval</key>
+    <integer>1800</integer>
+
+    <!-- 로그 -->
+    <key>StandardOutPath</key>
+    <string>/tmp/backup-workstation.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/backup-workstation-error.log</string>
+
+    <!-- 환경변수 -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+
+    <!-- 로드 시 자동 실행하지 않음 -->
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
