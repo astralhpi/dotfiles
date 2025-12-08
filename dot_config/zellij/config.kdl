@@ -14,6 +14,9 @@ copy_on_select true             // 마우스 선택 시 자동 복사 (OSC 52)
 scrollback_editor "nvim"
 session_serialization true      // 세션 저장 (재부팅 후 복구 가능)
 
+input_delay 0
+mouse_mode false
+
 // =============================================================================
 // 키바인딩 - tmux 스타일 (Ctrl+a prefix)
 // =============================================================================
