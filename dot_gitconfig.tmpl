@@ -79,8 +79,6 @@
 [gpg "ssh"]
 {{ if eq .chezmoi.os "darwin" -}}
     program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-{{ else -}}
-    program = "/usr/bin/ssh-keygen"
 {{ end -}}
 
 [init]
@@ -132,6 +130,4 @@
     name = "{{ .name }}"
 {{ if eq .chezmoi.os "darwin" -}}
     signingkey = "{{ .signingkey }}"
-{{ else -}}
-    signingkey = ~/.ssh/signing_key.pub
 {{ end -}}
