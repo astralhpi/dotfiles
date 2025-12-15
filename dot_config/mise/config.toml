@@ -19,6 +19,7 @@ cmake = "latest"
 rust = "latest"
 "npm:opencode-ai" = "latest"
 "npm:windmill-cli" = "latest"
+"ubi:raine/workmux" = "latest"
 
 [settings]
 experimental = true
