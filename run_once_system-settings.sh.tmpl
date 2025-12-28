@@ -2,8 +2,10 @@
 #!/bin/bash
 
 # =============================================================================
-# Keyboard Settings
+# 공통 설정 (모든 Mac)
 # =============================================================================
+
+# Keyboard Settings
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -13,39 +15,98 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutoFillHeuristicControllerEnabled false
+
+# Dock
 defaults write com.apple.dock autohide -bool true
 
 # =============================================================================
-# Gureum Input Method (구름 입력기)
-# - 한글 조합 중 Ctrl+C, Ctrl+D 등 단축키 문제 해결
+# Mac mini 서버 설정 (hw.model로 자동 감지)
 # =============================================================================
-if [[ -d "/Library/Input Methods/Gureum.app" ]]; then
-  echo "==> 구름 입력기가 설치되어 있습니다."
+HW_MODEL=$(sysctl -n hw.model)
+
+if [[ "$HW_MODEL" == *"Macmini"* ]]; then
+  echo "==> Mac mini 감지됨 ($HW_MODEL) - 서버 설정 적용 중..."
+
+  # ---------------------------------------------------------------------------
+  # 에너지 설정 - 항상 켜짐
+  # ---------------------------------------------------------------------------
+  echo "    에너지 설정 구성 중..."
+  sudo pmset -a sleep 0              # 잠자기 안 함
+  sudo pmset -a disksleep 0          # 디스크 잠자기 안 함
+  sudo pmset -a displaysleep 0       # 디스플레이 잠자기 안 함
+  sudo pmset -a womp 1               # Wake on LAN 활성화
+  sudo pmset -a powernap 0           # Power Nap 비활성화
+  sudo pmset -a proximitywake 0      # 근접 깨우기 비활성화
+
+  # 자동 재시작 (전원 복구 후, 시스템 정지 후)
+  sudo pmset -a autorestart 1
+  sudo systemsetup -setrestartpowerfailure on 2>/dev/null || true
+  sudo systemsetup -setrestartfreeze on 2>/dev/null || true
+
+  # ---------------------------------------------------------------------------
+  # 원격 접속 - SSH
+  # ---------------------------------------------------------------------------
+  echo "    SSH 원격 접속 활성화 중..."
+  sudo systemsetup -setremotelogin on 2>/dev/null || \
+    sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist 2>/dev/null || \
+    echo "    [!] SSH 활성화 실패 - 시스템 설정에서 수동으로 활성화하세요"
+
+  # ---------------------------------------------------------------------------
+  # 원격 접속 - VNC (Screen Sharing)
+  # ---------------------------------------------------------------------------
+  echo "    VNC (화면 공유) 활성화 중..."
+  sudo defaults write /var/db/launchd.db/com.apple.launchd/overrides.plist com.apple.screensharing -dict Disabled -bool false 2>/dev/null || true
+  sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.screensharing.plist 2>/dev/null || true
+
+  if ! sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -allUsers -privs -all 2>/dev/null; then
+    echo "    [!] VNC 설정 안내:"
+    echo "        시스템 설정 > 일반 > 공유 > 화면 공유 활성화"
+  fi
+
+  # ---------------------------------------------------------------------------
+  # 보안 설정
+  # ---------------------------------------------------------------------------
+  echo "    방화벽 활성화 중..."
+  sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on 2>/dev/null || true
+
   echo ""
-  echo "    수동 설정이 필요합니다:"
-  echo "    1. 시스템 설정 > 키보드 > 입력 소스 > 편집..."
-  echo "    2. '+' 버튼 클릭 > '구름' 검색 > '구름 입력기' 추가"
-  echo "    3. 기존 '한국어 - 2벌식' 입력 소스 제거 (선택사항)"
-  echo "    4. 로그아웃 후 다시 로그인"
-  echo ""
+  echo "==> Mac mini 서버 설정 완료!"
+  echo "    - 에너지: 항상 켜짐, Wake on LAN, 자동 재시작"
+  echo "    - 원격 접속: SSH, VNC(화면 공유)"
+  echo "    - 보안: 방화벽 활성화"
+
+else
+  # ===========================================================================
+  # 일반 Mac (MacBook 등) 설정
+  # ===========================================================================
+
+  # Gureum Input Method (구름 입력기)
+  if [[ -d "/Library/Input Methods/Gureum.app" ]]; then
+    echo "==> 구름 입력기가 설치되어 있습니다."
+    echo ""
+    echo "    수동 설정이 필요합니다:"
+    echo "    1. 시스템 설정 > 키보드 > 입력 소스 > 편집..."
+    echo "    2. '+' 버튼 클릭 > '구름' 검색 > '구름 입력기' 추가"
+    echo "    3. 기존 '한국어 - 2벌식' 입력 소스 제거 (선택사항)"
+    echo "    4. 로그아웃 후 다시 로그인"
+    echo ""
+  fi
+
+  # Time Machine Exclusions
+  sudo tmutil addexclusion -p /Library/Caches
+  sudo tmutil addexclusion -p $HOME/Library/Caches
+  sudo tmutil addexclusion -p $HOME/Library/Developer
+  sudo tmutil addexclusion -p $HOME/Library/Logs/CoreSimulator
+  sudo tmutil addexclusion -p $HOME/.cache
+  sudo tmutil addexclusion -p $HOME/.orbstack
+  sudo tmutil addexclusion -p $HOME/.npm
+  sudo tmutil addexclusion -p $HOME/.docker
+  sudo tmutil addexclusion -p $HOME/.local/share
+  sudo tmutil addexclusion -p $HOME/.bun
+  sudo tmutil addexclusion -p $HOME/.cargo
+  sudo tmutil addexclusion -p /Library/Backblaze.bzpkg
+  sudo tmutil addexclusion -p /Library/Developer/
+
 fi
-
-# =============================================================================
-# Time Machine Exclusions
-# =============================================================================
-sudo tmutil addexclusion -p /Library/Caches
-sudo tmutil addexclusion -p $HOME/Library/Caches
-sudo tmutil addexclusion -p $HOME/Library/Developer
-sudo tmutil addexclusion -p $HOME/Library/Logs/CoreSimulator
-sudo tmutil addexclusion -p $HOME/.cache
-sudo tmutil addexclusion -p $HOME/.orbstack
-sudo tmutil addexclusion -p $HOME/.npm
-sudo tmutil addexclusion -p $HOME/.docker
-sudo tmutil addexclusion -p $HOME/.local/share
-sudo tmutil addexclusion -p $HOME/.bun
-sudo tmutil addexclusion -p $HOME/.cargo
-sudo tmutil addexclusion -p /Library/Backblaze.bzpkg
-sudo tmutil addexclusion -p /Library/Developer/
-
 
 {{ end -}}
