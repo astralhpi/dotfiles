@@ -43,7 +43,7 @@ For headless Mac Mini accessed via Tailscale SSH:
 ```bash
 # 1. Run bootstrap script (installs Homebrew, 1Password CLI, Tailscale, chezmoi)
 #    This also creates ~/.config/chezmoi/.headless marker
-./packages/bootstrap-macos-headless.sh
+curl -fsSL https://raw.githubusercontent.com/astralhpi/dotfiles/main/packages/bootstrap-macos-headless.sh | bash
 
 # 2. Enable Tailscale SSH
 sudo tailscale up --ssh
@@ -84,19 +84,20 @@ cat ~/.ssh/id_ed25519.pub | pbcopy
 ### Linux (Debian/Ubuntu/Arch)
 
 ```bash
-# 1. Run bootstrap script (installs prerequisites, 1Password CLI, chezmoi)
-./packages/bootstrap-linux.sh
-
-# 2. Setup SSH key
+# 1. Setup SSH key reference (optional, for auto-setup)
 export OP_SSH_KEY='op://Private/xxxxxx/private key'
-eval $(op signin)
-# (script will extract SSH key automatically if OP_SSH_KEY is set)
 
-# 3. Clone dotfiles
+# 2. Run bootstrap script (installs prerequisites, 1Password CLI, chezmoi)
+curl -fsSL https://raw.githubusercontent.com/astralhpi/dotfiles/main/packages/bootstrap-linux.sh | bash
+
+# 3. Sign in to 1Password (if not done during bootstrap)
+eval $(op signin)
+
+# 4. Clone dotfiles
 git clone https://github.com/astralhpi/dotfiles.git ~/Projects/dotfiles
 cd ~/Projects/dotfiles
 
-# 4. Initialize and apply
+# 5. Initialize and apply
 ~/.local/bin/chezmoi init --source=. --apply
 ```
 
