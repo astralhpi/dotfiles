@@ -79,13 +79,34 @@ else
 fi
 
 # =============================================================================
-# Headless 모드 마커 생성
+# Headless 모드 설정
 # =============================================================================
-echo "==> Setting up headless mode marker..."
+echo "==> Setting up headless mode..."
 mkdir -p ~/.config/chezmoi
 chmod 700 ~/.config/chezmoi
+
+# 마커 파일 생성 (chezmoi.toml.tmpl에서 감지용)
 touch ~/.config/chezmoi/.headless
-echo "    Created ~/.config/chezmoi/.headless"
+
+# chezmoi.toml에 headless=true 추가 (첫 init 시 필요)
+if [[ -f ~/.config/chezmoi/chezmoi.toml ]]; then
+  if ! grep -q "headless" ~/.config/chezmoi/chezmoi.toml; then
+    # [data] 섹션이 있으면 거기에 추가
+    if grep -q "\[data\]" ~/.config/chezmoi/chezmoi.toml; then
+      sed -i '' '/\[data\]/a\
+  headless = true
+' ~/.config/chezmoi/chezmoi.toml
+    else
+      echo -e "\n[data]\n  headless = true" >> ~/.config/chezmoi/chezmoi.toml
+    fi
+  fi
+else
+  cat > ~/.config/chezmoi/chezmoi.toml << 'EOF'
+[data]
+  headless = true
+EOF
+fi
+echo "    Configured headless mode"
 
 # =============================================================================
 # SSH 키 설정 안내
