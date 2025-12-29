@@ -1,3 +1,4 @@
+{{- $headless := and (hasKey . "headless") .headless }}
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
@@ -19,99 +20,96 @@ defaults write NSGlobalDomain NSAutoFillHeuristicControllerEnabled false
 # Dock
 defaults write com.apple.dock autohide -bool true
 
+{{ if $headless -}}
 # =============================================================================
-# Mac mini 서버 설정 (hw.model로 자동 감지)
+# Headless 서버 설정
 # =============================================================================
-HW_MODEL=$(sysctl -n hw.model)
+echo "==> Headless 모드 - 서버 설정 적용 중..."
 
-if [[ "$HW_MODEL" == *"Macmini"* ]]; then
-  echo "==> Mac mini 감지됨 ($HW_MODEL) - 서버 설정 적용 중..."
+# ---------------------------------------------------------------------------
+# 에너지 설정 - 항상 켜짐
+# ---------------------------------------------------------------------------
+echo "    에너지 설정 구성 중..."
+sudo pmset -a sleep 0              # 잠자기 안 함
+sudo pmset -a disksleep 0          # 디스크 잠자기 안 함
+sudo pmset -a displaysleep 0       # 디스플레이 잠자기 안 함
+sudo pmset -a womp 1               # Wake on LAN 활성화
+sudo pmset -a powernap 0           # Power Nap 비활성화
+sudo pmset -a proximitywake 0      # 근접 깨우기 비활성화
 
-  # ---------------------------------------------------------------------------
-  # 에너지 설정 - 항상 켜짐
-  # ---------------------------------------------------------------------------
-  echo "    에너지 설정 구성 중..."
-  sudo pmset -a sleep 0              # 잠자기 안 함
-  sudo pmset -a disksleep 0          # 디스크 잠자기 안 함
-  sudo pmset -a displaysleep 0       # 디스플레이 잠자기 안 함
-  sudo pmset -a womp 1               # Wake on LAN 활성화
-  sudo pmset -a powernap 0           # Power Nap 비활성화
-  sudo pmset -a proximitywake 0      # 근접 깨우기 비활성화
+# 자동 재시작 (전원 복구 후, 시스템 정지 후)
+sudo pmset -a autorestart 1
+sudo systemsetup -setrestartpowerfailure on 2>/dev/null || true
+sudo systemsetup -setrestartfreeze on 2>/dev/null || true
 
-  # 자동 재시작 (전원 복구 후, 시스템 정지 후)
-  sudo pmset -a autorestart 1
-  sudo systemsetup -setrestartpowerfailure on 2>/dev/null || true
-  sudo systemsetup -setrestartfreeze on 2>/dev/null || true
+# ---------------------------------------------------------------------------
+# 원격 접속 - Tailscale SSH + NoMachine 사용, 시스템 SSH/VNC 불필요
+# ---------------------------------------------------------------------------
+echo "    시스템 SSH/VNC 비활성화 (Tailscale SSH + NoMachine 사용)..."
+sudo systemsetup -setremotelogin off 2>/dev/null || true
+sudo launchctl disable system/com.apple.screensharing 2>/dev/null || true
 
-  # ---------------------------------------------------------------------------
-  # 원격 접속 - Tailscale SSH + NoMachine 사용, 시스템 SSH/VNC 불필요
-  # ---------------------------------------------------------------------------
-  echo "    시스템 SSH/VNC 비활성화 (Tailscale SSH + NoMachine 사용)..."
-  sudo systemsetup -setremotelogin off 2>/dev/null || true
-  sudo launchctl disable system/com.apple.screensharing 2>/dev/null || true
+# ---------------------------------------------------------------------------
+# Spotlight 비활성화 - 서버에서는 불필요, CPU/디스크 I/O 절약
+# ---------------------------------------------------------------------------
+echo "    Spotlight 인덱싱 비활성화 중..."
+sudo mdutil -a -i off 2>/dev/null || true
 
-  # ---------------------------------------------------------------------------
-  # Spotlight 비활성화 - 서버에서는 불필요, CPU/디스크 I/O 절약
-  # ---------------------------------------------------------------------------
-  echo "    Spotlight 인덱싱 비활성화 중..."
-  sudo mdutil -a -i off 2>/dev/null || true
+# ---------------------------------------------------------------------------
+# Time Machine 로컬 스냅샷 비활성화 - 디스크 공간 절약
+# ---------------------------------------------------------------------------
+echo "    Time Machine 로컬 스냅샷 비활성화 중..."
+sudo tmutil disablelocal 2>/dev/null || true
 
-  # ---------------------------------------------------------------------------
-  # Time Machine 로컬 스냅샷 비활성화 - 디스크 공간 절약
-  # ---------------------------------------------------------------------------
-  echo "    Time Machine 로컬 스냅샷 비활성화 중..."
-  sudo tmutil disablelocal 2>/dev/null || true
+# ---------------------------------------------------------------------------
+# 리소스 많이 쓰는 백그라운드 서비스 비활성화
+# ---------------------------------------------------------------------------
+echo "    불필요한 백그라운드 서비스 비활성화 중..."
 
-  # ---------------------------------------------------------------------------
-  # 리소스 많이 쓰는 백그라운드 서비스 비활성화
-  # ---------------------------------------------------------------------------
-  echo "    불필요한 백그라운드 서비스 비활성화 중..."
-  
-  # 사진/미디어 분석 (CPU/GPU 많이 사용)
-  launchctl disable user/$UID/com.apple.photoanalysisd 2>/dev/null || true
-  launchctl disable user/$UID/com.apple.mediaanalysisd 2>/dev/null || true
+# 사진/미디어 분석 (CPU/GPU 많이 사용)
+launchctl disable user/$UID/com.apple.photoanalysisd 2>/dev/null || true
+launchctl disable user/$UID/com.apple.mediaanalysisd 2>/dev/null || true
 
+echo ""
+echo "==> Headless 서버 설정 완료!"
+echo "    - 에너지: 항상 켜짐, Wake on LAN, 자동 재시작"
+echo "    - 원격 접속: Tailscale SSH + NoMachine (시스템 SSH/VNC 비활성화)"
+echo "    - 최적화: Spotlight, Time Machine 로컬 스냅샷, 사진/미디어 분석 비활성화"
+echo ""
+echo "    [!] 수동 설정 필요:"
+echo "        시스템 설정 > 사용자 및 그룹 > 자동 로그인"
+
+{{ else -}}
+# =============================================================================
+# 일반 Mac (MacBook 등) 설정
+# =============================================================================
+
+# Gureum Input Method (구름 입력기)
+if [[ -d "/Library/Input Methods/Gureum.app" ]]; then
+  echo "==> 구름 입력기가 설치되어 있습니다."
   echo ""
-  echo "==> Mac mini 서버 설정 완료!"
-  echo "    - 에너지: 항상 켜짐, Wake on LAN, 자동 재시작"
-  echo "    - 원격 접속: Tailscale SSH + NoMachine (시스템 SSH/VNC 비활성화)"
-  echo "    - 최적화: Spotlight, Time Machine 로컬 스냅샷, 사진/미디어 분석 비활성화"
+  echo "    수동 설정이 필요합니다:"
+  echo "    1. 시스템 설정 > 키보드 > 입력 소스 > 편집..."
+  echo "    2. '+' 버튼 클릭 > '구름' 검색 > '구름 입력기' 추가"
+  echo "    3. 기존 '한국어 - 2벌식' 입력 소스 제거 (선택사항)"
+  echo "    4. 로그아웃 후 다시 로그인"
   echo ""
-  echo "    [!] 수동 설정 필요:"
-  echo "        시스템 설정 > 사용자 및 그룹 > 자동 로그인"
-
-else
-  # ===========================================================================
-  # 일반 Mac (MacBook 등) 설정
-  # ===========================================================================
-
-  # Gureum Input Method (구름 입력기)
-  if [[ -d "/Library/Input Methods/Gureum.app" ]]; then
-    echo "==> 구름 입력기가 설치되어 있습니다."
-    echo ""
-    echo "    수동 설정이 필요합니다:"
-    echo "    1. 시스템 설정 > 키보드 > 입력 소스 > 편집..."
-    echo "    2. '+' 버튼 클릭 > '구름' 검색 > '구름 입력기' 추가"
-    echo "    3. 기존 '한국어 - 2벌식' 입력 소스 제거 (선택사항)"
-    echo "    4. 로그아웃 후 다시 로그인"
-    echo ""
-  fi
-
-  # Time Machine Exclusions
-  sudo tmutil addexclusion -p /Library/Caches
-  sudo tmutil addexclusion -p $HOME/Library/Caches
-  sudo tmutil addexclusion -p $HOME/Library/Developer
-  sudo tmutil addexclusion -p $HOME/Library/Logs/CoreSimulator
-  sudo tmutil addexclusion -p $HOME/.cache
-  sudo tmutil addexclusion -p $HOME/.orbstack
-  sudo tmutil addexclusion -p $HOME/.npm
-  sudo tmutil addexclusion -p $HOME/.docker
-  sudo tmutil addexclusion -p $HOME/.local/share
-  sudo tmutil addexclusion -p $HOME/.bun
-  sudo tmutil addexclusion -p $HOME/.cargo
-  sudo tmutil addexclusion -p /Library/Backblaze.bzpkg
-  sudo tmutil addexclusion -p /Library/Developer/
-
 fi
 
+# Time Machine Exclusions
+sudo tmutil addexclusion -p /Library/Caches
+sudo tmutil addexclusion -p $HOME/Library/Caches
+sudo tmutil addexclusion -p $HOME/Library/Developer
+sudo tmutil addexclusion -p $HOME/Library/Logs/CoreSimulator
+sudo tmutil addexclusion -p $HOME/.cache
+sudo tmutil addexclusion -p $HOME/.orbstack
+sudo tmutil addexclusion -p $HOME/.npm
+sudo tmutil addexclusion -p $HOME/.docker
+sudo tmutil addexclusion -p $HOME/.local/share
+sudo tmutil addexclusion -p $HOME/.bun
+sudo tmutil addexclusion -p $HOME/.cargo
+sudo tmutil addexclusion -p /Library/Backblaze.bzpkg
+sudo tmutil addexclusion -p /Library/Developer/
+
+{{ end -}}
 {{ end -}}
