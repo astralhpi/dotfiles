@@ -72,13 +72,15 @@ cask '1password-cli'
 # 원격 데스크톱 (headless 접속용)
 cask 'nomachine'
 
+# 컨테이너/VM
+cask 'orbstack'
+
 {{- if not $headless }}
 # GUI 전용 Applications
 cask 'ghostty'
 cask 'android-studio'
 cask 'google-chrome'
 cask 'mitmproxy'
-cask 'orbstack'
 cask '1password'
 cask 'dash'
 cask 'alfred'
