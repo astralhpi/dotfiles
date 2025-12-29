@@ -44,7 +44,9 @@ brew 'thefuck'
 brew 'gh'
 brew 'terminal-notifier'
 brew 'rsync'
+{{- if $headless }}
 brew 'tailscale'
+{{- end }}
 
 # Infrastructure & Cloud
 brew 'postgresql@17'
@@ -104,11 +106,11 @@ cask 'cloudflare-warp'
 cask 'arc'
 cask 'chatgpt'
 cask 'gureumkim'  # 한글 입력기 - Ctrl 키 조합 문제 해결
+cask 'tailscale'  # GUI 버전
 
 # =============================================================================
 # Mac App Store (GUI 전용)
 # =============================================================================
-mas 'Tailscale', id: 1475387142
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134
 mas '1Password for Safari', id: 1569813296
