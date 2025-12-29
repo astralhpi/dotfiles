@@ -5,7 +5,7 @@ Personal dotfiles managed with [chezmoi](https://chezmoi.io)
 ## Supported Platforms
 
 - **macOS** (Apple Silicon) - Full support with GUI apps
-- **macOS Headless** (Mac Mini server) - CLI + NoMachine, Tailscale SSH
+- **macOS Headless** (Mac Mini server) - CLI + Tailscale SSH
 - **Linux** (Debian/Ubuntu, Arch Linux, ARM64) - Terminal only
 
 ## Prerequisites
@@ -78,7 +78,6 @@ cat ~/.ssh/id_ed25519.pub | pbcopy
 - Uses local SSH key instead of 1Password SSH agent
 - Git signing uses local key instead of `op-ssh-sign`
 - Installs `tailscale` CLI (with service) instead of Mac App Store version
-- Installs `nomachine` for remote desktop access
 - Skips GUI-only apps (Aerospace, Karabiner, etc.)
 
 ### Linux (Debian/Ubuntu/Arch)

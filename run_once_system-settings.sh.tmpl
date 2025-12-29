@@ -87,12 +87,6 @@ echo "        시스템 설정 > 사용자 및 그룹 > 자동 로그인"
 # 일반 Mac (MacBook 등) 설정
 # =============================================================================
 
-# NoMachine 서버 비활성화 (클라이언트로만 사용)
-if [[ -f /Library/LaunchDaemons/com.nomachine.server.plist ]]; then
-  echo "==> NoMachine 서버 비활성화 (클라이언트로만 사용)..."
-  sudo launchctl unload -w /Library/LaunchDaemons/com.nomachine.server.plist 2>/dev/null || true
-fi
-
 # Gureum Input Method (구름 입력기)
 if [[ -d "/Library/Input Methods/Gureum.app" ]]; then
   echo "==> 구름 입력기가 설치되어 있습니다."
