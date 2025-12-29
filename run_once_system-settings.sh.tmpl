@@ -42,6 +42,9 @@ sudo pmset -a autorestart 1
 sudo systemsetup -setrestartpowerfailure on 2>/dev/null || true
 sudo systemsetup -setrestartfreeze on 2>/dev/null || true
 
+# 부팅 사운드 비활성화
+sudo nvram StartupMute=%01
+
 # ---------------------------------------------------------------------------
 # 원격 접속 - Tailscale SSH + NoMachine 사용, 시스템 SSH/VNC 불필요
 # ---------------------------------------------------------------------------
