@@ -1,6 +1,11 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-# Brewfile hash: {{ include "./packages/Brewfile" | sha256sum }}
-cd {{ joinPath .chezmoi.sourceDir "./packages" }} && brew bundle -v
+# Brewfile.tmpl hash: {{ include "./packages/Brewfile.tmpl" | sha256sum }}
+# headless: {{ .headless }}
+
+# Brewfile 생성 (템플릿 렌더링)
+chezmoi execute-template < {{ joinPath .chezmoi.sourceDir "./packages/Brewfile.tmpl" }} > /tmp/Brewfile
+
+cd /tmp && brew bundle -v
 {{ end -}}

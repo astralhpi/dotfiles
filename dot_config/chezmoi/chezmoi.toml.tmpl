@@ -1,6 +1,16 @@
 sourceDir = "{{ .chezmoi.sourceDir }}"
 
 [data]
+  {{- /* headless 모드: GUI 없이 SSH로만 접속하는 환경 (예: Mac Mini 서버) */}}
+  {{- $headless := false }}
+  {{- if (env "CHEZMOI_HEADLESS") }}
+  {{-   $headless = eq (env "CHEZMOI_HEADLESS") "true" }}
+  {{- else if (stat (joinPath .chezmoi.homeDir ".config/chezmoi/.headless")) }}
+  {{-   $headless = true }}
+  {{- end }}
+  headless = {{ $headless }}
+
+  {{- /* 1Password에서 secrets 로드 (headless 모드에서도 1password-cli 사용) */}}
   {{- range (onepassword "vxy342flg5qfr5lxkgvelgeqaa").fields }}
   {{-   if hasKey . "value" }}
   {{ .label }} = {{ .value | quote }}

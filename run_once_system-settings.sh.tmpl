@@ -44,36 +44,41 @@ if [[ "$HW_MODEL" == *"Macmini"* ]]; then
   sudo systemsetup -setrestartfreeze on 2>/dev/null || true
 
   # ---------------------------------------------------------------------------
-  # 원격 접속 - SSH
+  # 원격 접속 - Tailscale SSH + NoMachine 사용, 시스템 SSH/VNC 불필요
   # ---------------------------------------------------------------------------
-  echo "    SSH 원격 접속 활성화 중..."
-  sudo systemsetup -setremotelogin on 2>/dev/null || \
-    sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist 2>/dev/null || \
-    echo "    [!] SSH 활성화 실패 - 시스템 설정에서 수동으로 활성화하세요"
+  echo "    시스템 SSH/VNC 비활성화 (Tailscale SSH + NoMachine 사용)..."
+  sudo systemsetup -setremotelogin off 2>/dev/null || true
+  sudo launchctl disable system/com.apple.screensharing 2>/dev/null || true
 
   # ---------------------------------------------------------------------------
-  # 원격 접속 - VNC (Screen Sharing)
+  # Spotlight 비활성화 - 서버에서는 불필요, CPU/디스크 I/O 절약
   # ---------------------------------------------------------------------------
-  echo "    VNC (화면 공유) 활성화 중..."
-  sudo defaults write /var/db/launchd.db/com.apple.launchd/overrides.plist com.apple.screensharing -dict Disabled -bool false 2>/dev/null || true
-  sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.screensharing.plist 2>/dev/null || true
-
-  if ! sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -allUsers -privs -all 2>/dev/null; then
-    echo "    [!] VNC 설정 안내:"
-    echo "        시스템 설정 > 일반 > 공유 > 화면 공유 활성화"
-  fi
+  echo "    Spotlight 인덱싱 비활성화 중..."
+  sudo mdutil -a -i off 2>/dev/null || true
 
   # ---------------------------------------------------------------------------
-  # 보안 설정
+  # Time Machine 로컬 스냅샷 비활성화 - 디스크 공간 절약
   # ---------------------------------------------------------------------------
-  echo "    방화벽 활성화 중..."
-  sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on 2>/dev/null || true
+  echo "    Time Machine 로컬 스냅샷 비활성화 중..."
+  sudo tmutil disablelocal 2>/dev/null || true
+
+  # ---------------------------------------------------------------------------
+  # 리소스 많이 쓰는 백그라운드 서비스 비활성화
+  # ---------------------------------------------------------------------------
+  echo "    불필요한 백그라운드 서비스 비활성화 중..."
+  
+  # 사진/미디어 분석 (CPU/GPU 많이 사용)
+  launchctl disable user/$UID/com.apple.photoanalysisd 2>/dev/null || true
+  launchctl disable user/$UID/com.apple.mediaanalysisd 2>/dev/null || true
 
   echo ""
   echo "==> Mac mini 서버 설정 완료!"
   echo "    - 에너지: 항상 켜짐, Wake on LAN, 자동 재시작"
-  echo "    - 원격 접속: SSH, VNC(화면 공유)"
-  echo "    - 보안: 방화벽 활성화"
+  echo "    - 원격 접속: Tailscale SSH + NoMachine (시스템 SSH/VNC 비활성화)"
+  echo "    - 최적화: Spotlight, Time Machine 로컬 스냅샷, 사진/미디어 분석 비활성화"
+  echo ""
+  echo "    [!] 수동 설정 필요:"
+  echo "        시스템 설정 > 사용자 및 그룹 > 자동 로그인"
 
 else
   # ===========================================================================

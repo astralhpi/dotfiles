@@ -1,0 +1,25 @@
+{{- if and (eq .chezmoi.os "darwin") .headless -}}
+#!/bin/bash
+# Tailscale 서비스 등록 (headless macOS 전용)
+
+echo "==> Setting up Tailscale service..."
+
+# Tailscale 서비스가 실행 중인지 확인
+if ! brew services list | grep -q "tailscale.*started"; then
+  echo "    Starting Tailscale service..."
+  sudo brew services start tailscale
+else
+  echo "    Tailscale service already running"
+fi
+
+# Tailscale 상태 확인
+if tailscale status &>/dev/null; then
+  echo "    Tailscale is connected"
+  tailscale status
+else
+  echo ""
+  echo "    Tailscale is not logged in."
+  echo "    Run: sudo tailscale up --ssh"
+  echo ""
+fi
+{{- end }}

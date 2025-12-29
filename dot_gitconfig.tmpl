@@ -77,9 +77,9 @@
     format = "ssh"
 
 [gpg "ssh"]
-{{ if eq .chezmoi.os "darwin" -}}
+{{- if and (eq .chezmoi.os "darwin") (not .headless) }}
     program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-{{ end -}}
+{{- end }}
 
 [init]
     defaultBranch = "main"
@@ -128,8 +128,8 @@
 [user]
     email = "{{ .email }}"
     name = "{{ .name }}"
-{{ if eq .chezmoi.os "darwin" -}}
+{{- if and (eq .chezmoi.os "darwin") (not .headless) }}
     signingkey = "{{ .signingkey }}"
-{{ else -}}
-    signingkey = ~/.ssh/signing_key.pub
-{{ end -}}
+{{- else }}
+    signingkey = ~/.ssh/id_ed25519.pub
+{{- end }}

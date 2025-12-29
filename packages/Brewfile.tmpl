@@ -1,11 +1,19 @@
+{{- /* Brewfile - headless 모드에 따라 패키지 분기 */ -}}
+{{- $headless := .headless -}}
+
 cask_args appdir: '/Applications'
 
 tap 'FelixKratz/formulae'
+tap 'arl/arl'
+{{- if not $headless }}
 tap 'shaunsingh/SFMono-Nerd-Font-Ligaturized'
 tap 'supabase/tap'
-tap 'arl/arl'
 tap 'nikitabobko/tap'
+{{- end }}
 
+# =============================================================================
+# CLI Tools (공통)
+# =============================================================================
 brew 'pam-reattach'
 brew 'jq'
 brew 'gnu-sed'
@@ -16,7 +24,6 @@ brew 'gitmux'
 brew 'starship'
 brew 'atuin'
 brew 'tmuxp'
-brew 'cocoapods'
 brew 'imagemagick'
 brew 'viu'
 brew 'neovim'
@@ -26,14 +33,7 @@ brew 'lsd'
 brew 'mise'
 brew 'yq'
 brew 'zoxide'
-brew 'asimov'
 brew 'fd'
-brew 'postgresql@17'
-brew 'cloudflared'
-brew 'helm'
-brew 'k9s'
-brew 'kubectl'
-brew 'awscli'
 brew 'ripgrep'
 brew 'bat'
 brew 'direnv'
@@ -41,18 +41,45 @@ brew 'git-delta'
 brew 'uv'
 brew 'tmux'
 brew 'thefuck'
-brew 'borders'
 brew 'gh'
 brew 'terminal-notifier'
 brew 'rsync'
+brew 'tailscale'
 
+# Infrastructure & Cloud
+brew 'postgresql@17'
+brew 'cloudflared'
+brew 'helm'
+brew 'k9s'
+brew 'kubectl'
+brew 'awscli'
+
+# 앱 빌드용
+brew 'cocoapods'
+
+{{- if not $headless }}
+# GUI 전용 CLI tools
+brew 'asimov'
+brew 'borders'
+{{- end }}
+
+# =============================================================================
+# Cask Applications
+# =============================================================================
+# 공통 (headless에서도 필요)
+cask '1password-cli'
+
+# 원격 데스크톱 (headless 접속용)
+cask 'nomachine'
+
+{{- if not $headless }}
+# GUI 전용 Applications
 cask 'ghostty'
 cask 'android-studio'
 cask 'google-chrome'
 cask 'mitmproxy'
 cask 'orbstack'
 cask '1password'
-cask '1password-cli'
 cask 'dash'
 cask 'alfred'
 cask 'karabiner-elements'
@@ -76,8 +103,12 @@ cask 'arc'
 cask 'chatgpt'
 cask 'gureumkim'  # 한글 입력기 - Ctrl 키 조합 문제 해결
 
+# =============================================================================
+# Mac App Store (GUI 전용)
+# =============================================================================
 mas 'Tailscale', id: 1475387142
 mas 'Slack', id: 803453959
 mas 'KakakoTalk', id: 869223134
 mas '1Password for Safari', id: 1569813296
 mas 'VImlike', id: 1584519802
+{{- end }}
