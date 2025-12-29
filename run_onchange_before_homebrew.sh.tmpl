@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # Brewfile.tmpl hash: {{ include "./packages/Brewfile.tmpl" | sha256sum }}
-# headless: {{ .headless }}
+# headless: {{ and (hasKey . "headless") .headless }}
 
 # Brewfile 생성 (템플릿 렌더링)
 chezmoi execute-template < {{ joinPath .chezmoi.sourceDir "./packages/Brewfile.tmpl" }} > /tmp/Brewfile

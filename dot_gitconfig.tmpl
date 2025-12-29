@@ -1,3 +1,4 @@
+{{- $headless := and (hasKey . "headless") .headless }}
 [alias]
     ap = "!git add -N . && git add -p"
     lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -77,7 +78,7 @@
     format = "ssh"
 
 [gpg "ssh"]
-{{- if and (eq .chezmoi.os "darwin") (not .headless) }}
+{{- if and (eq .chezmoi.os "darwin") (not $headless) }}
     program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 {{- end }}
 
@@ -128,7 +129,7 @@
 [user]
     email = "{{ .email }}"
     name = "{{ .name }}"
-{{- if and (eq .chezmoi.os "darwin") (not .headless) }}
+{{- if and (eq .chezmoi.os "darwin") (not $headless) }}
     signingkey = "{{ .signingkey }}"
 {{- else }}
     signingkey = ~/.ssh/id_ed25519.pub

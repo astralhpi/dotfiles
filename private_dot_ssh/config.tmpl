@@ -1,7 +1,9 @@
-{{- if and (eq .chezmoi.os "darwin") (not .headless) }}
-# OrbStack: SSH host for Linux machines
-Include ~/.orbstack/ssh/config
-
+{{- $headless := and (hasKey . "headless") .headless }}
+{{- if and (eq .chezmoi.os "darwin") (not $headless) }}
+    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{{- end }}
+{{- if $headless }}
+    IdentityFile ~/.ssh/id_ed25519
 {{- end }}
 
 {{- if and (index . "work_hostname") (index . "work_user") }}

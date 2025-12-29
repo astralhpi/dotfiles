@@ -1,5 +1,5 @@
 {{- /* Brewfile - headless 모드에 따라 패키지 분기 */ -}}
-{{- $headless := .headless -}}
+{{- $headless := and (hasKey . "headless") .headless -}}
 
 cask_args appdir: '/Applications'
 
