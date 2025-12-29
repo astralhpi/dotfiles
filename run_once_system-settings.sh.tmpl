@@ -1,4 +1,4 @@
-{{- $headless := and (hasKey . "headless") .headless }}
+{{- $headless := and (hasKey . "headless") .headless -}}
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
